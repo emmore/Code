@@ -5,13 +5,17 @@
 int main()
 {
 	int i;
+	int result;
 	long int N;
 	N=KK;
-	for (i=2;i<sqrt(N)&&(N%i!=0);i++)
+	for (i=2;i<sqrt(KK);i++)
 	{
-		N=N/i;
-		printf("%d\n",i);
+		while(N%i==0)
+		{
+			N=N/i;
+			result=i;
+		}
 	}
-	printf("%d\n",i);
+	printf("%d\n",result);
 	return 0;
 }
