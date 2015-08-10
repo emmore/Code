@@ -1,8 +1,7 @@
-(load "stream.ss")
+(define (integers_from n)
+ (cons n (delay (integers_from (+ n 1)))))
 (define primes
- (define (integers-from n)
-  (cons n (delay (integers-from (+ n 1)))))
- (cons 2 (delay (stream-filter prime? (integers-from 3)))))
+ (cons 2 (delay (stream-filter prime? (integers_from 3)))))
 (define (prime? n)
  (define (iter ps)
   (cond ((> (* (car ps) (car ps)) n ) #T)
