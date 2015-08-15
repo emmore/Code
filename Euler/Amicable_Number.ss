@@ -23,4 +23,11 @@
 (define (Deficient? x)
  (< (Sum_Divisors x) x))
 
+(define q (filter Abundant? (enumerate 1 28123)))
+
+(define (Two_Abundances q)
+ (let ((ele (car q)))
+  (cond ((> (+ ele (cadr q)) 28123) 0)
+        ((> ele (/ 28123 2))  0)
+		(
 
