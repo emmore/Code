@@ -1,3 +1,4 @@
+(load "stream.ss")
 (define (integers_from n)
  (cons n (delay (integers_from (+ n 1)))))
 (define primes
