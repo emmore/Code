@@ -1,0 +1,222 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Conference/Event Timetable
+% LaTeX Template
+%
+% This template has been downloaded from:
+% http://www.latextemplates.com
+%
+% Original calendar style author:
+% Evan Sultanik (http://www.sultanik.com/LaTeX_calendar_style)
+%
+% Important note:
+% This template requires the calendar.sty file to be in the same directory as the
+% .tex file. The calendar.sty file provides the necessary structure to create the
+% calendar.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[landscape,letterpaper]{article}
+
+\usepackage{calendar} % Use the calendar.sty style
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{array}% http://ctan.org/pkg/array
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{diagbox}
+\usepackage{indentfirst}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{graphicx}
+\usepackage[landscape,margin=0.5in]{geometry}
+
+\begin{document}
+
+\pagestyle{empty} % Removes the page number from the bottom of the page
+
+\noindent
+
+\StartingDayNumber=1 % Calendar starting day, default of 1 means Sunday, 2 for Monday, etc
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{center}
+\textsc{\LARGE Class Registration}\\ % Title
+\author{Baoxiang Pan}
+\textsc{\large Fall Quarter 2015} % Date
+\end{center}
+
+%----------------------------------------------------------------------------------------
+\begin{center}
+\begin{figure}[H]
+\centering
+\includegraphics[width=16cm]{SOROOSH.png}
+\captionsetup{labelformat=empty}
+\caption{Hydrology}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=16cm]{XIAOGANGGAO.png}
+\captionsetup{labelformat=empty}
+\caption{Mathematical Methods in Engineering Analysis}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=16cm]{BAYES.png}
+\captionsetup{labelformat=empty}
+\caption{Bayes Data Analysis}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=16cm]{AI.png}
+\captionsetup{labelformat=empty}
+\caption{Introduction to Artificial Intelligence}
+\end{figure}
+
+\begin{center}
+\begin{figure}[H]
+\centering
+\includegraphics[width=16cm]{data.png}
+\captionsetup{labelformat=empty}
+\caption{Data Structure (optional)}
+\end{figure}
+
+\end{center}
+%___________________
+
+
+
+
+\begin{calendar}{\hsize}
+
+\setcounter{calendardate}{4} % Date on which the calendar starts - note that you have to account for blank days
+
+%----------------------------------------------------------------------------------------
+%	SUNDAY MORNING
+%----------------------------------------------------------------------------------------
+
+\BlankDay 
+
+%----------------------------------------------------------------------------------------
+%	MONDAY MORNING
+%----------------------------------------------------------------------------------------
+\BlankDay
+
+%----------------------------------------------------------------------------------------
+%	TUESDAY MORNING
+%----------------------------------------------------------------------------------------
+\BlankDay
+%----------------------------------------------------------------------------------------
+%	WEDNESDAY MORNING
+%----------------------------------------------------------------------------------------
+
+\BlankDay
+%----------------------------------------------------------------------------------------
+%	THURSDAY MORNING
+%----------------------------------------------------------------------------------------
+
+
+\BlankDay
+ 
+
+%----------------------------------------------------------------------------------------
+%	Friday MORNING
+%----------------------------------------------------------------------------------------
+
+\BlankDay
+
+%----------------------------------------------------------------------------------------
+%	SATAURDAY MORNING
+%----------------------------------------------------------------------------------------
+
+\BlankDay
+
+%----------------------------------------------------------------------------------------
+
+
+%----------------------------------------------------------------------------------------
+%	SUNDAY AFTERNOON
+%----------------------------------------------------------------------------------------
+
+\BlankDay 
+
+%----------------------------------------------------------------------------------------
+%	MONDAY AFTERNOON
+%----------------------------------------------------------------------------------------
+\day{}
+{
+3:30 - 4:50  Hydrology\\
+5:00 - 5:50  Hydrology_d\\
+}
+
+%----------------------------------------------------------------------------------------
+%	TUESDAY AFTERNOON
+%----------------------------------------------------------------------------------------
+\day{}
+{
+2:00 - 3:20  Math Methods    \\
+3:30 - 4:50  A.I.    \\
+5:30 - 6:50  Bayes\\
+}
+
+%----------------------------------------------------------------------------------------
+%	WEDNESDAY AFTERNOON
+%----------------------------------------------------------------------------------------
+
+\day{}{
+3:30 - 4:50  Hydrology\\
+5:00 - 5:50  Hydrology_d\\
+5:00 - 5:50  Bayes_d\\
+}
+
+%----------------------------------------------------------------------------------------
+%	THURSDAY AFTERNOON
+%----------------------------------------------------------------------------------------
+
+\day{}{
+2:00 - 3:20 Math Methods\\
+3:30 - 4:50  A.I.    \\
+5:30 - 6:50  Bayes   \\
+}
+ 
+
+%----------------------------------------------------------------------------------------
+%	Friday AFTERNOON
+%----------------------------------------------------------------------------------------
+
+\day{}
+{
+1:00 - 4:50  A.I._d\\
+}
+
+%----------------------------------------------------------------------------------------
+%	SATAURDAY AFTERNOON
+%----------------------------------------------------------------------------------------
+
+\BlankDay
+
+%----------------------------------------------------------------------------------------
+
+
+
+
+
+%----------------------------------------------------------------------------------------
+% More days can be added to give the calendar a third or fourth week
+%----------------------------------------------------------------------------------------
+
+\finishCalendar
+\end{calendar}
+\end{document}
