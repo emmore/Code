@@ -1,0 +1,953 @@
+\documentclass[review]{elsarticle}
+
+\usepackage{lineno,hyperref}
+\modulolinenumbers[5]
+
+\journal{Advances in Meteorology}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%% Elsevier bibliography styles
+%%%%%%%%%%%%%%%%%%%%%%%
+%% To change the style, put a % in front of the second line of the current style and
+%% remove the % from the second line of the style you would like to use.
+%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Numbered
+%\bibliographystyle{model1-num-names}
+
+%% Numbered without titles
+%\bibliographystyle{model1a-num-names}
+
+%% Harvard
+%\bibliographystyle{model2-names.bst}\biboptions{authoryear}
+
+%% Vancouver numbered
+%\usepackage{numcompress}\bibliographystyle{model3-num-names}
+
+%% Vancouver name/year
+%\usepackage{numcompress}\bibliographystyle{model4-names}\biboptions{authoryear}
+
+%% APA style
+%\bibliographystyle{model5-names}\biboptions{authoryear}
+
+%% AMA style
+%\usepackage{numcompress}\bibliographystyle{model6-num-names}
+
+%% `Elsevier LaTeX' style
+\bibliographystyle{elsarticle-num}
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\begin{frontmatter}
+
+\title{Information Analysis of Catchment Hydrological Patterns across Temporal Scales}
+ 
+%% Group authors per affiliation:
+%% Group authors per affiliation:
+ 
+
+%% or include affiliations in footnotes:
+\author[mymainaddress]{Baoxiang Pan}
+\ead{baoxianp@uci.edu}
+
+\author[mymainaddress]{Zhentao Cong\corref{mycorrespondingauthor}}
+\cortext[mycorrespondingauthor]{Corresponding author}
+\ead{congzht@tsinghua.edu.cn}
+
+\address[mymainaddress]{Institute of Hydrology and Water Resources, Tsinghua University, Beijing}
+ 
+
+ 
+\begin{abstract}
+Catchment hydrological cycle takes on different patterns across temporal scales. The interim between daily hydrological processes and long range water-energy correlation pattern requires further examination to justify a self-consistent understanding. In this paper, we use quantized entropy of runoff observations to represent the prior uncertainty in determining catchment's hydrological patterns. Mutual information between runoff observation and catchment's water energy provisions, as represented by precipitation and potential evapotranspiration, is employed to denote the uncertainty decrease given the existed observations. Mutual information between runoff observation and simulation is employed to denote the uncertainty decrease given the models. The differences of these terms, as constrained by the functional transformation of Bayes' theorem, construct the framework of epistemic and aleatory uncertainty in evaluating the observation and simulation systems.  We implement this information analysis with daily hydrometeorological data aggregated at temporal scales from 10 days to 1 year in 24 catchments from  MOPEX data set to detect the catchments' hydrological patterns revealed by data and two existed water balance models.  An improved approach combining K-nearest neighbour method and  support vector regression is employed to tackle with high dimensional information item estimation. The estimations of information contents and flows of hydrological terms across temporal scales are related with the catchments' seasonality type. It also shows that information distilled by the monthly and annual water balance models applied here does not correspond to that provided by observations around temporal scale from two months to half a year. This calls for a better understanding of seasonal hydrological mechanism.
+\end{abstract}
+
+\begin{keyword}
+information theory, temporal scale, hydrological model, Budyko 
+\end{keyword}
+
+\end{frontmatter}
+
+\linenumbers
+
+ \section{Introduction}
+%------------------------------------------------
+A major realm of hydrological community is to figure out the components of hydrological cycle. Each component should be determined either by observation or an independent governing equation to guarantee the solvability of the problem. The accuracy of observation  and domain of governing functions usually change with scales. The term \emph{scale} here refers to a characteristic time (or length) of a process, observation or model \citep{bloschl1995scale}.  Besides the  universal conservation equation that suits for any spatial and temporal scale that we care about, each process-oriented hydrological model seeks for the proper complementary constitutive functions that govern the water movement at scales it focuses on. There has long been two perspectives in reaching a temporal scale harmonious explanation of hydrological processes, specifically, bottom-up and top-down. We make a brief review of them before introducing the information theoretical framework to quantize the uncertainty in seeking for the interface of the two groups of models across temporal scales. 
+
+Since the blueprint brought forward by Freeze and Harlan \citep{freeze1969blueprint}, 
+ every advance in observation technique and calculation capacity would revitalize the seated reductionism intuition among hydrologists, which aims at reproducing the hydrological process in the greatest spatial and temporal detail, hoping that larger patterns are self-evident when ``integrating" the calculating units along the spatial and temporal paths. However, we could not guarantee the universality of the phenomenological constitutive functions or the accuracy of the integrating spatial and temporal paths. The outputs of the distributed models could not verify the vast assumptions or parameterization schemes to support the model as a scientific attempt, nor could they provide insights of hydrological patterns at larger scales.  
+
+
+Hydrological behaviour of some parts within a catchment tends to cancel out the behaviour of other parts, with the result that it does not matter too much what happens on the low level, because most anything will yield similar high-level behaviour\citep{hofstadter1980godel}. Given this, many conceptual hydrological models have been brought forward to provide  coarser but valuable simulation without requiring detailed inputs or strong computation capacity. The mathematical analysis of the simplified forms offers an insight into the catchment hydrological mechanism that is blotted when aggregating the mass outputs produced by the distributed models\citep{gerrits2009analytical,xu2014attribution}. On the other hand, the simplicity also crippled such models from making down-scaling analysis. Their structures must be extended in order to depict microscopic hydrological processes.
+ 
+A paradigm of the declarations above is Budyko Curve\citep{budyko1961heat}. The curve links climate to annual catchment evaporation and runoff by characterizing an empirical relationship between the ratio of mean annual actual evaporation to mean annual rainfall and mean annual dryness index of the catchment\citep{wang2012responses}. A series of specific forms of Budyko Curve are obtained by selecting special solutions of the partial differential equation set constrained  by the extreme boundary conditions and Buckingham $\Pi$ Theorem\citep{FuBaopu,choudhury1999evaluation,yang2008new}. This constitutive equation together with the water conservation function where soil moisture storage change is neglected constitute a determined equation set that depicts the water-heat correlation pattern at annual mean temporal scale\citep{zhang2001response,yang2007analyzing}. 
+
+The strong assumption of stable soil moisture storage has caused controversy and limited the application of the model at seasonal or monthly temporal scales. Even at annual scale, water balance analysis using Budyko-type curve reveals that the aridity index does not exert a first order control in most of the catchments\citep{tekleab2011water}. Former critics basically blame the deviation for excluding the impact of the changing soil moisture\citep{sankarasubramanian2002annual,sankarasubramanian2003hydroclimatology}. By including the soil moisture storage term, some seasonal and monthly water balance models were developed\citep{abcd,xiong1999two,zhang2008water}, which serve as  temporal scale gap-fillers of the long term water-heat correlation pattern and single precipitation-runoff phenomenon focused hydrological models. As have been declared, the inclusion of any new term brings an increase to the degrees of freedom of the problem, which should be complemented either by observation or an independent complementary function. The huge cost of the former forces us to accept a less convincing but workable new constitutive function that governs the soil moisture change during the iterative simulation of water movement and storage. The rationale of these functions are gaining hydrologists' concern due to a similar Darwinian ideological origin with the Budyko Curve\citep{wang2014one}. However, their specific dominant temporal scales and accuracy remain ambiguous. 
+
+Given the pros and cons of the bottom-up and top-down models, we are faced with the following problems in reaching a temporal scale consistent hydrological simulation system: (1), how catchment hydrological patterns evolve as temporal scale expands, explicitly, how important hydrological items connect with each other at different temporal scales; (2), to what accuracy the data support the patterns; (3), to what extent the existing models capture these patterns.
+%\item Their relations with the catchment characteristics.
+
+This research tries to give primary responses to these questions within the discipline of information theory.
+
+
+%\subsection{Information Theory Applied In Hydrological Simulation}
+
+The term \emph{information} got mathematicized  by Claude E. Shannon in 1948\citep{shannon2001mathematical}. The notion that information is the combination of bits and context\citep{bryant2003computer} sets the theoretical foundation of the digit revolution and   broadens to find applications in many other areas, including hydrology and water resources\citep{singh1997use,singh2000entropy,singh2013entropy}. 
+ 
+
+Specific to hydrological simulation,
+information theory has been applied for model evaluation and
+uncertainty analysis as far back as the 1970s \citep{amorocho1973entropy,chapman1986entropy,abebe2003managing,pokhrel2010use,weijs2010hydrological,weijs2011accounting}
+.
+% As has been widely accepted\citep{bryant2003computer}:
+%Information = Bits + Context
+Gong developed a comprehensive model evaluation framework based on  entropy  and  mutual information  \citep{gong2013estimating} . In this framework, the uncertainty caused by the insufficiency and inaccuracy of data is attributed to \emph{Aleatory Uncertainty}, while that caused by imperfect data processing is attributed to \emph{Epistemic Uncertainty}. The sum of the two terms depicts the whole uncertainty of hydrological simulation.
+
+\begin{equation}\label{AU}
+Aleatory~Uncertainty= H(X_{o})-I(X_{o};X_{i})
+\end{equation}
+\begin{equation}\label{EU}
+Epistemic~Uncertainty=I(X_{o};X_{i})-I(X_{o};X_{s})
+\end{equation}
+Here $X_o,X_i,X_s$ represent random variables of the observed output, input terms and the simulated term of a specific model. $H$ denotes entropy. The entropy of a discrete random variable represents the average information content (uncertainty) of it. $I$ is  mutual information, which represents the  information that two stochastic variables share, or the uncertainty loss of one variable due to the knowledge of the other.  
+
+The definition provides a crystalline framework to evaluate the observation and simulation systems. However, it must blend into the existing uncertainty estimation knowledge systems before its wide  acceptance. Besides, the hydrological context in which these terms make sense and the specific calculating techniques should be strictly examined. 
+
+Hydrological terms are usually taken as continuous random variables at temporal or frequency domains that are observable over quantized coordinate points. Hydrological series represented at different coordinates hold different entropy and mutual information. It is impossible to tell the aleatory and epistemic uncertainty without clarifying the specific context or prior beliefs\citep{weijs2013data}. It should also be noted that the intuitive significance of discrete entropy could not be blindly generalized to differential entropy. We will address these issues in the following sections. 
+
+In addition to the theoretical considerations brought forward above, the technical challenge of high dimensional information term estimation is never an easy task. The strategy Gong adapts is to make a linear transformation of the original high dimensional term into independent vectors using Independent Component Analysis  Algorithm (ICA)\citep{hyvarinen2004independent}. According to the \emph{chain rule} of entropy, the sum of the entropies of the independent components differs from the entropy of the original term by $log|det(A)|$, where $A$ is the ICA transform matrix. However, the ICA algorithm is no more than a linear transformation, the vectors of the transformed matrix is very likely to be dependent when the original terms are highly non-linearly correlated. Thus, the method would overrate the entropy of the original data for neglecting the inner relevance among vectors in the transformed matrix. Besides, the indirect calculation of mutual information through entropies could introduce error accumulation.
+
+
+In this research, we provide both intuitive and formal explanations of the \emph{Aleatory Epistemic Uncertainty Evaluation Framework}. We will see that this framework is no more and no less than a  functional transformation of the classical Bayes' theorem. In order to make senses of the ``bits'' estimated in this framework, we restrict the context to hydrological series (precipitation, potential evapotranspiration and runoff observations) laid at time domain sampling points. The original daily series are re-aggregated into series with temporal scales from ten days to a year (no moving cluster). The information contents of these terms at various temporal scales are represented with quantized entropy. The accuracy of the quantization scheme is determined by practical needs as is clarified in the following sections. We employ mutual information between different hydrological terms to quantify the information flows within the hydrological cycle at specific temporal scales. Given the drawbacks of the existed high dimensional information estimators, we adapt a k-nearest neighbour distance method\citep{kraskov2004estimating}, which uses the $distances$ between samples to estimate high dimensional mutual information directly. Since the variable space is composed of different hydrological terms, we could not take it as an Euclidean Space and measure the sample points' distances with the popular $norms$. Considering the mathematical significance and strong information extraction ability of the support vector regression\citep{cortes1995support}, we apply it to depict the $distances$. The theoretical clarification is in the second section. Information terms to be calculated are followed. Finally, we discuss the interpretations of the estimations and respond the questions we put forward above.
+
+
+
+
+
+\section{Methodology}
+\subsection{Bits in Hydrological Simulation Context}
+
+It is intuitively believed that an infrequent sample of a random variable provides more surprisal, or information. The  mathematical expression of this common sense is that information provided by an observation should be a decreasing function of its probability. If we further require the additive property of information between independent events, the form of information content attributed to a sample with probability $p$ should be $-logp$. Thus, the average information content of random variable $X$ is:
+
+\begin{equation}
+\label{dentropy}
+H(X)=-\Sigma p(x)logp(x)
+\end{equation}
+\begin{equation}
+\label{centropy}
+h(X)=-\int f(x)logf(x)dx
+\end{equation}   
+$H(X)$ and $h(X)$ denote discrete and continuous Shannon Entropy, measured in bits for logarithm base 2. %The unit bit is widely used in computer science because an ideally efficient encoding system is an exact implementation of information theoretical principles. 
+
+While discrete entropy directly characterizes the average information content each observation brings to our knowledge, things become a little tricky for continuous situation. For continuous random variable, the probability of each value in the sample space is 0, since $-logp \to \infty$  as $p \to 0$, the information provided by each observation is infinite.  
+
+As is shown in Figure 1, let $X^\Delta$ be the discrete stochastic variable by scattering a continuous random variable $X$ into bins with length of $\Delta$ in its probability density function image, we have:
+
+\begin{equation}\label{correct}
+H(X^\Delta)\to h(X)-log\Delta,~~as\; \Delta \to 0
+\end{equation}
+\begin{figure}[H]
+\centering
+\includegraphics[width=8cm]{Quantization.png}
+\caption{Quantization of Continuous Random Variable}%\citep{cover2012elements}}
+\end{figure}
+This tells that differential entropy itself can not represent the average uncertainty of the information resource or the average information provided by each datum. However, if we only require an interval estimation, $h(X)-log\Delta $ would reveal the information content required to describe $X$ to $ -log\Delta$ bit accuracy\citep{cover2012elements}.  Here $ -log\Delta$ bit accuracy means $X$ takes a same value in a bin-width of $\Delta$ in the p.d.f. curve. 
+
+The other term we apply here is mutual information. Its discrete and continuous forms are as follows:
+
+\begin{equation}
+I(X;Y)=\sum_{x,y}p(x,y)log\frac{p(x,y)}{p(x)p(y)}
+\end{equation}
+\begin{equation}
+I(X;Y)=\int \int f(x,y)log\frac{f(x,y)}{f(x)f(y)}dxdy
+\end{equation}
+As can be derived:
+
+\begin{equation}\label{eq8}
+I(X;Y)=H(Y)-E[H(Y|X)]=H(X)-E[H(X|Y)]
+\end{equation}
+$E$ denotes expectation. The latter term in the middle and left part of equation \ref{eq8} 
+are called conditional entropy, which represents the residual uncertainty of a random variable given the knowledge of the other. Thus,
+$I(X;Y)$ denotes %the information content shared by two random variables. It could be interpreted as 
+the uncertainty decrease of $X$ given the knowledge of $Y$, and vice versa. It is always non-negative according to  Jesen Inequality \citep{cover2012elements}.
+
+The continuous mutual information $I(X;Y)$ is the limit of the discrete mutual information of partitions of $X$ and $Y$ as these partitions become finer and finer. Thus it  still represents the amount of discrete information that can be transmitted over a channel that admits a continuous space of values.
+
+The definitions above are closely related with Bayesian Statistics. Bayes' theorem is stated mathematically as the following equation:
+
+\begin{equation}
+\label{bayes}
+P(A|B) = P(A)\times \frac{P(B | A)}{P(B)},
+\end{equation}
+where A and B are events.
+$P(A)$ denotes prior distribution, $P(A|B)$ denotes posteriori distribution. $\frac{P(B | A)}{P(B)}$ is called standardised likelihood. 
+Equation \ref{bayes} quantizes how a subjective degree of belief should rationally change to account of evidence. 
+
+As have been declared, each probability distribution corresponds to its uncertainty or information content as is defined in Equation \ref{dentropy}  or  \ref{centropy}. We implement the transformation on both sides of Equation \ref{bayes}. The specific steps are as follows:
+
+\begin{itemize}
+\item[(1)] Make logarithmic transformation of Equation \ref{bayes}:
+\begin{equation}
+\label{log}
+logP(A|B) =logP(A)+log \frac{P (AB)}{P(A)P(B)} 
+\end{equation}
+\item[(2)] Multiply each item by $-P(A,B)$:
+\begin{equation}
+\label{element}
+-P(A,B)logP(A|B) =-P(A,B) logP(A)-P(A,B) log \frac{P (AB)}{P(A)P(B)} 
+\end{equation} 
+\item[(3)] Sum or integrate each item in the sample space:
+\begin{small}
+\begin{equation}
+\label{element1}
+-\sum_{A} \sum_{B} P(A,B)logP(A|B) =-\sum_{A} \sum_{B} P(A,B) logP(A)-\sum_{A} \sum_{B} P(A,B) log \frac{P (AB)}{P(A)P(B)} 
+\end{equation} 
+\end{small}
+or
+\begin{small}
+\begin{equation}
+\label{element2}
+-\int\int P(A,B)logP(A|B)dAdB =-\int \int P(A,B)logP(A)dAdB -\int \int P(A,B)log \frac{P (AB)}{P(A)P(B)}dAdB
+\end{equation}
+\end{small}
+\end{itemize}
+which simplifies to  
+\begin{equation}
+\label{bayesuncertainty}
+H(A|B) = H(A)-I(A,B)
+\end{equation}
+
+Given the correspondence of  Equation \ref{bayes} and \ref{bayesuncertainty}, $H(A|B)$  represents posterior uncertainty, $H(A)$ represents prior uncertainty, $I(A,B)$ represents information connection between the two random variables. 
+
+In hydrological simulation, a general goal is to produce accurate runoff simulation with inputs from hydrometeorological series, underlying surface observations or other information sources. This is not only for the practical objective of efficient water resources utilization, but also for the scientific value that once the runoff process were characterized, each component into which the precipitation is partitioned gets determined. 
+
+The information theoretical paraphrase of this notion is that the information content of runoff observation depicts information required to figure out the catchment's hydrological compositions, which could be decreased due to the information contribution of the input observations. The contribution is determined by the observation qualities and data processing procedures.
+%A same hydrological behaviour can be simulated with different models, which means that we have many data processing 
+%The degree to which we could contribute to decrease information required to make accurate estimations depends on the quality of observations and the data processing 
+%There are two steps in quantizing this information contribution. The first step is observation and the second is simulation. 
+Noise introduced due to observation inaccuracy and insufficiency is denoted as \emph{Aleatory Uncertainty}, while that introduced by imperfect data processing is denoted as \emph{Epistemic Uncertainty}
+
+
+%The simulator serves as an information distiller or decoder that transfers the mass input observation data into simple simulations. The information loss during decoding is called \emph{Epistemic Uncertainty}. Both the two terms are measured in bits. 
+
+Hydrological series encoded in different context can take up different amounts of bits. For example,  observations show that  soil
+moisture dynamics in the Fourier domain require by far less
+coefficients to explain a specified variance level when
+compared to their time domain counterpart\citep{katul2007spectrum}, thus the encoding of soil moisture requires far less bits in the frequency domain than in the time domain. In this research, we restrict our attention to hydrological observations sampled discretely along the time domain base. The sample space is built on the aggregated coordinates without considering seasonal fluctuation or any other temporal inconsistencies. This will increase the estimated information contents for neglecting the inner structures, but the endeavour to compress the data to their ``true information contents'' is endless for its logical paradox\citep{li2009introduction}. It will also impair the criterion's generality in evaluating the observation and simulation system.  
+
+ 
+
+
+With the sample spaces constructed,
+%and the disqualification of using differential entropy to represent information content
+we apply the introduced terms to quantify the information contents and connections of catchment hydrological variables across temporal scales. The specific values to be estimated are listed in table 1. All the estimations are implemented at temporal scales from 10 days to a year. This range  bypasses the difficulty of estimating discrete-continuous hybrid distributed daily precipitations\citep{gong2014estimating} while incorporating significant temporal scales in detecting long term catchment hydrological behaviours. 
+
+\begin{table}[H] 
+\caption{Information Terms to be Estimated}
+\begin{tabular}{cc}
+\hline
+   &  Estimated Items \\
+\hline
+ Observation   &$h(R)$ \\
+Focused 
+ &$I(R;P),I(R;P,P_{former})$\\
+ &
+$I(R;P,PE),I(R;P,P_{former},PE,PE_{former})$\\
+ &
+$I(R;P,P_{former}, PE,PE_{former},R_{former})$\\
+\\
+%Model    & HyMod&$I(R_t;Rs_t),$ $I(R_t;P_t,PE_t,S_t)$  \\
+Model  & TPWB: $I(R;Rs),$ $I(R;P,PE,S)$  \\
+Focused & Budyko:  $I(R;Rs)$\\
+\hline
+\end{tabular}
+\end{table}
+
+
+\iffalse 
+\begin{table}[H] 
+\caption{Estimated Information Items}
+\begin{tabular}{cc}
+\hline
+   &  Estimated Terms \\
+\hline
+ Observation   &$h(R_t)$ \\
+Focused \\
+%$I(R_t;P_t,P_{t-1}),...$,$I(R_t;P_t,P_{t-1},...,P_{t-n})$\\
+%\multicolumn{2}{c}{Irrelevant}&\\
+ &$I(R_t;P_t)...I(R_t;P_t,P_{t-1}...P_{t-n})$\\
+\\
+ &
+$I(R_t;P_t,PE_t),I(R_t;P_t,P_{t-1},PE_t,PE_{t-1}),...$\\
+ &$I(R_t;P_t,P_{t-1},...,P_{t-n},PE_t,PE_{t-1},...PE_{t-n})$\\
+ &\\
+ &$I(R_t;P_t,P_{t-1},PE_t,PE_{t-1},R_t-1),...$\\
+ &$I(R_t;P_t,P_{t-1},...,P_{t-6},PE_t,PE_{t-1},...PE_{t-6},R_{t-1},...R_{t-n})$\\
+\\
+\\
+%Model    & HyMod&$I(R_t;Rs_t),$ $I(R_t;P_t,PE_t,S_t)$  \\
+Model  & TPWB: $I(R_t;Rs_t),$ $I(R_t;P_t,PE_t,S_t)$  \\
+Focused\\
+       & Budyko:  $I(R_t;Rs_t)$\\
+\hline
+\end{tabular}
+\end{table}
+\fi
+
+Here $P$ and $EP$ denote precipitation and potential evapotranspiration random variables. $R$ and $Rs$ denote observed and simulated runoff random variables. 
+
+The estimations are classified into two groups. In the observation focused group, $h(R)$ sets the base for prior uncertainty estimation. Mutual information between runoff observation and different input observation terms are estimated to analyse their respective information contributions in decreasing the prior uncertainty. Specifically, we used $I(R;P,PE)-I(R;P)$ to represent the information contribution of including $PE$ in hydrological simulation, while $I(R;P,P_{former},PE,PE_{former})-I(R;P,PE)$ is used to represent the information contribution of including  former calculating steps' hydrological conditions. For small temporal scale hydrological simulation, hydrological conditions in former calculating steps, in the form of lagged values (such as $P_{t-1},...,P_{t-n},PE_{t-1},...PE_{t-n},R_{t-1},...R_{t-n}$), could exert significant influence on current hydrological responses. We include a maximum of 6 lagged steps in the case study.     
+
+In the model focused group, two typical water balance models are applied to check their information processing capacities. The Two Parameters Water Balance Model(TPWB)\citep{xiong1999two} adapted an adjusted Ol'dektop equation\citep{jobson1982evaporation} to depict the evapotranspiration and runoff generation at a monthly temporal scale and achieved satisfying performance. The constructive functions of TPWB are as follows:
+
+ \begin{equation}
+E=C\times PE \times tanh(\frac{P}{PE})
+ \end{equation}
+ \begin{equation}
+R=(S_{t-1}+P-E)\times tanh(\frac{S_{t-1}+P-E}{SC})
+ \end{equation}
+ 
+$C$ and $SC$ are the two parameters. As is shown, TPWB uses an iterative structure. $S_t$ is the state variable at time step $t$, which is used to  represent the influence of former hydrological conditions. We compare $I(R;P,PE,S)$ with $I(R;P,P_{former},PE,PE_{former})$ to discern the model's capacity of distilling information from former inputs. We also compare $I(R;P,PE,S)$ with $I(R;Rs)$ to discern the model's capacity of digesting the distilled state variable.
+
+ The Budyko Model is the combination of Budyko Curve and water balance equation as described above. We adapt Choudhury-Yang Equation in this research.  
+
+\subsection{Quantization Schemes for Runoff Differential Entropy}
+
+Since runoff observations are taken as continuous random variables in our hydrological simulation context, $h(R)$ can not characterize the average information content each runoff observation brings to our knowledge of the hydrological behaviour. Certain quantization schemes should be pre-setted to justify the significance of the estimation. We apply two quantization schemes here:
+\begin{enumerate}
+\item Absolute constant resolution across temporal scales.
+\item Relative constant resolution across temporal scales.
+\end{enumerate} 
+
+As has been clarified, a $-log\Delta$ bit accuracy description of a continuous random variable $X$ depicts it to the resolution that $X$ takes a same value in a bin-width of $\Delta$ in the its p.d.f. curve. 
+
+For Quantization Scheme 1,  the bin-width $\Delta$ into which we discretize the runoff observation data stays the same as the evaluating temporal scale expands. 
+
+For Quantization Scheme 2,  the bin-width $\Delta$ into which we discretize the runoff observation data is proportional to the mean value of the runoff observation at the specific temporal scale. We further assume that the mean value of the runoff random variable to be proportional to its temporal scale. In this way, the discretization bin-width is proportional to the temporal scale. The quantization correction term is proportional to the logarithm of the temporal scale according to equation \ref{correct}.
+
+Thus, given two scales $m$ and $n$ into which we aggregate the daily runoff observation data, the entropy differences in depicting them with quantization schemes introduced above are:
+
+Quantization Scheme 1
+\begin{equation}
+\label{cquantization}
+H(R_m)-H(R_n)=h(R_m)\quad-\quad h(R_n) 
+\iffalse
+;\text{Quantization Scheme 1}
+\fi
+\end{equation}
+
+Quantization Scheme 2
+\begin{equation}
+\label{rquantization}
+H(R_m)-H(R_n)=h(R_m)-h(R_n)-log\frac{m}{n} 
+\iffalse
+;\text{Quantization Scheme 2}
+\fi 
+\end{equation} 
+%In this research, these two quantization schemes are applied to show the relative magnitudes of runoff observations clustered at different temporal scales. 
+
+
+\iffalse
+Here $\Delta$ is accuracy and $T$ is temporal scale.
+In both schemes, as has been clarified, the $\Delta$-bit accuracy denotes that the random variable takes a same value in a bin of $2^{-\Delta}$ width in the p.d.f curve.  Hence, Scheme 1 pre-requires an absolute constant resolution for depicting runoff observations across temporal scales. The curve shape of quantized differential entropy is the same as that of the differential entropy. 
+
+Since the mean of the runoff random variable can be coarsely taken as proportional to its temporal scale, the quantization strategy of Scheme 2 requires a relative constant resolution for depicting runoff observations across temporal scales. For runoff series aggregated at two temporal scales $m$ and $n$, we have:
+\begin{equation}
+\frac{p}{m}=\frac{q}{n}
+\end{equation}
+$p$ and $q$ are their accuracy requirements as constrained by Scheme 2. The difference of  quantized entropies of runoff at temporal scale $m$ and $n$ is:
+ \begin{equation}
+\begin{split}
+\Delta H &\approx [h(R_m)-logp]-[h(R_n)-logq]\\
+&=h(R_m)-h(R_n)+log\frac{n}{m} 
+\end{split}
+\end{equation}
+
+By adding the quantization terms to the differential entropy, we get the relative amounts of runoff information contents and revised relative Aleatory Uncertainty. It could be depicted that the information required to depict runoff to a relative constant accuracy is smaller for large temporal scales.
+\fi
+
+
+%The uniform observations guarantee the unbias  of the samples.
+\subsection{High Dimensional Mutual Information Estimator}
+
+Due to the curse of dimensionality, the high dimensional terms in table 1 could not be accurately estimated with primitive information estimators such as bin-counting or kernel density approaches. Besides, we want to make a direct estimation of mutual information to avoid  error assumption. In this research, we adapt a widely accepted non-plug-in mutual information estimator and make some adjustments for its application in hydrological simulation context. The original method is derived from the $k$ nearest neighbour entropy estimation approach \citep{kraskov2004estimating}:
+
+\begin{equation}\label{Kraskov}
+I(X,Y)=\psi(k)-N^{-1}\sum_{i=1}^{N}[\psi(n_x(i)+1)+\psi(n_y(i)+1)]+\psi(N)
+\end{equation}
+Here $\psi(x)$ is the digamma function, $\psi(x)=\Gamma(x)^{-1}d\Gamma(x)/dx$. k is order of nearest neighbour, $n_x(i)$ and $n_y(i)$ are the numbers of samples that are within the k-th nearest  criss-cross surrounding sample point $i$. For this research, k takes 4 in accordance with Hyv{\"a}rinen's implementation.
+
+An intuitive explanation of equation \ref{Kraskov} is that it estimates mutual information with statistics that depict the average concentrating density of each window opened around a sample point. Numerical experiments show that even less than 30 sample size produces satisfying results. For a strict proof, please refer to Kraskov(2004).
+
+We should notice that the widths of the windows are determined by the ordered $distance~functions$ we select to define the distances between samples. Since each dimension of a single sample represents different hydrological terms, the hydrological modelling space can not be taken as Euclidean. Thus, the Euclidean $norms$ can not reflect the $geodesic      ~distances$ between points. 
+ 
+ 
+One approach to make a justifiable distance between samples   is to map the points to their feature space through a certain transformation and calculate the $norm$ in that space. The linear regression from the transformed points to the simulating variable forms an integrated model. This is in fact the idea of non-linear support vector regression(SVR). Non-linear SVR uses the kernel trick to implicitly map its inputs into high-dimensional feature spaces. The method has been proven to be of great accuracy in runoff generation modelling\citep{dibike2001model,asefa2006multi,behzad2009generalization,phdgong} and long range runoff simulation\citep{lin2006using}. Thus, we apply the following function to depict the distance between two model input samples $x_1$ and $x_2$:
+
+\begin{equation}\label{svm}
+SVM\_Metric(x_1,x_2)=|f(x_1)-f(x_2)|
+\end{equation}
+
+Here $f(x)$ is the support vector regression function that fit the input to the output of the sample.   
+%Evidently the definition satisfies the standards of $metric$, explicitly, non-negativity, identity of indiscernibles, symmetry and triangle inequality. 
+
+In practice, the support vector regression is implemented using the libsvm package\citep{chang2011libsvm}.  We select the radial basic function kernel to make the non-linear transformation in the support vector regression algorithm for its satisfying performance. The data are first scaled to $[-1,1]$ to balance the impact of different dimensional terms. The result of SVR is sensitive to the penalty function parameter $c$ and kernel parameter $g$, both of which are auto calibrated with particle swarm optimization algorithm\citep{shi1998modified}. To avoid overfitting, we apply  3 cross validation in the support vector regression parameter estimation. 
+
+The calculating steps are as follows:
+ \begin{enumerate}
+ \item [(1)]Re-aggregate the original hydrological data (daily precipitation, potential evapotranspiration and runoff) into different temporal scale terms. 
+ \item [(2)]Calculate the  model irrelevant information terms  at these temporal scales.
+ \item [(3)]Implement hydrological simulation and calculate the model relevant mutual information terms.
+ \end{enumerate}
+
+The specific procedure of high dimensional mutual information estimating is as follows:
+\begin{enumerate}
+\item [(1)]Train support vector machine to find suitable mapping type (by choosing kernel function) and parameters.
+\item [(2)]Use the trained support vector machine to estimate the distances between high dimensional inputs using equation \ref{svm}.
+\item [(3)]Estimate mutual information with equation \ref{Kraskov}.
+\end{enumerate}
+
+ 
+All the codes are available at the github URL: 
+
+\underline{http://github.com/morepenn/matlab/tree/master}
+ 
+%----------------------------------------------------------------------------------------
+%	GLOSSARY OR NOTATION (OPTIONAL)
+%----------------------------------------------------------------------------------------
+\section{Data}
+We implement our simulation and estimation with aggregated daily hydrological records (including precipitation, potential evapotranspiration and runoff) from the MOPEX data set\citep{duan2006model}. Given their annual water-energy distribution patterns, the selected 24 catchments are classified into 4 groups, explicitly, weak seasonality with synchronous rainfall energy distribution(WS), weak seasonality with asynchronous rainfall energy distribution(WA), strong seasonality with  synchronous rainfall energy distribution(SS) and strong seasonality with asynchronous rainfall energy climate (SA). The classification standard is based on the amplitude and phase of the average daily rainfall fitted with sine curve. If the amplitude is less than 0.45, the catchment is taken as weak seasonality. If the phase of rainfall is inverse to that of potential evapotranspiration, it is taken as asynchronous rainfall energy climate type. The detailed information of the catchments are listed in table 2. 
+ 
+\begin{table}\scriptsize
+\caption{Catchment Information} 
+ 
+\begin{tabular}{cccccc}
+\hline
+Climate Type& ID &\ Area($km^2$)& $P_{mean}(mm)$& $PE_{mean}(mm)$&  $R_{mean}(mm)$  \\
+\hline
+ 
+& 02143000 & 215    & 1299  &  882 &   553\\
+&  02165000 & 611   & 1252  &  965  &  539\\
+%&02296750&  3541   &
+%3.5356 &   3.3299   & 0.6885\\
+WA&02329000&  2953    & 1321 &  1101   &   330\\   
+&02375500 &  9886   & 1452  &  1061   & 549\\
+&02478500  &  6967  & 1440  &  1055  &  489\\
+\\
+&05585000  &  3349      & 922      &    993     &  232    \\
+&06908000  &  2901      & 1001     &    1066    &  261   \\
+WS&07019000  &  9811      & 1006     &    959     &  303    \\
+&07177500  &  2344      & 948      &    1259     &  221    \\
+&07243500 & 5227  & 935  &  1303  &  160\\
+\\
+&02414500& 4338  & 1371 & 976 & 542  \\
+&02472000&  1924 & 1442 &1059  &  509 \\
+& 11025500&    290  &  522  & 1407   & 34  \\
+%11080500&117.8050W, 34.2360 N&  220 & 2.0235 &   4.0137   & 0.7134\\
+SA&11532500 & 1577   & 2748 &  751  &  2212\\
+&12459000&  2590 & 1613 & 681 & 1105  \\
+&13337000& 3056  & 1287 & 775 &  872 \\
+&14359000&  5317 & 1052 & 851 &  510 \\
+\\
+&05418500&4022   &854  &1017 & 254  \\
+&05454500& 8472  &839  & 984 & 224  \\
+&05484500& 8912  & 794 & 998 &  117 \\
+SS&06810000& 7268  & 808 &1027  &173   \\
+&06892000& 1052  & 941 &1110 & 228  \\
+&06914000& 865  & 950 & 1186 & 236  \\
+&07183000& 9889  & 877 & 1250 & 187  \\
+\hline
+\end{tabular}
+ 
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Results}
+\subsection{Aleatory Uncertainty Across Temporal Scales} 
+
+\subsubsection{Aleatory Uncertainty of Absolute Constant Resolution}
+
+If we pre-require absolute constant resolution of runoff estimation, which means that the simulation deviation rate is constant across temporal scales as defined in Equation \ref{rquantization}, the estimated \emph{Aleatory Uncertainty} is shown as follows:
+
+\begin{table}[H] \small
+%\caption{Aleatory Uncertainty of Absolute Constant Resolution}
+\label{table:AAU}
+\centering
+\begin{tabular}{cccc}
+\hline 
+\textbf{Catchment Type}&\textbf{$AU_a(R;P)$}&\textbf{$AU_a(R;P,PE)$}&\textbf{$AU_a(R;P,PE,R_{former})$}\\
+%Type&$H(R)-I(R;P)$&$H(R)-I(R;P,PE)$&$H(R)-I(R;P,PE,R_{former})$\\
+\hline
+\\
+WA(02143000)
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/02143000p_abs.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/02143000pep_abs.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/02143000pepq_abs.png}\end{minipage}
+\\
+WS(05585000)
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/05585000p_abs.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/05585000pep_abs.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/05585000pepq_abs.png}\end{minipage}
+\\
+SA(11532500)
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/11532500p_abs.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/11532500pep_abs.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/11532500pepq_abs.png}\end{minipage}
+\\
+SS(06810000)
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/06810000p_abs.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/06810000pep_abs.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/06810000pepq_abs.png}\end{minipage}
+\\
+\hline
+\\
+\end{tabular}
+
+\Large{\textbf{Figure 2.} Aleatory Uncertainty of Absolute Constant Resolution}
+\end{table}
+
+In each subgraph from Figure 2, the abscissa represents the input steps, for example, $n$ input steps  means that we use the current and $(n-1)$ lagging steps' input observations to decrease the uncertainty of runoff estimation. The ordinate represents the estimating temporal scale, which varies from 10 days to a year. 
+
+As can be depicted from the estimations above, 
+%when we pre-require an absolute constant resolution of runoff estimation,
+\emph{Aleatory Uncertainty} increases as the simulating temporal scale expands, decreases as more previous input observations are incorporated in  the estimation. %The changing rate differs between catchments with different input terms, which will be further analysed in the discussion section.  
+ 
+\iffalse
+As is defined in equation\ref{AU}, \emph{Aleatory Uncertainty} equals to the difference between quantized runoff entropy and  mutual information between runoff and hydrometeorological input observations. The values are determined by three factors besides the catchment's hydrological characteristics and observation accuracy. The first is pre-required accuracy of runoff estimation, which is determined by its quantization scheme. The second is the species of hydrometeorological inputs, since the incorporation of new input items is expected to decrease simulation uncertainty. The last factor is the inclusion of hydrological variables from former calculating steps, as previous hydrological behaviour may exert effects on current hydrological response. Given this analysis, we list the categorized estimations of \emph{Aleatory Uncertainty} in table  \ref{table:AAU} and table \ref{table:RAU}. 
+
+In each graph from the tables above, the abscissa represents the input steps, for example, 1 input step  means that the \emph{Aleatory Uncertainty} is estimated with inputs from current calculating step; 2 input steps means that  the value is estimated with inputs from current and the previous calculating steps. The ordinate represents the estimating temporal scale, which varies from 10 days to a year. 
+
+As can be depicted from the estimations above, when we pre-require an absolute constant resolution of runoff estimation, \emph{Aleatory Uncertainty} increases as the simulating temporal scale expands. However, for relative constant resolution, the value decreases or stays relatively stable as temporal scale expands. The changing rate varies with input species and steps.  This phenomenon should be anatomized before digging into its causes.
+\fi
+\subsubsection{Aleatory Uncertainty of Relative Constant Resolution}
+If we pre-require relative constant resolution of runoff estimation, which means that the simulation deviation rate is proportional to its mean value across temporal scales as  defined in Equation \ref{rquantization}, the estimated \emph{Aleatory Uncertainty} is shown as follows:
+\begin{table}[H]  \small 
+
+\label{table:RAU}
+\centering
+\begin{tabular}{cccc}
+\hline
+\textbf{Catchment Type}&\textbf{$AU_r(R;P)$}&\textbf{$AU_r(R;P,PE)$}&\textbf{$AU_r(R;P,PE,R_{former})$}\\
+%Type&$H(R)-I(R;P)$&$H(R)-I(R;P,PE)$&$H(R)-I(R;P,PE,R_{former})$\\
+\hline
+\\
+WA(02143000)
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/02143000p_rela.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/02143000pep_rela.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/02143000pepq_rela.png}\end{minipage}
+\\
+WS(05585000)
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/05585000p_rela.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/05585000pep_rela.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/05585000pepq_rela.png}\end{minipage}
+\\
+SA(11532500)
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/11532500p_rela.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/11532500pep_rela.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/11532500pepq_rela.png}\end{minipage}
+\\
+SS(06810000)
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/06810000p_rela.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/06810000pep_rela.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/06810000pepq_rela.png}\end{minipage}
+\\
+\hline
+\\
+\end{tabular}
+
+\Large{\textbf{Figure 3.} Aleatory Uncertainty of Relative Constant Resolution}
+\end{table}
+The significances of the coordinates in each subgraph are the same as those in Figure 2.
+
+As can be depicted from the estimations above, \emph{Aleatory Uncertainty} decreases  as temporal scale expands. The incorporation of lagging input observations can decrease the value to different extent in different catchments with different input terms. 
+
+\subsection{Epistemic Uncertainty Across Temporal Scales} 
+The estimated \emph{Epistemic Uncertainty} across temporal scales are shown as follows:
+\begin{table}[H] \small 
+\label{eeuu}
+%\caption{Epistemic Uncertainty}
+\resizebox{\textwidth}{!}
+{
+\centering
+\begin{tabular}{ccc}
+\hline
+Type& Weak Seasonality & Strong Seasonality \\\hline
+\\
+Synchronous
+&\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{resultgraph/05585000EU.png}\end{minipage}
+
+&\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{resultgraph/06810000EU.png}\end{minipage}
+\\
+Asynchronous
+&\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{resultgraph/02143000EU.png}\end{minipage}
+ 
+&\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{resultgraph/11532500EU.png}\end{minipage}
+\\
+\hline
+\\
+\end{tabular}
+}
+\Large{\textbf{Figure 4.} Epistemic Uncertainty }
+\end{table} 
+For TPWB model, the peak value appears around temporal scales from 2 months to half a year. This calls for a more efficient information distiller, or put it in other words, a more efficient model to depict seasonal hydrological mechanism.  
+
+For the Budyko model, its \emph{Epistemic Uncertainty} is much larger than that of TPWB model at temporal scales of less than half a year in 11 out of 14 asynchronous climate catchments. The difference is less significant for temporal scales of larger than half a year. In the rest 3 asynchronous climate catchments and 14 synchronous climate catchments, the \emph{Epistemic Uncertainty} of Budyko model is smaller than that of TPWB model. However, the difference shows no abrupt change as the simulating temporal scale expands. 
+
+
+
+
+For both models,  \emph{Epistemic Uncertainty} is non-negative.
+
+\section{Discussion}
+\subsection{Prior Uncertainty---Runoff Entropy}
+The baseline of uncertainty estimation is constructed by  quantized runoff entropy as shown in the following figure. It depicts the uncertainty when no further prior assumption is incorporated given the estimating context, or in the terminology of Bayesian statistics, it tells the prior uncertainty.
+
+\begin{table}[H]\small
+%\caption{Relative Magnitude of Quantized Runoff Entropy}
+\resizebox{\textwidth}{!}
+{
+\label{EN}
+\centering
+\begin{tabular}{ccc}
+\hline
+Type& Weak Seasonality & Strong Seasonality \\\hline
+\\
+Synchronous
+&\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{resultgraph/e05585000.png}\end{minipage}
+
+&\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{resultgraph/e06810000.png}\end{minipage}
+\\
+Asynchronous
+&\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{resultgraph/e02143000.png}\end{minipage}
+ 
+&\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{resultgraph/e11532500.png}\end{minipage}
+\\
+\hline
+\\
+\end{tabular}
+}
+\Large{\textbf{Figure 5.} Relative Magnitude of Quantized Runoff Entropy }
+\end{table}
+
+All the estimations are relative values on a same base of 0 bit accuracy at 10 days temporal scale. The runoff entropy of absolute constant resolution increases with temporal scales. The increasing rate decreases as scale expands, making the  curve take on a logarithm shape. This is the dominant factor that cause the increasing trend of \emph{Aleatory Uncertainty} in Figure 2. 
+
+For relative constant resolution, most of the estimations reach their maximum points at temporal scales varying from    
+1 to 2 months, except for 5 out of 7 catchments from the asynchronous rainfall energy climate group, which take on a monotonically decreasing trend across the estimated temporal scales. The decreasing rates of entropy with temporal scales in catchments from synchronous climate groups are not as significant as those from asynchronous groups. 
+\subsection{Mutual Information Between Runoff Observation and Input Data}
+Mutual information between runoff observation and hydrometeorological inputs are shown in the following figure. They depict the uncertainty decrease given the input observations. 
+\begin{table}[H]\small 
+%\caption{Mutual Information Between Runoff and Input Data}
+\label{MI}
+\centering
+\begin{tabular}{cccc}
+\hline
+Type&$I(R;P)$&$I(R;P,PE)$&$I(R;P,PE,R_{former})$\\\hline
+\\
+WA(02143000)
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/02143000p.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/02143000pep.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/02143000pepq.png}\end{minipage}
+\\
+WS(05585000)
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/05585000p.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/05585000pep.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/05585000pepq.png}\end{minipage}
+\\
+SA(11532500)
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/11532500p.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/11532500pep.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/11532500pepq.png}\end{minipage}
+\\
+SS(06810000)
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/06810000p.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/06810000pep.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/06810000pepq.png}\end{minipage}
+\\
+\hline
+\\
+\end{tabular}
+\Large{\textbf{Figure 6.} Mutual Information Between Runoff and Input Data }
+\end{table}
+The significances of the coordinates are the same as those in Figure 2
+and 3. As can be observed, mutual information between runoff observation and input observations increases as more observation terms ($PE$ and $R_{former}$) and lagged input data are incorporated. To clarify the information contribution of each introduced term, 
+we take two dissection schemes on graphs in Figure 6.
+\subsubsection{Mutual Information with Different Input Terms}
+The first dissection scheme checks the information contribution of incorporating $PE$ and $R_{former}$ into mutual information estimation. This is implemented by making differences between columns in Figure 6:
+\begin{table}[H]\small
+%\caption{Information Contribution of $PE$ and $R_{former}$}
+\label{PER}
+\centering
+\begin{tabular}{cccc}
+\hline
+Type&$I(R;P)$&$I(R;P,PE) $&$I(R;P,PE,R_{former}) $\\
+ & &$ -I(R;P)$&$ -I(R;P,PE)$\\\hline
+\\
+WA(02143000)
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/02143000p.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/02143000diff_ep.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/02143000diff_q.png}\end{minipage}
+\\
+WS(05585000)
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/05585000p.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/05585000diff_ep.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/05585000diff_q.png}\end{minipage}
+\\
+SA(11532500)
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/11532500p.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/11532500diff_ep.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/11532500diff_q.png}\end{minipage}
+\\
+SS(06810000)
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/06810000p.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/06810000diff_ep.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/06810000diff_q.png}\end{minipage}
+\\
+\hline
+\\
+\end{tabular}
+\Large{\textbf{Figure 7.} Information Contribution of $PE$ and $R_{former}$ }
+\end{table}
+
+For the estimations in all the 10 weak seasonality catchments and 5 out of 14 strong seasonality catchments, the inclusion of $PE$  contributes more to increasing mutual information between runoff and input data at temporal scales of less than half a year. This contribution distributes more uniformly across temporal scales in the left 9 strong seasonality catchments. 
+
+The incorporation of former runoff contributes a lot to decrease uncertainty at small temporal scales in some of the catchments. This salient effect vanishes quickly as temporal scale expands. We attribute this  mutation to the runoff convergence influence.     
+ 
+\subsubsection{Mutual Information with Different Lagged Input Steps}
+The second dissection scheme checks the information contribution of including lagged inputs into mutual information estimation. This is implemented by making differences between mutual information estimated with different input steps, for instance, the $n$th spline in each graph from table \ref{former}  equals to the difference of the   $(n+1)$th spline and  $n$th spline in the corresponding graph from Figure 6.
+\begin{table}[H]\small
+%\caption{Information Contribution of Former Inputs}
+\label{former}
+\centering
+\begin{tabular}{cccc}
+\hline
+Type&$I(R;P..)$&$I(R;P..,PE..) $&$I(R;P..,PE..,R_{former}..)$\\
+ &$ -I(R;P.)$ &$ -I(R;P.,PE.)$&$I(R;P.,PE.,R_{former}.)$\\\hline
+\\
+WA(02143000)
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/02143000pdiff_former.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/02143000epdiff_former.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/02143000qdiff_former.png}\end{minipage}
+\\
+WS(05585000)
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/05585000pdiff_former.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/05585000epdiff_former.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/05585000qdiff_former.png}\end{minipage}
+\\
+SA(11532500)
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/11532500pdiff_former.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/11532500epdiff_former.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/11532500qdiff_former.png}\end{minipage}
+\\
+SS(06810000)
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/06810000pdiff_former.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/06810000epdiff_former.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/06810000qdiff_former.png}\end{minipage}
+\\
+\hline
+\\
+\end{tabular}
+\Large{\textbf{Figure 8.} Information Contribution of Former Inputs }
+\end{table}
+Subgraphics in Figure 8 depict the information contribution rate ($\frac{\partial I}{\partial Input\_Step}$) when including lagged observations. They represent the hydrological connections between temporally succeeded hydrological processes. The rate is larger than 0 because of the disclosure of the hydrological cycle. It decreases as more input steps are incorporated. The decreasing rate reflects the ``memory length'' of soil moisture.  
+
+%Though the values differs between catchments viewed at various temporal scales, there are some common rules as shown in table \ref{former}. The more lagged input observations provide less information contribution to  the current step's estimation. 
+
+\subsection{Mutual Information Between Runoff Observation and Simulation}
+The mass content of hydrometeorological input observations can be distilled by models in the form of runoff simulation series. The noise introduced by imperfect data processing is denoted as \emph{Epistemic Uncertainty}, which could be represented by the difference between  mutual information provided by input data and  the simulation. The former item has been estimated in the previous part. Mutual information between runoff observation and simulations  generated by TPWB model and Budyko Model at temporal scales from 10 days to a year are listed below: 
+\begin{table}[H]\small
+%\caption{Mutual Information Between Runoff and Simulation}
+\label{sm}
+\resizebox{\textwidth}{!}
+{
+\centering
+\begin{tabular}{ccc}
+\hline
+Type& Weak Seasonality & Strong Seasonality \\\hline
+\\
+Synchronous
+&\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{resultgraph/05585000MI.png}\end{minipage}
+
+&\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{resultgraph/06810000MI.png}\end{minipage}
+\\
+\\
+Asynchronous
+&\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{resultgraph/02143000MI.png}\end{minipage}
+ 
+&\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{resultgraph/11532500MI.png}\end{minipage}
+\\
+\hline
+\\
+\end{tabular}
+}
+\Large{\textbf{Figure 9.} Mutual Information Between Runoff and Simulation}
+\end{table}
+
+As have been declared, in TPWB model,  the state variable $S$ is used to  represent the influence of former hydrological conditions. Estimations show that $I(R;P,PE,S)$ is always larger than $I(R,R_s)$, which means that 
+the model can not fully  digest the distilled state variable to make accurate estimations. The relationship between these two items and temporal scales take on different patterns in catchments of different climate types. Both the two estimations increases with temporal scales in synchronous rainfall energy catchments(except Catchment 07019000). In asynchronous catchments, as temporal scale expands, the values decrease until the scale of half a year. Then, they increase in weak seasonality group or stay relatively stable in strong seasonality group. This explains the abrupt change of \emph{Epistemic Uncertainty} differences between TPWB model and Budyko model around temporal scales of half a year. 
+
+We should point out that in two strong asynchronous seasonality catchments (12459000,13337000), although $I(R;P,PE,S)$ decreases as temporal scale expands from 10 days to half a year, $I(R,R_s)$ is much smaller than $I(R;P,PE,S)$. It stays low and relatively stable as temporal scale expands. The strong  capacity of distilling information from former inputs does not guarantee a equal efficient digestion of the distilled item in these 2 catchments. 
+\iffalse
+$I(R;P,PE,S)$ set the upper bound of the model's performance in processing input observations given its capacity of distilling information from former inputs. As is shown in Table \ref{sm}, $I(R;P,PE,S)$ is always larger than $I(R,R_s)$, which means that the model can not fully  digest the distilled state variable to make accurate estimations. 
+
+
+$I(R;P,P_{former},PE,PE_{former})$ to discern the model's capacity of distilling information from former inputs. We also compare $I(R;P,PE,S)$ with $I(R;Rs)$ to discern the model's capacity of digesting the distilled value of the state variable.
+ As a monthly water balance model that takes  iterative structure, TPWB applies state variable $S$ to represent the influence of former hydrological processes. It could be observed that $I(R_t;P_t,PE_t,S_t)$ is always larger than $I(R,R_s)$, which means that the item $S_t$ is not sufficient in representing former hydrological information. Both the two estimations increases with temporal scales in synchronous rainfall energy catchments(except Catchment 07019000). In asynchronous catchments, as temporal scale expands, they tend to increase and reach a maximum point  around 1 to 2 months, after that, the values decrease until the scale of half a year. Then, they increase in weak seasonality group or stay relatively stable in strong seasonality group.
+\fi
+
+For Budyko Model, $I(R,R_s)$ increases  with temporal scale while being smaller than that of TPWB (except Catchment 11025500 where the drought coefficient is extreme high). 
+
+%$I(R,R_s)$ of the two models approach a same value as temporal scale expands except in catchments from the SS group. In SS group, $I(R,R_s)$ of the two models increases parallel as temporal scale expands. 
+
+\subsection{Uncertainty Across Temporal Scales}
+The estimation of catchment hydrological processes is supported by the   the observation and simulation system. There is no essential distinction between the uncertainties introduced in the two systems. Both of them are caused by insufficiency or inaccuracy of data, and are restricted by the data processing inequality\citep{cover2012elements}.
+
+The data-processing inequality states that if random variables $X$,$Y$,$Z$ form a Markov chain in that order (denoted by $X \rightarrow Y \rightarrow Z$), then:
+
+\begin{equation}
+I(X;Y) \geq I(X;Z)
+\end{equation}
+\iffalse
+Since:
+
+\begin{equation}
+R \rightarrow R \rightarrow Input
+\end{equation}
+We have:
+
+\begin{equation}
+\label{a}
+I(R;R) \geq I(R;Input)
+\end{equation}
+According to the definition, 
+
+\begin{equation}
+\label{a}
+I(R;R)=h(R)
+\end{equation}
+\fi
+Since:
+
+\begin{equation}
+R \rightarrow Input_{original},Input_{new} \rightarrow Input_{original}
+\end{equation} 
+
+We have:
+
+\begin{equation}
+\label{inequality}
+I(R;Input_{original},Input_{new}) \geq I(R;Input_{original})
+\end{equation}
+
+Here $Input_{original}$ denotes the original input observation items, $Input_{new}$ denotes the new introduced items.  
+
+Inequality \ref{inequality} guarantees the non-negativity of items in table \ref{PER} and table \ref{former} (the few negative points are attributed to estimation error).  
+These values quantize the information contribution of  hydrometeorological items from current and former calculating steps. As have been declared, the contributions also vary between catchments and temporal scales, though some common patterns exist in catchments of similar seasonality characteristics.
+
+The data processing inequality can also be employed to explain patterns shown in Table \ref{eeuu} and Table \ref{MI}. The state variable $S$ in TPWB is the function of previous hydrological terms $Input_{previous}$. Its simulation $R_s$ is the function of $S$ and current hydrometeorology inputs $Input_{current}$. Thus:
+
+\begin{equation}
+R \rightarrow Input_{previous},Input_{current} \rightarrow S,Input_{current} \rightarrow R_s
+\end{equation}
+
+which could be simplified  as:
+
+ \begin{equation}
+R \rightarrow Input \rightarrow S,Input_{current} \rightarrow R_s
+\end{equation}
+
+given the data-processing inequality, we have:
+
+\begin{equation}
+\label{ie2}
+I(R;Input)\geq I(R;S,Input_{current}) \geq I(R;R_s)
+\end{equation}
+
+The whole inequality explains the non-negativity of \emph{Epistemic Uncertainty} in both models while the latter one explains why $I(R_t;P_t,PE_t,S_t)$ is no smaller than $I(R,R_s)$ in TPWB.
+
+Though there is no mathematical difference between the uncertainty sources, it is helpful to distinct the uncertainties introduced by observation and simulation in order to make corresponding improvements\citep{gong2013estimating}. 
+
+Specific to the temporal scale analysis of hydrological patterns, the origin of observation uncertainty, defined as \emph{Aleatory Uncertainty}, can be attributed to two sources. Th first one is  observation bias. For consistent observations with no system error, this uncertainty source  weakens as temporal scale expands  due to the large number law. The daily observation errors tend to set off when aggregating them together. 
+
+The other origin is the inherent uncertainty caused by the coarse temporal scale. A simple aggregating of water quantity of different hydrological terms can not exert a strong control of the system. The variability of their temporal distribution takes effect in increasing the uncertainty. 
+
+Given the reliability of the MOPEX dataset, the latter uncertainty source is viewed as the dominant factor. In other words, the \emph{Aleatory Uncertainty} is mainly caused by data insufficiency rather than inaccuracy for large temporal scales.
+
+There are more than one models processing same observations. These models seek balance between structure complexity and accuracy. The structure complexities of the two models applied here are different. The TWPB model uses a state variable to represent former hydrological conditions. The Budyko model assumes a closed hydrological cycle in its calculating temporal scales. The ignorance of soil moisture profit and loss crippled its efficiency in monthly hydrological simulation. Graphics in Table \ref{sm} show their capacities in distilling information from the input observations. In models with iterative structures, this capacity is divided into two parts, the first stresses the ability to extract lagged inputs' influences, the second stresses the ability to digest the distilled variable. 
+
+
+
+
+
+
+\iffalse
+From an information theoretical view point, the uncertainties introduced in the two systems   
+\subsubsection{Aleatory Uncertainty Across Temporal Scales}
+As is shown in table \ref{PER} and table \ref{former}, the inclusion of new hydrometeorological items and data from previous calculation steps can improve this ability if these items are correlated. It will not decrease mutual information even no statistical connection exists. This is due to the data-processing inequality\citep{cover2012elements}.  
+
+The data-processing inequality states that if random variables $X$,$Y$,$Z$ form a Markov chain in that order (denoted by $X \rightarrow Y \rightarrow Z$), then:
+\begin{equation}
+I(X;Y) \geq I(X;Z)
+\end{equation}
+Since:
+\begin{equation}
+R \rightarrow Input_{original},Input_{new} \rightarrow Input_{original}
+\end{equation} 
+We have:
+\begin{equation}
+\label{inequality}
+I(R;Input_{original},Input_{new}) \geq I(R;Input_{original})
+\end{equation}
+Here $Input_{original}$ denotes the original input observation items, $Input_{new}$ denotes the new introduced items.  
+
+Inequality \ref{inequality} guarantees the non-negativity of items in table \ref{PER} and table \ref{former} (the few negative points are attributed to estimation error).  
+These values quantize the information contribution of  hydrometeorological items from current and former calculating steps. As have been declared, the contributions also vary between catchments and temporal scales, though some common patterns exist in catchments of similar seasonality characteristics.
+
+
+%The mutual information estimations quantifies the significance of $P$,$PE$,$R$ from current and previous calculation steps in decreasing the uncertainty of hydrological simulation across temporal scales. For example, the estimated  mutual information between runoff and input data shows that the inclusion of previous hydrological terms could decrease the simulation uncertainty at monthly temporal scales. This implies the temporal hydrological connection caused by soil moisture profit and loss. 
+
+%To evaluate the remaining uncertainty given the input observations, we employ the definition of Aleatory Uncertainty. The Aleatory Uncertainty equals to the difference between the quantized runoff entropy and the maximum mutual information provided by the input data:
+
+The posterior uncertainty given the information of input observations, which is denoted as \emph{Aleatory Uncertainty}, is smaller than the prior uncertainty, as is represent by $H(R)$. Its origin can be attributed to two sources. Th first one is  observation bias. For consistent observations with no system error, this uncertainty source  weakens as temporal scale expands  due to the large number law. The daily observation errors tend to set off when aggregating them together. 
+
+The other origin is the inherent uncertainty caused by the coarse temporal scale. A simple aggregating of water quantity of different hydrological terms can not exert a strong control of the system. The variability of their temporal distribution takes effect in increasing the uncertainty. 
+
+Given the reliability of the MOPEX dataset, we assume that the latter uncertainty source plays a dominant role. In other words, the \emph{Aleatory Uncertainty} is mainly caused by data insufficiency rather than inaccuracy for large temporal scales. 
+\subsubsection{Epistemic Uncertainty Across Temporal Scales}
+We present an explanation of the estimations using data processing inequality. The state variable $S$ in TPWB is the function of previous hydrological terms $Input_{previous}$. Its simulation $R_s$ is the function of $S$ and current hydrometeorology inputs $Input_{current}$. Thus:
+\begin{equation}
+R \rightarrow Input_{previous},Input_{current} \rightarrow S,Input_{current} \rightarrow R_s
+\end{equation}
+which could be simplified  as:
+ \begin{equation}
+R \rightarrow Input \rightarrow S,Input_{current} \rightarrow R_s
+\end{equation}
+given the data-processing inequality, we have:
+\begin{equation}
+\label{ie2}
+I(R;Input)\geq I(R;S,Input_{current}) \geq I(R;R_s)
+\end{equation}
+The first inequality explains the non-negativity of \emph{Epistemic Uncertainty} in both models while the second one explains why $I(R_t;P_t,PE_t,S_t)$ is no smaller than $I(R,R_s)$ in TPWB.
+
+The Budyko model assumes a closed hydrological cycle in its calculating temporal scales. The ignorance of soil moisture profit and loss crippled its efficiency in monthly hydrological simulation. As temporal scale expands, the \emph{Epistemic Uncertainty} of the two models approaches because of a less close hydrological connection between calculating steps.
+\fi
+\section{Conclusion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+This research explores the hydrological patterns revealed by observations and models at temporal scales from 10 days to a year with an information theoretical approach. We apply the quantized differential entropy of runoff observations to represent the prior uncertainty in figuring out the catchment's hydrological compositions. Mutual information between hydrometeorological observations and runoff is applied to denote the best performance we could potentially reach given the existed observation system. The non-linear support vector regression processed data is taken as sufficient statistic in depicting  high dimensional mutual information.
+The performances of two existed water balance models are represented by mutual information between runoff observations and their simulations. All the estimations are constrained by the  data-processing inequality. 
+
+The estimations revealed the existence and flows of information in catchment across temporal scales, which could be used to explain hydrological patterns in the framework of aleatory and epistemic uncertainty. Results showed that these patterns are related to the seasonality type of the catchments, which calls for more case studies to figure out the mechanism under the phenomenon. It also shows that information distilled by the monthly and annual water balance models applied here does not correspond to the information provided by input observations around temporal scale from two months to half a year. This calls for a better understanding of seasonal hydrological mechanism.   
+
+%----------------------------------------------------------------------------------------
+%	ACKNOWLEDGEMENTS
+%----------------------------------------------------------------------------------------
+\section{Acknowledgements} 
+We are grateful to the financial supports offered by the National Science Foundation of China(51479088, 51179083 and 91225302). In addition, the MOPEX dataset applied here is available in the following link:  \underline{ftp://hydrology.nws.noaa.gov/}. The catchment serial numbers are the same as the original dataset. For detailed data description and estimation results, please refer to the following Github repository: \underline{http://github.com/morepenn/matlab/tree/master} . Finally, we should express our special thanks to Hoshin V. Gupta from University of Arizona for his insights and kindness. 
+ 
+
+
+\section*{References}
+
+\bibliography{mybibfile}
+
+\end{document}

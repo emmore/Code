@@ -1,0 +1,20 @@
+function [c,sub]=CreateCluster(c,sub)
+%find motif x y and cluster the two.
+[first,second]=MKMotif(sub);
+nc.aver=(sub(first).content+sub(second).content)/2;
+nc.member={sub(first) sub(second)};
+c()=nc;
+%erase elements that contain x or y
+n=size(sub,2);
+for i=1:n
+    if (sub(i).start<=first && size(sub(i).content,1)>=size(sub(first).content,1)) || (sub(i).start<=second  && size(sub(i).content,1)>=size(sub(second).content,1))
+        sub(i)=[];
+    end
+end
+
+
+
+
+
+
+

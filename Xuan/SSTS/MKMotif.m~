@@ -1,0 +1,4 @@
+function MKMotif(subsequence)
+n=size(subsequence,2);
+for i=1:n
+    for 

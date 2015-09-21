@@ -1,0 +1,17 @@
+% w is the average length of the subcluster; f is the elastic
+% coefficient.f>1
+function sub=SubsequenceExtranction(list,w,f)
+sub=[];
+length=size(list,1);
+short=ceil(w/f);
+long=florr(w*f);
+for i=short:long
+    for j=1:(length-i)
+        z=list(j:j+i,:);
+        
+        
+        sub=[sub list(j:j+i,:)];
+    end
+end
+end
+    

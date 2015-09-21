@@ -1,0 +1,7 @@
+function CreateCluster(c,s)
+[first,second]=MKMotif(s);
+c.average=(s(:,first)+s(:,second))/2;
+
+
+
+

@@ -1,0 +1,21 @@
+function [c,sub]=UpdateCluster(c,sub)
+error_BSF=inf;
+for i=1:size(c,2)
+    trial=c{i};
+    t=SubsequenceMatching(sub,trial.aver);
+    trial.aver=(trial.aver+sub(t).content)/2;
+    trial.member{end+1}=sub(t);
+    trial.error=0;
+    for k=1:?
+
+    if error_BSF>trial.error
+        c{i}=trial;
+        i_BSF=i;
+        error_BSF=trial.error;
+        T=t;
+    end
+end
+c{i_BSF}=trial;
+sub=sub(remove_condition);
+end
+    

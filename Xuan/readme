@@ -1,0 +1,9 @@
+本代码集用于实现时间序列经小波分解前后的聚类。
+应用的包包括小波分解包以及绘图包（matlab自带）。
+其中Normal_Mass_Produce.m函数用于76所高校财务收入原始序列聚类；
+Mass_Produce.m函数用于数据小波分解后聚类；
+data.mat为数据序列集；
+Data_Extraction.m用于数据提取；
+clustering为单条数据序列聚类函数；
+cluster_draw.m用于产生聚类后的图像结果；
+Character_Extraction.m用于小波分解。
