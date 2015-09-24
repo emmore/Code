@@ -16,11 +16,14 @@
 (list 04 62 98 27 23 09 70 98 73 93 38 53 60 04 23)))
 
 (define (search sequence)
- (define (larger a b)
-  (if (> b a) b a))
  (if (null? (cdr sequence))
      '()
-	 (cons (larger (car sequence) (cadr sequence))
+	 (cons (max (car sequence) (cadr sequence))
 	       (search (cdr sequence)))))
 
+(define (Max_Routine triangle)
+ (let ((q (search (car triangle))))
+	(if (null? (cdr triangle))
+        triangle
+	    (Max_Routine (cons (map + q (cadr triangle)) (cddr triangle))))))
 
