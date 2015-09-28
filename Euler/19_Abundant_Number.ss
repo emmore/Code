@@ -1,0 +1,8 @@
+(define (abundant n)
+ (define (accumulate condition? sequence)
+  (cond ((null? sequence) 0)
+	    ((condition? (car sequence)) (+ (car sequence) (accumulate condition? (cdr sequence))))
+		(else (accumulate condition? (cdr sequence)))))
+ (define (cons-number x)
+  (if (> x (sqrt n)) '() (cons x (cons-number (+ x 1)))))
+ (= n (accumulate (lambda(x) (= 0 (mod n x))) (cons-number 1))))
