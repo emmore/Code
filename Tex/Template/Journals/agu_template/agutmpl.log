@@ -1,0 +1,313 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.9.21)  28 SEP 2015 15:02
+entering extended mode
+**agutmpl.tex
+(agutmpl.tex
+LaTeX2e <2015/01/01> patch level 2
+Babel <3.9m> and hyphenation patterns for 69 languages loaded.
+(AGUTeX.cls
+
+
+ AGUTeX Journal Style, American Geophysical Union 
+ This version is dated Feb 9, 2008
+
+
+
+LaTeX Warning: You have requested document class `AGUTeX',
+               but the document class provides `agutex'.
+
+Document Class: agutex 02/09/2008
+\c@chapter=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@figure=\count83
+\c@table=\count84
+\mathindent=\dimen102
+\abovefigcaptionskip=\skip41
+\abovetabcaptionskip=\skip42
+\abovetableskip=\skip43
+\belowtabcaptionskip=\dimen103
+\landscapebox=\box26
+\c@plate=\count85
+\savecurrtable=\box27
+\abovetabularskip=\skip44
+\belowtabularskip=\skip45
+\timing=\count86
+\hourcount=\count87
+\oldtime=\count88
+\totpages=\count89
+\belowtitleskip=\dimen104
+\abovesubtitleskip=\dimen105
+\belowsubtitleskip=\dimen106
+\aboveauthorskip=\dimen107
+\belowauthorskip=\dimen108
+\thanksnum=\count90
+\dothanks=\count91
+\thankscounter=\count92
+\titlethanksnum=\count93
+\dotitlethanks=\count94
+\titlethankscounter=\count95
+\thanksnum=\count96
+\dothanks=\count97
+\thankscounter=\count98
+\authorwidth=\dimen109
+\authorbaselineskip=\dimen110
+\aboveaffilskip=\dimen111
+\belowaffilskip=\dimen112
+\affilwidth=\dimen113
+\aboveabstractskip=\dimen114
+\belowabstractskip=\dimen115
+\belowabstractnameskip=\dimen116
+\abstractmargin=\dimen117
+\abovereceivedskip=\skip46
+\aboverevisedskip=\skip47
+\aboveacceptedskip=\skip48
+\abovepublishededskip=\skip49
+\barticle=\box28
+\thanksbox=\box29
+\titlethanksbox=\box30
+\c@appendnum=\count99
+\footnum=\count100
+\savefootnum=\count101
+\ackskip=\skip50
+\saveparskip=\dimen118
+\captionskip=\dimen119
+\PushOneColTopFig=\dimen120
+\PushOneColBotFig=\dimen121
+\PushOneColTopTab=\dimen122
+\PushOneColBotTab=\dimen123
+\PushTwoColTopFig=\dimen124
+\PushTwoColBotFig=\dimen125
+\PushTwoColTopTab=\dimen126
+\PushTwoColBotTab=\dimen127
+\intextfloatskip=\skip51
+\c@appfigure=\count102
+\c@apptable=\count103
+\c@appplate=\count104
+\checkforspace=\dimen128
+\savetopinsert=\box31
+\savebotinsert=\box32
+\secondsavetopinsert=\box33
+\secondsavebotinsert=\box34
+\firstcolbox=\box35
+\secondcolbox=\box36
+\thefirstbox=\box37
+\thesecondbox=\box38
+\firstcol=\dimen129
+\secondcol=\dimen130
+\checkheight=\dimen131
+\loopnum=\count105
+\firstcolsavefignum=\count106
+\footnotebox=\box39
+\ColUsed=\dimen132
+\FigSpace=\dimen133
+\testdblbotins=\box40
+\pageloopnum=\count107
+\endcolsavetopinsert=\box41
+\endcolsavebotinsert=\box42
+\testpagesize=\box43
+\savelastskip=\dimen134
+\partialpage=\box44
+\figandtabnumber=\count108
+\figandtabbox=\box45
+\pagefloatnumber=\count109
+\sizeoffloat=\box46
+\bogus=\count110
+\figinsert=\insert233
+\herebox=\box47
+\endfigbox=\box48
+\spanbox=\box49
+\dbltopins=\box50
+\dblbotins=\box51
+\dblbotskip=\skip52
+\dblfigandtabnumber=\count111
+\dblfigandtabbox=\box52
+\dblloopnum=\count112
+\savedblfigandtabnumber=\count113
+\dblspanherebox=\box53
+\bigpagenum=\count114
+\littlepagenum=\count115
+\wholepagenum=\count116
+\@cprtype=\count117
+\@slugcmmntwidth=\dimen135
+\affilnum=\count118
+\totalaffils=\count119
+\figcount=\count120
+\saveequation=\count121
+\c@currlett=\count122
+\notationwidth=\dimen136
+\betweennotationskip=\skip53
+\WidestEntry=\dimen137
+\premulticols=\dimen138
+\page@free=\dimen139
+\partial@page=\box54
+\multicoltolerance=\count123
+\doublecol@number=\count124
+\multicolbaselineskip=\skip54
+\c@collectmore=\count125
+\loopcount=\count126
+\fixdimen=\dimen140
+\c@unbalance=\count127
+\savedimen=\dimen141
+\savehsize=\dimen142
+\mycolumnwidth=\dimen143
+\saveparindent=\dimen144
+\saveparskip=\dimen145
+\abstractwidth=\dimen146
+\currlastnumber=\count128
+\altaffilbox=\box55
+\sectskip=\skip55
+\belowsectionskip=\skip56
+\subsectskip=\skip57
+\belowsubsectskip=\skip58
+\subsubsectskip=\skip59
+\belowsubsubsectskip=\skip60
+\c@subsubsubsection=\count129
+\captionwidth=\dimen147
+\widecaptionwidth=\dimen148
+\landscapecaptionwidth=\dimen149
+\@temptokenb=\toks14
+\beforeendskip=\skip61
+
+
+ WRR class option, October 1, 2001,
+ \documentclass[wrr]{AGUTeX}
+ ``Water Resources Research'', 
+ Published by American Geophysical Union
+
+
+\titlesize=\dimen150
+LaTeX Info: Redefining \cite on input line 7471.
+\c@NAT@ctr=\count130
+) ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks15
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2014/10/28 v1.0p Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 94.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count131
+))
+\Gin@req@height=\dimen151
+\Gin@req@width=\dimen152
+)
+No file agutmpl.aux.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count132
+\scratchdimen=\dimen153
+\scratchbox=\box56
+\nofMPsegments=\count133
+\nofMParguments=\count134
+\everyMPshowfont=\toks16
+\MPscratchCnt=\count135
+\MPscratchDim=\dimen154
+\MPnumerator=\count136
+\makeMPintoPDFobject=\count137
+\everyMPtoPDFconversion=\toks17
+)
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 182.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 182.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 182.
+ [1{C:/Users/chrs-134/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
+
+]
+[2]
+
+Package natbib Warning: Citation `AtkinsonSloan' on page 3 undefined on input l
+ine 186.
+
+
+Package natbib Warning: Citation `ColtonKress1' on page 3 undefined on input li
+ne 186.
+
+[3]
+
+LaTeX Warning: Reference `eq:emc' on page 4 undefined on input line 214.
+
+
+LaTeX Warning: Reference `sampletable' on page 4 undefined on input line 214.
+
+
+LaTeX Warning: Reference `placeholder' on page 4 undefined on input line 214.
+
+[4] [5] [6] [7] [8] <placeholder.jpg, id=35, 351.3125pt x 193.72375pt>
+File: placeholder.jpg Graphic file (type jpg)
+
+<use placeholder.jpg>
+Package pdftex.def Info: placeholder.jpg used on input line 420.
+(pdftex.def)             Requested size: 196.797pt x 108.52298pt.
+
+
+Package natbib Warning: There were undefined citations.
+
+[9 <./placeholder.jpg>] (agutmpl.aux
+
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
+
+)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 2001 strings out of 493673
+ 24780 string characters out of 3143951
+ 95970 words of memory out of 3000000
+ 5390 multiletter control sequences out of 15000+200000
+ 13317 words of font info for 46 fonts, out of 3000000 for 9000
+ 1025 hyphenation exceptions out of 8191
+ 27i,7n,19p,830b,285s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Fi
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
+ublic/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
+sfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
+m/cmtt12.pfb>
+Output written on agutmpl.pdf (9 pages, 137568 bytes).
+PDF statistics:
+ 65 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+
