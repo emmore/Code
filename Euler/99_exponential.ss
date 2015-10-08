@@ -1001,11 +1001,4 @@
 (cons 172115 573985)
 (cons 13846 725685)))
 
-(define p (map (lambda(x) (expt (car x) (cdr x))) sequence))
-
-(define (largest seq)
- (define (ll ele seq m n)
-  (cond ((null? seq) n)
-        ((> (car seq) ele) (ll (car seq) (cdr seq) (+ m 1) m))
-		(else (ll ele seq (+ m 1) n))))
- (ll (car seq) (cdr seq) 1 1))
+(define q (map (lambda(x) (* (cdr x) (log (car x)))) sequence))
