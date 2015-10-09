@@ -22,11 +22,11 @@
        ((test (car seq)) (+ (car seq) (test_accumulate test (cdr seq))))
 	   (else (test_accumulate test (cdr seq)))))
 
-(define result (test_accumulate fifth? (enumerate 2 99999)))
+(define result (test_accumulate fifth? (enumerate 2 999999)))
 
 (define (filt test seq)
  (cond ((null? seq) '())
        ((test (car seq)) (cons (car seq) (filt test (cdr seq))))
 	   (else (filt test (cdr seq)))))
 
-(define ss (filt fifth? (enumerate 2 9999999)))
+(define ss (filt fifth? (enumerate 2 999999)))
