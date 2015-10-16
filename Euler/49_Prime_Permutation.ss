@@ -1,7 +1,6 @@
 (define (Random_Select seq n)
- (cond ((= (length seq) n) seq)
-	   ((< (length seq) n) '())
-	   ((= n 0) '())
+ (cond ((= (length seq) n) (list seq))
+       ((< (length seq) n) '())
 	   ((= n 1) (map (lambda(x) (list x)) seq))
 	   (else 
 		(append 
