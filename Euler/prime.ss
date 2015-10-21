@@ -12,3 +12,6 @@
 		    (= (remainder x 3) 0))
 		 #f)
 	   (else (else_test 5))))
+
+(define prime_sequence
+ 
