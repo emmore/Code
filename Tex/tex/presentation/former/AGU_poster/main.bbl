@@ -1,0 +1,31 @@
+\begin{thebibliography}{1}
+
+\bibitem{xiong1999two}
+Lihua Xiong and Shenglian Guo.
+\newblock A two-parameter monthly water balance model and its application.
+\newblock {\em Journal of Hydrology}, 216(1):111--123, 1999.
+
+\bibitem{cover2012elements}
+Thomas~M Cover and Joy~A Thomas.
+\newblock {\em Elements of information theory}.
+\newblock John Wiley \& Sons, 2012.
+
+\bibitem{gong2013estimating}
+Wei Gong, Hoshin~V Gupta, Dawen Yang, Kumar Sricharan, and Alfred~O Hero.
+\newblock Estimating epistemic and aleatory uncertainties during hydrologic
+  modeling: An information theoretic approach.
+\newblock {\em Water Resources Research}, 49(4):2253--2273, 2013.
+
+\bibitem{kraskov2004estimating}
+Alexander Kraskov, Harald St{\"o}gbauer, and Peter Grassberger.
+\newblock Estimating mutual information.
+\newblock {\em Physical review E}, 69(6):066138, 2004.
+
+\bibitem{phdgong}
+Wei Gong.
+\newblock Watershed model uncertainty analysis based on information entropy and
+  mutual information.
+\newblock {\em Ph.D. thesis, Dep. of Hydraulic Engineering, Tsinghua Univ.,
+  Beijing, China}.
+
+\end{thebibliography}

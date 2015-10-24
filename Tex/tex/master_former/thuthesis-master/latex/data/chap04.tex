@@ -1,0 +1,135 @@
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
+
+\chapter{以流域水文随机方程为基础的空间升尺度分析}
+
+
+
+
+
+
+
+
+
+
+The general and specific stochastic soil moisture functions are as follows:
+\begin{equation}
+\frac{\partial{f(s,t)}}{\partial t}=\frac{\partial{[\rho(s)f(s,t)]}}{\partial s}-\lambda(t)f(s,t)+\lambda(t)\int_{0}^{s} f(z,t)p_{i|z}(s-z)dz
+\end{equation}
+\begin{equation}
+ \begin{split}
+ \frac{\partial{f(s,t)}}{\partial t}=&\frac{\partial{[\rho(s)f(s,t)]}}{\partial s}-\lambda(t)f(s,t)+\lambda(t)\int_{0}^{s} g(z,t)p_{i|z}(s-z)dz\\&+\lambda(t)p_0(0)e^{-\lambda(t) t}p_{i|0}(s)
+ \end{split}
+ \end{equation}
+Since the mass conservation principle can be viewed as applicable in all the scales in hydrology, we could extent the functions above to a macro spatial situation. 
+We assume:
+
+
+1,Evapotranspiration and Leakage occur uniformly in the study region.
+
+2,There is a distribution pattern of soil water replenishment function.
+
+
+
+According to assumption 1, the spatial upscaling of no-rain condition is a linear process which requires no adaptation.
+Due to the heterogeneity of the soil, we should parameterize the soil replenishment process, which refers to $p_{i|z}(s-z)$.
+
+$p_{i|z}(s-z)$ denotes the probability density that the soil replenishment equals to $(s-z)$ on the condition that the priori soil moisture equals to z.
+ 
+In the original point scale stochastic soil moisture model, this probability density equals to the probability density that the normalized rainfall depth equals to $(s-z)$, as long as $s<1$, or not smaller than $1-z$, when $s=1$.  
+
+In the spatial upscaling condition, $z$ represents the average soil moisture level of the whole region. Given $z$, the more heterogeneous the region is, the more it is likely to generate run-off with the same rainfall input. 
+
+We adopt the two different schemes to deal with heterogeneity of the soil moisture replenish process, namely the Catchment Storage Capacity Curve from Xinanjiang Model and topographic index method from TOPMODEL.
+\section{蓄水容量指数分布的流域水文随机模型}
+A general introduction of catchment storage capacity curve. (its assumption, application, etc.)
+\begin{equation}
+R=
+ \begin{cases}
+ P+z-1+[1-\frac{P+a}{1+b}]^{1+b}&{a+P\leq (1+b)};\\P+z-1 &{a+P\geq (1+b)}
+ \end{cases}
+\end{equation}
+where:
+\begin{equation}
+a=(1+b)[1-(1-z^{\frac{1}{1+b}})]
+\end{equation}
+
+Given:
+\begin{equation}
+R=
+ \begin{cases}
+ P+z-1+[1-\frac{P+a}{1+b}]^{1+b}&{a+P\leq (1+b)};\\P+z-1 &{a+P\geq (1+b)}
+ \end{cases}
+\end{equation}
+we have:
+\begin{equation}
+I\vert z=
+ \begin{cases}
+ 1-z-[1-\frac{P+a}{1+b}]^{1+b}&{a+P\leq (1+b)};\\1-z &{a+P\geq (1+b)}
+ \end{cases}
+\end{equation}
+thus:
+\begin{equation}
+p_{i|z}(s-z)=
+ \begin{cases}
+ p([1-\frac{P+a}{1+b}]^{1+b}=1-s)&{a+P\leq (1+b)};\\p(s=1) &{a+P\geq (1+b)}
+ \end{cases}
+\end{equation}
+
+Since:
+\begin{equation}
+p(s=1)=0
+\end{equation}
+we have the simplified form:
+\begin{equation}
+p_{i|z}(s-z)=p_{rain\_depth} \lbrace(1+b)[(1-z^{\frac{1}{1+b}})-(1-s)^{\frac{1}{1+b}}]\rbrace
+\end{equation}
+and
+\begin{equation}
+p_{i|0}(s)=p_{rain\_depth} \lbrace(1+b)[1-(1-s)^{\frac{1}{1+b}}]\rbrace
+\end{equation}
+thus we reached the spatical upscaled stochastic soil moisture equation:
+ \begin{equation}
+ \begin{split}
+ &\frac{\partial{f(s,t)}}{\partial t}=\frac{\partial{[\rho(s)f(s,t)]}}{\partial s}-\lambda(t)f(s,t)\\&+\lambda(t)\int_{0}^{s} g(z,t)p_{rain\_depth} \lbrace(1+b)[(1-z^{\frac{1}{1+b}})-(1-s)^{\frac{1}{1+b}}]\rbrace dz\\&+\lambda(t)p_0(0)e^{-\lambda(t) t}p_{rain\_depth} \lbrace(1+b)[1-(1-s)^{\frac{1}{1+b}}]\rbrace
+ \end{split}
+ \end{equation}
+We note that as $b\rightarrow0$, which denotes a homogeneous rainfall replenish condition, equation $(40)$ degenerates to the original function.
+\section{以地形指数为基础的流域水文随机模型}
+Points with larger watershed area and lower water conductivities are easier to be saturated and generate runoff in a catchment.
+
+Assumptions
+
+1.The hydraulic gradient of subsurface flow is equal to the land-surface slope.
+\begin{equation}
+q_i=T_itan\beta_i
+\end{equation}
+
+2.The actual lateral discharge is proportionwal to the specific watershed area (drainage area per unit length of
+contour line).
+\begin{equation}
+q_i=Ra_i
+\end{equation}
+
+3.The conductivity is a negative exponent function of saturated underground water depth.
+\begin{equation}
+T_i=T_oexp(-z_i/S_{zm})
+\end{equation}
+
+Deduction:
+
+During a given infinitesimal time period, with a high resolution DEM, the lateral flow converges to a point immediately. 
+there would be water accumulation if the speed of water converging at a point exceeds its conductivity speed.
+
+Under steady state conditions:
+\begin{equation}
+q_i=T_oexp(-z_i/S_{zm})tan\beta_i=Ra_i
+\end{equation}
+thus:
+\begin{equation}
+z_i=-S_{zm}ln\frac{Ra_i}{T_otan\beta_i}
+\end{equation}
+ 

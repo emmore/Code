@@ -1,0 +1,510 @@
+\documentclass{beamer}
+\usetheme{Warsaw}
+\usepackage{amsmath}
+\usepackage{authblk}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{listings}
+\begin{document}
+
+\title{Water Balance Modelling Evaluation through Mapping the Hydrological Pattern to Information Space\\
+\raggedleft Paper Script 1.0}
+\date{\today}
+\author {Pan Baoxiang}
+\maketitle 
+
+
+\begin{frame}
+\frametitle{Outline}
+\begin{itemize}
+\item Abstract
+\item Introduction
+\item Theoretical Analysis of Water Balance Models
+\item The Epistemic Aleatory Uncertainty Framework
+\item Result
+\item Discussion
+\item Conclusion
+\end{itemize}			
+\end{frame}
+
+\begin{frame}
+\frametitle{Abstract}
+\begin{itemize}
+\item Motivation \& Problem Statement
+\item Data \& Approach
+\item Result
+\item Conclusion
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Abstract: Motivation \& Problem Statement}
+\begin{itemize}
+\item General Picture
+
+Conceptual Water balance models have been developed and used for climatic change impact exploration and long-range stream flow forecast.
+\item Zoom in
+
+With a similar iteration pattern but different constitutive functions and insufficient inputs, most of the existing models are capable of generating satisfying outputs over a monthly time scale, where a fuzzy gap of hydrological simulation exists between the long range water-energy correlation pattern and the detailed precipitation run-off generation mechanism. 
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Abstract: Motivation \& Problem Statement}
+\begin{itemize}
+\item Find the Gap
+
+However, to smooth the interim of different time scale hydrological modelling, the legality of the iteration pattern and the constitutive functions of these models remain to be examined over the time crack.
+
+\item Theoretical Support of The Method 
+ 
+The Aleatory-Epistemic Uncertainty Framework 
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Abstract: Data \& Approach}
+\begin{itemize}
+\item Data
+
+the experiment basins of MOPEX project
+\item Approach 
+
+Use the Aleatory-Epistemic Uncertainty Evaluation Framework to examine the information flow and source sink terms of 6 conceptual monthly water balance models over time scales from one day to a year.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Abstract: Result}
+\begin{itemize}
+\item the efficiency of the constitutive functions
+\item how the efficiency change with time scales
+\item how is the change rate connected with the catchment characteristics
+\item the state variable, its function and explanation
+\end{itemize}
+\end{frame}
+ 
+\begin{frame}
+\frametitle{Abstract: Conclusion}
+\end{frame}
+
+ 
+
+\begin{frame}
+\frametitle{Introduction}
+\begin{itemize}
+\item General Picture \& Zoom In
+\begin{itemize}
+\item Water Balance Model
+\item Evaluate Criterion
+\end{itemize}
+\item Organization
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{General Picture}
+A major realm of hydrological community is to figure out the components of the catchment water balance over different time scales.
+\begin{itemize}
+\item Physically-based models
+\begin{itemize}
+\item detailed information
+\end{itemize}
+\item Conceptual models and patterns
+\begin{itemize}
+\item Describe a coarser but valuable hydrological form
+\item Available for mathematical analysis
+\end{itemize}
+\end{itemize}
+\end{frame}
+\begin{frame}
+\frametitle{Water Balance Model}
+\begin{itemize}
+\item Budyko Curve: A Paradigm
+\item Brief Introduction of Water Balance Models 
+\end{itemize} 
+\end{frame}
+
+\begin{frame}
+\frametitle{Evaluate Criterion}
+\end{frame}
+
+\begin{frame}
+\frametitle{Organization}
+\begin{itemize}
+\item  Theoretical Analysis of 5 existed water balance models
+\begin{itemize}
+\item Disintegration
+\item Constitutive Function Analysis
+\end{itemize}
+\item  Brief Introduction of Aleatory Epistemic Uncertainty framework \& Its Application Considerations
+\item Data \& Method
+\item Result
+\item Discussion \& Conclusion
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Theoretical Analysis of Water Balance Models}
+\begin{table}[H]
+\caption{A Brief History of 5 Water Balance Models}
+\begin{center}
+\begin{tabular}{llc}
+\toprule
+Term  & Developer & Time  \\
+\midrule
+TMWB      & Thronthwaite \& Mather    & 1948\&1955      \\
+ABCD      & Thomas     & 1981      \\
+VMWB      & Vandewiele \& Xu     & 1992      \\
+TPWB      & Xiong \& Guo     & 1996      \\
+DMWB      & Zhang \& Potter      & 2008       \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{table}
+\end{frame}
+
+\begin{frame}
+\frametitle{Basic Pattern --A Recursive Functional Equation Set}
+\begin{equation*}
+\left\{
+\begin{aligned}
+   &Structure=\left\{\begin{aligned}&Output\_Generation\\&State\_Variable\_Renewal\end{aligned}\right.\\
+   &Output\_Generation (Input,State,Paramter)=Output  \\
+   &State\_Variable\_Renewal (Input,State,Parameter)=New\_State\\
+   &Simulation(Structure,Input,State,Parameter)\\&=\left\{\begin{aligned}&Output\\&Simulation(Structure, New\_Input,New\_State,Parameter) \end{aligned}\right.\\
+\end{aligned}
+\right.
+\end{equation*} 
+\end{frame}
+
+\begin{frame}
+\frametitle{Numerical Parts of 5 Water Balance Models}
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{lcccr}
+\toprule
+Term  & Input & Output & State Variable & Parameter  \\
+\midrule
+TMWB   & $P$,$EP$& $E$,$Q$        & $S_1$,$S_2$&$a$,$SC$        \\
+ABCD   & $P$,$EP$& $E$,$Q_d$,$Q_g$& $S$,$G$    &$a$,$B$,$c$,$d$ \\
+VMWB   & $P$,$EP$& $E$,$Q$        & $S$        &$a$,$b$,$c$     \\
+TPWB   & $P$,$EP$& $E$,$Q$        & $S$        &$c$,$SC$        \\
+DMWB   & $P$,$EP$& $E$,$Q_d$,$Q_g$&$S$,$G$     &$a$,$b$,$SC$,$d$\\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{table}
+\end{frame}
+
+\begin{frame}
+\frametitle{Structures of 5 Water Balance Models}
+\begin{table}[H]\tiny
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Term & Output Generation Section & Variable Renewal Section\\
+\midrule
+TMWB
+& 
+$E=\left\{\begin{aligned}&EP~;P>EP\\&EP-P~;else\end{aligned}\right.$ 
+& 
+$S_{1new}=min(S_1+P-E,SC)$ \\
+& 
+$Q=\lambda\underbrace{[S_2+max(S_1+P-E-SC,0)]}_{WO}$
+& $S_{2new}=(1-\lambda)WO$ \\
+\\
+ABCD
+& 
+$E=\underbrace{[\frac{P+S}{2a}-\sqrt{(\frac{P+S+b}{2a})^2-\frac{(P+S)b}{a}}]}_{EO}[1-e^{-\frac{EP}{b}}]$ 	
+& 
+$S_{new}=EOe^{-\frac{EP}{b}}$ \\
+& 
+$Q_d=(1-c)(P+S-EO)$ 	
+& 
+$G_{new}=\frac{G+c(P+S-EO)}{1+d}$ \\
+& 
+$Q_b=dG$ 	
+& \\
+\\
+VMWB
+& 
+$E=min[EP(1-a^{\frac{S+P}{EP}}),S+P]$ 	
+& $S_{new}=S+P-Q-E$ \\
+& $Q=bS+c[P-EP(1-e^{-\frac{P}{EP}})]$ 	   \\
+\\
+TPWB
+& $E=cEPtanh[(P+S)/EP]$ 
+& $S_{new}=S+P-Q-E$ \\
+& $Q=(S+P-E)tanh[(S+P-E)/SC]$ 	       \\
+\\
+DMWB
+& $Q_d=P-\underbrace{B\_Curve(P,SC-S+EP,a)}_{W}$
+& $S_{new}=W+S-R-E$ \\
+& $Q_b=dG$ 	
+& $G_{new}=(1-d)G+R$ \\
+& $R=W+S-B\_Curve(W+S,EP+SC,b)$
+\\
+& $E=B\_Curve(W+S,EP,b) $  
+&\\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{table}
+\end{frame}
+
+\begin{frame}
+\frametitle{A Systematic Perspective Toward the Constitutive Functions}
+Supply-Demand Framework
+\begin{itemize}
+\item Extreme Boundary Conditions
+\item Buckingham $\Pi$ Theorem
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{A Stochastic Analytical Perspective Toward the Constitutive Functions}
+We should notice when applying the water balance models at a monthly or annual  time scale, the information that inputs (here we mean precipitation and potential evapotranspiration) in a single iteration unit provides is the available water and energy in whole during that period, with the detailed hydrological processes lost in accumulation. 
+We assume:
+\begin{itemize}
+\item Independence between local soil moisture and precipitation occurrence
+\item Consistent meteorological condition during the calculating period
+\end{itemize}  
+\end{frame}
+
+\begin{frame}
+\begin{equation}\tiny
+ \begin{split}
+ \frac{\partial{f(s,t)}}{\partial t}=\frac{\partial{[\rho(s)f(s,t)]}}{\partial s}-\lambda(t)f(s,t)+\lambda(t)\int_{0}^{s} g(z,t)p_{i|z}(s-z)dz+\lambda(t)p_0(0)e^{-\lambda(t) t}p_{i|0}(s)
+ \end{split}
+ \end{equation}
+ \begin{equation}\tiny
+ p(r,t)=\lambda(t)\int_{0}^{1} f(z,t)f_{r\_depth}(r+1-z)dz
+ \end{equation} 
+ 
+ 
+ We are constrained by:
+\begin{itemize}
+\item The accumulative EP equals the observation
+\item The accumulative P equals the observation
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{The Epistemic  Aleatory Uncertainty Framework}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=10cm]{3.png}
+\end{figure}
+\end{frame}
+
+ 
+
+\begin{frame}
+\frametitle{Considerations}
+\begin{itemize}
+\item Benchmark
+\item Seasonal Fluctuation Inconsistency
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Method \& Data}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=6.5cm]{flowchart.jpg}
+\caption{Programming Flow Chart} \label{fig:graph}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Auto Calibration}
+\begin{footnotesize}
+\begin{equation*} 
+\left\{
+\begin{aligned}
+   &Model(Parameter)=Simulation(Structure,Input,State,Parameter)\\
+   &Evolution(Parameter\_Sets)=Evolved\_Parameter\_Sets \\
+   &Optimization (Model,Parameter\_Sets,Observation,Evaluat\_Criterion)\\&=\left\{\begin{aligned}&Local\_best\\&Optimization(Model,Evolved\_Parameter\_Sets,Obsevation,Evaluat\_Criterion)\end{aligned}\right.
+\end{aligned}
+\right.
+\end{equation*}
+\end{footnotesize}
+\end{frame}
+
+\begin{frame}
+\frametitle{"Evolution"}
+Any formal system could be expressed in the language of number theory. 
+
+The mathematical fact of the evolution in the A.I. optimization algorithms is to map the pseudo-random numbers generated by some number theory laws to the parameter space under the guide of the former generations' performance for producing some "unexpected" but useful new parameters.
+\end{frame}
+
+\begin{frame}
+\frametitle{An Evolution Paradigm: PSO}
+\begin{equation*}
+\begin{aligned}
+&Evolution(Parameter)\\=&Inertial\_Coefficient \times Parameter+\\&Self\_Experience\_Coefficient \times (Hitorical\_Best-Parameter)+\\&Social\_Experience\_Coefficient \times (Global\_Best-Parameter)
+\end{aligned}
+\end{equation*}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Programming Language}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=7.5cm]{1.png}
+\caption{Development Time of Languages} \label{fig:graph}
+\end{figure}
+All the codes are available at the github URL: 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=4.5cm]{2.png}
+\end{figure}
+\centering{https://github.com/morepenn}  
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Results}
+\begin{itemize}
+\item Aleatory Uncertainty
+\begin{itemize}
+\item Excluding State Variable
+\item Including State Variable 
+\end{itemize}
+\item Epistemic Uncertainty
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Results: Aleatory Uncertainty\\Excluding State Variable}
+The stationary point of the Aleatory Uncertainty -Time Scale Function is the exact time scale point that we could ignore the impact of iterative variable.
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Results:\\Unclustered Aleatory Uncertainty Excluding Former Inputs}
+\begin{figure} 
+  \centering 
+  \begin{minipage}[b]{0.2\textwidth} 
+    \centering 
+    \includegraphics[width=1in]{unclustered3.png} 
+  \end{minipage}% 
+  \hspace{0.04\linewidth}% 
+  \begin{minipage}[b]{0.2\textwidth} 
+    \centering 
+    \includegraphics[width=1in]{unclustered4.png} 
+  \end{minipage}
+  \hspace{0.04\linewidth}% 
+  \begin{minipage}[b]{0.2\textwidth} 
+    \centering 
+    \includegraphics[width=1in]{unclustered5.png} 
+  \end{minipage} \\[20pt] 
+  \begin{minipage}[b]{0.2\textwidth} 
+    \centering 
+    \includegraphics[width=1in]{unclustered6.png}  
+  \end{minipage}% 
+  \hspace{0.04\linewidth}% 
+  \begin{minipage}[b]{0.2\textwidth} 
+    \centering 
+    \includegraphics[width=1in]{unclustered7.png} 
+  \end{minipage}% 
+  \hspace{0.04\linewidth}% 
+  \begin{minipage}[b]{0.2\textwidth} 
+    \centering 
+    \includegraphics[width=1in]{unclustered8.png} 
+  \end{minipage} 
+  \hspace{0.04\linewidth}% 
+  \begin{minipage}[b]{0.2\textwidth} 
+    \centering 
+    \includegraphics[width=1in]{unclustered9.png} 
+  \end{minipage}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Results:\\Clustered Aleatory Uncertainty Excluding Former Inputs}
+\begin{figure} 
+  \centering 
+  \begin{minipage}[b]{0.2\textwidth} 
+    \centering 
+    \includegraphics[width=1in]{clustered3.png} 
+  \end{minipage}% 
+  \hspace{0.04\linewidth}% 
+  \begin{minipage}[b]{0.2\textwidth} 
+    \centering 
+    \includegraphics[width=1in]{clustered4.png} 
+  \end{minipage}
+  \hspace{0.04\linewidth}% 
+  \begin{minipage}[b]{0.2\textwidth} 
+    \centering 
+    \includegraphics[width=1in]{clustered5.png} 
+  \end{minipage} \\[20pt] 
+  \begin{minipage}[b]{0.2\textwidth} 
+    \centering 
+    \includegraphics[width=1in]{clustered6.png}  
+  \end{minipage}% 
+  \hspace{0.04\linewidth}% 
+  \begin{minipage}[b]{0.2\textwidth} 
+    \centering 
+    \includegraphics[width=1in]{clustered7.png} 
+  \end{minipage}% 
+  \hspace{0.04\linewidth}% 
+  \begin{minipage}[b]{0.2\textwidth} 
+    \centering 
+    \includegraphics[width=1in]{clustered8.png} 
+  \end{minipage} 
+  \hspace{0.04\linewidth}% 
+  \begin{minipage}[b]{0.2\textwidth} 
+    \centering 
+    \includegraphics[width=1in]{clustered9.png} 
+  \end{minipage}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Results}
+when $T>365$, the influence of the state variable become insignificant in experimental basin 6.
+\end{frame}
+
+\begin{frame}
+\frametitle{Discussion}
+The shape of different defined Aleatory Uncertainty (Epistemic Uncertainty)- Modelling Time Scale at different basins.
+\end{frame}
+
+\begin{frame}
+\frametitle{Conclusion}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Difficulties}
+\begin{itemize}
+\item Calculating Speed
+\item Data 
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Remaining Work \\Aleatory Uncertainty }
+\begin{itemize}
+\item The impact of former input in calculating Aleatory Uncertainty at different time scales
+\item Did the state-variables in the models take the same effect as the former input in calculating Aleatory Uncertainty at different time scales
+ \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Remaining Work \\Epistemic Uncertainty }
+\begin{itemize}
+\item The Efficiency of the Constitutive Functions
+\item The Shape of the Epistemic Uncertainty-Modelling Time Scale Curve
+\item Its Relation with the Basin Characteristics
+\end{itemize}
+\end{frame}
+
+
+\end{document}

@@ -1,0 +1,1401 @@
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
+
+\chapter{流域水文不确定度信息理论}
+\label{cha:china}
+\section{引言}
+在前面的章节中，论文建立起应用随机土壤水模型联系联系日时间尺度的降水产流、蒸散发过程与长时序水热耦合形态的基本框架。在该模型中，模型不确定性来自于输入变量（是否降水，降水量等），模型输出相应地以概率形式表达，在一致的气候状态下，由于输入变量随机过程的稳态性，日尺度模拟结果在长时序上的统计值表现出一定的规律。由泛函方程\ref{4}可知，水文过程的不确定性不仅仅来自于输入变量观测误差，还来自于模型本身对点尺度水文机理、对下垫面不均匀性及其各部分联系的概化。在接下来的章节中，论文试图借助信息论基本知识对不同时间尺度下源于数据和模型的不确定度进行量化。
+
+\section{信息论基础知识}
+\iffalse
+\begin{quotation}
+There is only one constant preoccupation: I have throughout been anxious to discover how much we can be said to know and with what degree of certainty of doubtfulness.
+\end{quotation}
+\rightline{ —— Bertrand Russell, My Philosophical Development}
+\begin{quotation}
+If degree of plausibility are represented by real numbers, then there is a uniquely determined set of quantitative rules for conducting inference.
+\end{quotation}
+\rightline{ —— E.T. Jaynes , Probability Theory, The Logic of Science}
+\fi
+科学家试图通过对观测数据的推断确定知识的范围和对知识的确定程度\cite{russell1995my}。如果这种确定程度能够以实数来表示，那么就必定有确定而且可量化的准则来指导推理的进行\cite{jaynes2003probability}。在信息论中，对知识的确定程度由该随机事件概率的某一泛函---``信息熵''来表示，观测数据对推理的信息贡献由两随机变量的``互信息''量化。
+
+本节首先介绍信息熵与互信息的基本概念、性质以及联系，之后从贝叶斯统计学角度讨论其意义，并建立其与传统水文观测模拟不确定度评估体系的逻辑联系。最后介绍数据处理不等式，它是本章所要建立的不确定度分析框架的基础。
+
+%力 动能 时间 牛 \cite{gleick2011information}
+\subsection{基本概念}
+ 
+通常认为，一个罕见的事件更能够让人感到惊讶，或者说，它提供
+更多的信息。对这一常识的数学表述为：某一事件的信息量是其概
+率的减函数。如果我们进一步要求相互独立的两事件提供的信息量
+是可加的，则通过微元法分析即可发现，概率为$p$的样本提供的信
+息量应为$-logp$。因此，离散随机变量$X$提供的平均信息量为：
+\begin{equation}
+\label{dentropy}
+H(X)\equiv-\Sigma p(x)logp(x)
+\end{equation}
+$H(X)$被定义为信息熵。如果取对数底数2，则其量纲为$bit$。这
+一单位常见于计算机科学，因为理想效率的编码体系是信息理论的
+精确物理实现。根据定义\ref{dentropy}，确定性事件的信息熵为$0$。
+
+
+连续型随机变量的信息熵可仿照公式\ref{dentropy}定义如下：
+\begin{equation}
+\label{centropy}
+h(X)\equiv-\int f(x)logf(x)dx
+\end{equation} 
+对于连续型随机变量，样本空间内任一值的概率均为0。当$p$趋近
+于$0$时，$-logp$趋近于$\infty$，故连续型随机变量任意样本观
+测提供的信息量为无穷大。在实际的观测与模拟中，由于精度限制
+和应用要求，我们往往需要的是区间估计。若将随机变量$X$按图\ref{discretion}
+方式离散，
+\begin{figure}[H]
+\centering
+\includegraphics[width=13cm]{Quantization.png}
+\caption{连续型随机变量离散图}%\citep{cover2012elements}}
+\label{discretion}
+\end{figure}
+其中， $X^\Delta$为$X$按分辨率$\Delta$离散的随机变量，在任
+意离散区间内满足：
+\begin{equation}
+\label{dis}
+f(x_i^\Delta)\Delta=\int_{i\Delta}^{(i+1)\Delta}f(x)dx
+\end{equation} 
+则：
+\begin{equation} 
+\label{quan}
+\begin{split}
+H(X^\Delta)&=-\Sigma_{-\infty}^{\infty}p_ilogp_i\\
+&=-\Sigma_{-\infty}^{\infty}f(x_i)\Delta log(f
+(x_i)\Delta)\\
+&=-\Sigma\Delta f(x_i)logf(x_i)-\Sigma f(x_i)\Delta log
+\Delta\\
+&=-\Sigma\Delta f(x_i)logf(x_i)-log\Delta
+\end{split}
+\end{equation}
+因此：
+\begin{center}
+\begin{equation}
+\label{ddd}
+ H(X^\Delta)\to h(X)-log\Delta \text{, 当}  \Delta \to 0 
+\end{equation}
+\end{center}
+由上述推导可知，连续随机变量的信息熵既不能表示该信号源的平
+均不确定度，也不能表示任一样本实现提供的平均信息量。但
+是，$h(X)-log\Delta$表示将$X$精确到$-log\Delta$bit精度所需
+的信息量\cite{cover2012elements}。这里$-log\Delta$bit精度表示$X$在概率密度曲
+线$\Delta$宽度区间内取同一值，如公式\ref{dis}所定义。
+
+ 
+为了表示两个或多个随机变量之间共享的信息量，我们引入``互信
+息''的概念。离散随机变量的互信息定义如下：
+\begin{equation}
+\label{mmii}
+I(X;Y)\equiv\sum_{x,y}p(x,y)log\frac{p(x,y)}{p(x)p(y)}
+\end{equation}
+
+
+$X$,$Y$为函数关系时，$I(X;Y)=H(X)=H(Y)$；$X$,$Y$相互独立时，$I(X;Y)=0$。
+
+互信息表示给定另一随机变量知识的条件下，原随机变量不确定度
+的缩减量。根据Jesen不等式，互信息总是非负的，即信息不会有负面影响。现对该含义进一步阐述如下: 在给定随机变量$Y$取值的条件下，
+随机变量$X$的不确定度可由如下公式表示：
+\begin{equation}
+\begin{split}
+H(X|Y)&=\Sigma p(y)H(X|Y=y)\\
+&=-\Sigma p(y) \Sigma p(x|y)logp(x|y)\\
+&=-\Sigma \Sigma p(x,y)logp(x|y)\\
+&=-Elogp(X|Y)
+\end{split}
+\end{equation}
+$H(X|Y)$称为条件熵，它表示在给定随机变量$Y$知识的条件下，随
+机变量$X$的不确定度。则根据定义，有:
+\begin{equation}
+\label{relation}
+\begin{split}
+H(X)-H(X|Y)&=-\Sigma \Sigma p(x,y)logp(x）+\Sigma \Sigma p
+(x,y)logp(x|y)\\
+&=\Sigma \Sigma p(x,y)log \frac{p(x,y)}{p(x)p(y)}\\
+&=I(X;Y)
+\end{split}
+\end{equation}
+因此互信息表征了$Y$对$X$的信息贡献，由于$I(X;Y)=I(Y;X)$，故$Y$对$X$的信息贡献等于$X$对$Y$的信息贡献。
+
+连续型随机变量的互信息可仿照公式\ref{mmii}定义如下
+\begin{equation}
+\label{mmmii}
+I(X;Y)\equiv\int \int f(x,y)log\frac{f(x,y)}{f(x)f(y)}dxdy
+\end{equation}
+两个连续随机变量的互信息是经过量化处理后的随机变量间的互信
+息的极限，这是由于：
+\begin{equation}
+\begin{split}
+I(X^{\Delta};Y^{\Delta})&=H(X^{\Delta})-H(X^{\Delta}|Y^
+{\Delta})\\
+						&\approx h
+(X)-log\Delta-h(X|Y)+log\Delta\\
+						&=I(X;Y) 
+\end{split}
+\end{equation}
+因此，连续互信息仍然可以用来表示两连续随机变量离散化之后的互相依赖程度。
+
+\subsection{信息熵、互信息与贝叶斯公式的关系}
+概率公理化定义\cite{kolmogorov1950foundations}的建立并没有缓和学术界对``概率''这一概念认识的分歧。分歧的来源是对``不确定性''这件事的出发点与立足点。其中一派从``自然''角度出发，试图直接为``事件''本身建模，即事件$A$在独立重复试验中发生的频率趋于极限$P$，那么$P$即为该事件的概率，这一派被称为频率学派；另一派从``观察者''角度出发，认为不确定性来自于观察者知识的不完备。随机性并不源于事件本身是否发生，而只是描述观察者对该事件的知识状态。观察者又试图通过已经观察到的``证据''来推断这一事件的结果，因此只能靠猜，而概率论则是用来描述理性推断过程的数学语言,这一派被称为贝叶斯学派。
+
+由于贝叶斯学派更能正视人作为``观测者''的局限性，该理论正逐渐赢得统计学家和科学家的青睐\cite{jeffreys1998theory,cox1946probability}，并被Jaynes视为科学研究的逻辑\cite{jaynes2003probability}。水文观测巨大的不确定性使学者们倾向于采纳贝叶斯统计学的观点来理解观测与模拟中的误差，并开发出了基于贝叶斯理论框架的水文预报系统\cite{krzysztofowicz1999bayesian},贝叶斯总误差分析方法\cite{kavetski2006bayesian}和集合贝叶斯不确定性估计量\cite{ajami2007integrated}等不确定性分析框架。
+
+贝叶斯理论使用贝叶斯定理作为根据新的信息导出或者更新现有的置信度
+的规则。在形式上，它描述了随机事件$A$和$B$的条件概率（$P(A|B)$,$P(B|A)$）与非条件概率（$P(A)$,$P(B)$）的关系：
+\begin{equation}
+\label{bayes}
+P(A|B) = \frac{P(B | A)}{P(B)}\times  P(A)
+\end{equation}
+在贝叶斯定理中，上式每项都有约定俗成的名称：
+
+\begin{table}[H] 
+\centering
+\caption{贝叶斯定理各项意义}
+\begin{tabular}{cc}
+\toprule[1.5 pt]
+  项 &  名称\\
+\midrule[1pt] 
+$P(A)$& $A$的先验概率或边缘概率\\
+$P(A|B)$& 已知$B$的取值，$A$的后验概率\\
+$P(B|A)$& 已知$A$的取值，$B$的后验概率 / 相似度\\
+$P(B)$& B先验概率 / 标准化常量（normalizing 
+constant）\\
+$P(B | A)/ P(B)$& 标准相似度（standardised 
+likelihood）\\
+\bottomrule[1.5 pt] 
+\end{tabular}
+\end{table}
+
+\iffalse
+\begin{itemize}
+\item[]$P(A)$是$A$的先验概率或边缘概率。之所以称为"先验"是因为它不考虑
+任何B方面的因素.
+\item[]$P(A|B)$是已知$B$发生后$A$的条件概率，也由于得自$B$的取值而被称作$A$
+的后验概率.
+\item[]$P(B|A)$是已知$A$发生后$B$的条件概率，也由于得自$A$的取值而被称作$B$
+的后验概率，也称相似度.
+\item[]$P(B)$是B先验概率或边缘概率，也称标准化常量（normalizing 
+constant）.
+\item[]$P(B | A)/ P(B)$是标准相似度（standardised 
+likelihood）.
+\end{itemize}
+\fi
+按这些术语，贝叶斯定理可表述为：
+\begin{eqnarray}
+\text{后验概率}=\frac{\text{相似度}}{\text{标准化常量}}\times \text{先验概率}
+\end{eqnarray}
+或
+ \begin{equation}
+\text{后验概率}=\text{标准相似度}\times \text{先验概率}
+\end{equation}
+ 
+
+根据定义\ref{dentropy}和\ref{centropy}，每一个概率分布函数（条件概率或非条件概率分布）均对应于相应随机变量的信息量（熵）。现通过对方程\ref{bayes}变换，从贝叶斯统计学的角度阐述信息熵与互信息的关系，具体步骤如下
+\begin{itemize}
+\item[(1)]对方程 \ref{bayes}两边取对数:
+\begin{equation}
+\label{log}
+logP(A|B) =logP(A)+log \frac{P (AB)}{P(A)P(B)} 
+\end{equation}
+\item[(2)] 方程两边各项乘以 $-P(A,B)$:
+\begin{equation}
+\label{element}
+-P(A,B)logP(A|B) =-P(A,B) logP(A)-P(A,B) log \frac{P (AB)}
+{P(A)P(B)} 
+\end{equation} 
+\item[(3)] 对方程两边各项在概率空间内求和或取积分
+\begin{equation}
+\label{element1}
+\begin{split}
+-\sum_{A} \sum_{B} P(A,B)logP(A|B) =&-\sum_{A} \sum_{B} P
+(A,B) logP(A)\\
+&-\sum_{A} \sum_{B} P(A,B) log \frac{P (AB)}{P(A)P(B)} 
+\end{split}
+\end{equation} 
+或
+\begin{equation}
+\label{element2}
+\begin{split}
+-\int\int P(A,B)logP(A|B)dAdB =&-\int \int P(A,B)logP(A)
+dAdB\\
+& -\int \int P(A,B)log \frac{P (AB)}{P(A)P(B)}dAdB
+\end{split}
+\end{equation}
+\end{itemize}
+根据定义\ref{dentropy}，\ref{mmii},方程\ref{element1}可简化
+为：
+\begin{equation}
+\label{bayesuncertainty}
+H(A|B) = H(A)-I(A,B)
+\end{equation}
+根据定义\ref{centropy}，\ref{mmmii},方程\ref{element2}可简化
+为：
+\begin{equation}
+\label{bayesuncertainty2}
+h(A|B) =h(A)-I(A,B)
+\end{equation}
+
+根据方程\ref{bayes}和 \ref{bayesuncertainty}及方程\ref{bayesuncertainty2}等号两边各项的对应关系，可以认为$H(A|B)$表示后验不确定度，$H(A)$表示先验不确定度，$I(A,B)$表示由数据间的信息贡献。
+
+因此，按贝叶斯理论术语，信息熵与互信息关系可表述如下：
+\begin{equation}
+\label{ben}
+\text{后验不确定度}=\text{先验不确定度}-\text{数据信息贡献}
+\end{equation}
+
+\subsection{数据处理不等式}
+
+理解水文系统的认知过程包括数据观测，数据统计分析以及多种模型模拟等相继步骤。每一步骤都涉及对数据的处理。信息理论中的数据处理不等式从逻辑上说明，在这些过程中，不存在对数据的优良操作能使从数据中所获得的推理得到改善\cite{cover2012elements}。
+
+数据处理不等式阐述如下： 如果随机变量$Z$的条件分布仅依赖于随机变量$Y$的分布，而与随机变量$X$是条件独立的，即$X$,$Y$,$Z$构成马尔科夫链（记为$X \to Y \to Z$ ），则有：
+\begin{equation}
+\label{in}
+I(X;Y) \geq I(X;Z)
+\end{equation}
+
+数据处理不等式可简单证明如下。根据定义，$I(X;Y,Z)$可按如下两种方式展开：
+\begin{equation}
+\begin{split}
+I(X;Y,Z)=&I(X;Z)+I(X;Y|Z)\\
+        =&I(X;Y)+I(X;Z|Y)
+\end{split}
+\end{equation}
+由于给定$Y$条件下，$X$与$Z$相互独立，故$I(X;Z|Y)=0$，又由于$I(X;Y|Z)\geq 0$，故不等式\ref{in}成立。
+
+不等式\ref{in}的一个重要推论是：如果$Z$是$Y$的函数$g(Y)$，则$X \to Y \to g(Y)$，故有：
+\begin{equation}
+\label{in2}
+I(X;Y) \geq I(X;g(Y))
+\end{equation}
+这说明数据$Y$的函数不会增加关于$X$的信息量。特别地，如果不等式\ref{in2}取等号， 则 $g(Y)$包含了$Y$所含的关于$X$的全部信息，称该统计量$g(Y)$关于$X$是充分的，$g(Y)$称为充分统计量（sufficient statistic）。
+
+\section{基于信息熵互信息的水文观测模拟不确定度分析框架}
+
+在水文观测模拟中，人们通过观测、处理数据两个步骤，试图提供给模拟目标变量尽可能多的信息，以使模拟变量后验不确定度最小。对该过程不确定度量化需要回答如下三个问题：
+\begin{itemize}
+\item[(1)]模拟变量的先验不确定度大小.
+\item[(2)]观测能够在多大程度上提供给模拟变量信息.
+\item[(3)]利用观测数据，模型能够在多大程度上提供给模拟变量信息.
+\end{itemize}
+
+为了使用上节引入的信息熵与互信息回答这三条问题，首先必须确定观测数据的表示方式。 在不同坐标语境下，水文数据可能占据不同的$bit$数。在本章及之后的随机实验有实测数据模拟中，均使用时域坐标，即每个数据点均表示在某时刻的观测或模拟值。在进行各信息项估算时，并不考虑数据的非一致性，这样固然会因为忽视时序数据中内在的周期性趋势性等结构而高估其信息量，但是，提取数据``真实''信息量的努力由于该问题的逻辑自指性，是不可计算的\cite{li2009introduction}，此外，对原始数据非可逆处理会损害建立的不确定度分析框架的普适性。
+
+在样本空间构建完毕后，通过估算模型输出变量观测值$X_o$的连续熵$h(X_o)$，预设目标精度，即可根据公式\ref{ddd}，得到模拟变量的先验不确定度$H(X_{o})$。
+
+
+已知观测数据或模型模拟的目标变量后验不确定度由公式\ref{ben}计算。
+
+首先阐述已知观测数据后目标变量不确定度的变化。套用公式\ref{ben}，将该情况下目标变量的后验不确定度定义为``随机不确定度''（Aleotory Uncertainty），其公式如下：
+\begin{equation}
+\label{aaa}
+\text{Aleotory Uncertainty}\equiv H(X_{o})-I(X_{o};X_{i})
+\end{equation}
+其中$H(X_{o})$为$X_o$精确到$-log\Delta$ $bit$精度的离散熵，$-log\Delta$为根据实际需要，预先设定。
+
+水文观测往往是不够充分的，观测值不能对目标变量实施有效控制。通过引入新的观测项，能够对目标变量提供更多的信息量，减小其不确定度，这可以由信息处理不等式\ref{in2}保证：假定原有水文观测项为$Xi_{original}$，现增加观测项$Xi_{new}$，则水文模拟目标变量观测值$X_o$，$Xi_{original}$，$Xi_{new}$构成如下马尔科夫链：
+\begin{equation}
+X_o \to Xi_{original} ~\& Xi_{new}\to Xi_{original}
+\end{equation}
+这是由于$Xi_{original}$包含于增广后的输入变量观测项$Xi_{original} ~\& Xi_{new}$，可以视为后者的函数。根据不等式\ref{in2}:
+\begin{equation}
+\label{new}
+I(X_o;Xi_{original} , Xi_{new})\geq I(X_o;Xi_{original})
+\end{equation}
+
+新引入的观测项可以是计算步长前期的水文气象变量， 也可以是当前观测目录里没有的项。如第三章所述，在小于年际的时间尺度内，土壤水对前期水文气象过程留有``记忆''，通过引入前期步长内的水文气象观测值，可以为模拟当前水文过程提供土壤水记忆中带有的信息。通过逐步引入前期计算步长内水文气象观测值得方法，可以量化得到前期水文过程对当前过程的影响。假定进一步引入$n$个计算步长前的水文观测变量时，不等式\ref{new}取等号，则可认为该时间尺度$T$下土壤水记忆长度为$n\times T$。
+
+引入当前观测目录里没有的项也可以减少模拟目标变量的后验不确定度，举例来说，通常可以用径流系数来衡量流域多年平均的水文状况，该方法默认流域长时间尺度水文过程由降水控制，Budyko发现，引入流域潜在蒸散发后，可以对流域水文状况有更准确的描述。在后续的随机试验和观测模拟评估中，通过逐步引入观测项的方式，衡量各项对减少目标变量不确定度的贡献。
+
+水文模型可以视为对观测数据的信息提取器或解码器，从大量的观测数据中提取出/解码出能够减少目标变量先验不确定度的有效信息。根据模型基本泛函方程\ref{2}、\ref{3}，模型模拟值$X_s$是模型输入项观测值$X_i$的函数，在给定$X_i$条件下，作为模型输出项的水文模拟值$X_o$与$X_s$条件独立，即$X_o \to X_i \to X_s$，由不等式\ref{in2}可知：
+\begin{equation}
+I(X_o;X_i) \geq I(X_o;X_s)
+\label{im}
+\end{equation}
+方程\ref{im}表明，水文模型利用观测数据对目标变量进行模拟时，模型能够提供给目标变量的信息，不会多于观测数据能够提供给目标变量的信息，即$I(X_o;X_i)$设定了模型模拟效果的上限。在使用模型进行信息提取或解码的过程中引入的噪声被定义为``认知不确定度''（Epitemic Uncertainty），它的数学形式为不等式\ref{im}不等号两边两项之差：
+\begin{equation}
+\text{Epitemic Uncertainty}\equiv I(X_{o};X_{i})-I(X_{o};X_{s})
+\end{equation}
+
+当模型模拟的时间尺度内不能忽视土壤水记忆作用时，需要引入状态变量$S$来提升模型模拟效果。状态变量$S$的作用体现在如下两个方面：
+\begin{itemize}
+\item[(1)]表示前期水文过程对当前水文作用的影响.
+\item[(2)]在每步计算中更新$S$，为后续模拟提供信息.
+\end{itemize}
+
+由水文模拟泛函方程\ref{2}知，模拟值$X_s$是状态变量$S$和当前计算步长内观测变量$Xi_{current}$的函数，故有$X_o \to S ~ \& Xi_{current} \to X_s$；另一方面，由水文模拟泛函方程\ref{3}知，状态变量$S$是前期计算步长内观测变量$Xi_{former}$的函数，故有$X_o \to Xi_{former} ~ \& Xi_{current}  \to S ~ \& Xi_{current} $，根据不等式\ref{in2}，有：
+\begin{equation}
+\label{in3}
+I(X_o;Xi_{former} ~ \& Xi_{current}) \geq I(X_o;S ~ \& Xi_{current}) \geq 
+I(X_{o};X_{s})
+\end{equation}
+不等式\ref{in3}前两项之差体现了迭代结构模型利用状态变量提取前提计算步长内水文信息的能力；后两项之差体现了模型利用状态变量提供信息进行模拟预测的能力，两者相互依赖，以提供时序上连续的模拟。
+
+综上所述，应用基于信息熵互信息的水文观测模拟不确定度的分析框架时，需要估算的信息项由表\ref{terms}列出：
+
+\begin{table}[H] 
+\centering
+\caption{估算信息项}
+\label{terms}
+\begin{tabular}{cc}
+\toprule[1.5 pt]
+类别   &  估算项 \\
+\midrule[1 pt]
+观测   &$h(X_o)$ \\
+ 
+ &$I(X_o;Xi_{original}),I(X_o;Xi_{original},Xi_{new})$\\
+ &$I(X_o;Xi_{current}),I(X_o;Xi_{former},Xi_{current})$\\
+
+\\
+模型  & $I(X_o;X_s),$ $I(X_o;S,Xi_{current})$  \\
+\bottomrule[1.5 pt]\\
+\end{tabular}
+
+\footnotesize{注：表中各项含义与上文相同.}
+\end{table}
+
+根据各项及其相互间关系，可以确定模拟先验后验不确定度及各输入观测项对减少模拟不确定度的信息贡献。
+
+
+
+
+
+
+
+
+
+
+ 
+\section{高维互信息度量方法改进}
+在计算观测数据对模拟变量信息贡献时，不可避免地涉及到高维互信息的估算。传统的从概率密度函数估算出发的互信息估算方法（如直方图法，平均直方图法，核函数法等）对样本量要求随维度呈指数增长，观测点个数难以满足估算的要求\cite{moon1995estimation}。绕过高维概率密度的$k$近邻算法能够有效处理高维低相关数据信息熵估算，进而间接估算出互信息，然而，该方法对高维高相关的水文数据应用失效\cite{phdgong}。
+
+本节从基于$k$近邻的互信息直接估算算法\cite{kraskov2004estimating}出发，针对高维水文数据点位于非欧空间的特点，利用基于核函数的支持向量机\cite{cortes1995support}，将数据点隐式映射到其特征空间中，进而计算数据点间距离，借以确定$k$近邻高维球内的样本个数，从而估计互信息。
+
+基于$k$近邻的互信息直接估算算法建立在$k$近邻信息熵估算方法\cite{leonenko}基础之上。该算法应用如下方程估算随机变量$X$与随机变量$Y$的互信息：
+\begin{equation}\label{Kraskov}
+I(X,Y)=\psi(k)-N^{-1}\sum_{i=1}^{N}[\psi(n_x(i)+1)+\psi
+(n_y(i)+1)]+\psi(N)
+\end{equation}
+其中$\psi(x)$ 是 digamma 函数：
+\begin{equation}
+  \psi(x)=\Gamma(x)^{-1}d\Gamma(x)/dx
+\end{equation}  
+$k$为近邻数，根据Hyv{\"a}rinen的算法实现，$k$取$4$。$N$为样本点个数。对增广随机变量$Z_i=(X_i,Y_i)$，$Z_j=(X_j,Y_j)$，定义两者极大范数如下：
+\begin{equation}
+||Z_i-Z_j||=max\{||x_i-x_j|| ,||y_i-y_j||\}
+\end{equation}
+$Z_i=(X_i,Y_i)$的$k$邻近点为距其极大范数第$k$小的样本点，该极大范数为$k$邻近距离$\epsilon$，该距离映射到$X$,$Y$子空间距离为$\epsilon _x$,$\epsilon _y$，则显然有$\epsilon=max\{\epsilon _x,\epsilon _y\}$。方程\ref{Kraskov}中$n_x(i)$为与样本点$X_i$距离小于$\epsilon _x$的$X$样本个数，$n_y(i)$为与样本点$y_i$距离小于$\epsilon _y$的$Y$样本个数。图\ref{kras}用实例说明$n_x(i)$与$n_y(i)$的计算方法。
+\begin{figure}[H]
+\centering
+\includegraphics[width=7cm]{kraskov.png}
+\caption{$n_x(i)$与$n_y(i)$计算示例\cite{kraskov2004estimating}：\\k=1时$n_x(i)=5$，$n_y(i)=3$}%\citep{cover2012elements}}
+\label{kras}
+\end{figure}
+
+对方程\ref{Kraskov}的直观解释是，它通过构建能够反映开在每一个样本点周围$k$近邻距离窗口内的样本点密度的统计量来估计数据间的相似度，进而建立其与互信息的理论联系。数值实验说明，即使$30$个左右的高维样本点即可获得满意的估计。该算法的严格证明见Kraskov2004年的论文\cite{kraskov2004estimating}。
+
+应当注意，方程\ref{Kraskov}严重依赖选取哪种范数来衡量数据间的距离。在表\ref{terms}中，由水文观测数据构成的高维项各内部维度之间存在很强的相关性，因此不能视为欧式空间中的点，继而不能使用二范数(欧式距离)衡量样本点的分散程度。
+
+样本空间中非线性函数在映射到高维空间后可以变为线性，该高维空间称为特征空间（不同于线性代数中的特征空间）。比如，二阶多项式将二维数据映射到六维线性空间：
+\begin{equation}
+(x_1,x_2) \to \phi(x_1,x_2)=(1,x_1,x_2,x_1^2,x_2^2,x_1x_2,x_2^2)
+\end{equation}
+在问题呈现出线性性质的特征空间中即可计算样本之间的距离。
+
+为了衡量样本映射到高维空间后的线性性质，可以以高维空间内样本点对目标变量线性回归的误差（又称结构风险）作为最小化优化准则，在另一方面，为了防止过拟合问题，又需要对每一个样本设定一个允许误差（又称经验风险）。
+
+上述问题可以由基于核函数的支持向量机解决。原有样本映射到高维空间后进行允许误差的线性回归的计算中，并不涉及单个样本点的映射值，而只利用映射后样本点间内积，据此，定义核函数如下：
+\begin{equation}
+K(x_i,x_j)\equiv\phi(x_i)^{T}\phi(x_j)
+\end{equation}
+其中$\phi(*)$为低维样本空间点向特征空间点映射的函数。核函数反映了映射到特征空间后的样本内积。
+
+支持向量机通过求解最小化结构风险与经验风险加权和来构建其对样本的学习模型。在该优化过程中，仅利用样本内积。通过选择合适的核函数，利用支持向量机可以求解特征空间上的线性拟合问题。两样本拟合值之差为两样本间距离的线性函数（特征空间线性性质）。因此可以用基于核函数的支持向量机来估算样本点之间的距离。
+
+在水文模拟中，利用基于核函数的支持向量机进行日产流过程模拟\cite{dibike2001model, behzad2009generalization,phdgong}和中长期径流模拟\cite{lin2006using}取得了令人满意的效果。 我们假设应用合适的核函数可以将高维水文变量映射到特征空间中。
+
+综上所述，衡量水文数据样本点$x_1$、 $x_2$间相对距离的函数定义如下：
+\begin{equation}\label{svm}
+Distance(x_1,x_2)\equiv|f(x_1)-f(x_2)|
+\end{equation}
+其中 $f(x)$为基于核函数的支持向量回归方程，核函数依照经验使用径向基函数（ridial basis function）。本文使用Chang \& Lin\citep{chang2011libsvm}编写的libsvm软件包结合粒子群算法\cite{shi1998modified}优化得到模型参数和模拟结果。在应用中，首先将数据各列归一化来平衡各项作用，优化参数$\epsilon$以调节经验风险，优化罚函数$c$以调节结构风险与经验风险权重，优化$\gamma$以调整核函数。为了进一步防止过拟合，在上述参数率定中，使用三折交叉率定，即将数据分成三份，轮流用其中两份作为训练数据，1份作为测试数据，进行实验，三次结果的平均值作为优化率定准则。应用方程\ref{svm}估算各样本点相对距离后，回代入方程\ref{Kraskov}，即可求得高维变量互信息值。
+ 
+数据分为三等份，任取两份作为训练集，剩余1份作为测试集，三次率定的结果平均值作为优化准则。
+
+
+上述所有算法代码遵从GNU通用公共许可协议，可在如下地址下载，自由应用并改进：
+{\href{http://github.com/morepenn/matlab/tree/master}
+{\underline
+{http://github.com/morepenn/matlab/tree/master}}}
+\section{本章小结}
+本章从信息理论的两个基本定义---信息熵、互信息出发，讨论了其基本性质和联系，并通过贝叶斯定理将其和传统的水文不确定性分析框架联系起来。基于数据处理不等式，量化了水文观测模拟过程中的先验不确定度，数据支撑下的后验不确定度和模型模拟支撑下的后验不确定度，定义了由于数据不充分和不精确造成的随机不确定度，由于模型对数据的不充分利用造成的认知不确定度。进一步分析了各观测项、模拟状态变量的信息贡献。最后，从几何意义出发，假设应用合适核函数可以将高维水文变量映射到特征空间，建立了结合基于核函数的支持向量机和$k$近邻法的高维水文变量互信息估算方法，为该评估体系的实际应用奠定了条件。
+
+
+
+\iffalse
+
+\subsection{Bits in Hydrological Simulation Context}
+It is intuitively believed that an infrequent sample of a 
+random variable provides more surprisal, or information. 
+The  mathematical expression of this common sense is that 
+information provided by an observation should be a 
+decreasing function of its probability. If we further 
+require the additive property of information between 
+independent events, the form of information content 
+attributed to a sample with probability $p$ should be $-
+logp$. Thus, the average information content of random 
+variable $X$ is:
+\begin{equation}
+\label{dentropy}
+H(X)=-\Sigma p(x)logp(x)
+\end{equation}
+\begin{equation}
+\label{centropy}
+h(X)=-\int f(x)logf(x)dx
+\end{equation}   
+$H(X)$ and $h(X)$ denote discrete and continuous Shannon 
+Entropy, measured in bits for logarithm base 2. The unit 
+bit is widely used in computer science because an ideally 
+efficient encoding system is an exact physical 
+implementation of information theoretical principles. 
+
+While discrete entropy directly characterizes the average 
+information content each observation brings to our 
+knowledge, things become a little tricky for continuous 
+situation. For continuous random variable, the probability 
+of each value in the sample space is 0, since $-logp \to 
+\infty$  as $p \to 0$, the information provided by each 
+observation is infinite.  
+
+As is shown in Figure 1, let $X^\Delta$ be the discrete 
+stochastic variable by scattering a continuous random 
+variable $X$ into bins with length of $\Delta$ in its 
+probability density function image, we have:
+\begin{equation}\label{correct}
+H(X^\Delta)\to h(X)-log\Delta,~~as\; \Delta \to 0
+\end{equation}
+\begin{figure}[H]
+\centering
+\includegraphics[width=8cm]{Quantization.png}
+\caption{Quantization of Continuous Random Variable}%
+\citep{cover2012elements}}
+\end{figure}
+This tells that differential entropy itself can not 
+represent the average uncertainty of the information 
+resource or the average information provided by each datum. 
+However, if we only require an interval estimation, $h(X)-
+log\Delta $ would reveal the information content required 
+to describe $X$ to $ -log\Delta$ bit accuracy\citep
+{cover2012elements}.  Here $ -log\Delta$ bit accuracy means 
+$X$ takes a same value in a bin-width of $\Delta$ in the 
+p.d.f. curve. 
+
+The other term we apply here is mutual information. Its 
+discrete and continuous forms are as follows:
+\begin{equation}
+I(X;Y)=\sum_{x,y}p(x,y)log\frac{p(x,y)}{p(x)p(y)}
+\end{equation}
+\begin{equation}
+I(X;Y)=\int \int f(x,y)log\frac{f(x,y)}{f(x)f(y)}dxdy
+\end{equation}
+As can be derived:
+\begin{equation}\label{eq8}
+I(X;Y)=H(Y)-E[H(Y|X)]=H(X)-E[H(X|Y)]
+\end{equation}
+$E$ denotes expectation. The latter item in the middle and 
+left part of equation %\eqref{eq8} 
+are called conditional entropy, which represents the 
+residual uncertainty of a random variable given the 
+knowledge of the other. Thus,
+$I(X;Y)$ denotes %the information content shared by two 
+random variables. It could be interpreted as 
+the uncertainty decrease of $X$ given the knowledge of $Y$, 
+and vice versa. It is always non-negative according to  
+Jesen Inequality \citep{cover2012elements}.
+
+The continuous mutual information $I(X;Y)$ is the limit of 
+the discrete mutual information of partitions of $X$ and 
+$Y$ as these partitions become finer and finer. Thus it  
+still represents the amount of discrete information that 
+can be transmitted over a channel that admits a continuous 
+space of values.
+
+The definitions above are closed related with Bayesian 
+Statistics. Bayes' theorem is stated mathematically as the 
+following equation:
+\begin{equation}
+\label{bayes}
+P(A|B) = P(A)\times \frac{P(B | A)}{P(B)},
+\end{equation}
+where A and B are events.
+$P(A)$ denotes prior distribution, $P(A|B)$ denotes 
+posteriori distribution. $\frac{P(B | A)}{P(B)}$ is called 
+standardised likelihood. 
+Equation \ref{bayes} quantizes how a subjective degree of 
+belief should rationally change to account of evidence. 
+
+As have been declared, each probability distribution 
+corresponds to its uncertainty or information content as is 
+defined in Equation \ref{dentropy}  or  \ref{centropy}. We 
+implement the function on both sides of Equation \ref
+{bayes}. The specific steps are as follows:
+\begin{itemize}
+\item[(1)] Make logarithmic transformation of Equation 
+\ref{bayes}:
+\begin{equation}
+\label{log}
+logP(A|B) =logP(A)+log \frac{P (AB)}{P(A)P(B)} 
+\end{equation}
+\item[(2)] Multiply each item by $-P(A,B)$:
+\begin{equation}
+\label{element}
+-P(A,B)logP(A|B) =-P(A,B) logP(A)-P(A,B) log \frac{P (AB)}
+{P(A)P(B)} 
+\end{equation} 
+\item[(3)] Sum or integrate each item in the sample space:
+\begin{small}
+\begin{equation}
+\label{element1}
+-\sum_{A} \sum_{B} P(A,B)logP(A|B) =-\sum_{A} \sum_{B} P
+(A,B) logP(A)-\sum_{A} \sum_{B} P(A,B) log \frac{P (AB)}{P
+(A)P(B)} 
+\end{equation} 
+\end{small}
+or
+\begin{small}
+\begin{equation}
+\label{element2}
+-\int\int P(A,B)logP(A|B)dAdB =-\int \int P(A,B)logP(A)dAdB 
+-\int \int P(A,B)log \frac{P (AB)}{P(A)P(B)}dAdB
+\end{equation}
+\end{small}
+\end{itemize}
+which simplifies to  
+\begin{equation}
+\label{bayesuncertainty}
+H(A|B) = H(A)-MI(A,B)
+\end{equation}
+
+Given the correspondence of  Equation \ref{bayes} and \ref
+{bayesuncertainty}, $H(A|B)$  represents posterior 
+uncertainty, $H(A)$ represents prior uncertainty, $MI(A,B)$ 
+represents information connection between the two random 
+variables. 
+
+
+\fi
+\iffalse
+\section{信息论及其在水文中的应用}
+\section{以信息熵互信息为基础的水文模拟不确定性分析}
+The philosophy of the epistemic aleatory uncertainty 
+framework along with its information theory background is 
+briefly introduced first. Further details are available in 
+Gong's innovative work\cite{}. Here we focus on the 
+theoretical validity of using differential entropy to 
+represent the uncertainty and the applicant consideration 
+of inconsistent hydrological series. We bring forward the 
+corresponding modification at last.
+ 
+
+{\centering {\subsection{Brief Introduction of The 
+Epistemic Aleatory Uncertainty Framework}}}
+
+The epistemic aleatory uncertainty framework is brought 
+forward as a data-dominated model-structure-independent 
+model evaluate approach based in information theory. The 
+philosophy of this approach is to map the hydrological 
+series and functions to the information space in the form 
+of entropy and mutual information.
+
+The widely-used Shannon Entropy is defined as follows:
+\begin{equation}
+H(X)=-\Sigma p(x)logp(x)
+\end{equation}
+where $X$ is discrete stochastic variant, $p(x)$ denotes 
+the probability of $X$ taking the value $x$, $H(X)$ is the 
+Shannon Entropy.
+It could be interpreted as the average uncertainty of X. 
+The larger $H(X)$ is, the less knowledge we have about $X$.
+
+Another item applied here is mutual information:
+\begin{equation}
+I(X;Y)=\sum_{x,y}p(x,y)log\frac{p(x,y)}{p(x)p(y)}
+\end{equation}
+where $X$ and $Y$ are discrete stochastic variables,
+$I(X,Y)$ is the mutual information, which could be 
+interpreted as the uncertainty decrease of $X$ given the 
+knowledge of $Y$.
+
+The mutual information is submitted to the data processing 
+inequality:
+If $X$ and $Z$ are conditional independent given $Y$, then:
+\begin{equation}
+I(X;Y) \geq I(X;Z)
+\end{equation}
+Proof
+
+In the hydrological simulation context,
+
+
+
+
+
+
+ 
+
+Note that the continuous mutual information I(X;Y) has the 
+distinction of retaining its fundamental significance as a 
+measure of discrete information since it is actually the 
+limit of the discrete mutual information of partitions of X 
+and Y as these partitions become finer and finer. Thus it 
+is invariant under non-linear homeomorphisms (continuous 
+and uniquely invertible maps) ,\cite{} including linear
+\cite{} transformations of X and Y, and still represents 
+the amount of discrete information that can be transmitted 
+over a channel that admits a continuous space of values.
+
+
+ 
+
+The essence of the aleatory uncertainty is the conditional 
+differential entropy of the observation to the input, 
+denoted as  $h(Observation|Input)$. However, the 
+conditional differential entropy, which is a weighted 
+differential entropy, can not represent the average 
+uncertainty of the information resource nor the average 
+information provided by each datum, which is the 
+observation in our context. \cite{}.
+
+
+
+
+
+short description
+\begin{itemize}
+\item basic ideas
+\item consideration and tactics
+\end{itemize}
+\section{水文模型泛函编码范式描述}
+
+\section{水文计算复杂度}
+
+计算复杂度简介
+
+计算复杂度不可求
+
+
+
+\subsection{程序语言}
+\begin{itemize}
+\item 面向过程 命令式
+\item 面向对象 所有的部分都是对象
+\item 函数式 所有的部分都是函数
+\end{itemize}
+\begin{itemize}
+\item 语言特征
+\item 语言适用域
+\item 开发时间长度
+\item 维护时间长度
+\item 程序执行速度
+\item 可重用性
+\item 不同模型整合
+\item 代码长度与复杂度
+\item 库
+\item 对开发者的要求
+\end{itemize}
+
+expressiveness of languages in hydrology.
+domain specific languages should be definable in any 
+paradigm(except the domain needs a particular concept).
+
+
+用问题空间的术语描述问题的解
+用计算机的术语描述问题解决的过程
+用函数的术语描述模型的逻辑
+
+“汇编语言只检查语法，而c增加了一些语义约束，能防止程序员犯
+某些类型的错误。oop语言强加了更多的语义约束。”
+
+
+结对编程 
+
+“Algorithmic information theory is used to shed light on 
+the connection
+between science and data compression and the link between 
+the amount of information
+and model complexity is discussed in this context.”
+
+“There are two things we can do about that. In the first
+place we try to reduce uncertainty by obtaining 
+information. This information can result
+in understanding and predictions that remove some of the 
+initial uncertainty. In the second
+place, we have to deal with the remaining uncertainty by 
+making rational decisions.”
+
+
+It is intuitively believed that an infrequent sample of a 
+random variable provides more surprisal, or information. 
+The  mathematical expression of this common sense is that 
+information provided by an observation should be a 
+decreasing function of its probability. If we further 
+require the additive property of information between 
+independent events, the form of information content 
+attributed to a sample with probability $p$ should be $-
+logp$. Thus, the average information content of random 
+variable $X$ is:
+\begin{equation}
+H(X)=-\Sigma p(x)logp(x)
+\end{equation}
+\begin{equation}
+h(X)=-\int f(x)logf(x)dx
+\end{equation}   
+$H(X)$ and $h(X)$ are denoted as discrete and continuous 
+Shannon Entropy, measured in bits for logarithm base 2. The 
+unit bit is widely used in computer science because an 
+ideally efficient encoding system is an exact physical 
+implementation of information theoretical principles. 
+
+While discrete entropy directly characterizes the average 
+information content each observation brings to our 
+knowledge, things become a little tricky for continuous 
+situation. For continuous random variable, the probability 
+of each value in the sample space is 0, since $-logp \to 
+\infty$  as $p \to 0$, the information provided by each 
+observation is infinite.  
+
+As is shown in Figure 1, let $X^\Delta$ be the discrete 
+stochastic variable by scattering a continuous random 
+variable $X$ into bins with length of $\Delta$ in its 
+probability density function image, we have:
+\begin{equation}\label{correct}
+H(X^\Delta)\to h(X)-log\Delta,~~as ~\Delta \to 0
+\end{equation}
+\iffalse
+\begin{figure}[H]
+\centering
+\includegraphics[width=8cm]{Quantization.png}
+\caption{Quantization of a Continuous Random Variable}%
+\cite{cover2012elements}}
+\end{figure}
+\fi
+This tells that differential entropy itself can not 
+represent the average uncertainty of the information 
+resource or the average information provided by each datum. 
+However, if we only require an interval estimation, $h(X)-
+log\Delta $ would reveal the information content required 
+to describe $X$ to $ -log\Delta$ bit accuracy\cite
+{cover2012elements}.  Here $ -log\Delta$ bit accuracy means 
+$X$ takes a same value in a bin-width of $\Delta$ in the 
+p.d.f. curve. 
+
+The other item we apply here is mutual information. Its 
+discrete and continuous forms are as follows:
+\begin{equation}
+I(X;Y)=\sum_{x,y}p(x,y)log\frac{p(x,y)}{p(x)p(y)}
+\end{equation}
+\begin{equation}
+I(X;Y)=\int f(x,y)log\frac{f(x,y)}{f(x)f(y)}dxdy
+\end{equation}
+As can be derived:
+\begin{equation}\label{eq8}
+I(X;Y)=H(Y)-E[H(Y|X)]=H(X)-E[H(X|Y)]
+\end{equation}
+$E$ denotes expectation. The latter item in the middle and 
+left part of equation \eqref{eq8} is denoted as conditional 
+entropy, which represents the residual uncertainty of a 
+random variable given the knowledge of the other. Thus,
+$I(X;Y)$ denotes %the information content shared by two 
+random variables. It could be interpreted as 
+the uncertainty decrease of $X$ given the knowledge of $Y$, 
+and vice versa. It is always non-negative according to  
+Jesen Inequality \cite{cover2012elements}.
+
+The continuous mutual information $I(X;Y)$ is the limit of 
+the discrete mutual information of partitions of $X$ and 
+$Y$ as these partitions become finer and finer. Thus it  
+still represents the amount of discrete information that 
+can be transmitted over a channel that admits a continuous 
+space of values.
+
+In hydrological simulation, a general goal is to produce 
+accurate runoff simulation with inputs from 
+hydrometeorological series, underlying surface observations 
+or other information sources. This is not only for the 
+practical objective of efficient water resources 
+utilization, but also for the scientific value that once 
+the runoff process were characterized, each component into 
+which the precipitation is partitioned gets determined. 
+
+The information theoretical paraphrase of this notion is 
+that the information content of runoff observation depicts 
+information required to figure out the catchment's 
+hydrological compositions, which could be decreased due to 
+the information contribution of the input observations. The 
+observation noise is denoted as \emph{Aleatory 
+Uncertainty}. The model serves as an information distiller 
+or decoder that transfers the mass input observation data 
+into simple simulations. The information loss during 
+decoding is denoted as \emph{Epistemic Uncertainty}.
+
+The new definitions should blend into the existed knowledge 
+system. We provide the interpretation of \emph{Aleatory 
+Uncertainty} and \emph{Epistemic Uncertainty} with 
+terminologies in Bayesian Statistics here. Bayes' theorem 
+is stated mathematically as the following equation:
+\begin{equation}
+\label{bayes}
+P(A|B) = P(A)\times \frac{P(B | A)}{P(B)},
+\end{equation}
+where A and B are events.
+$P(A)$ denotes prior distribution, $P(A|B)$ denotes 
+posteriori distribution. $\frac{P(B | A)}{P(B)}$ is called 
+standardised likelihood. 
+Equation \ref{bayes} quantizes how a subjective degree of 
+belief should rationally change to account of evidence. 
+
+As have been declared, each probability distribution 
+corresponds to its uncertainty or information content as is 
+defined in Equation \ref{dentropy}  or  \ref{centropy}. We 
+implement the function on both sides of Equation \ref
+{bayes}. The specific steps are as follows:
+\begin{itemize}
+\item[(1)] Make logarithmic transformation of Equation 
+\ref{bayes}:
+\begin{equation}
+\label{log}
+logP(A|B) =logP(A)+log \frac{P (AB)}{P(A)P(B)} 
+\end{equation}
+\item[(2)] Multiply each item by $-P(A,B)$:
+\begin{equation}
+\label{element}
+-P(A,B)logP(A|B) =-P(A,B) logP(A)-P(A,B) log \frac{P (AB)}
+{P(A)P(B)} 
+\end{equation} 
+\item[(3)] Sum or integrate each item in the sample space:
+\begin{small}
+\begin{equation}
+\label{element1}
+-\sum_{A} \sum_{B} P(A,B)logP(A|B) =-\sum_{A} \sum_{B} P
+(A,B) logP(A)-\sum_{A} \sum_{B} P(A,B) log \frac{P (AB)}{P
+(A)P(B)} 
+\end{equation} 
+\end{small}
+or
+\begin{small}
+\begin{equation}
+\label{element2}
+-\int\int P(A,B)logP(A|B)dAdB =-\int \int P(A,B)logP(A)dAdB 
+-\int \int P(A,B)log \frac{P (AB)}{P(A)P(B)}dAdB
+\end{equation}
+\end{small}
+\end{itemize}
+Thus, 
+\begin{equation}
+\label{bayesuncertainty}
+H(A|B) = H(A)-MI(A,B)
+\end{equation}
+
+Given the correspondence of  Equation \ref{bayes} and \ref
+{bayesuncertainty},  
+
+
+
+Hydrological series encoded in different context can take 
+up different amounts of bits. In this research, we restrict 
+our attention to hydrological observations sampled 
+discretely along the time domain base. The sample space is 
+built on the clustered coordinates at various temporal 
+scales without considering seasonal fluctuation or any 
+other temporal inconsistencies. This will increase the 
+estimated information contents for neglecting the inner 
+structures, but the endeavour to compress the data to their 
+``true information contents'' is endless for its logical 
+paradox\cite{li2009introduction}. It will also impair the 
+criterion's generality in evaluating the observation and 
+simulation system.  
+
+ 
+
+
+With the sample spaces constructed,
+%and the disqualification of using differential entropy to 
+represent information content
+we apply the introduced terms to quantify the information 
+contents and connections of catchment hydrological 
+variables across temporal scales. The specific values to be 
+estimated are listed in table 1. All these estimations are 
+implemented at temporal scales from 10 days to a year. This 
+range  bypasses the difficulty of estimating discrete-
+continuous hybrid distributed daily precipitations\cite
+{gong2014estimating} while incorporating significant 
+temporal scales in detecting long term catchment 
+hydrological behaviours. 
+
+\begin{center}
+
+\end{center}
+\begin{table}[H] 
+\caption{Estimated Information Terms}
+\resizebox{\textwidth}{!}
+{
+\begin{tabular}{ccc}
+\toprule[1.5pt]
+ Classification  &  Estimated Terms \\
+\midrule[1pt]
+ Observation   &$h(R_t)$ \\
+Focused \\
+%$I(R_t;P_t,P_{t-1}),...$,$I(R_t;P_t,P_{t-1},...,P_{t-n})$
+\\
+%\multicolumn{2}{c}{Irrelevant}&\\
+ &$I(R_t;P_t)...I(R_t;P_t,P_{t-1}...P_{t-n})$\\
+\\
+ &
+$I(R_t;P_t,PE_t),I(R_t;P_t,P_{t-1},PE_t,PE_{t-1}),...$\\
+ &$I(R_t;P_t,P_{t-1},...,P_{t-n},PE_t,PE_{t-1},...PE_{t-
+n})$\\
+ &\\
+ &$I(R_t;P_t,P_{t-1},PE_t,PE_{t-1},R_t-1),...$\\
+ &$I(R_t;P_t,P_{t-1},...,P_{t-6},PE_t,PE_{t-1},...PE_{t-
+6},R_{t-1},...R_{t-n})$\\
+\\
+\\
+%Model    & HyMod&$I(R_t;Rs_t),$ $I(R_t;P_t,PE_t,S_t)$  \\
+Model  & TPWB: $I(R_t;Rs_t),$ $I(R_t;P_t,PE_t,S_t)$  \\
+Focused\\
+       & Budyko:  $I(R_t;Rs_t)$\\
+
+\bottomrule[1.5pt]
+\end{tabular}
+}
+\end{table}
+$P_t$ and $PE_t$ denotes precipitation and potential 
+evapotranspiration random variables at time step $t$. $R_t$ 
+and $Rs_t$ denotes observed and simulated runoff random 
+variables at time step $t$. $h(R_t)$ provides the base to 
+estimate information content of runoff at different 
+quantization schemes. By gradually introducing different 
+hydrological terms with different previous input steps into 
+the estimation of their mutual information with the runoff 
+data, we can make a specific analysis of their information 
+contributions .  
+%We used a parsimonious five-state-variable implementation
+%of theHyModmodel (Figure 3) [Boyle, 2000], in which
+%
+
+%The first three focus on different temporal scales.
+%HyMod is five parameter conceptual hydrological model 
+developed by Boyle\cite{boyle2001multicriteria}. The model 
+structure is shown in figure 2. In HyMod, 
+Evapotranspiration losses are computed using a nonlinear 
+soil moisture accounting module \cite
+{moore1985probability}, and two series of parallel linear 
+tanks (three quick and one slow)control the rates of 
+moisture drainage to the catchment outlet.  $S_t$ is the 
+state variable at time step $t$ of the model.The temporal 
+scale of HyMod is hourly to daily. 
+TPWB and Budyko Model are two typical hydrological models 
+selected in this research. 
+TPWB is a two parameter water balance model\cite
+{xiong1999two}. The model adapts an adjusted Ol'dektop 
+equation\cite{jobson1982evaporation} to depict the runoff 
+generation and evapotranspiration at a monthly temporal 
+scale and achieved satisfying performance. $S_t$ is the 
+state variable at time step $t$. It is employed to 
+represent the influence of former hydrological conditions. 
+The Budyko Model is the combination of Budyko Curve and 
+water balance equation as described above. %The linear 
+model is a simple linear regression of $P$ and $PE$ to $R$. 
+%something about why use linear model here.
+
+\subsection{Quantization Schemes for Runoff Differential 
+Entropy}
+
+Since runoff observations are taken as continuous random 
+variables in our hydrological simulation context, $h(R)$ 
+can not characterize the average information content each 
+runoff observation brings to our knowledge of the 
+hydrological behaviour. Certain quantization schemes should 
+be pre-setted to justify the significance of the 
+estimation. We apply two quantization schemes here:
+\begin{enumerate}
+\item Absolute constant resolution across temporal scales.
+\item Relative constant resolution across temporal Scales.
+\end{enumerate} 
+
+As has been clarified, a $-log\Delta$ bit accuracy 
+description of a continuous random variable $X$ depicts it 
+to the resolution that $X$ takes a same value in a bin-
+width of $\Delta$ in the its p.d.f. curve. 
+
+For Quantization Scheme 1,  the bin-width $\Delta$ into 
+which we discretize the runoff observation data stays the 
+same as the evaluating temporal scale expands. 
+
+For Quantization Scheme 2,  the bin-width $\Delta$ into 
+which we discretize the runoff observation data is 
+proportional to the mean value of the runoff observation at 
+the specific temporal scale. We further assume that the 
+mean value of the runoff random variable to be proportional 
+to its temporal scale. In this way, the discretization 
+bin-width is proportional to the temporal scale. The 
+quantization correction term is proportional to the 
+logarithm of the temporal scale according to equation \ref
+{correct}.
+
+Thus, given two scales $m$ and $n$ into which we cluster 
+the daily runoff observation data, the entropy difference 
+in depicting them with quantization schemes introduced 
+above is:
+
+\begin{equation}
+H(R_m)-H(R_n)=\left\{
+\begin{array}{rl}
+h(R_m)\quad-\quad h(R_n)&;\text{Quantization Scheme 1}\\
+h(R_m)-h(R_n)-log\frac{m}{n}&;\text{Quantization Scheme 2} 
+\end{array}
+\right.
+\end{equation} 
+
+%In this research, these two quantization schemes are 
+applied to show the relative magnitudes of runoff 
+observations clustered at different temporal scales. 
+
+
+ 
+
+
+%The uniform observations guarantee the unbias  of the 
+samples.
+\subsection{High Dimensional Mutual Information Estimator}
+Due to the curse of dimensionality, the high dimensional 
+terms in table 1 could not be accurately estimated with 
+primitive information estimators such as bin-counting or 
+kernel density approaches. Besides, we want to make a 
+direct estimation of mutual information to avoid  error 
+assumption. In this research, we adapt a widely accepted 
+non-plug-in mutual information estimator and make some 
+adjustments for its application in hydrological simulation 
+context. The original method is derived from the $k$ 
+nearest neighbour entropy estimation approach \cite
+{kraskov2004estimating}:
+\begin{equation}\label{Kraskov}
+I(X,Y)=\psi(k)-N^{-1}\sum_{i=1}^{N}[\psi(n_x(i)+1)+\psi
+(n_y(i)+1)]+\psi(N)
+\end{equation}
+Here $\psi(x)$ is the digamma function, $\psi(x)=\Gamma(x)
+^{-1}d\Gamma(x)/dx$. k is order of nearest neighbour, $n_x
+(i)$ and $n_y(i)$ are the numbers of samples that are 
+within the k-th nearest  criss-cross surrounding sample 
+point $i$.
+
+An intuitive understanding of the equation is that it 
+estimates mutual information with statistics that depict 
+the average concentrating density of each window opened 
+around a sample point. Numerical experiments show that even 
+less than 30 sample size produces satisfying results. For a 
+strict proof, please refer to Kraskov(2004).
+
+We should notice that the widths of the windows are 
+determined by the ordered $distance~functions$ we select to 
+define the distances between samples. Since each dimension 
+of a single sample represents different hydrological terms, 
+the hydrological modelling space can not be taken as 
+Euclidean. Thus, the Euclidean $norms$ can not reflect the 
+$geodesic      ~distances$ between points. 
+ 
+ 
+One approach to make a justifiable distance between samples 
+  is to map the points to their feature space through a 
+certain transformation and calculate the $norm$ in that 
+space. The linear regression from the transformed points to 
+the simulating variable forms an integrated model. This is 
+in fact the idea of non-linear support vector regression
+(SVR). Non-linear SVR uses the kernel trick to implicitly 
+map its inputs into high-dimensional feature spaces. The 
+method has been proven to be of great accuracy in runoff 
+generation modelling\cite
+{dibike2001model,lin2006using,asefa2006multi,behzad2009gene
+ralization,phdgong}.
+
+We use the following function to depict the distance 
+between two model input samples $x_1$ and $x_2$:
+\begin{equation}\label{svm}
+SVM\_Metric(x_1,x_2)=|f(x_1)-f(x_2)|
+\end{equation}
+Here $f(x)$ is the support vector regression function that 
+fit the input to the output of the sample.   
+%Evidently the definition satisfies the standards of 
+$metric$, explicitly, non-negativity, identity of 
+indiscernibles, symmetry and triangle inequality. 
+
+In practice, the support vector regression is implemented 
+using the libsvm package\cite{chang2011libsvm}.  We select 
+the radial basic function kernel to make the non-linear 
+transformation in the support vector regression algorithm 
+for its satisfying performance. The data are first scaled 
+to $[-1,1]$ to balance the impact of different dimensional 
+terms. The result of SVR is sensitive to the penalty 
+function parameter $c$ and kernel parameter $g$, both of 
+which are auto calibrated with particle swarm optimization 
+algorithm\cite{shi1998modified}. To avoid overfitting, we 
+apply  3 cross validation in the support vector regression 
+parameter estimation. 
+
+The calculating steps are as follows:
+ \begin{enumerate}
+ \item [(1)]Re-cluster the original hydrological data 
+(daily precipitation, potential evapotranspiration and 
+runoff) into different temporal scale terms. 
+ \item [(2)]Calculate the  model irrelevant information 
+terms  at these temporal scales.
+ \item [(3)]Implement hydrological simulation and calculate 
+the model relevant mutual information terms.
+ \end{enumerate}
+
+The specific procedure of high dimensional mutual 
+information estimating is as follows:
+\begin{enumerate}
+\item [(1)]Train support vector machine to find suitable 
+mapping type (by choosing kernel function) and parameters.
+\item [(2)]Use the trained support vector machine to 
+estimate the distances between high dimensional inputs 
+using equation \ref{svm}.
+\item [(3)]Estimate mutual information with equation \ref
+{Kraskov}.
+\end{enumerate}
+
+ 
+All the codes are available at the github URL: 
+
+{\href{http://github.com/morepenn/matlab/tree/master}
+{\underline
+{http://github.com/morepenn/matlab/tree/master}}}
+
+
+
+
+
+
+The estimation of catchment hydrological processes is 
+supported by the   the observation and simulation system. 
+There is no essential distinction between the uncertainties 
+introduced in the two systems. Both of them are caused by 
+insufficiency or inaccuracy of data, and are restricted by 
+the data processing inequality\citep{cover2012elements}.
+
+The data-processing inequality states that if random 
+variables $X$,$Y$,$Z$ form a Markov chain in that order 
+(denoted by $X \rightarrow Y \rightarrow Z$), then:
+\begin{equation}
+I(X;Y) \geq I(X;Z)
+\end{equation}
+\iffalse
+Since:
+\begin{equation}
+R \rightarrow R \rightarrow Input
+\end{equation}
+We have:
+\begin{equation}
+\label{a}
+I(R;R) \geq I(R;Input)
+\end{equation}
+According to the definition, 
+\begin{equation}
+\label{a}
+I(R;R)=h(R)
+\end{equation}
+\fi
+Since:
+\begin{equation}
+R \rightarrow Input_{original},Input_{new} \rightarrow 
+Input_{original}
+\end{equation} 
+We have:
+\begin{equation}
+\label{inequality}
+I(R;Input_{original},Input_{new}) \geq I(R;Input_
+{original})
+\end{equation}
+Here $Input_{original}$ denotes the original input 
+observation items, $Input_{new}$ denotes the new introduced 
+items.  
+
+Inequality \ref{inequality} guarantees the non-negativity 
+of items in table \ref{PER} and table \ref{former} (the few 
+negative points are attributed to estimation error).  
+These values quantize the information contribution of  
+hydrometeorological items from current and former 
+calculating steps. As have been declared, the contributions 
+also vary between catchments and temporal scales, though 
+some common patterns exist in catchments of similar 
+seasonality characteristics.
+
+The data processing inequality can also be employed to 
+explain patterns shown in Table \ref{eeuu} and Table \ref
+{MI}. The state variable $S$ in TPWB is the function of 
+previous hydrological terms $Input_{previous}$. Its 
+simulation $R_s$ is the function of $S$ and current 
+hydrometeorology inputs $Input_{current}$. Thus:
+\begin{equation}
+R \rightarrow Input_{previous},Input_{current} \rightarrow 
+S,Input_{current} \rightarrow R_s
+\end{equation}
+which could be simplified  as:
+ \begin{equation}
+R \rightarrow Input \rightarrow S,Input_{current} 
+\rightarrow R_s
+\end{equation}
+given the data-processing inequality, we have:
+\begin{equation}
+\label{ie2}
+I(R;Input)\geq I(R;S,Input_{current}) \geq I(R;R_s)
+\end{equation}
+The whole inequality explains the non-negativity of \emph
+{Epistemic Uncertainty} in both models while the latter one 
+explains why $I(R_t;P_t,PE_t,S_t)$ is no smaller than $I
+(R,R_s)$ in TPWB.
+
+Though there is no mathematical difference between the 
+uncertainty sources, it is helpful to distinct the 
+uncertainties introduced by observation and simulation in 
+order to make corresponding improvements\citep
+{gong2013estimating}. 
+
+Specific to the temporal scale analysis of hydrological 
+patterns, the origin of observation uncertainty, defined as 
+\emph{Aleatory Uncertainty}, can be attributed to two 
+sources. Th first one is  observation bias. For consistent 
+observations with no system error, this uncertainty source  
+weakens as temporal scale expands  due to the large number 
+law. The daily observation errors tend to set off when 
+clustering them together. 
+
+The other origin is the inherent uncertainty caused by the 
+coarse temporal scale. A simple clustering of water 
+quantity of different hydrological terms can not exert a 
+strong control of the system. The variability of their 
+temporal distribution takes effect in increasing the 
+uncertainty. 
+
+Given the reliability of the MOPEX dataset, the latter 
+uncertainty source is viewed as the dominant factor. In 
+other words, the \emph{Aleatory Uncertainty} is mainly 
+caused by data insufficiency rather than inaccuracy for 
+large temporal scales.
+
+
+
+In hydrological simulation, a general goal is to produce 
+accurate runoff simulation with inputs from 
+hydrometeorological series, underlying surface observations 
+or other information sources. This is not only for the 
+practical objective of efficient water resources 
+utilization, but also for the scientific value that once 
+the runoff process were characterized, each component into 
+which the precipitation is partitioned gets determined. 
+
+The information theoretical paraphrase of this notion is 
+that the information content of runoff observation depicts 
+information required to figure out the catchment's 
+hydrological compositions, which could be decreased due to 
+the information contribution of the input observations.
+%A same hydrological behaviour can be simulated with 
+different models, which means that we have many data 
+processing 
+
+There are two steps in quantizing this information 
+contribution. The first step is observation and the second 
+is simulation. Noise introduced in observation is called 
+\emph{Aleatory Uncertainty}. The simulator serves as an 
+information distiller or decoder that transfers the mass 
+input observation data into simple simulations. The 
+information loss during decoding is called \emph{Epistemic 
+Uncertainty}. Both the two terms are measured in bits. 
+
+Hydrological series encoded in different context can take 
+up different amounts of bits. In this research, we restrict 
+our attention to hydrological observations sampled 
+discretely along the time domain base. The sample space is 
+built on the clustered coordinates without considering 
+seasonal fluctuation or any other temporal inconsistencies. 
+This will increase the estimated information contents for 
+neglecting the inner structures, but the endeavour to 
+compress the data to their ``true information contents'' is 
+endless for its logical paradox\citep{li2009introduction}. 
+It will also impair the criterion's generality in 
+evaluating the observation and simulation system.  
+
+ 
+
+
+With the sample spaces constructed,
+%and the disqualification of using differential entropy to 
+represent information content
+we apply the introduced items to quantify the information 
+contents and connections of catchment hydrological 
+variables across temporal scales. The specific values to be 
+estimated are listed in table 1. All these estimations are 
+implemented at temporal scales from 10 days to a year. This 
+range  bypasses the difficulty of estimating discrete-
+continuous hybrid distributed daily precipitations\citep
+{gong2014estimating} while incorporating significant 
+temporal scales in detecting long term catchment 
+hydrological behaviours. 
+
+Due to the curse of dimensionality, the high dimensional 
+terms in table 1 could not be accurately estimated with 
+primitive information estimators such as bin-counting or 
+kernel density approaches. Besides, we want to make a 
+direct estimation of mutual information to avoid  error 
+assumption. In this research, we adapt a widely accepted 
+non-plug-in mutual information estimator and make some 
+adjustments for its application in hydrological simulation 
+context. The original method is derived from the $k$ 
+nearest neighbour entropy estimation approach \citep
+{kraskov2004estimating}:
+\begin{equation}\label{Kraskov}
+I(X,Y)=\psi(k)-N^{-1}\sum_{i=1}^{N}[\psi(n_x(i)+1)+\psi
+(n_y(i)+1)]+\psi(N)
+\end{equation}
+Here $\psi(x)$ is the digamma function, $\psi(x)=\Gamma(x)
+^{-1}d\Gamma(x)/dx$. k is order of nearest neighbour, $n_x
+(i)$ and $n_y(i)$ are the numbers of samples that are 
+within the k-th nearest  criss-cross surrounding sample 
+point $i$. For this research, k takes 4 in accordance with 
+Hyv{\"a}rinen's implementation.
+
+An intuitive understanding of the equation is that it 
+estimates mutual information with statistics that depict 
+the average concentrating density of each window opened 
+around a sample point. Numerical experiments show that even 
+less than 30 sample size produces satisfying results. For a 
+strict proof, please refer to Kraskov(2004).
+
+We should notice that the widths of the windows are 
+determined by the ordered $distance~functions$ we select to 
+define the distances between samples. Since each dimension 
+of a single sample represents different hydrological terms, 
+the hydrological modelling space can not be taken as 
+Euclidean. Thus, the Euclidean $norms$ can not reflect the 
+$geodesic      ~distances$ between points. 
+ 
+ 
+One approach to make a justifiable distance between samples 
+  is to map the points to their feature space through a 
+certain transformation and calculate the $norm$ in that 
+space. The linear regression from the transformed points to 
+the simulating variable forms an integrated model. This is 
+in fact the idea of non-linear support vector regression
+(SVR). Non-linear SVR uses the kernel trick to implicitly 
+map its inputs into high-dimensional feature spaces. The 
+method has been proven to be of great accuracy in runoff 
+generation modelling\citep
+{dibike2001model,lin2006using,asefa2006multi,behzad2009gene
+ralization,phdgong}.
+\fi

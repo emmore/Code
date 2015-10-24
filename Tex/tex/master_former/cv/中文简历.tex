@@ -1,0 +1,59 @@
+% LaTeX resume using res.cls
+\documentclass[margin]{res}
+%\usepackage{helvetica} % uses helvetica postscript font (download helvetica.sty)
+%\usepackage{newcent}   % uses new century schoolbook postscript font 
+\setlength{\textwidth}{5.1in} % set width of text portion
+\usepackage{float}
+\usepackage{graphicx} 
+\usepackage{amsmath}
+\usepackage{authblk}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{subfigure}
+\usepackage{CJKutf8}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{graphicx} 
+\usepackage{diagbox}
+\usepackage{qtree}
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\begin{document}
+\begin{CJK}{UTF8}{gkai} 
+% Center the name over the entire width of resume:
+ \moveleft.5\hoffset\centerline{\large\bf 潘宝祥}
+% Draw a horizontal line the whole width of resume:
+ \moveleft\hoffset\vbox{\hrule width\resumewidth height 1pt}\smallskip
+% address begins here
+% Again, the address lines must be centered over entire width of resume:
+ \moveleft.5\hoffset\centerline{清华大学 水利系 水资所}
+ \moveleft.5\hoffset\centerline{北京 100084}
+ \moveleft.5\hoffset\centerline{(86) 133-6672-0253}
+  \moveleft.5\hoffset\centerline{panbaoxiang@hotmail.com}
+    \moveleft.5\hoffset\centerline{https://github.com/morepenn}
+
+
+
+\begin{resume}
+\section{教育背景} {\sl 2008-2012, 水文与水资源工学学士,  }   武汉大学       
+
+                {\sl 2012-2015,  水文与水资源工学硕士, } 清华大学 
+\begin{figure}[ht]
+\begin{center}
+\advance\leftskip-10.8cm
+\advance\rightskip-3cm
+\includegraphics[keepaspectratio=true,scale=0.85]{tree_cropped.pdf}
+\label{visina8}
+\end{center}\end{figure} 
+
+\section{求职意向} {\sl 软件开发，数据分析，在线教育}       
+\end{resume}
+\end{CJK}
+\end{document}
+
+
+
+

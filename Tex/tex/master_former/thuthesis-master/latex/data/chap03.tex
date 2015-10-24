@@ -1,0 +1,605 @@
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
+
+\chapter{基于随机土壤水模型的时间尺度分析}
+\label{cha:intro}
+
+\section{引言}
+随机土壤水方程刻画了一定随机特性降水驱动下由模型本构关系刻画的土壤水概率密度函数随时间的变化过程。如图\ref{box}所示，对某一土壤含水量样本序列实现，当模拟时间足够长时，日样本统计值体现出一定的规律性：
+%假定方程有稳态解，即$t \to \infty$时，存在概率密度函数的吸引子，图\ref{box}以箱线图形式反映了稳态解如何在长时间尺度上体现流域水文动态性质：
+\begin{figure}[H]
+\centering
+\includegraphics[width=14cm]{box3.png}
+\caption{不同时段日土壤蓄水量箱线图}
+\label{box}
+\end{figure}
+上图序列以复合泊松过程降水（降水时间间隔及次雨深服从相互独立指数分布）作为随机输入项，忽略深层渗漏，采用点尺度蓄满产流和线性蒸散发模式生成。对图中每一个箱形，自上而下各线依次表示上边缘，上四分位数，中位数，下四分位数和下边缘。时段$Td$对应的箱形由第$1$天至第$T$天的日土壤含水量样本统计求得。
+
+由图可见，当统计时段达到一定长度，时段内日土壤含水量箱形不再发生显著变化。鉴于箱线图能够反映多种统计指标，我们认为相似的箱形反映了相近的分布。此时，从第$1$天至第$T$天的日土壤含水量平均值被称为随机序列的``时间平均''。
+
+土壤含水量随机序列可以有无穷多种实现，图\ref{ununity}展示了同一起始土壤含水量，不同降水过程下的土壤含水量实现轨迹，
+\begin{figure}[H]
+\centering
+\includegraphics[width=14cm]{monte.png}
+\caption{流域含水量随机过程模拟}
+\label{ununity}
+\end{figure}
+统计不同轨迹同一时刻土壤含水量分布情况如下图所示：
+\begin{figure}[H]
+\centering
+\includegraphics[width=14cm]{ss.png}
+\caption{流域含水量随机过程模拟}
+\label{ununity}
+\end{figure}
+上图中，纵坐标为时间，取任意时刻$t$对图形横切，切面为该日土壤含水量样本自小到大重排序的值，各颜色宽度表示该颜色对应的土壤含水量值的频率。当时间远离初始时刻一定长度后，土壤水含量分布不再对初始土壤含水量有``记忆''，$t$时刻日土壤含水量分布不再发生显著变化，该时刻土壤水含量平均值被称为随机序列的``集合平均''（ensemble average）。该值可由随机序列的稳态分布均值逼近。
+\iffalse
+当分布不再随统计时段长发生显著变化时，认为土壤含水量随机过程到达稳态，此时时段内各日的蓄水量$s$可以视为同一稳态分布的样本，根据大数定律，时段累积值以概率$1$趋近于其稳态分布均值乘以时段长度。其它水文变量可根据相应函数关系求得。
+\fi
+
+当关注于长时间尺度水文过程时，土壤含水量、径流、蒸散发等水文变量通常以时段内均值表示，该均值实际上是时段内的``时间平均''。在降水随机特征以及产流、蒸散发本构关系既定的条件下，可以得到土壤含水量随机过程解析式（见第二章），继而得到各变量稳态分布并逼近随机过程的``集合平均''。在既有的研究中，常使用该稳态解的均值来表示流域长时序水量平衡状态，并通过对均值的解析求得流域长时序水文形态的控制因子\cite{porporato2004soil}。这默认了随机过程的时间平均等于集合平均，即随机过程的各态历经性（ergodicity）。本章从时序及频域两个角度论证该默认假设的合理性，并阐明以稳态解刻画流域中长期水文形态的应用尺度范围和精度。分析均使用平稳复合泊松过程模拟降水过程（平均降水时间间隔为$\frac{1}{\lambda}$，平均单次降水深度为$\frac{nR_L}{\alpha}$），采用线性蒸散模式，相应地，土壤蓄水量随机微分方程具有如下形式：
+\begin{equation}\small
+\label{main3}
+\frac{\partial{g(s,t)}}{\partial t}=EP_r\frac{\partial{[sg(s,t)]}}{\partial s}-\lambda g(s,t)+\lambda \int_{0}^{s} g(z,t)\alpha e^{-\alpha \{(1+b) [(1-z)^{\frac{1}{1+b}}-(1-s)^{\frac{1}{1+b}} ] \}}dz+\lambda(t)p_0(0)e^{-\lambda(t) t}p_{i|0}(s)
+\end{equation}
+
+
+
+\section{时域分析}
+\iffalse
+方程\ref{main3}中各参数已定条件下，土壤含水量变化过程可以有不同的实现轨迹：
+\begin{figure}[H]
+\centering
+\includegraphics[width=14cm]{monte.png}
+\caption{流域含水量随机过程模拟}
+\label{ununity}
+\end{figure}
+\fi
+表\ref{factors}列出了以方程\ref{main3}中各参数为控制变量，多次随机模拟显示的各日土壤含水量样本频率分布图。表中各图坐标意义与图\ref{ununity}相同，即任意时刻$t$对应的图形切面为该日土壤含水量样本自小到大重排序的值，各颜色宽度表示该颜色对应的土壤蓄水量值的频率。控制参数项分别为相对潜在蒸散发$EP_r$、降水频次均值倒数$\lambda(d^{-1})$、次雨深均值倒数$\alpha$、流域蓄水容量分布指数$b$以及初始土壤蓄水量$s_{Initial}$。
+
+如表中各图所示，给定任意输入条件，在$t$足够大时，土壤含水量分布均趋于稳定。稳定分布的形态由各输入条件控制。在其它条件不变的前提下，$EP_r$越小，$\lambda$越大，$\alpha$越小，$b$越小，土壤平均蓄水量越高。
+
+
+$s_{Initial}$对土壤含水量分布的影响随着时间增长而减弱。由方程\ref{main3}知，相邻时刻土壤含水量并不是独立的，即土壤水存在一定的记忆长度，在该长度内，前期的土壤含水量会对后期的流域水文响应作出影响。方程\ref{main3}到达稳态解的必要条件是$t$大于土壤水记忆长度。
+\begin{table}[H] \small
+\caption{不同参数流域土壤蓄水量随机过程模拟}
+\label{factors}
+\resizebox{\textwidth}{!}{
+\centering
+\begin{tabular}{cccc}
+\toprule[1.5 pt]
+$EP_r=0.01$&$EP_r=0.03$&$EP_r=0.05$\\
+\midrule[1 pt]
+\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{monte1.png}\end{minipage}
+&\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{monte3.png}\end{minipage}
+&\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{monte5.png}\end{minipage}
+\\
+ 
+ 
+ 
+\midrule[1.5 pt]
+$\lambda=0.05d^{-1}$&$\lambda=0.1d^{-1}$&$\lambda=0.2d^{-1}$\\
+\midrule[1 pt]
+\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{montelambda5.png}\end{minipage}
+&\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{montelambda10.png}\end{minipage}
+&\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{montelambda05.png}\end{minipage}
+\\
+ 
+ 
+\midrule[1.5 pt]
+$\alpha=2.0 $&$\alpha=1.0 $&$\alpha=0.5 $\\
+\midrule[1 pt]
+\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{montelalpha2.png}\end{minipage}
+&\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{montelalpha1.png}\end{minipage}
+&\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{montelalpha05.png}\end{minipage}
+\\
+ 
+\midrule[1.5 pt]
+$b=0$&$b=0.5$&$b=1$\\
+\midrule[1 pt]
+\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{monteb0.png}\end{minipage}
+&\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{monteb05.png}\end{minipage}
+&\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{monteb1.png}\end{minipage}
+\\ 
+ 
+\midrule[1.5 pt]
+$S_{Initial}=0$&$S_{Initial}=0.5 $&$S_{Initial}=1.0 $\\
+\midrule[1 pt]
+\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{montei0.png}\end{minipage}
+&\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{montei05.png}\end{minipage}
+&\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{montei1.png}\end{minipage}
+\\
+
+ 
+\bottomrule[1.5 pt]
+\end{tabular}
+}
+\end{table}
+
+
+
+
+
+ 
+
+
+
+
+为了量化土壤水的记忆长度并找到其控制因素，这里引入自相关系数的概念。自相关系数为随机过程中相邻间隔为$T$的两时刻上随机变量的协方差：
+\begin{equation}
+\rho(t_1,t_2)=E(x_{t_1}-\mu_{t_1})(x_{t_2}-\mu_{t_2})
+\end{equation}
+$\rho (t_1,t_2)$体现了$t_1$、$t_2$时刻同一事件在不同时期之间的相关程度。对于平稳随机过程，如果$|t_1-t_2|=|t_1'-t_2'|$，则$\rho (t_1,t_2)=\rho (t_1',t_2')$。以方程\ref{main3}中各参数为控制变量，建立土壤含水量自相关系数与间隔时间的关系如下图所示：
+\begin{figure}[H]
+\centering
+\includegraphics[width=14cm]{day_a_corr.png}
+\caption{不同降水频次自相关系数-时间间隔关系} 
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=14cm]{dep_a_corr.png}
+\caption{不同次雨深自相关系数-时间间隔关系} 
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=14cm]{ep_r_corr.png} 
+\caption{不同潜在蒸散发强度自相关系数-时间间隔关系}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=14cm]{b_corr.png}
+\caption{不同下垫面均匀程度自相关系数-时间间隔关系} 
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=14cm]{initial_s_corr.png} 
+\caption{不同初始土壤含水量自相关系数-时间间隔关系}
+\end{figure}
+
+统计结果结果显示，自相关系数首达非显著相关置信区间的时长，即土壤水记忆长度，与$EP_r$、$\lambda$呈显著的负相关关系，而与其它控制变量无显著相关关系。自相关系数大小，同样与$EP_r$、$\lambda$呈显著的负相关关系，与其它控制变量无显著相关关系。因此，潜在蒸散发越大，降水越频繁，土壤水记忆长度越短，相邻土壤水含量相关关系越弱。
+
+另一方面，在不同控制因素下，当间隔到达一定长度后，相关系数趋于0，这是随机过程各态历经的充分条件，因此统计结果显示了可以用随机过程稳态解均值逼近时间平均值，即计算尺度内的水文变量均值。下面从频域角度对该结论进行理论证明。
+
+
+
+\iffalse
+
+$EP_r$越大，土壤水记忆长度越短，土壤含水量随机方程越快到达稳态分布。 
+
+
+为了探究各控制条件对达到稳态分布时间的影响，计算绘制不同时间相邻时刻土壤含水量分布差异与模拟时间关系图。其中相邻时刻土壤含水量的分布差异以两分布的欧式距离表示。当$t$很小时，该距离较大；当$t$足够大时，该距离趋于$0$，突变点对应的时刻即为土壤含水量到达稳态分布的时刻。
+计算相邻时间分布欧式距离。petite 突变点检验 得到转折点即为稳态点。
+
+
+
+
+ 
+
+控制到达稳态解速度的只有潜在蒸散发！！！！！！
+由图可见，潜在蒸散发越大，到达稳态的时间越短，稳态分布越分散。
+
+\fi
+
+
+
+
+
+
+
+
+
+\section{频域分析}
+
+
+
+如下图所示，同一信号可以在时域或频域中等价表示，两种表示方法通过傅里叶变换和逆傅里叶变换联系。
+\begin{figure}[H]
+\centering
+\includegraphics[width=13cm]{fourier.png}
+\caption{时域-频域表示同一信息}
+\end{figure}
+两种视角下许多重要的概念具有一一对应的关系，比如平稳过程时域上的自协方差系数与频域上的功率谱密度。有时在时域上难以解析求得的问题变换到频域便一目了然\cite{boussinesq1903theorie,katul2007spectrum}。假定降水为白噪声，单次降水全部入渗不产流，忽略侧向流动和深层渗漏，Thomas\cite{delworth1988influence}推导出了土壤含水量频域表达式。推导过程如下: 
+
+已知土壤水量平衡微分方程\ref{dsbalance}，
+\begin{equation}
+\label{dsbalance}
+\eta R_L \times \frac{ds(t)}{dt}+E(t)=I(t)
+\end{equation} 
+对上式两边同时乘以$e^{-i\omega t}$，由$-\infty$到$\infty$对$t$ 积分，得：
+\begin{equation}
+\label{fourierch}
+\eta R_L \int_{-\infty}^{\infty}e^{-i\omega t}ds(t)+\int_{-\infty}^{\infty}e^{-i\omega t}E(t)dt=\int_{-\infty}^{\infty}e^{-i\omega t}I(t)dt
+\end{equation} 
+式\ref{fourierch}右边为土壤入渗率的傅里叶变换形式$I(\omega)$:
+\begin{equation}
+\label{ppss}
+I(\omega)\equiv \int_{-\infty}^{\infty}e^{-i\omega t}I(t)dt
+\end{equation}
+左边第一项等于：
+\begin{equation}
+\label{fs}
+\begin{split}
+\eta R_L \int_{-\infty}^{\infty}e^{-i \omega t}ds(t)=
+&\eta R_L s(t)e^{-i\omega t}|_{-\infty}^{\infty}+\eta R_L \times i \omega  \int_{-\infty}^{\infty}e^{-i\omega t}s(t)dt\\=&0+i\omega \times  s(\omega)\\=&i\omega s(\omega)
+\end{split}
+\end{equation}
+其中$s(\omega)$为土壤含水量的傅里叶变换形式。
+
+\leftline{假设实际蒸散发为土壤含水量线性函数，系数为相对潜在蒸散发：}
+\begin{equation}
+E(t)=EP_r\times  s(t)
+\end{equation}
+则式\ref{fourierch}左边第二项等于：
+\begin{equation}
+\label{fep}
+EP_r\times s(\omega)
+\end{equation}
+将式\ref{ppss}、\ref{fs}、\ref{fep}回代入原方程\ref{fourierch}，移项，得：
+\begin{equation}
+\label{F}
+s(\omega )=\frac{I(\omega )}{i\omega \eta R_L+EP}
+\end{equation}
+方程\ref{F}建立了降水入渗量与土壤含水量在频域上的联系。
+
+为了探究不同时间土壤含水量的联系，对应于时域分析中的自相关系数，这里引入能量谱密度的概念，信号谱密度$\Phi (\omega )$为信号连续傅里叶变换幅度的平方：
+\begin{equation}
+\Phi(\omega) \equiv  \frac{F(\omega)F^*(\omega)}{2\pi}
+\end{equation}
+其中$F^*(\omega)$表示 $F(\omega)$的转置。根据维纳-辛钦定理，平稳随机过程的谱密度是信号自相关系数的傅里叶变换。现对土壤含水量频域表达式求其能量谱密度，有：
+
+\begin{equation}
+E_s (\omega)=\frac{|I(\omega)|^2}{EP_r ^2+\omega ^2}
+\label{sssss}
+\end{equation}
+其中$EP_r$为相对潜在蒸散发，定义见式\ref{rree}。
+
+在声学、电子工程和物理学中，常根据能量谱密度$\Phi(\omega)$与频率$\omega $的关系将不同的随机信号命名为不同的颜色。当$\Phi(\omega)$与$\omega $无关时，随机信号被称为白噪声，其自相关系数为$0$；当$\Phi(\omega)$与$\omega $成平方反比关系时，随机信号被称为红噪声，其在时域上表现为一阶自回归过程，自相关系数为$r(t)=r(1)^t$，其中$r(t)$是滞后为$t$的自相关系数，$r(1)$是滞后为$1$的自相关系数。
+ 
+以不同输入条件生成降水入渗序列，在降水为白噪声的条件下，典型的入渗量能量谱密度如下：
+\begin{figure}[H]
+\centering
+\includegraphics[width=14cm]{density.png}
+\caption{入渗量能量谱密度}
+\label{ununity}
+\end{figure}
+
+假定入渗为白噪声，则$\omega / \ EP_r$决定了土壤含水量的自相关性质，关注大时间尺度土壤平均状态时，$\omega$ 相对$EP_r$较小，s为白噪音，相邻尺度间不再相关；关注小时间尺度上土壤水文状态时，$\omega$ 相对$EP_r$较大，s为红噪音，必须考虑前期水文过程对当前水文响应的影响。当时间间隔趋于$\infty$时，通过对式\ref{sssss}逆傅里叶变换可知，$\rho \to 0$，因此过程满足各态历经条件，时间平均等于集合平均，可由稳态解逼近。
+
+ 
+
+ 
+
+\section{稳态解及其性质}
+假定方程\ref{main3}有稳态解，即$t \to \infty$时，存在概率密度函数的吸引子，令$p_0(0)=0$，有：
+\begin{equation} 
+\label{main4}
+EP_r\frac{d{[sg(s)]}}{d s}-\lambda g(s)+\lambda \int_{0}^{s} g(z)\alpha e^{-\alpha \{(1+b) [(1-z)^{\frac{1}{1+b}}-(1-s)^{\frac{1}{1+b}} ] \}}dz=0
+\end{equation}
+$b=0$时，方程存在如下解析解\cite{porporato2004soil}：
+\begin{equation} 
+\label{jxj}
+g(s)=\frac{N}{EP_r} \times s^{\lambda / EP_r -1} e^{-\alpha s}
+\end{equation}
+其中，$N$为归一化系数，由$\int_{0}^{1} g(s)=1$，得：
+\begin{equation} 
+\label{normalizationfactor}
+N=\frac{EP_r \alpha ^{\frac{\lambda} {\ EP_r}}}{\gamma (\lambda /EP_r , \alpha)}
+\end{equation}
+$\gamma(*,*)$为下不完全$\Gamma$函数：
+\begin{equation}
+\gamma(s,x)=\int_{0}^{x} t^{s-1}e^{-t}dt
+\end{equation}
+稳态分布均值为:
+ 
+\begin{equation}
+\label{meanman}
+\begin{split}
+E(s)=&\int_{0}^{1} \frac{N}{EP_r} \times s^{(\lambda / EP_r -1)} e^{-\alpha s} \times s ds\\
+=&\frac{1}{\alpha EP_r}(\lambda-N e^{-\alpha})\\
+=&\frac{\lambda}{\alpha EP_r}-\frac{\alpha^{\frac{\lambda}{EP_r}-1} e^{-\alpha}}{\gamma (\frac{\lambda}{EP_r},\alpha)}
+\end{split}
+\end{equation}
+方差为：
+\begin{equation} 
+\label{ssiiggmmaa}
+\begin{split}
+Var(s)=&\int_{0}^{1} \frac{N}{EP_r} \times s^{(\lambda / EP_r -1)} e^{-\alpha s} \times s^2 ds-E^2(s)\\
+=&\frac{\gamma (\frac{\lambda}{EP_r}+2,\alpha)}{\alpha ^2\gamma (\frac{\lambda}{EP_r},\alpha)}-E^2(s)
+\end{split}
+\end{equation}
+
+根据Lindeberg-Levy中心极限定理，对独立同分布，均值为$\mu$，方差为$\sigma$的随机变量$X_i$，当$n$足够大时，$n$个变量之和服从均值为$n\mu$，方差为$n\sigma ^2$的正态分布。因此，方程\ref{meanman}反映了流域中长期平均水量平衡状态；而方程\ref{ssiiggmmaa}反映了以均值表示流域平均水量平衡状态的精度。
+
+从方程\ref{meanman}、\ref{ssiiggmmaa}形式上看，$\lambda$与$EP_r$总是以$\frac{EP_r}{\lambda}$的形式出现，其中$\frac{1}{\lambda}$表示降水间歇期平均长度，因此，$\frac{EP_r}{\lambda}$反映了单次降水蒸发水文循环过程中的能量供给项（仅来自降水间歇期），$\frac{1}{\alpha}$则为水分供给项（仅来自降水期）。稳态分布均值随能量、水量供给的变化过程如下图所示：
+\begin{figure}[H]
+\centering
+\includegraphics[width=14cm]{average.png}
+\caption{长时序日土壤含水量均值}
+\label{ununity}
+\end{figure}
+稳态分布方差随能量、水量供给的变化过程如下图所示：
+\begin{figure}[H]
+\centering
+\includegraphics[width=14cm]{var.png}
+\caption{长时序日土壤含水量方差}
+\label{ununity}
+\end{figure}
+如上图所示，水量或能量占主要控制地位时（图右下和左上部分），稳态分布方差较小，均值更能精确地刻画流域长期水量平衡状态；当两者势均力敌时（图右上部分），稳态分布方差较大，且能量水量供给越大，方差越大，这说明，在水文循环越活跃的地区，使用稳态分布均值刻画流域长期水量平衡状态误差越大。
+
+在已知流域土壤含水量均值的条件下，根据实际蒸散发与土壤含水量的关系可得长时序蒸发系数表达式：
+\begin{equation}
+\label{pbudyko}
+\begin{split}
+\epsilon \equiv \frac{\overline{E}}{\overline{P}}
+=& \frac{nR_LEP_rE(s)}{nR_L\frac{\lambda}{\alpha}}\\
+=&1-\frac{\alpha^{\frac{\lambda}{EP_r}} e^{-\alpha} \frac{EP_r}{\lambda}}{\gamma (\frac{\lambda}{EP_r},\alpha)}
+\end{split}
+\end{equation}
+\iffalse
+在将上式与与Budyko曲线建立联系时，过去的研究认为$\frac{\lambda}{\alpha}$项体现了日平均水量供给，而$EP_r$项体现了日平均的能量供给\cite{porporato2004soil}，但从方程形式上看，$\lambda$与$EP_r$总是以$\frac{EP_r}{\lambda}$的形式出现，其中$\frac{1}{\lambda}$表示降水间歇期，因此本论文认为，$\frac{EP_r}{\lambda}$才是真正反映单次降水蒸发水文循环过程中的能量供给项，$\frac{1}{\alpha}$则为水分供给项。
+
+
+为了衡量各变量对中长期平均水量平衡及其模拟精度的影响，可以对式\ref{meanman}、\ref{ssiiggmmaa}进行求导解析以确定变量贡献。
+\fi
+
+
+\section{本章小结}
+本章应用第二章推求的随机土壤水模型，从随机模拟和解析的角度阐释了在平稳的气候输入条件下，以概率形式表达的不确定的日尺度模拟如何在长时序上表现出规律性，以及该规律的适用范围和精度。
+
+时域与频域的模拟分析表明，给定不同的气象、下垫面条件，当$t$足够大时，土壤含水量随机过程满足各态历经性，时段内水文变量均值可由稳态分布均值逼近。稳态分布的形态由各输入变量决定，在其它条件不变的前提下，$EP$越小，$\lambda$越大，$\alpha$越小，$b$越小，土壤平均含水量越高；稳定稳步到达的速率由相对潜在蒸散发量$EP_r$和降水频次$\lambda$决定，关注的时间尺度较小时，土壤含水量在时域上表现为一阶自回归过程，在频域上表现为红噪声；关注的时间尺度较大时，土壤含水量在时域上表现为平稳过程，在频域上表现为白噪声。
+
+稳态方程可以刻画流域长时序的水量平衡状态，其控制因子为水量供给条件$\frac{1}{\alpha}$和能量供给条件$\frac{EP_r}{\lambda}$；二者同时通过控制稳态分布方差决定了以稳态方程刻画长时序水量平衡状态的精度。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\iffalse
+\begin{figure}[H]
+\centering
+\includegraphics[width=13cm]{experiment.png}
+\end{figure}
+对某一流域，若$\beta$较小，在较小的模拟时间尺度上($f$较小)，土壤水含量信号s即转化为红噪音，相邻尺度间相关关系显著，土壤水记忆较长，必须采用迭代结构的模型求解；相反，若$\beta$较大，模拟时间尺度$f$必须非常大，s才会转化为红噪音，因此，该类地区土壤水记忆较短，估计Budyko模型会得到更好的应用.
+ 
+Thomas\cite{delworth1988influence}
+假定降水为白噪音的前提下，在较小的时间尺度上，土壤水为红噪音；在较大的时间尺度上，土壤水为白噪音。且关系如下：
+\begin{equation}
+lalala
+\end{equation}
+
+土壤水的记忆长度。
+
+Taro Nakai\cite{nakai2014radiative}
+
+Gabriel G. Katul\cite{katul2007spectrum}。
+
+
+白噪声到红噪声。。。。
+土壤水的记忆。。。。
+\begin{itemize}
+\item 背景知识
+\item 理论推导
+\item 理论解释与应用
+\end{itemize}
+ 
+
+
+
+ 
+\begin{itemize}
+\item 时域与频域
+\item 噪声以及噪声的颜色
+\item 降水与土壤水的频域表示
+\end{itemize}
+ 
+
+ 
+ 
+
+%\begin{equation*}
+%F(\omega)=\int_{-\infty}^{\infty}f(t)e^{-i\omega t}dt
+%\end{equation*}
+%\begin{equation*}
+%f(t)=\frac{1}{2\pi}\int_{-\infty}^{\infty}F(\omega)e^{i\omega t}d\omega
+%wai\end{equation*}
+ 
+ 
+
+ 
+ 
+噪声是一个随机过程，而随机过程有其频域表示函数，其形状则决定了噪声的``颜色''（性质）.
+
+信号的频率特性：
+\begin{itemize}
+\item {频谱（Spectral）}：时域信号在频域下的表示方式. 以振幅及相位为因变量，频率为自变量的函数，包含振幅频谱与相位频谱.
+\item {频谱密度（Spectral Density）}： 一个能量信号$f(t)$的频域表达式$F(\omega)$.
+\item  {功率/能量谱密度（Power Spectral Density）}：$\Phi(\omega)=\frac{F(\omega)F^*(\omega)}{2\pi}$
+\end{itemize}
+噪声根据其功率谱密度函数决定``颜色''.
+ 
+
+ 
+ 
+噪声功率谱密度为频率的幂律函数：
+\begin{equation*}
+\Phi(\omega)=\frac{F(\omega)F^*(\omega)}{2\pi} \propto \frac{1}{w^\beta}
+\end{equation*}
+\begin{itemize}
+\item  {白噪声} $\beta=0$
+\item 粉噪声 $\beta=1$
+\item  {红噪声} $\beta=2$
+\item 蓝噪声 $\beta=-1$
+\item 紫噪声 $\beta=-2$
+\end{itemize}
+ 
+ 
+
+ 
+ 
+\begin{figure}[H]
+\centering
+\includegraphics[width=13cm]{laurenz.png}
+\caption{土壤水含量s时域频域洛伦兹图（Gabriel et al.,2007）}
+\end{figure} 
+s的时域表示分布均衡，频域表示分布不均衡. 在频域上需要很少的系数来表示该信号.
+ 
+
+ 
+ 
+提取能量最大的0.38\% 傅里叶系数，令剩余系数为0，重建信号精度如下：
+\begin{figure}[H]
+\centering
+\includegraphics[width=13cm]{reconstruct.png}
+\caption{频域特征提取土壤水信号（Gabriel et al.,2007）}
+\label{laurenz}
+\end{figure} 
+回归斜率 $=0.97$, 截距 $= 0.024$, 相关系数$r^2
+=0.96$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{table}[H] \small
+\caption{EP}
+\resizebox{\textwidth}{!}{
+\centering
+\begin{tabular}{cccc}
+\toprule[1.5 pt]
+$EP=0.01S_{max}$&$EP=0.03S_{max}$&$EP=0.05S_{max}$\\
+\midrule[1 pt]
+\begin{minipage}{.34\textwidth}\includegraphics[width=\linewidth]{monte1.png}\end{minipage}
+&\begin{minipage}{.34\textwidth}\includegraphics[width=\linewidth]{monte3.png}\end{minipage}
+&\begin{minipage}{.34\textwidth}\includegraphics[width=\linewidth]{monte5.png}\end{minipage}
+\\
+ 
+\bottomrule[1.5 pt]
+\end{tabular}
+}
+\end{table}
+
+\begin{table}[H] \small
+\caption{$\lambda$}
+\resizebox{\textwidth}{!}{
+\centering
+\begin{tabular}{cccc}
+\toprule[1.5 pt]
+$\lambda=0.01S_{max}$&$\lambda=0.03S_{max}$&$\lambda=0.05S_{max}$\\
+\midrule[1 pt]
+\begin{minipage}{.34\textwidth}\includegraphics[width=\linewidth]{monte1.png}\end{minipage}
+&\begin{minipage}{.34\textwidth}\includegraphics[width=\linewidth]{monte3.png}\end{minipage}
+&\begin{minipage}{.34\textwidth}\includegraphics[width=\linewidth]{monte5.png}\end{minipage}
+\\
+ 
+\bottomrule[1.5 pt]
+\end{tabular}
+}
+\end{table}
+
+\begin{table}[H] \small
+\caption{$\alpha$}
+\resizebox{\textwidth}{!}{
+\centering
+\begin{tabular}{cccc}
+\toprule[1.5 pt]
+$\alpha=0.01S_{max}$&$\alpha=0.03S_{max}$&$\alpha=0.05S_{max}$\\
+\midrule[1 pt]
+\begin{minipage}{.34\textwidth}\includegraphics[width=\linewidth]{monte1.png}\end{minipage}
+&\begin{minipage}{.34\textwidth}\includegraphics[width=\linewidth]{monte3.png}\end{minipage}
+&\begin{minipage}{.34\textwidth}\includegraphics[width=\linewidth]{monte5.png}\end{minipage}
+\\
+ 
+\bottomrule[1.5 pt]
+\end{tabular}
+}
+\end{table}
+
+\begin{table}[H] \small
+\caption{$S_{Initial}$}
+\resizebox{\textwidth}{!}{
+\centering
+\begin{tabular}{cccc}
+\toprule[1.5 pt]
+$S_{Initial}=0.01S_{max}$&$S_{Initial}=0.03S_{max}$&$S_{Initial}=0.05S_{max}$\\
+\midrule[1 pt]
+\begin{minipage}{.34\textwidth}\includegraphics[width=\linewidth]{monte1.png}\end{minipage}
+&\begin{minipage}{.34\textwidth}\includegraphics[width=\linewidth]{monte3.png}\end{minipage}
+&\begin{minipage}{.34\textwidth}\includegraphics[width=\linewidth]{monte5.png}\end{minipage}
+\\
+ 
+\bottomrule[1.5 pt]
+\end{tabular}
+}
+\end{table}
+
+\begin{table}[H] \small
+\caption{$b$}
+\resizebox{\textwidth}{!}{
+\centering
+\begin{tabular}{cccc}
+\toprule[1.5 pt]
+$b=0.01S_{max}$&$b=0.03S_{max}$&$b=0.05S_{max}$\\
+\midrule[1 pt]
+\begin{minipage}{.34\textwidth}\includegraphics[width=\linewidth]{monte1.png}\end{minipage}
+&\begin{minipage}{.34\textwidth}\includegraphics[width=\linewidth]{monte3.png}\end{minipage}
+&\begin{minipage}{.34\textwidth}\includegraphics[width=\linewidth]{monte5.png}\end{minipage}
+\\
+ 
+\bottomrule[1.5 pt]
+\end{tabular}
+}
+\end{table}
+
+
+中心极限定理！！！！！！！！！！
+
+The stochastic soil moisture model, which is constructed at a point spatial scale,  offers a promising way of time abstraction in temporal unscaling. 
+
+stochastic description + law of large numbers. 
+\begin{equation}
+\lim_{n\to\infty}P\lbrace\vert\sum_{i=1}^n E_i-n\mu\vert<\epsilon\rbrace=1
+\end{equation}
+Application conditions are too strict for an actual use.
+
+1. monsoon climate inconsistency of climate condition. unable to extend to annual mean time scale.
+
+2. In consistent climate condition, the equilibrium solution is of little practice since we can not ignore the change of soil moisture.
+
+Following the previous work(citation), this research tries to extend the original stochastic soil moisture model to a more general form, make it  applicable for broader climate situations and temporal scales, which will fill the gap between the two methods mentioned above.
+
+
+中心极限定理
+
+在大数定律证明之后，伯努力希望弄清楚到底需要N多大，解决了这个问题，在实用上就可以根据所需的精度和可靠度，去规划所须观测次数N。
+\iffalse
+数学家不仅可以后验地认识世界，还可以用数学去估量他们的知识的限度。
+如果我们能把一切事物永恒地观察下去，则我们终将发现：世间的一切事物都受到因果率的支配，而我们也注定会在种种极其纷纭杂乱的事项中认识到某种必然。 ——伯努力 《推测术》
+\fi
+ 
+为了衡量各水文气象因子对水文过程的作用，我们引用经济学上弹性因子的概念\cite{schaake1989development}。径流$R$对某气象变量$X$的弹性因子定义如下：
+\begin{equation}
+lalala
+\end{equation}
+故$X$变化$\Delta X$引起$R$相应变化$\Delta R$。
+\fi

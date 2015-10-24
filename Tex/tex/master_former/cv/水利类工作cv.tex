@@ -1,0 +1,148 @@
+% LaTeX resume using res.cls
+\documentclass[margin]{res}
+%\usepackage{helvetica} % uses helvetica postscript font (download helvetica.sty)
+%\usepackage{newcent}   % uses new century schoolbook postscript font 
+\setlength{\textwidth}{5.1in} % set width of text portion
+\usepackage{float}
+\usepackage{graphicx} 
+\usepackage{amsmath}
+\usepackage{authblk}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{subfigure}
+\usepackage{CJKutf8}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{graphicx} 
+\usepackage{diagbox}
+\usepackage{qtree}
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\begin{document}
+\begin{CJK}{UTF8}{gkai} 
+
+% Center the name over the entire width of resume:
+ \moveleft.5\hoffset\centerline{\large\bf 潘宝祥}
+% Draw a horizontal line the whole width of resume:
+ \moveleft\hoffset\vbox{\hrule width\resumewidth height 1pt}\smallskip
+% address begins here
+% Again, the address lines must be centered over entire width of resume:
+ \moveleft.5\hoffset\centerline{清华大学水资所}
+ \moveleft.5\hoffset\centerline{北京 100084}
+ \moveleft.5\hoffset\centerline{(86) 133-6672-0253}
+  \moveleft.5\hoffset\centerline{panbaoxiang@hotmail.com}
+
+
+
+\begin{resume}
+\section{教育背景} {\sl 水文与水资源工学学士,}  
+                      % \sl will be bold italic in New Century Schoolbook (or
+	              % any postscript font) and just slanted in
+		      %	Computer Modern (default) font
+                武汉大学 水利水电学院\\ 
+                \\
+                {\sl 水文与水资源工学硕士,}  
+                      % \sl will be bold italic in New Century Schoolbook (or
+	              % any postscript font) and just slanted in
+		      %	Computer Modern (default) font
+                清华大学 水资所\\ 
+               
+ 
+\section{计算机技能} {\sl 编程语言 \& 软件应用:} Lisp, C, Python, \LaTeX\ ; Matlab, Mathematica, R,  Mysql,  ,Git, vim, ArcGIS, Grapher, AutoCAD .\\
+                {\sl 操作系统:} Linux, Windows.\\
+                {Github URL:} https://github.com/morepenn
+               
+                
+\section{数学技能}  分析，概率，统计，随机过程，数值分析，线性代数，运筹学，信息论，机器学习.
+ 
+
+\section{英文成绩} 
+\begin{minipage}{0.42\linewidth}
+\begin{table}[H]\footnotesize
+\begin{center}
+\caption*{GRE}
+\begin{tabular}{cccc}
+\toprule
+Verbal   & Quantity & Writing   &Total   \\
+\midrule
+152 & 170 & 3.5 & 322 \\  
+\bottomrule
+\end{tabular}
+\end{center}
+\end{table}
+ 
+\end{minipage}
+\hfill
+\begin{minipage}{.64\linewidth}
+\begin{table}[H]\footnotesize
+\begin{center}
+\caption*{TOEFL}
+\begin{tabular}{ccccc}
+\toprule
+Reading & Listening  &  Speaking & Writing & Total \\ 
+\midrule
+29 & 27 & 20 & 26 & 102 \\  
+\bottomrule
+\end{tabular}
+\end{center}
+\end{table} 
+ 
+\end{minipage}
+  
+
+                
+
+\section{科研工作} {\sl 水文模拟}   \\
+                 \begin{itemize}  \itemsep -2pt %reduce space between items
+                 \item 概念性降雨产流模型: TOPMODEL, XINANJIANG Model, Shanbei Model, HyMod.
+                \item  水热耦合模型随机过程分析: Monthly Water Balance Models, Budyko. Stochastic Soil Moisture Model.
+                \item  最优化: Genetic Algorithm, Particle Swarm Optimizer, SCE-UA Algorithm. 
+                \item 数据驱动模型: Support Vector Machine, Artificial Neutral Network.
+                \end{itemize}
+ 
+                {\sl 随机水文}  \\
+                 \begin{itemize}  \itemsep -2pt %reduce space between items
+                 \item 水文时间序列分析
+                 \item 基于信息熵互信息的模型评价
+                 
+                 \end{itemize} 
+                 {\sl 气象水文}  \\
+                 \begin{itemize}  \itemsep -2pt %reduce space between items
+                 \item 边界层理论
+                 \item 蒸散发估计比较研究 
+                 
+                 \end{itemize} 
+                 {\sl 野外实验}  \\
+                 \begin{itemize}  \itemsep -2pt %reduce space between items
+                 \item 黑河上游流域土壤特性采样分析与实验站建设 
+                 \item 塔里木河流域植被与土水特性采样调研         
+                 \end{itemize} 
+                 \section{学术经历}  
+ {\it 汇报\\} 
+ \begin{itemize}
+ \item 第二届，第三届清华大学中科院学术年会口头汇报 
+ \item 2014美国地理联合会年会海报汇报
+ \end{itemize}
+  {\it 论文发表\\} 
+  \begin{itemize}
+  \item Pan, B. and Cong, Z.  Information Analysis of Watershed Hydrological Patterns across Temporal Scales (t在投). 
+  \end{itemize}
+ 
+
+\section{业余爱好}             
+
+            {\it 篮球}, 院队，系队主力锋卫. \\
+            {\it 二胡}, 6级.\\
+            {\it 绘画}, 华中科大建筑学辅修. \\
+            {\it 读书}, 科幻和科学哲学爱好者.
+ 
+
+\end{resume}
+\end{CJK}
+\end{document}
+
+
+

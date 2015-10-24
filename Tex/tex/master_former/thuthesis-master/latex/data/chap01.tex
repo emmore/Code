@@ -1,0 +1,363 @@
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
+
+\chapter{绪论}
+\label{cha:intro}
+
+\section{研究背景与意义}
+水文学家关注自然界中水的时空分布与变化规律，并据其制定合理的水资源利用和水灾害预防治理方案。水文过程在不同的时空尺度下呈现出不同的形态，并相应地催生了不同的观测与模拟系统。在这里，``尺度''指某个过程，观测或模拟的特征时长或长度\cite{bloschl1995scale}。在任意时空尺度下，为了保证问题的可解性，降水，蒸散发，入渗，径流等每一个水文变量必须由观测或者独立的控制方程约束。由于我们默认对同一水文循环过程在不同尺度下的观测模拟应当是自洽的，探寻不同时空尺度水文模型控制方程的联系，明确各模型应用范围与不确定性便成为一个不可避免的问题。
+
+处理尺度融合问题的经典数学理论是微积分，升尺度用积分表述，降尺度用微分表述。在明确小尺度水文过程控制方程后，根据气象输入决定的控制方程的时间积分路径，下垫面条件决定的控制方程的空间积分路径，采用分步积分的方法，即可得到宏观尺度上的水文特征，这在水文模拟中被称为``自下而上''的模拟方法。自从``物理式水文模型''概念的提出\cite{freeze1969blueprint}，每一次计算能力和观测精度的提升都会重燃起水文学家的这种还原论倾向。同时，这种分布式水文模型的范式也受到各种质疑\cite{beven1996discussion}，首先，我们并不能保证小尺度唯象控制方程的通用性\cite{swartzendruber1962non}以及积分路径的准确性\cite{gish1991preferential}；其次，过多的假设和参数化方案使模型无法得到验证与改善；最后，复杂的积分路径使得模型无法``求导''\cite{schaake1989development}，因而不能分析得到大时空尺度下水文过程的控制因素。
+
+另一方面，即使某一点某一时刻水的储量与运动状态是不确定的，水文过程在长时间尺度和大空间尺度上却呈现出一定的规律性。例如，Budyko发现了流域长期平均蒸散发主要由大气对陆面的水分供给（降水量）和蒸发能力（净辐射量或潜在蒸散发量）之间的平衡决定\cite{budyko1961heat}。在极限边界条件和量纲原理约束下，通过选择偏微分方程的特解，傅抱璞\cite{FuBaopu}，Choudhury\cite{choudhury1999evaluation}，杨汉波\cite{yang2008new}等得到了描述该现象的一系列Budyko曲线。相比分布式模型，这类曲线更便于分析流域长时间尺度水文形态的控制因素\cite{zhang2001response,yang2007analyzing,yang2014error,li2014assessing}。
+再比如，通过引入流域蓄水容量曲线对流域下垫面不均匀程度进行概化，新安江模型利用较少观测数据和较低的计算量， 取得了令人满意的流域水文预报结果，并在实际中得到了广泛应用\cite{zrj}。种种现象表明，水文过程具有如下特性：系统中某些部分的行为趋于抵消另一部分的行为，导致较小时空尺度事件在升尺度后表现出相似的高层行为\cite{hofstadter1980godel}。这一现象构成了概念性水文模型的研究基础。概念性模型具有参数少，易分析的优点，同时也受到参数意义不明确，应用时空尺度范围模糊的困扰\cite{beven1989changing}。结构简单的概念性模型在进行``自上而下''的降尺度分析时，必须根据对相关物理过程的理解，对模型结构进行补充改进。 
+
+一个实际的例子是将Budyko曲线拓展应用于月、季时间尺度的水文模拟。在年际尺度上，忽略流域土壤含水量变化，流域蒸散发和径流两个未知量可由Budyko曲线和水量平衡两个独立方程既定约束。而在月或季节尺度，观测表明干旱指数并不能对流域水文过程实施一阶控制\cite{tekleab2011water}，通常，该偏差被归结为未考虑土壤水蓄变量的作用\cite{sankarasubramanian2002annual,sankarasubramanian2003hydroclimatology}，通过引入``土壤蓄变项''，发展出了一系列月、季尺度的水量平衡模型\cite{abcd,xiong1999two,zhang2008water}。新变量的引入增加了问题的自由度，需要由独立的控制方程抵消。新引入的方程由于和Budyko曲线具有相似的``供需控制''整体论思路，正在引起水文学者的关注和反思\cite{wang2014one}。应当注意的是，在月或季节尺度，关注的水文事件由多场降水及其间隔期的蒸散发事件组成，相应的状态变量与关注于单次降水或蒸散发事件的模型状态变量意义是不相同的，因此需要对模型状态变量意义进行重新诠释\cite{hu}。
+
+
+除上述具有一定物理意义的水文模型以外，随着观测数据的增加以及计算机科学与统计学的结合，数据驱动模型正逐渐自成一派\cite{abrahart2007hydroinformatics}。该类模型以人工智能和机器学习算法为基础，认为模型在通过对大量水文观测数据的``学习''后可以抓住控制水文过程的物理机制\cite{solomatine2008data}。通过调整模型结构和参数（如人工神经网络中神经元数目，支持向量机中核函数），数据驱动的模型往往可以比机理驱动的模型更好地重现各时空尺度的水文过程，然而其训练得到的机理往往含义模糊，而且存在过拟合，通用性差的缺陷。
+如何结合两类模型的优点，确定两类模型在不同尺度上的有效性，建立合理的评估体系，是新世纪水文学重要任务之一\cite{todini2007hydrological}。
+ 
+ 
+ 
+无论是机理驱动的模型（分布式模型与概念性模型）还是数据驱动的模型，通常都需要在模型复杂性和准确性之间进行权衡改进，以期通过最精简的数学表述达到最准确的预报。这一哲学原则被称作``奥卡姆剃刀''\cite{myung1997applying}。在实践中，常以该原则的量化表达式为目标函数，进行模型率定与评价。常见的目标函数有赤池信息量(AIC)\cite{akaike1974new}，贝叶斯信息量(BIC)\cite{schwarz1978estimating}，Hannan-Quinn准则(HQ)\cite{hannan1979determination}，以及Kolmogorov复杂度(KC)\cite{kolmogorov1968logical}。前三者以模型参数个数与输入数据量的增函数表示模型复杂度，以模拟似然函数表示模型准确度，两项加权线性和表示模型优化准则。该类准则计算方法简单，但存在如下2个缺点：1，模型参数与输入数据量无法有效表示模型复杂度；2，复杂度与准确度线性相加缺乏理论依据，权重的制定没有统一准则。 Kolmogorov复杂度定义为``描述某对象的二元计算机程序的最短长度''\cite{kolmogorov1968logical}。Steve Weijs 将该定义引入水文模拟中，认为最有效的水文模型为最优的水文数据压缩软件\cite{weijs2013data}。该定义提供了模型评估的一种理论完备的思维模式，但是，仍存在如下2个问题：1，观测与模拟精度必须先验确定；2，Kolmogorov复杂度因其逻辑自指涉而不可计算。
+
+综上所述，机理驱动的水文模型在处理尺度融合问题上遵从不同的范式（自下而上与自上而下），为了建立自洽的模拟体系，必须确定两类模型在应用时空尺度上的``接口''。数据驱动的模型可以通过对数据的``学习''，模拟水文过程，其机理往往不能直接分析。不同的模型追求相似的模拟目标，需要建立一个逻辑完善且可计算的优化与评估体系。
+
+
+\section{研究现状}
+\subsection{随机土壤水模型}
+物理机制驱动的流域水文模拟可由如下泛函方程组表示:
+\begin{numcases}{}
+\text{Simulation}(\text{Structure},X_i,S,Para)=
+\begin{cases}
+ X_s \\
+ \text{Simulation} (\text{Structure}, Xi_{new},S_{new},Para)  \label{4}\\
+\end{cases} \\
+\text{Structure}=
+\begin{cases}
+\text{Output\_Generation} \\
+\text{State\_Variable\_Renewal} \label{1}\\
+\end{cases} \\
+\text{Output\_Generation} (X_i,S,Para)=X_s  \label{2} 
+\\
+\text{State\_Variable\_Renewal} (X_i,S,Para)=S_{new}  \label{3}
+\end{numcases}
+
+
+
+ 
+
+\iffalse
+\begin{equation}
+\left\{
+\begin{align}
+&\text{Simulation}(\text{Structure},X_i,S,P)=
+\begin{cases}
+X_o\\
+\text{Simulation} (\text{Structure}, Xi_{new},S_{new},P) \label{4}\\
+\end{cases} 
+\\
+
+&\text{Structure}=
+\begin{cases}
+\text{Output\_Generation} \\
+\text{State\_Variable\_Renewal} \label{1}\\
+\end{cases} 
+\\
+
+&\text{Output\_Generation} (X_i,S,P)=X_o  \label{2} 
+\\
+
+&\text{State\_Variable\_Renewal} (X_i,S,P)=S_{new}  \label{3}
+\\
+\end{align}
+\right.
+\end{equation}
+\fi  
+  
+  
+  
+\iffalse
+\begin{equation}
+\text{Simulation}(\text{Structure},X_i,S,P)\\
+\begin{cases}
+&Output\\
+&\text{Simulation}(\text{Structure}, X_i_{new},S_{new},P)
+\end{cases} \label{4}
+\text{Structure}=
+\begin{cases}
+&\text{Output\_Generation} \\
+&\text{State\_Variable\_Renewal}
+\end{cases} \label{1}
+\text{Output\_Generation} (X_i,S,P)=X_o  
+\label{2}\\
+\text{State\_Variable\_Renewal} (X_i,S,P)=S_{new} \label{3} 
+\end{equation}
+
+
+
+\begin{equation}
+\left\{
+\begin{aligned}
+\text{Simulation}(\text{Structure},X_i,S,P)=
+\begin{cases}
+X_o\\
+\text{Simulation} (\text{Structure}, Xi_{new},S_{new},P) \label{4}
+\end{cases}
+\end{aligned}
+\end{equation}
+\begin{numcases}{}
+    Simulation(Structure,Input,State,Parameter) \notag\\ =\left
+\{\begin{aligned}&Output\\&Simulation(Structure, New
+\_Input,New\_State,Parameter) \end{aligned}\right. \label{4} \\
+ Structure=\left\{\begin{aligned}&Output\_Generation \\ &State\_Variable\_Renewal\end{aligned}\right.\label{1}\\
+    Output\_Generation (Input,State,Paramter)=Output  
+\label{2}\\
+   State\_Variable\_Renewal (Input,State,Parameter)=New
+\_State \label{3} 
+\end{numcases}
+
+
+\begin{numcases}{}
+    Simulation(Structure,$Input$,$State$,$P$) \notag\\ =\left
+\{\begin{aligned}&$Output$\\&Simulation(Structure, $New
+ Input$,$New State$,$P$) \end{aligned}\right. \label{4} \\
+ Structure=\left\{\begin{aligned}&Output\_Generation \\ &State\_Variable\_Renewal\end{aligned}\right.\label{1}\\
+    Output\_Generation ($Input$,$State$,$P$)=$Output$  
+\label{2}\\
+   State\_Variable\_Renewal ($Input$,$State$,$Parameter$)=$New
+ State$ \label{3} 
+\end{numcases}
+ 
+\begin{numcases}{}
+Simulation(Structure,X_i,S,P) \notag\\ 
+=\left
+\{\begin{aligned}&X_o\\
+&Simulation(Structure, X_i_{new},S_{new},P) \end{aligned}\right. \label{4} \\
+Structure=\left\{\begin{aligned}&X_o\_Generation \\ &State\_Variable\_Renewal\end{aligned}\right.\label{1}\\
+    Output\_Generation (X_i,S,P)=X_o  
+\label{2}\\
+   State\_Variable\_Renewal (X_i,S,P)=S_{new} \label{3} 
+\end{numcases}
+\fi
+方程组中共含有$8$个变量，其中非斜体标识的为函数变量，斜体标识为数值变量。函数变量包括模型``流''控制单元 Simulation，模型结构 \text{Structure}，其中模型结构包括输出变量生成函数 \text{Output\_Generation}和状态变量更新函数 \text{State\_Variable\_Renewal}。数值变量包括输入变量 $X_i$，输出变量 $X_s$，状态变量 $S$，模型参数 $Para$。
+
+在任一计算步长内，若计算时间尺度内水文过程水量不闭合，模型需要采用状态变量$S$提供前期水文过程对当前水文响应影响的信息，并通过状态变量更新模块为下一时间步长提供$S_{new}$，模型``流''控制体通过延时求值技术在计算机程序上维持一种等待新输入变量进而实时更新预报的表象。因此，模型``流''控制体模块，方程\ref{4}, \ref{1}已为先验确定。输入变量$X_i$通常由观测确定，参数$Para$根据先验经验及模拟效果调整确定，状态变量$S$根据经验初始化或前期计算确定，状态变量更新函数通常由守恒方程确定。输出变量生成函数\ref{2}又称为模型本构方程，体现了模型的特点，并决定了输入变量的需求精度以及模型参数，状态变量的类型。在本构方程已定的条件下，方程组自由度等于约束数目，方程组可解，并提供时序上连续的模拟预报。
+
+上述泛函方程组的数学对照物是连续参数马尔科夫链，流域以降水与其它气象变量作为模型边界输入，在连续时间上更新状态变量。 降水的时空分布特征深刻地影响着流域的水文与生态过程。观测表明，在不同流域和气候条件下，降水各要素通常在时间或空间上服从一定形态的分布。该现象被广泛应用于降水时频统计分析\cite{hanson2008probability}和随机天气发生器研制\cite{mehrotra2006comparison}中。在这两类研究中，降水通常被分解为次雨深，降水场次等要素\cite{Woolhiser}。 对于次雨深，常用的拟合分布曲线有两参数伽马分布\cite{geng1986simple,wilks1999interannual}，三参数混合指数分布\cite{woolhiser1982stochastic}，威布尔分布\cite{duan1995comparison,burgueno2005statistical}，指数分布\cite{richardson1981stochastic,zxw}等。
+对降水场次，常使用马尔科夫链\cite{gabriel1962markov}或泊松过程\cite{buishand1978some,sharma1999nonparametric}表示。综合二者，完整的降水历程可以选用多状态离散连续马尔科夫链模拟\cite{gregory1993application}，或选用复合泊松过程模拟\cite{bras1976rainfall,milly1993analytic}，也可以根据已有实测数据采用伪随机算法生成\cite{lall1996nonparametric}。 
+
+降水进入流域后，在下垫面土壤调蓄与植物生态过程控制下，被划分为土壤水蓄变量，径流，蒸散发和深层渗漏项等水文变量。在降水随机过程与土壤-植被-大气连续体（SPAC）\cite{philip1966plant}控制方程已定的条件下，可以建立联系流域各水文变量的Kolmogorov向前微分方程\cite{eagleson1978climate}。描述土壤水随机过程的随机土壤水模型，开辟了分布式模型与概念模型之外的过程驱动水文模拟范式。
+\iffalse
+根据控制方程的不同，已有的随机土壤水模型可大致分为如下几类：
+
+\begin{table}[H] 
+\caption{随机土壤水模型}
+\label{ssmm}
+\resizebox{\textwidth}{!}{
+\centering
+\begin{tabular}{ccccccc}
+\toprule[1.5 pt]
+开发者&	降水&	截留&	产流&	蒸散发&	地下水补给&	稳态概率类型\\
+\midrule[1 pt]
+Cox \& Isham\cite{cox1986virtual}&\multirow{5}{*}{复合泊松过程} &\multirow{5}{*}{固定值}&未考虑&线性&\multirow{2}{*}{未考虑}&伽马分布\\
+
+Milly\cite{ milly1993analytic,milly1994climate}&  &&\multirow{4}{*}{蓄满产流}&常值&&指数分布 \\
+
+
+Rodriguez\cite{rodriguez1999probabilistic}& &&&两阶段线性&线性&三段分布\\
+Laios\cite{laio2001plants}& &&&多段线性&指数&四段分布\\ 
+Porporato\cite{porporato2004soil}& &&&线性&线性&伽马分布\\
+\bottomrule[1.5 pt]
+\end{tabular}
+}
+\end{table}
+表\ref{ssmm}最后一列中方程稳态解指马尔科夫过程经过一步或多步状态转移之后，保持不变的状态概率分布。
+\fi
+
+Porporato等人\cite{porporato2004soil}认为，描述土壤水动态特性的随机微分方程的稳态分布能够反映流域平均水量平衡状态。稳态分布均值表达式与Budyko方程具有相似的形式，在描述流域长期水热状态时取得了相似的效果。类比揭示了影响Budyko方程形态的参数由流域蓄水能力与次雨深之比确定，从而弥补了Budyko曲线参数物理意义不明确的缺点。
+
+为了探究变化环境下的水文响应，常需要对理论模型进行求导分析，以探寻各因素对水文过程的影响作用\cite{todini2007hydrological}。针对随机土壤水方程稳态解不可导的缺陷，Donohueet\cite{donohue2012roots}将描述Budyko假设的Choudhury曲线\cite{choudhury1999evaluation}与稳态解结合起来，分析得到控制Budyko曲线形态的因素，并在Murray-Darling流域实地分析了影响长期径流的各影响因子。丛振涛等\cite{cong2015understanding}应用该方法分析了中国五大主要流域1956年到2000年间降水、潜在蒸散发、次雨深、土壤蓄水能力等要素对实际蒸散发与径流变化的贡献。
+
+%上述方法在确保物理意义明确的前提下得到了描述流域长时序水文机理的简化描述。它可以视为联系概念模型和分布式模型的有效手段之一，也可以视为寻找两类模型``接口''，以更深入理解流域水文过程的突破口。
+
+在实际应用中，我们往往关注不均匀下垫面流域在日、月、季、年以及年际平均等不同时间尺度的水文特征。已有的随机土壤水模型关注点尺度的水文过程，不能解释复杂下垫面水文状况。另一方面，水文过程随机描述的稳态解仅在过程满足平稳条件时才可达到。在季节、月或更小的时间尺度上， 前期水文过程会通过土壤水调蓄作用对当前计算步长内的水文响应施加影响，或者说，土壤水对前期水文过程留有``记忆''，而稳态解不能解释这些现象。
+
+
+上述讨论说明，随机土壤水模型提供了建立时间尺度融洽的水文模拟体系的富有潜力的思维方式，然而，为了更有效地融合两类物理机理驱动的水文模型，必须对其进行结构拓展和细致分析。
+ 
+
+
+
+\subsection{水文观测与模拟中的信息} 
+水文科学以观测数据为出发点。由于气象条件与下垫面状况的不均匀性，稀疏布设的站点不能有效反映流域的边界与输入状态。航测、雷达、卫星等遥感手段虽然能够提供空间连续的观测数据，但过多的假设和噪音源影响了其可信度。另一方面，在进行较大时空尺度水文过程研究时，关注点往往是众多不同过程的综合体，如流域出山口流量，月总蒸散发量等，有限的观测数据对这些目标变量能够实施多大程度上的控制，一方面由观测数据质量和数量决定，另一方面由水文过程机理决定。
+
+水文模型可以视为由输入变量到模拟变量的映射函数。对同一时空尺度的水文过程进行模拟时，可以使用机理驱动的分布式模型或概念性模型，也可以使用数据驱动的模型。对同一模型，由于认知的限制，其作用时空尺度也相对模糊。选择不同的模型，应用于不同的时空尺度上，模拟效果往往不同。
+
+观测与模拟过程均可以视为对``信息''的处理过程，
+\iffalse
+
+
+
+
+
+
+
+
+水文数据处理器\ref{computer model of hydrology V.P. Singer}
+
+
+Two different basic approaches are possible to water balance
+models. The usual one is to construct a computer simulation model
+and then calculate numerical solutions to specific cases. A second
+approach is to express the processes in a few equations and then
+solve them analytically. The advantage of the first approach is that
+highly complex hydrologie processes can be simulated. The advantage
+of the second approach is a better theoretical basis for conclusions
+about model behavior over a wide range of conditions. In this study
+we take both approaches. 
+
+First, a linear, analytical water balance model (LINEAR MODEL)
+	was constructed for broad insight into how precipitation and
+	potential évapotranspiration affect runoff. LINEAR MODEL was kept
+	simple to permit analytical solution. Then a more realistic
+	simulation model, referred to as the nonlinear water balance model
+	(NONLINEAR MODEL) was constructed. The influences of physical
+	processes can be easily seen in the linear model, giving clear
+	insights into the effect of changing climate on runoff. On the other
+	hand, the nonlinear model should test whether the processes glossed
+	over in the simplifications needed for the linear model are
+	sufficiently important to cause its simplicity to mislead us about
+	changes in runoff following arrival of a new climate. 
+
+引入新控制方程的模型能否有效衔接短时间降雨产流过程和长时间水热耦合形态，需要从如下三个方面进行探究：
+\begin{itemize}
+\item[（1）]随着尺度变化，水文形态先验不确定度的变化。
+\item[（2）]随着尺度变化，观测数据支撑下水文形态后验不确定度的变化。
+\item[（3）]随着尺度变化，模型支撑下水文形态后验不确定度的变化。
+\end{itemize}
+ 
+\fi
+%\subsection{Information Theory Applied In Hydrological Simulation}
+信息这一概念由Claude E. Shannon在1948年的《关于通信的数学理论》中量化\cite{shannon2001mathematical}。在信息论中，信息由``位（bit）''和``语境（context）''构成\cite{bryant2003computer}，这一概念奠定了信息革命的理论基础，并在其它学科中得到广泛的应用，其中也包含了水文与水资源学科\cite{singh1997use,singh2000entropy,singh2013entropy}。
+
+具体到水文模拟，信息论早在1970年即被应用于模型评价和不确定性分析\cite{amorocho1973entropy,chapman1986entropy,abebe2003managing,pokhrel2010use,weijs2010hydrological,weijs2011accounting}。龚伟 基于信息熵和互信息两个概念提出了一个全面的观测与模型评估体系\cite{gong2013estimating}。在该体系中，由数据的不充足和偏差造成的不确定程度被定义为随机不确定度(Aleatory Uncertainty)，由模型对数据的不充分处理造成的不确定程度被定义为认知不确定度（Epistemic Uncertainty)。两者之和即为观测与模拟系统的总不确定度：
+\begin{equation}
+\text{Aleatory Uncertainty}\equiv H(X_{o})-I(X_{o};X_{i})
+\end{equation}
+\begin{equation}
+\text{Epitemic Uncertainty}\equiv I(X_{o};X_{i})-I(X_{o};X_{s})
+\end{equation}
+\begin{equation}
+\text{Whole Uncertainty}\equiv H(X_{o})-I(X_{o};X_{s})
+\end{equation}
+
+这里 $X_o,X_i,X_s$分别表示模型输出变量观测值，模型输入变量观测值，模型模拟变量。
+$H$表示信息熵，离散随机变量的信息熵表示该随机变量的平均信息量（不确定度）。$I$表示互信息，它表征了两个随机变量之间的信息共享程度，或者在给定其中任意一个随机变量取值时，另一个随机变量不确定度的减少量。
+
+在这一模型评价体系中，用以衡量信息量大小和随机变量关系的量纲，位（bit），必须在一定的语境中才有其物理意义。气象、水文序列通常被视为在时域或频域上的离散观测值。在不同坐标表达下或不同的分解表示下的水文序列有不同的信息熵和互信息。在不确定具体语境或先验假定的条件下，谈论随机不确定度与认知不确定度是没有意义的\cite{weijs2013data}。另一方面，水文变量通常被视为连续随机变量，而连续随机变量的不确定度不能直接由其信息熵表示，需要对连续随机变量进行量化处理。
+
+由于水文过程由多个气象变量控制，且在季度或更小的计算时间尺度内，水文过程通常不闭合，这导致
+$X_o$往往为包含前期和当前输入项的高维变量，$I(X_o,X_s)$的计算必然会遭遇维数灾难\cite{bellman1962applied}，这成为制约互信息概念得到广泛应用的技术难点。龚伟提出使用独立成分分析的方法（ICA）\cite{gong2013estimating}估算高维互信息。独立成分分析是一种盲源信号分离的统计方法，针对原有的高维数据$X$，确定一线性变化矩阵$A$，使$AX$的非高斯性（独立性）最大化。假定经过ICA	变化后的矩阵是列独立的，其联合熵为各分量熵之和。根据熵的线性性质，即可得到原高维相关数据的联合熵，互信息通过信息熵间接计算。该方法有两个缺陷，其一，如果原始高维数据高度非线性相关，则ICA方法无法将其变为独立分量，忽略变量间的相关性会导致高估高维信息熵；其次，采用间接的高维互信息计算方法难以避免误差积累的问题。
+
+随着计算机科学与传统统计学相互渗透，基于人工智能和机器学习算法的水文模型正逐渐引起水文学者的关注。该类模型提供了对物理现象既有理论以外的系统认知手段\cite{solomatine2008data}。常见的数据驱动模型有多层人工神经网络模型\cite{hsu1995artificial}，基于$k$邻近的决策树模型\cite{solomatine2008instance}和基于核函数的支持向量机模型\cite{dibike2001model,liong2002flood}等。其中支持向量机凭借其具有显示表达式，能有效防止过拟合的优势，正在逐渐接替人工神经网络在数据驱动水文模型中的统治地位。
+
+基于核函数的支持向量机模型通过隐式地将原数据映射到特征空间中，可以有效避免小样本在高维空间内过于稀疏，无法反映水文变量聚类状态的缺点，在估计高维信息熵中取得了较好的效果\cite{phdgong}，然而，应用该方法估算互信息仍旧涉及多次估计的叠加，不能避免间接计算时引入误差。
+
+综上所述，通过将信息理论中的信息熵和互信息的概念引入水文观测与模拟评估中，可以建立一个逻辑完善的评估体系。利用基于人工智能和机器学习的数据驱动模型估算高维水文数据互信息，以及利用具有物理机理的模型估算水文变量间的互信息，体现了两类模型对数据信息的利用程度。由于数据驱动模型具有能够有效提取高维数据中模式的优势，我们认为由该类模型处理结果反映了观测数据对水文系统的控制程度，既有的基于机理的模型在经过对原始观测数据处理后，模拟值往往不能达到该控制程度，两者之差体现了模型提取数据中信息量的能力。这一评估体系可以用来反映在不同时空尺度下观测与模拟引入的误差，也可以视为评估机理驱动和数据驱动模型的合理框架。在承认该框架的美的同时，也必须认识到，理论需要可行且准确的计算方法，而且，为了获得广泛的认可和应用，新理论体系必须能够融入原有知识系统中。
+
+\iffalse
+机器学习。人工智能。不能避免模型。context。
+
+
+Gong尝试了很多高维互信息的计算方法，试图从小样本中得到``真实''互信息值。但是，数据处理不等式——不能没有模型！！！Weijs。
+
+第一部分模型多多少少有物理依据。
+
+随着数据量增加，计算机科学与统计学结合，机器学习，统计学习。
+
+统计学习简史 \& 统计学习在水文中得应用，在水文模拟中的应用
+
+\begin{equation*}
+\left\{
+\begin{aligned}
+   &Model(Parameter)=Simulation(Structure,Input,State,Parameter)\\
+   &Evolution(Parameter\_Sets)=Evolved\_Parameter\_Sets \\
+   &Optimization (Model,Parameter\_Sets,Observation,Evaluat\_Criterion)\\&=\left\{\begin{aligned}&Local\_best\\&Optimization(Model,Evolved\_Parameter\_Sets,Obsevation,Evaluat\_Criterion)\end{aligned}\right.
+\end{aligned}
+\right.
+\end{equation*}
+
+神经网络，支持向量机。
+
+机器学习模型的优势，。。
+\begin{itemize}
+\item 准
+\item 参数变异性鲁邦
+\end{itemize}
+
+机器学习模型的劣势，。。
+\begin{itemize}
+\item 过拟合
+\item 物理意义不明确
+\end{itemize}
+
+它针对这几个劣势的发展。
+
+联系具有物理意义的模型与数据驱动的模型。。
+
+sherman Unit Hydrograph
+
+ANN
+DBM data base mechanism
+
+两种方法的综合，见CONCEPTUAL HYDROLOGICAL MODEL PAST,FUTURE....
+
+walfgang  a new kind of science.
+\fi
+\section{研究内容与技术路线}
+随机土壤水模型提供了联系日时间尺度的降水产流、蒸散发过程与长时序水热耦合形态的物理意义明确且可解析的理论框架。在该模型中，模型不确定性来自于输入变量（是否降水，降水量等），模型输出相应地以概率形式表达，在一致的气候状态下，日尺度模拟结果在长时序上的统计值表现出一定的规律。
+
+由泛函方程\ref{4}可知，水文过程的不确定性不仅仅来自于输入变量观测误差，还来自于模型本身对点尺度水文机理、对下垫面不均匀性及其各部分联系的概化。对源自数据和模型的不确定性的刻画需要回答如下三个问题： 
+
+\begin{enumerate}
+\item 随着时间尺度变化，水文形态先验不确定度的变化.
+\item 随着时间尺度变化，观测数据支撑下水文形态后验不确定度的变化.
+\item 随着时间尺度变化，模型支撑下水文形态后验不确定度的变化.
+\end{enumerate}
+
+针对以上问题，论文从如下两个方面展开工作：
+\begin{enumerate}
+\item 拓展点尺度随机土壤水模型结构，分析在不同时间尺度下随机土壤水方程刻画流域水文过程的应用条件与效果，具体包括：
+\begin{itemize}
+\item[1)]在总结归纳原有点尺度随机土壤水模型的基础上，开发空间升尺度的土壤水随机微分方程（第二章）.
+\item[2)]从时域和频域模拟分析以土壤水随机微分方程稳态解刻画流域中长期水文过程的应用范围及效果（第三章）.
+\end{itemize}
+\item 利用基于信息熵和互信息的不确定度评价体系，分析在不同时间升尺度下水文过程先验不确定度、数据和模型支撑下的后验不确定度以及观测和模拟中各变量的信息贡献，具体包括：
+\begin{itemize}
+\item[1)]理论与技术基础，主要包括从贝叶斯公式和数据处理不等式出发重建基于信息熵和互信息的水文观测模拟评估体系。针对连续信息熵无法表示先验不确定度的问题，提出预设精度，以离散化信息熵表示先验不确定度的方法。针对高维互信息维数灾与间接计算误差问题，提出结合$k$近邻和支持向量机的高维水文变量互信息估算方法（第四章）.
+\item[2)]利用MOPEX数据集，通过将实测日水文数据按不同时间尺度聚合，估算不同尺度下水文观测模拟不确定度及其控制因素（第五章）.
+\end{itemize}
+
+\end{enumerate}
+\iffalse
+一方面，拓展点尺度随机土壤水模型结构，分析随机土壤水方程在不同时间尺度下的应用条件与效果，具体包括：在总结归纳原有点尺度随机土壤水模型的基础上，开发空间升尺度的土壤水随机微分方程（第二章）；根据方程稳态解分析土壤蓄水容量不均匀性对多年平均尺度下流域各水文变量的弹性影响因子；利用蒙特卡洛模拟分析土壤水方程达到稳态条件的时间尺度，通过对土壤水随机方程进行傅里叶分析，讨论影响流域土壤水记忆的因素（第三章）。论文另一部分
+
+
+
+一方面，在总结归纳原有点尺度随机土壤水模型的基础上，开发空间升尺度的土壤水随机微分方程，根据方程稳态解分析土壤蓄水容量不均匀性对多年平均尺度下流域各水文变量的弹性影响因子；利用蒙特卡洛模拟分析土壤水方程达到稳态条件的时间尺度，通过对土壤水随机方程进行傅里叶分析，讨论影响流域土壤水记忆的因素。另一方面，从贝叶斯公式出发重建基于信息熵和互信息的水文观测模拟评估体系。针对连续信息熵无法表示先验不确定度的问题，提出预设精度，以离散化信息熵表示先验不确定度的方法。针对高维互信息维数灾与间接计算误差问题，提出结合$k$近邻和支持向量机的高维水文变量互信息估算方法。最后，使用随机模拟和实测数据，利用建立的水文模拟不确定度评估体系，分析变化时间尺度下水文过程的观测与模型精度，对理论推测做出验证。
+\fi
+
+本论文技术路线如图\ref{routine}所示：
+\begin{figure}[H]
+\centering
+\includegraphics[width=15cm]{routine.png}
+\caption{论文技术路线图}
+\label{routine}
+\end{figure}
+
+ 

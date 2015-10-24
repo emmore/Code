@@ -1,0 +1,61 @@
+\documentclass[master]{thuthesis}
+\usepackage{thutils}
+\usepackage{amsmath}
+\usepackage{authblk}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{graphicx} 
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{cases}
+\usepackage{booktabs} 
+
+
+\begin{document}
+% 定义所有的eps文件在 figures 子目录下、
+\graphicspath{{figures/}}
+
+%%% 封面部分
+\frontmatter
+\input{data/cover}
+
+% 设置 PDF 文档的作者、主题:等属性
+\makeatletter
+\thu@setup@pdfinfo
+\makeatother
+\makecover
+
+
+
+% 目录
+
+\tableofcontents
+
+% 符号对照表
+\input{data/denotation} 
+
+%%% 正文部分
+\mainmatter 
+
+\include{data/chap01}
+\include{data/chap02}
+\include{data/chap03}
+%\include{data/chap04}
+\include{data/chap05}
+%\include{data/chap06}
+\include{data/chap07}
+\include{data/chap08}
+\iffalse
+\begin{appendix}
+\input{data/appendix01}
+\end{appendix}
+\fi
+% 参考文献
+\bibliographystyle{thubib}
+\bibliography{ref/refs}
+% 致谢
+\include{data/ack}
+
+% 个人简历
+\include{data/resume}
+\end{document}

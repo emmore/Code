@@ -1,0 +1,75 @@
+\documentclass{article}
+\usepackage{CJKutf8}
+\usepackage{amsmath}
+\usepackage{listings}
+\begin{document}
+\begin{CJK}{UTF8}{gkai}
+\title{ICA最小二乘}
+\date{\today}
+\author{潘宝祥}
+\maketitle
+  设原自变量矩阵为A，列向量分别表示降水$P_{Mean}$，径流$Rh$，前期降水$P_{Lag}$，温度$Ta_{Mean}$，潜在蒸散发$Eps$.因变量为修正后$NDVI$。最小二乘拟合结果如下：
+\begin{equation*}
+Mo=0.0015P_{Mean}-0.0074Rh+0.0005P_{Lag}+0.0349Ta_{Mean}-0.0006Eps
+\end{equation*}
+\begin{center}
+$\rho^2=0.6787$ 
+\end{center}
+
+独立成分分析(ICA)基本思路为：所有自变量通过线性变换后尽可能地相互独立(非高斯性最大化)。本文使用fastICA算法，先将自变量进行独立成分分析，后应用列独立矩阵对因变量进行最小二乘拟合。最后还原为自变量A对因变量的线性拟合。
+\begin{itemize}
+
+\item 所有自变量独立成分分析后最小二乘拟合
+\begin{itemize}
+\item 独立变量个数等于自变量个数时，结果与直接回归相同：
+\begin{equation*}
+M_o=0.0015P_{Mean}-0.0074Rh+0.0005P_{Lag}+0.0349Ta_{Mean}-0.0006Eps
+\end{equation*}
+\begin{center}
+$\rho^2=0.6787$ 
+\end{center}
+
+\item 独立变量个数为2时：
+\begin{equation*}
+M_o=0.0008P_{Mean}-0.0049Rh+0.0008P_{Lag}+0.0144Ta_{Mean}-0.0001Eps
+\end{equation*}
+\begin{center}
+$\rho^2=0.5856$
+\end{center}
+
+\item 独立变量个数为3时：
+\begin{equation*}
+M_o=0.0009P_{Mean}-0.0046Rh -0.0146Ta_{Mean}+0.0008Eps
+\end{equation*}
+\begin{center}
+$\rho^2=0.4674$
+\end{center}
+\end{itemize}
+
+
+\item 仅将同量纲项（降水，前期降水，径流，潜在蒸散发）独立成分分析后最小二乘拟合(推荐，物理意义更好)
+独立变量个数等于自变量个数时，结果与直接回归相同：
+\begin{itemize}
+\item 独立变量个数等于自变量个数时，结果与直接回归相同：
+\begin{equation*}
+M_o=0.0015P_{Mean}-0.0074Rh+0.0005P_{Lag}+0.0349Ta_{Mean}-0.0006Eps
+\end{equation*}
+\begin{center}
+$\rho^2=0.6787$ 
+\end{center}
+
+\item 独立变量个数为2时(建议，因为两个独立变量体现了水，热控制）：
+\begin{equation*}
+M_o=0.0005P_{Mean}+0.0011Rh+0.0007P_{Lag}+0.0040Ta_{Mean}-0.0001Eps
+\end{equation*}
+\begin{center}
+$\rho^2=0.5800$
+\end{center}
+
+\end{itemize}
+
+\end{itemize}
+
+
+\end{CJK} 
+\end{document}

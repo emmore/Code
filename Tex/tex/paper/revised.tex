@@ -1,0 +1,434 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\begin{document}
+\title{A Spatial-Temporal Upscaling of Water Balance Based on Stochastic Soil Moisture Differential Equation}
+\date{ }
+\author{Pan Baoxiang}
+\maketitle
+\begin{center}
+\newpage
+\section*{Abstract}
+\newpage
+\tableofcontents
+\end{center}
+\newpage
+\begin{center}
+\section{Introduction}
+\end{center}
+
+Hydrologists care about the movement and storage of water over different temporal and spatial scales. We prefer a self-consistent theory that could account for the existent multi-scale phenomenological patterns. The paragon solution for scaling problem is mathematical analysis. To be more specific, to upscale is to integrate, to downscale is to differentiate. The balk for applying calculus in hydrological scale conversion lies in the discontinuity of the integral path, both temporally and spatially. We would automatically pick up the \textit{integration by parts} method to deal with discontinuous functions. This method constructs the philosophy of distributed hydrological model, which takes use of detailed meteorological and territorial information. The meteorological data depicts the temporal integral path of the basic water movement control functions, while the territorial data depicts the spatial integral path.  
+
+The technical critique of distributed hydrological models has been languishing with the improvement of computing speed and 
+consummate of hydrological datasets, but nor have the scientific ones. The distributed models, who inherited their genes from the classical physical methodology, could not be used to testify the \textit{first principles} on which their constitution functions are based, thus unable to form a positive correctiveness confirming feedback cycle as a scientific theory. The massive results deduced from the \textit{integration by parts} method could not be differentiated in whole to figure out or theoretically conform the noteworthy larger-scale patterns, such as the Budyko water-heat correlation framework.    
+
+The Budyko framework offers an interesting macro viewpoint of hydrological cycle. It teaches us to hold a generalized Euler's motion perspective of evapotranspiration $E$ in the whole catchment. The entering matter (which is represented by precipitation $P$) and energy (which is represented by potential evapotranspiration $EP$) together determine the one-dimensional movement of water (to runoff or vaporize)  in a large temporal scale (average-annual) when soil moisture deficient could be neglected. The derivation of two frequently quoted formulas (Fu and Choudhury-Yang) both start from examining the $(E,EP,P)$ state space in their extremes under the restriction of Burkingham $\Pi$ theory, reaching a particular solution form by further assuming a similar characteristics through out their change. This assumption, whose transformation is also used in the derivation of $SCS$ curve number, is quite strong but often neglected.
+
+Since hydrological cycle is a self-consistent system, we should be able to start from any scale and meet the other. The numerical correlation offered by the two methods above remains a theoretical scrutiny. By representing the rainfall as a compound Poisson process, a series stochastic process descriptions of point-scale soil moisture were developed. This research tries to re-deduce the stochastic water balance equation in a manner that no assumptions and stipulation of hydrological variable forms are introduced until necessary to gain a general meaning. The re-deduced form enables us to extend the original point-scale stochastic soil moisture model to catchment scale by the abstraction of territorial features. We adopt the  territorial parameterizaiton scheme in Xinanjiang Model and TOPModel. In light of \textit{the law of large numbers}, we clarified the legitimacy of the temporal upscale method which uses the expectation of soil moisture formula in constant state to represent the macro temporal scale watershed hydrological characteristics. Finally, we use the expectation form of the deduced constant soil moisture distribution function to derive the elastic coefficient of different hydrological variables to evaluate their influence on the hydrological cycle. The results are examined in the XX watershed. 
+
+
+\section{Basic Stochastic Soil Moisture Equation} 
+
+ 
+Soil is the pivot in the soil-plant-atmosphere continuum (SPAC) system. The moisture content in soil reflects the catchment hydrological condition and determines its hydrological and ecological reaction to the meteorological stimulus. In hydrological models, soil moisture acts as the most significant state variable that guarantees the mass conservation along the calculating time line whose continuity is disrupted by the inconstant meteorological inputs. It could rain or not, there may be cloud or sunshine. In this research, we use a consecutive Markov process model to represent the soil moisture state. The origin of randomness comes from the well-studied stochastic nature of precipitation. Once the stochastic soil moisture function was established, we could determine the probability distribution of other hydrological variables, such as runoff, leakage and evapotranspiration.
+
+The technical route of this section is as follows: based on the conservation law, we construct the Chapman-Kormogorov forward stochastic differential function of soil moisture, which models the hydrologic procedure as a consecutive Markov process.  Based on the stochastic differential equation of soil moisture, the random process analysis functions of other hydrologic variables are derived. In the whole derivation, we prevent from  including assumptions until necessary to gain a general meaning of each step.
+
+\subsection{Declaration and Priori Assumptions}
+Following the previous work(citatn),The forward differential equation is derived. To gain a general meaning, here we select as few assumptions as possible in this step, which are listed as follows:
+
+The replenishment of soil moisture comes mainly from  precipitation. we can characterise the run-off generation mechanism of a series of rainfall affairs using the following two variables:
+\begin{equation}
+i=I(r,s)
+\end{equation}
+$i$ denotes the replenishment of soil moisture in a single rainfall affair, $r$ denotes the rainfall depth of such an affair, and $s$ denotes the soil moisture level before the rain.
+\begin{equation}
+\lambda=\Lambda(t)
+\end{equation}
+$\lambda$ denotes the probability that a rainfall affair happens during a unit time period at the moment t, which is a function of time t.
+
+The loss of soil moisture comes mainly from evapotranspiration and leakage, which could be denoted as the function of soil moisture.
+\begin{equation}
+\rho=EL(s)
+\end{equation}
+$\rho$ denotes the evapotranpiration and leakage loss during a single calculate time step.
+\subsection{Stochastic Process Analysis of  Hydrologic Variables}
+\subsubsection{Stochastic Process Analysis of  Soil Moisture}
+Given the assumptions above, we  proceed  to derive the forward differential function that links the soil moisture at different time.
+
+\begin{equation}
+\begin{split}
+f(s,t+dt)ds=&\underbrace{[1-p_{rain}]f(s+\Delta s,t)d(s+\Delta s)}_{no-rain}\\&+\underbrace{p_{rain} \int_{0}^{s} f(z+\Delta z,t)p_{i|z}(s-z)d(z+\Delta z)ds}_{rain}
+\end{split}
+\end{equation}
+where $f(s,t)$ denotes the probability density function of soil moisture to be s at time t.  $f(s,t)ds$ denotes the probability that the soil moisture takes the value within $(s,s+ds)$ at time t, $ p_{rain}$ denotes the probability that there to be a rainfall affair during time period $(t,t+dt)$.  $\Delta s$ and $\Delta z$ denotes the soil moisture loss during time period $(t,t+dt)$. $p_{i|z}(x)$ denotes the probability density that the replenishment of soil moisture equals $x$ when the soil moisture equals to $z$ before the rainfall affair. The first part of the equation's right side denotes the no-rain condition, while the latter part denotes the rainfall condition.
+
+Following the previous definition, the probability of there being a rainfall affair during a unit time period at $t$ is $\lambda(t)$, thus:
+\begin{equation}
+\begin{split}
+p_{rain}=&\int_t^{t+dt} \lambda(x)dx\\=&\lambda(t)dt+o(dt)
+\end{split}
+\end{equation}
+
+For the no-rain condition, the soil moisture loss during time $(t,t+dt)$ is $\Delta s$, which is the function of the soil moisture $s$. It could be denoted as follows:
+\begin{equation}
+\Delta s=\int_t^{t+dt} \rho[s(t)]dt
+\end{equation}
+Since $s(t+dt)= s$, take the second order Taylor expansion of $\Delta s$, we have:
+\begin{equation}
+\Delta s=\rho(s)dt+o(dt)
+\end{equation}
+Thus:
+\begin{equation}
+\begin{split}
+&f(s+\Delta s,t)d(s+\Delta s)\\=&f(s+\rho(s)dt+o(dt),t)d(s+\rho(s)dt+o(dt))
+\\=&[f(s,t)+\frac{\partial{f(s,t)}}{\partial s}\rho(s)dt+o(dt)](1+\frac{d\rho(s)}{ds}dt)ds
+\\=&[f(s,t)+\frac{\partial{f(s,t)}}{\partial s}\rho(s)dt+f(s,t)\frac{d\rho(s)}{ds}dt+o(dt)]ds
+\end{split}
+\end{equation}
+
+The rainfall condition in equation (4) is a typical convolution form that ensures the soil moisture to be within $(s,s+ds)$ at time $t+dt$. $\Delta z$ denotes the soil moisture loss during time $(t,t+dt)$, and 
+$z(t+dt)=z$.  Thus, as derived above:
+\begin{equation}
+\begin{split}
+\Delta z&=\int_t^{t+dt} \rho[z(t)]dt\\&=\rho(z)dt+o(dt)
+\end{split}
+\end{equation} 
+so,
+\begin{equation}
+\begin{split}
+ &dt\int_{0}^{s} f(z+\Delta z,t)p_{i|z}(s-z)d(z+\Delta z)\\=&dt\int_{0}^{s} f(z,t)p_{i|z-\rho(z)dt-o(dt)}[s-z+\rho(z)dt+o(dt)]dz\\=&dt\int_{0}^{s} f(z,t)\lbrace p_{i|z}(s-z)-\frac{\partial p_{i|z}(s-z)}{\partial z}[\rho(z)dt+o(dt)]\rbrace dz\\=&dt\int_{0}^{s} f(z,t)p_{i|z}(s-z)dz+o(dt)
+ \end{split}
+ \end{equation}
+ Combine equation(4),(5),(8),(10),we have:
+ \begin{equation}
+ \begin{split}
+ &f(s,t+dt)ds\\=&f(s,t)ds+\rho(s)\frac{\partial{f(s,t)}}{\partial s}dtds+f(s,t)\frac{d\rho(s)}{ds}dtds-\lambda(t)f(s,t)dtds\\&+\lambda(t)dt\int_{0}^{s} f(z,t)p_{i|z}(s-z)dzds+o(dt)
+ \end{split}
+ \end{equation}
+ Subtract $f(s,t)ds$ and divide by $ds$ in both sides of equation (11),$lim(dt)\rightarrow0$, we have:
+ \begin{equation}
+ \frac{\partial{f(s,t)}}{\partial t}=\frac{\partial{[\rho(s)f(s,t)]}}{\partial s}-\lambda(t)f(s,t)+\lambda(t)\int_{0}^{s} f(z,t)p_{i|z}(s-z)dz
+ \end{equation}
+ Equation(12) is the general form of soil moisture stochastic differential equation.
+
+
+ To be more specific, we notice that f(s,t) is discontinuous at the point $(0,t)$ and $(1,t)$. A Dirac function is introduced to describe f(s,t):
+ \begin{equation}
+ f(s,t)=g(s,t)+[\delta(s)+\delta(1-s)](1-F)
+ \end{equation} 
+ where
+ \begin{equation}
+ F\equiv\int_{0^+}^{1^-} g(z,t)dz
+ \end{equation}
+ which denotes the probability that the soil moisture is within $(0^+,1^-)$ at time $t$ . $\delta (x)$ is the Dirac function:
+ \begin{equation}
+ \delta(x)\equiv
+ \begin{cases}
+ 0&x\neq0;\\\infty&x=0
+ \end{cases}
+ \end{equation}
+ and
+ \begin{equation}
+ \int_{-\infty}^{\infty} \delta(x)dx=1
+ \end{equation}
+ we define:
+ \begin{equation}
+ \begin{split}
+ p_0(t)\equiv&\int_0^{0^+} f(z,t)dz\\=&1-\int_{0^+}^1 f(z,t)dz
+ \end{split}
+ \end{equation}
+ Consider that:
+ \begin{equation}
+ \begin{split}
+ &\int_{0}^{0^+} f(z,t)p_{i|z}(s-z)dz\\=&\int_{0}^{0^+} f(z,t)[p_{i|0}(s)+\frac{\partial p_{i|z}(s-z)}{\partial z}z+o(z)]dz
+ \\=&p_{i|0}(s)\int_{0}^{0^+} f(z,t)dz
+ \\=&p_{i|0}(s)p_0(t)
+ \end{split}
+ \end{equation}
+ and
+ \begin{equation}
+ \begin{split}
+ &\int_{0^+}^{s} f(z,t)p_{i|z}(s-z)dz\\=&\int_{0}^{s} g(z,t)p_{i|z}(s-z)dz-\int_{0}^{0^+} g(z,t)p_{i|z}(s-z)dz\\=&\int_{0}^{s} g(z,t)p_{i|z}(s-z)dz
+ \end{split}
+ \end{equation}
+ we have:
+ \begin{equation}
+ \begin{split}
+ \frac{\partial{f(s,t)}}{\partial t}=&\frac{\partial{\rho(s)f(s,t)}}{\partial s}-\lambda(t)f(s,t)+\lambda(t)\int_{0}^{s} f(z,t)p_{i|z}(s-z)dz\\=&\frac{\partial{\rho(s)f(s,t)}}{\partial s}-\lambda(t)f(s,t)+\lambda(t)\int_{0}^{s} g(z,t)p_{i|z}(s-z)dz+\lambda(t)p_0(t)p_{i|0}(s)
+ \end{split}
+ \end{equation}
+
+ For the situation that $s=0$, we construct the integral form forward stochastic function:
+ \begin{equation}
+ \begin{split}
+ &p_0(t+dt)\\=&[1-\lambda(t)dt]p_0(t)+[1-\lambda(t)dt]\int_{0^+}^{\rho^{-1}(\frac{\Delta s_{s=0^+}}{dt})}p(u,t)du+o(dt)\\=&[1-\lambda(t)dt]p_0(t)+\int_0^{0^+} p(u,t)du+o(dt)\\=&[1-\lambda(t)dt]p_0(t)+o(dt)
+ \end{split}
+ \end{equation} 
+ Thus:
+ \begin{equation}
+ \frac{dp_0(t)}{dt}=-\lambda(t) p_0(t)
+ \end{equation}
+ \begin{equation}
+ p_0(t)=p_0(0)e^{-\lambda(t) t}
+ \end{equation}
+
+ Combine equation(17) and (20), we have the specific form of soil moisture stochastic differential function:  
+ \begin{equation}
+ \begin{split}
+ \frac{\partial{f(s,t)}}{\partial t}=\frac{\partial{[\rho(s)f(s,t)]}}{\partial s}-\lambda(t)f(s,t)+\lambda(t)\int_{0}^{s} g(z,t)p_{i|z}(s-z)dz+\lambda(t)p_0(0)e^{-\lambda(t) t}p_{i|0}(s)
+ \end{split}
+ \end{equation}
+\iffalse
+ We could also define $p_1(t)$ to denote the probability that the soil is saturated at time t. 
+ \begin{equation}
+ \begin{split}
+ p_1(t)\equiv&\int_{1^-}^1 f(z,t)dz\\=&1-\int_{0}^{1^-} f(z,t)dz
+ \end{split}
+ \end{equation}
+\fi
+
+
+
+
+
+
+ \subsubsection{Stochastic Process Analysis of Surface Run-off}
+ The probability that there to be a normalized run-off between $(r,r+dr)$ during period $(t,t+dt)$, which is denoted as $p(r,t)drdt$, could be expressed as follows:
+ \begin{equation}
+ p(r,t)drdt=\int_{0}^{1} f(z,t)[f_p(r+1-z,t)drdt]dz
+ \end{equation}
+where $f_p(x,t)dxdt$ denotes the probability that the there to be normalized rainfall depth within $(x, x+dx)$ during $(t, t+dt)$. 
+
+According to assumption(), the rainfall opportunity $\lambda$ and the normalized single rainfall depth $r$ are independent random variables, thus:
+\begin{equation}
+f_p(r+1-z,t)drdt=p_{rain}p_{r\_depth}(r+1-z)dr
+\end{equation}
+where
+\begin{equation}
+p_{rain}=\lambda(t)dt+o(dt)
+\end{equation}
+Combine equation(25),(26),(27),erase the higher order term, we have:
+ \begin{equation}
+ p(r,t)=\lambda(t)\int_{0}^{1} f(z,t)f_{r\_depth}(r+1-z)dz
+ \end{equation} 
+It could be interpreted as that for a single time step, the probability density for there being a run-off generated of depth $r$ equals to $\lambda(t)\int_{0}^{1} f(z,t)f_{r\_depth}(r+1-z)dz$.
+
+ \subsubsection{Stochastic Process Analysis of Evapotranspiration and Leakage}
+At any given time $t$, we assume that evapotranspiration $EP$ is a monotonic increasing function of soil moisture $s$. The function form is assumed to be as follows:
+\begin{equation}
+EP=E(s)
+\end{equation}
+Since function $E$ is monotonic increasing, 
+
+\begin{center}
+\section{Spatial Upscale}
+\end{center}
+
+The general and specific stochastic soil moisture functions are as follows:
+\begin{equation}
+\frac{\partial{f(s,t)}}{\partial t}=\frac{\partial{[\rho(s)f(s,t)]}}{\partial s}-\lambda(t)f(s,t)+\lambda(t)\int_{0}^{s} f(z,t)p_{i|z}(s-z)dz
+\end{equation}
+\begin{equation}
+ \begin{split}
+ \frac{\partial{f(s,t)}}{\partial t}=&\frac{\partial{[\rho(s)f(s,t)]}}{\partial s}-\lambda(t)f(s,t)+\lambda(t)\int_{0}^{s} g(z,t)p_{i|z}(s-z)dz\\&+\lambda(t)p_0(0)e^{-\lambda(t) t}p_{i|0}(s)
+ \end{split}
+ \end{equation}
+Since the mass conservation principle can be viewed as applicable in all the scales in hydrology, we could extent the functions above to a macro spatial situation. 
+We assume:
+
+
+1,Evapotranspiration and Leakage occur uniformly in the study region.
+
+2,There is a distribution pattern of soil water replenishment function.
+
+
+
+According to assumption 1, the spatial upscaling of no-rain condition is a linear process which requires no adaptation.
+Due to the heterogeneity of the soil, we should parameterize the soil replenishment process, which refers to $p_{i|z}(s-z)$.
+
+$p_{i|z}(s-z)$ denotes the probability density that the soil replenishment equals to $(s-z)$ on the condition that the priori soil moisture equals to z.
+ 
+In the original point scale stochastic soil moisture model, this probability density equals to the probability density that the normalized rainfall depth equals to $(s-z)$, as long as $s<1$, or not smaller than $1-z$, when $s=1$.  
+
+In the spatial upscaling condition, $z$ represents the average soil moisture level of the whole region. Given $z$, the more heterogeneous the region is, the more it is likely to generate run-off with the same rainfall input. 
+
+We adopt the two different schemes to deal with heterogeneity of the soil moisture replenish process, namely the Catchment Storage Capacity Curve from Xinanjiang Model and topographic index method from TOPMODEL.
+
+
+\subsection{Spatial Upscale Using Catchment Storage Capacity Curve}
+
+A general introduction of catchment storage capacity curve. (its assumption, application, etc.)
+\begin{equation}
+R=
+ \begin{cases}
+ P+z-1+[1-\frac{P+a}{1+b}]^{1+b}&{a+P\leq (1+b)};\\P+z-1 &{a+P\geq (1+b)}
+ \end{cases}
+\end{equation}
+where:
+\begin{equation}
+a=(1+b)[1-(1-z^{\frac{1}{1+b}})]
+\end{equation}
+
+Given:
+\begin{equation}
+R=
+ \begin{cases}
+ P+z-1+[1-\frac{P+a}{1+b}]^{1+b}&{a+P\leq (1+b)};\\P+z-1 &{a+P\geq (1+b)}
+ \end{cases}
+\end{equation}
+we have:
+\begin{equation}
+I\vert z=
+ \begin{cases}
+ 1-z-[1-\frac{P+a}{1+b}]^{1+b}&{a+P\leq (1+b)};\\1-z &{a+P\geq (1+b)}
+ \end{cases}
+\end{equation}
+thus:
+\begin{equation}
+p_{i|z}(s-z)=
+ \begin{cases}
+ p([1-\frac{P+a}{1+b}]^{1+b}=1-s)&{a+P\leq (1+b)};\\p(s=1) &{a+P\geq (1+b)}
+ \end{cases}
+\end{equation}
+
+Since:
+\begin{equation}
+p(s=1)=0
+\end{equation}
+we have the simplified form:
+\begin{equation}
+p_{i|z}(s-z)=p_{rain\_depth} \lbrace(1+b)[(1-z^{\frac{1}{1+b}})-(1-s)^{\frac{1}{1+b}}]\rbrace
+\end{equation}
+and
+\begin{equation}
+p_{i|0}(s)=p_{rain\_depth} \lbrace(1+b)[1-(1-s)^{\frac{1}{1+b}}]\rbrace
+\end{equation}
+thus we reached the spatical upscaled stochastic soil moisture equation:
+ \begin{equation}
+ \begin{split}
+ &\frac{\partial{f(s,t)}}{\partial t}=\frac{\partial{[\rho(s)f(s,t)]}}{\partial s}-\lambda(t)f(s,t)\\&+\lambda(t)\int_{0}^{s} g(z,t)p_{rain\_depth} \lbrace(1+b)[(1-z^{\frac{1}{1+b}})-(1-s)^{\frac{1}{1+b}}]\rbrace dz\\&+\lambda(t)p_0(0)e^{-\lambda(t) t}p_{rain\_depth} \lbrace(1+b)[1-(1-s)^{\frac{1}{1+b}}]\rbrace
+ \end{split}
+ \end{equation}
+We note that as $b\rightarrow0$, which denotes a homogeneous rainfall replenish condition, equation $(40)$ degenerates to the original function.
+
+\subsection{Spatial Upscale Using Topographic Index Method}
+
+Points with larger watershed area and lower water conductivities are easier to be saturated and generate runoff in a catchment.
+
+Assumptions
+
+1.The hydraulic gradient of subsurface flow is equal to the land-surface slope.
+\begin{equation}
+q_i=T_itan\beta_i
+\end{equation}
+
+2.The actual lateral discharge is proportional to the specific watershed area (drainage area per unit length of
+contour line).
+\begin{equation}
+q_i=Ra_i
+\end{equation}
+
+3.The conductivity is a negative exponent function of saturated underground water depth.
+\begin{equation}
+T_i=T_oexp(-z_i/S_{zm})
+\end{equation}
+
+Deduction:
+
+During a given infinitesimal time period, with a high resolution DEM, the lateral flow converges to a point immediately. 
+there would be water accumulation if the speed of water converging at a point exceeds its conductivity speed.
+
+Under steady state conditions:
+\begin{equation}
+q_i=T_oexp(-z_i/S_{zm})tan\beta_i=Ra_i
+\end{equation}
+thus:
+\begin{equation}
+z_i=-S_{zm}ln\frac{Ra_i}{T_otan\beta_i}
+\end{equation}
+\begin{center}
+\section{Temporal Upscale}
+\end{center}
+
+
+The stochastic soil moisture model, which is constructed at a point spatial scale,  offers a promising way of time abstraction in temporal unscaling. 
+
+stochastic description + law of large numbers. 
+\begin{equation}
+\lim_{n\to\infty}P\lbrace\vert\sum_{i=1}^n E_i-n\mu\vert<\epsilon\rbrace=1
+\end{equation}
+Application conditions are too strict for an actual use.
+
+1. monsoon climate inconsistency of climate condition. unable to extend to annual mean time scale.
+
+2. In consistent climate condition, the equilibrium solution is of little practice since we can not ignore the change of soil moisture.
+
+Following the previous work(citation), this research tries to extend the original stochastic soil moisture model to a more general form, make it  applicable for broader climate situations and temporal scales, which will fill the gap between the two methods mentioned above.
+
+
+\section{Analysis of the Upscaled Water Balance Function}
+
+
+?
+\section{Numerical Test}
+
+
+
+\section{Field Test}
+
+
+\section{Discussion}
+
+\section{Conclusion}
+
+\begin{table}[H]\scriptsize
+\centering
+\caption{流域基本状况} 
+\resizebox{\textwidth}{!}{
+\label{dataa}
+\begin{tabular}{cccccc}
+\toprule[1.5 pt] 
+气候类型& 编号 &\ 面积($km^2$)& $P_{mean}(mm)$& $PE_{mean}(mm)$&  $R_{mean}(mm)$  \\ 
+
+\midrule[1 pt] 
+& 1 & 215    & 1299  &  882 &   553\\
+&  2 & 611   & 1252  &  965  &  539\\
+%&02296750&  3541   &
+%3.5356 &   3.3299   & 0.6885\\
+WA&3&  2953    & 1321 &  1101   &   330\\   
+&4 &  9886   & 1452  &  1061   & 549\\
+&5  &  6967  & 1440  &  1055  &  489\\
+\\
+&6  &  3349      & 922      &    993     &  232    \\
+&7  &  2901      & 1001     &    1066    &  261   \\
+WS&8  &  9811      & 1006     &    959     &  303    \\
+&9  &  2344      & 948      &    1259     &  221    \\
+&10 & 5227  & 935  &  1303  &  160\\
+\\
+&11& 4338  & 1371 & 976 & 542  \\
+&12&  1924 & 1442 &1059  &  509 \\
+& 13&    290  &  522  & 1407   & 34  \\
+%11080500&117.8050W, 34.2360 N&  220 & 2.0235 &   4.0137   & 0.7134\\
+SA&14 & 1577   & 2748 &  751  &  2212\\
+&15&  2590 & 1613 & 681 & 1105  \\
+&16& 3056  & 1287 & 775 &  872 \\
+&17&  5317 & 1052 & 851 &  510 \\
+\\
+&18&4022   &854  &1017 & 254  \\
+&19& 8472  &839  & 984 & 224  \\
+&20& 8912  & 794 & 998 &  117 \\
+SS&21& 7268  & 808 &1027  &173   \\
+&22& 1052  & 941 &1110 & 228  \\
+&23& 865  & 950 & 1186 & 236  \\
+&24& 9889  & 877 & 1250 & 187  \\
+\bottomrule[1.5 pt] 
+\end{tabular}
+}
+\end{table}
+ The confrontation of sample number requirement of large number theory v.s. the consistency of rainfall pattern.
+
+\section*{References} 
+
+
+
+ \end{document}

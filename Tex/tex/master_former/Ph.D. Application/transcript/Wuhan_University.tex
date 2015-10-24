@@ -1,0 +1,213 @@
+\documentclass[a4paper,10pt,final]{scrartcl}
+% \documentclass[a4paper,10pt]{scrbook}
+
+\usepackage[utf8]{inputenc}
+\usepackage{german}
+\usepackage[left]{eurosym}
+\RequirePackage{graphicx}
+\usepackage{multirow}
+\usepackage{longtable}
+
+\setlength{\textwidth}{16cm}
+\setlength{\textheight}{23cm}
+\setlength{\oddsidemargin}{0cm}
+
+\setlength\parindent{0pt}%Festlegen des Absatzeinzuges
+
+%opening
+\title{\textbf{TRANSCRIPT OF RECORDS}\\[0.5em]
+Record of study and examination results in the
+Bachelor course of Physics
+with a Minor in \ergfach}
+% \subtitle{foo}
+\author{}
+
+
+\newcommand{\ergfach}{Astrophysics and Electronics}
+\newcounter{firstyear} \setcounter{firstyear}{2009}
+
+%%%%%%%%%%%%%% End of Configuration -- Naja, fast...
+
+\newcommand{\mc}[3]{\multicolumn{#1}{#2}{#3}}
+\newcommand{\mr}[3]{\multirow{#1}{#2}{#3}}
+
+\newcommand{\first}{\wintersemester{\thefirstyear}}
+
+\newcounter{secondyear} \setcounter{secondyear}{\value{firstyear}} \addtocounter{secondyear}{1}
+\newcommand{\second}{\sommersemester{\thesecondyear}}
+\newcommand{\third}{\wintersemester{\thesecondyear}}
+
+\newcounter{thirdyear} \setcounter{thirdyear}{\value{firstyear}} \addtocounter{thirdyear}{2}
+\newcommand{\fourth}{\sommersemester{\thethirdyear}}
+\newcommand{\fifth}{\wintersemester{\thethirdyear}}
+
+\newcounter{fourthyear} \setcounter{fourthyear}{\value{firstyear}} \addtocounter{fourthyear}{3}
+\newcommand{\sixth}{\sommersemester{\thefourthyear}}
+\newcommand{\seventh}{\wintersemester{\thefourthyear}}
+
+\newcounter{fifthyear} \setcounter{fifthyear}{\value{firstyear}} \addtocounter{fifthyear}{4}
+\newcommand{\eigth}{\sommersemester{\thefifthyear}}
+\newcommand{\nineth}{\wintersemester{\thefifthyear}}
+
+\newcounter{sixthyear} \setcounter{sixthyear}{\value{firstyear}} \addtocounter{sixthyear}{5}
+\newcommand{\tenth}{\sommersemester{\thesixthyear}}
+\newcommand{\eleventh}{\wintersemester{\thesixthyear}}
+
+\newcounter{seventhyear} \setcounter{seventhyear}{\value{firstyear}} \addtocounter{seventhyear}{6}
+\newcommand{\twelveth}{\sommersemester{\seventhyear}}
+
+\newcommand{\lecture}{L}
+\newcommand{\excercise}{E}
+\newcommand{\seminar}{S}
+\newcommand{\practical}{PC}
+\newcommand{\project}{PJ}
+\newcommand{\tutorial}{T}
+
+\newcommand{\written}{we}
+\newcommand{\writtenterm}{wt}
+\newcommand{\oral}{oe}
+\newcommand{\pass}{pass}
+\newcommand{\assignment}{wa}
+\newcommand{\paper}{tp}
+\newcommand{\presentation}{gp}
+
+
+%%%%%%%% Makros von Roland
+\def\instead#1#2{\hbox to 0pt{#2\hss}\phantom{#1}}
+\newbox\insteadboxi
+\newbox\insteadboxii
+\newbox\insteadboxiii
+\newbox\insteadboxiv
+\newbox\insteadboxv
+%%%%%%%%%
+
+\newcommand{\sommersemester}[1]{\instead{ W}{ S }#1}
+\newcommand{\wintersemester}[1]{ W  #1}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{graphicx} 
+\usepackage{amsmath}
+\usepackage{authblk}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{subfigure}
+\begin{document}
+
+% \maketitle
+
+\begin{center}
+	\begin{Huge}TRANSCRIPT OF RECORDS\end{Huge}
+
+	\vspace{3em}
+
+	\begin{Large}
+		Record of study and examination results in the
+		Bachelor course of Hydrology and Water Resources
+	\end{Large}
+\end{center}
+
+\begin{center}
+%
+\begin{tabular}{llcll}
+
+Family Name	& Pan& & University	& Wuhan University \\
+Given Names	& Baoxiang & &  Enrolled Since	& September 2008 \\
+
+
+Student ID	& 2008301580005 & & GPA	& 3.23/4.0  \\
+\end{tabular}
+\end{center}
+
+\begin{center}
+% use packages: array
+\begin{longtable}{lcc}
+ \toprule
+\multicolumn{1}{c}{Course} & Credit & Score\\ \midrule
+ College English (1)                                                                                                                     & 3   & 84   \\
+Advanced Mathematics B1                                                                                                                 & 5   & 88   \\
+Engineering Drawing                                                                                                                     & 3.5 & 80   \\
+Computer Foundamentals and Application(1)                                                                                               & 2   & 68   \\
+Military Theory                                                                                                                         & 1   & 86   \\
+\begin{tabular}[c]{@{}l@{}}Ideological and Moral Cultivation and\\   Fundamentals of Law\end{tabular}                                   & 3   & 60   \\
+Physical Education (1)                                                                                                                  & 1   & 89   \\
+Fundamentals of Environment Science                                                                                                     & 2   & 78   \\
+Linear Algebra                                                                                                                          & 2   & 78   \\
+College Physics B(1)                                                                                                                    & 3   & 86   \\
+Experiment of College Physics                                                                                                           & 1.5 & 85   \\
+College English (2)                                                                                                                     & 3   & 82   \\
+Advanced Mathematics B2                                                                                                                 & 5   & 86   \\
+Computer Foundamentals and Application(2)                                                                                               & 2   & 75   \\
+Basic Principles of Marxism                                                                                                             & 3   & 86   \\
+Physical Education (2)                                                                                                                  & 1   & 94   \\
+\begin{tabular}[c]{@{}l@{}}Essentials of Modern and Comtemporary\\   Chinese History\end{tabular}                                       & 2   & 82   \\
+Probability Theory and Stochastics(B)                                                                                                   & 3   & 86   \\
+Surveying Practice                                                                                                                      & 0.5 & 92   \\
+College Physics B(2)                                                                                                                    & 3   & 85   \\
+College Enlish (3)                                                                                                                      & 3   & 73   \\
+Engineering Surveying                                                                                                                   & 2   & 90   \\
+Experiment of Engineering Surveying                                                                                                     & 1   & 89   \\
+Theoretical Mechanics                                                                                                                   & 4   & 78   \\
+\begin{tabular}[c]{@{}l@{}}Mao Zedong Thoughts, Deng Xiaoping\\   Theories and the Important Thought of 'Three Represents'\end{tabular} & 6   & 69   \\
+Physical Education(3)                                                                                                                   & 1   & 95   \\
+Auto CAD Computer-aided Design                                                                                                          & 2   & 89   \\
+College English Test Band Four                                                                                                          & 0   & 79.7 \\
+Mechanics of Materials                                                                                                                  & 3.5 & 100  \\
+College English                                                                                                                         & 3   & 73   \\
+Hydraulics (Bilinghual)                                                                                                                 & 5   & 77   \\
+Experiment of Hydraulics                                                                                                                & 0.5 & 85   \\
+Physical Education(4)                                                                                                                   & 1   & 90   \\
+Engineering and Hydrogeologic Geology                                                                                                   & 2   & 88   \\
+Structural Mechanics                                                                                                                    & 2   & 96   \\
+Hydrological Statistics                                                                                                                 & 2   & 77   \\
+Water Quality Monitoring and Analysis                                                                                                   & 1.5 & 93   \\
+ 
+College English Test Band Six                                                                                                           & 4   & 76.1 \\
+\begin{tabular}[c]{@{}l@{}}Engineering Geology and Hydrogeology\\   Practice\end{tabular}                                               & 0.5 & 84   \\
+Experimental of Mechanics                                                                                                               & 0.5 & 91   \\
+Meteorology and Climatology                                                                                                             & 2   & 90   \\
+Conginitve Practice                                                                                                                     & 0.5 & 91   \\
+Mathematical Planning                                                                                                                   & 3   & 90   \\
+Practice of Hydrology Testing                                                                                                           & 0.5 & 95   \\
+Science of Hydrologic Information                                                                                                       & 2   & 85   \\
+Hydrology (Hydrological Forecasting)                                                                                                    & 2.5 & 83   \\
+Principle of Hyrology (Bilingual)                                                                                                       & 2   & 92   \\
+Course Design of Hydrological Forecasting                                                                                               & 0.5 & 87   \\
+Groundwater Hydrology                                                                                                                   & 2   & 71   \\
+Electrotechnics and Electrical Equipment                                                                                                & 2   & 80   \\
+Project Economy                                                                                                                         & 2   & 77   \\
+River Dynamics                                                                                                                          & 2   & 69   \\
+Watershed Hydrologic Model                                                                                                              & 1   & 90   \\
+Hydraulic Structure                                                                                                                     & 2   & 69   \\
+\begin{tabular}[c]{@{}l@{}}Medium-and-Long Term Forecasting of\\   Hydrology\end{tabular}                                               & 1   & 76   \\
+Introduction to Life Science                                                                                                            & 2   & 86   \\
+\begin{tabular}[c]{@{}l@{}}Science of Water Environment (Model of\\   Water Environment)\end{tabular}                                   & 2   & 90   \\
+\begin{tabular}[c]{@{}l@{}}Course Design of Water Conservancy\\   Engineering Economics\end{tabular}                                    & 0.5 & 80   \\
+\begin{tabular}[c]{@{}l@{}}Course Design of Hydroenergy and Water\\   Conservancy Calculation\end{tabular}                              & 0.5 & 99   \\
+\begin{tabular}[c]{@{}l@{}}Course Design of Hydrologic Analysis and\\   Calculation\end{tabular}                                        & 0.5 & 82   \\
+\begin{tabular}[c]{@{}l@{}}Hydrology (Hydrologic Analysis and\\   Calculation)\end{tabular}                                             & 2   & 74   \\
+\begin{tabular}[c]{@{}l@{}}Science of Water Resources (Water\\   Conservancy and Energy Calculation)\end{tabular}                       & 2   & 87   \\
+Geographic Information System (GIS)                                                                                                     & 2   & 90   \\
+Sience of Water Disasters                                                                                                               & 2   & 68   \\
+Stochastic Hydrology                                                                                                                    & 2   & 78   \\
+Professional English                                                                                                                    & 1.5 & 94   \\
+\begin{tabular}[c]{@{}l@{}}Course Design of Water Environment\\   Assessment and Planning\end{tabular}                                  & 0.5 & 60   \\
+\begin{tabular}[c]{@{}l@{}}Sicence of Water Environment (Water\\   Environment Assessment and  Planning)\end{tabular}                   & 3   & 75   \\
+\begin{tabular}[c]{@{}l@{}}Planning and Management of Water\\   Resources (Course Design)\end{tabular}                                  & 0.5 & 77   \\
+\begin{tabular}[c]{@{}l@{}}Operation and Control of Water Resources\\   System\end{tabular}                                             & 2   & 90   \\
+\begin{tabular}[c]{@{}l@{}}Operation and Control of Water Resources\\   System (Course Design)\end{tabular}                             & 0.5 & 90   \\
+\begin{tabular}[c]{@{}l@{}}Science of Water Resources (Planning and\\   Management of Water Resources)\end{tabular}                     & 3   & 75   \\
+\begin{tabular}[c]{@{}l@{}}A Perspective of Social Issues in China\\   Today\end{tabular}                                               & 2   & 90   \\
+New Concepts of Universe                                                                                                                & 2   & 90   \\
+Chinse Pottery and Porcelain Arts                                                                                                       & 1   & 85   \\
+Graduation Thesis                                                                                                                       & 4   & 90   \\
+Practical Exercises                                                                                                                     & 1   & 94  \\
+\bottomrule
+
+\end{longtable}
+\end{center}
+
+
+
+
+\end{document}
+

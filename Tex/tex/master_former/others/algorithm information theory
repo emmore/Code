@@ -1,0 +1,45 @@
+% This file was created with JabRef 2.10.
+% Encoding: GBK
+
+@article{datcu1998spatial,
+  title={Spatial information retrieval from remote-sensing images. I. Information theoretical perspective},
+  author={Datcu, Mihai and Seidel, Klaus and Walessa, Marc},
+  journal={Geoscience and Remote Sensing, IEEE Transactions on},
+  volume={36},
+  number={5},
+  pages={1431--1445},
+  year={1998},
+  publisher={IEEE}
+}
+
+@article{li2004similarity,
+  title={The similarity metric},
+  author={Li, Ming and Chen, Xin and Li, Xin and Ma, Bin and Vit{\'a}nyi, Paul MB},
+  journal={Information Theory, IEEE Transactions on},
+  volume={50},
+  number={12},
+  pages={3250--3264},
+  year={2004},
+  publisher={IEEE}
+}
+
+@article{cerra2010algorithmic,
+  title={Algorithmic information theory-based analysis of earth observation images: An assessment},
+  author={Cerra, Daniele and Mallet, Alexandre and Gueguen, Lionel and Datcu, Mihai},
+  journal={Geoscience and Remote Sensing Letters, IEEE},
+  volume={7},
+  number={1},
+  pages={8--12},
+  year={2010},
+  publisher={IEEE}
+}
+
+@article{quartulli2013review,
+  title={A review of EO image information mining},
+  author={Quartulli, Marco and G Olaizola, Igor},
+  journal={ISPRS Journal of Photogrammetry and Remote Sensing},
+  volume={75},
+  pages={11--28},
+  year={2013},
+  publisher={Elsevier}
+}

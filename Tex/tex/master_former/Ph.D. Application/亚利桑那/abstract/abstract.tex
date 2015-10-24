@@ -1,0 +1,180 @@
+\documentclass{article}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{tgschola} % or any other font package you like
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[C]{%
+  \footnotesize\sffamily
+  \yourname\quad
+    {\itshape\yourweb}\quad
+   {\youremail}}
+
+\newcommand{\soptitle}{Information Analysis of Catchment Hydrological Patterns Based on Stochastic Soil Moisture Model}
+\newcommand{\yourname}{ Baoxiang Pan}
+\newcommand{\youremail}{Prior Master’s Degree Abstract}
+\newcommand{\yourweb}{ }
+
+\newcommand{\statement}[1]{\par\medskip
+  \underline{{\textbf{#1:}}}\space
+}
+
+\usepackage[
+  colorlinks,
+  breaklinks,
+  pdftitle={\yourname - \soptitle},
+  pdfauthor={\yourname},
+  unicode
+]{hyperref}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{authblk} 
+\usepackage{graphicx} 
+\usepackage{diagbox}
+\usepackage{indentfirst}
+\usepackage{float}
+\begin{document}
+
+\begin{center}\LARGE\soptitle\\
+ 
+\end{center}
+
+\hrule
+\vspace{1pt}
+\hrule height 1pt
+
+\bigskip
+%\section*{Motivation \& Problem Statement}
+
+Hydrological cycle takes on different patterns across scales. %The constitutive functions describing hydrological processes in specific models are usually employed at limited but fuzzy spatial and temporal domains.
+ The bottom-up and top-down simulation strategies face inconsistency when confronted with scale cohesions. Neither of the two methods could clarify how water heat correlation pattern emerges with temporal upscaling, nor can they explain the influence of underlying surface nonuniformity on long-range hydrological responses, for these are problems lying in their fuzzy domain boundaries. The failure forces us to introduce a compromise perspective to explain the scale transition.    
+  
+Admitted that different models process observations with different requirements and accuracies, few frameworks provide comprehensive evaluation of the hydrological observation and simulation system. An ideological trend of applying information theory in hydrological simulation evaluation is gaining its popularity for its round theoretical foundations. The trend is dividing into two forks, one stresses the characteristics of the random source of the hydrological observations  within Shannon's descriptive complexity framework, while the other considers only the number of bits in the ultimate compressed version that could generate the observations using Kolmogorov's intrinsic complexity. The two theories are correspondent, but their connection in the hydrological context have not been well clarified.  
+%\section*{Methodology}  
+
+By representing precipitation with a Compound Poisson Process, a series of point-scale stochastic soil moisture model were constructed. This research first derived the stochastic  descriptions of the runoff and evapotranspiration 
+processes based on the  stochastic differential soil moisture equation. The temporal unscaling was implemented according to the large number law applied on  the stationary solution of the stochastic process equations. By introducing the soil moisture storage capacity curve from Xinanjiang Model, the original point scale stochastic model was spatially upscaled to the catchment scale. The elastic factors influencing long term catchment hydrological patterns were derived through mathematical analysis of the stationary catchment scale soil moisture probability function. 
+
+The validity of the functions were examined with daily catchment hydrological observations from the MOPEX data set within  an information theory perspective. The information content required to specify each component of the hydrological patterns at various temporal scales was depicted by quantized Shannon entropy of the runoff data, while the information provided by hydrometeorology terms was expressed with mutual information. An improved approach combining K-nearest neighbour method and  non-linear support vector regression was employed to tackle with high dimensional information term estimation. Results showed a maximum point of potential simulation performance around a seasonal scale for most of the catchments. This point responded to the temporal scale upscaling scheme of the hydrological stochastic equations, however, it could not be detected with the existed water balance models applied in this research.   
+
+At last, a data compression experiment was carried out to approach the Kolmogorov complexity of the hydrological observations across temporal scales. Compressing schemes incorporated truncated Fourier transition, typical compress algorithms and hydrological models to estimate the intrinsic complexity hidden in the data. The results were compared with the information contents estimated in the previous chapter to clarify the  connections and distinctions between Shannon's and Kolmogorov's  perspective applied in hydrological simulation.  
+  
+ 
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\Hrule}{\rule{\linewidth}{0.3mm}}
+
+\makeatletter% since there's an at-sign (@) in the command name
+\renewcommand{\@maketitle}{%
+  \parindent=0pt% don't indent paragraphs in the title block
+  \centering
+  {\Large \bfseries\textsc{\@title}}
+  \HRule\par%
+  \textit{\@author \hfill \@date}
+  \par
+}
+\makeatother% resets the meaning of the at-sign (@)
+
+\title{}
+
+\author{Baoxiang Pan}
+\date{Ph.D. Applicant}
+
+\begin{document}
+  \maketitle% prints the title block
+ 
+ 
+ 
+\large{
+  The unpaved muddy yard after a heavy summer rain is the heaven of earthworms, toads, plants and my childhood’s imagination. With the naïve drawing of earning a living without missing the beauty of nature, I entered the Department of Hydrology and Water Resources. The academic trainings during the past 6 years tells that nature will not reveal its true beauty without one's tireless work in decoding it.   The academic life is not as cosy and comfortable as I have imagined, but I hold a strong determination to continue this hard way because of the challenges and their aesthetic returns..%the Hydroinformatics and Integrated Hydrology Research Group, University of Nebraska-Lincoln. 
+
+Computer codes are my language in expressing academic understandings. The Github time bar (https://github.com/morepenn) depicts a fuzzy track of my research interests, which could  roughly be divided into two forks, one focusing on hydrological data analysis and the other on hydrological simulation. Experiences tell that well-organized data could reveal mechanism(model)  while  models could compress data in turn. I am looking for a position to continue my research on connecting and unifying them, which is exactly what the Hydroinformatics and Integrated Hydrology Research Group requires in its program.
+
+As is listed in the CV, I have been writing hydrological models for years. Most of the early codes are too redundant to be reused now. Redundant codes reflect unclear thoughts. Thoughts are in the form of language. \iffalse I enjoy clarify my thoughts through distilling common structures and making comparisons between specific constitutive functions among various models. \fi  Good programmers take themselves as language designers. My endeavour of distilling common structures and making comparisons between specific constitutive functions among various models gradually evolves into a process of constructing a hydrology \emph{Domain Specific Language} (DSL). Different hydrology generations  pick up different programming languages (Fortran, C, Matlab,Python, etc.) because of trends, traditions or accidents. \iffalse I enjoy the philosophy in their specific programming paradigms. \fi I want to pull away their syntactic sugar and extract the hydrology essentials through code abstraction and encapsulation. I believe my knowledge of different programming paradigms (process oriented, object oriented and functional programming) can help a lot in developing the integrated hydrology-agriculture investigation platform of the program.
+
+My strong interest in  stochastic hydrology was inspired by the book \emph{Probability, the Logic of Science} (Jaynes E T. ,2003). All scientific knowledge are statistical inferences (C.R.Rao, \emph{Statistics and Truth}), but not all scientists follow this creed in practice. I enjoy the sparkle of wisdom and crystalline rigour in Jaynes's  idea of quantifying  both scientific induction and theories with probability theory. An important theme in my graduate proposal is  to implement this claim in detecting how the water-heat correlation pattern emerges as temporal scale expands. The logical and methodological difficulties forced me to push down and re-construct my fuzzy understanding of probability, stochastic process, information theory and machine learning theory again and again. The effort pays when a seasonal information flow extreme point (represented by conditional entropy) is detected.  Data generated from different observation sources and models are constantly flooding   in this digital age. One should always stay sober when making stochastic analysis of these data, otherwise he/she would be submerged. I hope my effort in constructing an regulated hydro-agriculture uncertainty estimation platform could help avoid misuse of stochastic methods and improve our understandings of the uncertainties of the system.
+
+Assistant Professor Francisco Muñoz Arriola exchanged his research interests and plans with me during the American Geophysical Union 2014 fall meeting in San Francisco. The congeniality of our talk comes from a similar research interest and same ambition for perfect code. Francisco has done meaningful work in evaluating the hydrological response to climate and land use changes. The mass workload could be greatly reduced if an integrated agriculture water-state uncertainty estimation platform were constructed as   expected. I have the determination and ability in taking an important role in this project.
+
+I got a little thrilled knowing that the other initiator of this program is Professor Dimitri Solomatine. Though have been interested and working on data-driven models for long, I have never expected to be guided by a leader in this area. I used to be obsessed with the specific tricks of iterative evolving in  gene algorithm, particle swarm optimizer, SCE-UA algorithm and many other \emph{intelligent} algorithms that could learn \emph{knowledge} from data. The information analysis research I am working on uses support vector regression to distil information from high dimensional hydrological terms. Professor Dimitri has done fundamental work in the fields mentioned above. His understanding of the interface between models and data must be very enlightening.
+
+The United Stated and Europe are the pioneers of modern civilization. I have long been wishing to integrate into their civilizations which formed the values of the world today. The core of our culture today lies in science. I want to make my contribution to the frontier in my major. For me, the most interesting job is to keep finding secrets of different complex interlocking earth systems. Though sometimes I would complain that the research work turns the beautiful scene into hell once I attempted quantify its material, energy and information flows. But the joy of finding new things pays all. The cross-continental academic experience must be a challenging and  exciting journey to make my base in the hydrological academic community. I sincerely hope your favourable consideration regarding my application to the Ph.D. program. Looking forward to joining the big family of HIH!
+\begin{flushright}
+Sincerely 
+
+Baoxiang Pan
+\end{flushright}
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+\iffalse
+
+The position offered by the  aims to improve our understanding  
+
+
+They are unified. 
+
+The further I look back, the more redundant 
+
+
+
+
+
+
+It is embarrassing to admit that it takes me more than a month writing a Xinanjiang model four years ago. But as the iterative structure was distilled, the later process-based models like TOP model, HyMod, Shanbei Model and water balance models became logical conclusions once their constitutive functions had been established. As models were constructed, Professor Lihua Xiong encouraged us to “hack” them from the easiest part, parameters. I still remember the thrill when a satisfying parameter set was produced after refreshing trials by simulating the evolution of species. I enjoyed the specific tricks of iterative evolving in the gene algorithm, particle swarm optimize algorithm, SCE-UA algorithm. This study experience expanded my vision that data could tell us knowledge if they were well organized.
+My undergraduate degree proposal deals with the water-heat correlation pattern simulation across temporal scales. The similarity of constitutive functions in such models forced me to discover the mechanism behind them. There are two distinct forks, one aims at 'integrating' detailed processes along temporal and spatial paths to reveal the general picture, the other starts from a systematic perspective. The former gets its gene from mechanics, the latter inherits a thermodynamics view. My graduate supervisor Associate Professor Zhentao Cong introduced me a compromised way, the stochastic soil moisture model. Like most of the hydrological models, this model takes the point scale soil column as the central in precipitation participation. However, a stochastic analysis perspective enables us to bypass the difficulty to analyze iterative model structures. The stationary and temporal mean solution of the Kormogorov Forward Stochastic Differential Equation provides general knowledge of a point scale soil using characteristics distilled from the input observations. I generalized it to a basin scale form by introducing the soil storage capacity distribution curve into the main equation. Later, the stochastic control function of runoff, evapotranspiration and leakage were deduced based on it. I still get a long way to go along this path, such as considering the seasonal fluctuation of precipitation and evapotranspiration using harmonic analysis, detecting the long temporal range hydrological pattern's sensitivity to the meteorological and underlying surface characteristics.
+Another of my research interest lies in stochastic hydrology. I enjoy the wisdom of reorganizing our knowledge in the context of probability theory. This ideological trend starts from Leibniz, Bernoulli, Jeffreys, Jaynes, and is gaining its support in the hydrology community. I tried to verify the results of the stochastic analysis mentioned above in the context of information theory. The theoretical framework originated from the doctor thesis of my senior fellow apprentice Doctor Wei Gong. I was so excited to find a crystalline theory that quantifies the information contribution of data and model in math. The excitement made me underrate its logical and methodological difficulties at first. Fortunately, the discussion with researchers from different areas and the trials using various methods did pay at last. The information flow between watershed hydrological terms shows a maximum point at seasonal scale, which perfectly confirmed the conjecture of the stochastic soil moisture model.
+Data obtained from different sources are constantly flooding in in this digit age. Models developed by various research groups occupy the journals periodically. I want to quantify their specific contributions. What is the advantage of one data source over another, in which model? When is it high time to push the simulation forward and when to intensify the observations? In a general point of view, models are no more than compressors of observations, observations form a model if they are intensive enough to enable an efficient interpolation. The existed data-driven and process-based models should be complementary (for example, the Budyko curve could instruct the construction of kernel functions in support vector regression, and vice versa). These could be re-organized in the context of algorithm complexity. As I know, many researchers have started this work. I should catch the trend and make my own contributions in the frontier.
+Nothing could compare with having fun in one's job. For me, the most interesting job is to keep finding secrets of different complex interlocking earth systems. Though sometimes I would complain that the research work turns the beautiful scene into hell once I attempted quantify its material, energy and information flows. But the joy of finding new things pays all. To do research is not like adding bricks to the grand edifice of knowledge. The knowledge edifice would grow by itself if it were well organized. I want to keep pushing down and re-constructing the projection of it in my mind again and again, until one day this projection is strong enough to influence the reason of others. Maybe a career in university or research institute is my best choice.
+
+I learned UCI through Doctor Jasper A. Vrugt and Professor Kuo-lin Hsu. Jasper is doing excellent work in constructing an iterative research loop that balances observations and simulations. Kuo-lin is the pioneer who first introduced the artificial neutral network in hydrological simulation. Both of them won prestige to The Henry Samueli School of Engineering. Besides, I will make a poster presentation in the session organized by Jasper in the AGU fall meeting 2014. Hope to have enlightening academic communications with Jasper on the issue of understanding interfaces between models and data(H110).
+
+Considering the statements above, I believe I possess the ability and motivation to make a trace in the discipline of earth science. I hope you will take a favorable decision regarding my admission to the Ph.D. program and I look forward to joining the big family of UCI.}
+
+\fi
+
+\end{document}

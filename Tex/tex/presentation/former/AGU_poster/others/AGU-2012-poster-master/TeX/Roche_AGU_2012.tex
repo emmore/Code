@@ -1,0 +1,521 @@
+% 48 x 72 in landscape poster for CMAS 2012 (printing by aguposterprinting.com)
+% based on BHH A0 template: see ~/info/work/EPA/N2O/posters/BHH_template/
+% Original discussion and documentation at http://purl.org/nxg/note/posters
+% but much is not relevant to pdflatex
+
+% sciposter allows arbitrary paper size (default=A0) but will require significant rewrite: see `texdoc sciposter`
+% \documentclass[landscape]{sciposter}
+% \documentclass[a0]{a0poster}
+\documentclass{a0poster} % resize paper from A0 using package=geometry
+\pagestyle{empty}
+\setcounter{secnumdepth}{0}
+
+% start package loading-------------------------------------------------
+
+% resize paper for CMAS ∩ ENVR printer (36 x 70 in)
+% usepackage[paperheight=910mm,paperwidth=1770mm]{geometry}
+% resize paper for CMAS ∩ {EPA, Odum} printer (42 x 70 in)
+% \usepackage[paperheight=1066mm,paperwidth=1770mm]{geometry}
+% resize paper for AGU ∩ aguposterprinting.com (48 x 72 in)
+% dimensions below from http://www.aguposterprinting.com/faq.html
+\usepackage[paperheight=122cm,paperwidth=183cm]{geometry}
+\usepackage[version=3]{mhchem}
+\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{natbib}
+\usepackage{units}
+
+% see http://tex.stackexchange.com/questions/664/why-should-i-use-usepackaget1fontenc
+% plus it enables '>'
+\usepackage[T1]{fontenc}
+% but to get '≥' requires even more mojo? No, just use math mode
+% \usepackage{qsymbols} % see "''<='"
+% \usepackage{unicode-math} ? no:
+% > ! Package unicode-math Error: Cannot be run with pdfLaTeX!
+
+% why are degree signs so painful? for a possibly superior alternative using package=textcomp, see
+% http://tex.stackexchange.com/questions/22086/macro-for-degree-symbol
+\usepackage{xspace}
+\newcommand{\degree}{\ensuremath{{}^{\circ}}\xspace}
+
+% font size definitions
+\renewcommand{\tiny}{\fontsize{14.4}{18}\selectfont}
+\renewcommand{\scriptsize}{\fontsize{17.28}{22}\selectfont}   
+\renewcommand{\footnotesize}{\fontsize{20.74}{25}\selectfont}
+\renewcommand{\small}{\fontsize{24.88}{30}\selectfont}
+\renewcommand{\normalsize}{\fontsize{29.86}{37}\selectfont}
+\renewcommand{\large}{\fontsize{35.83}{45}\selectfont}
+\renewcommand{\Large}{\fontsize{43}{45}\selectfont}
+\renewcommand{\LARGE}{\fontsize{51.6}{54}\selectfont}
+\renewcommand{\huge}{\fontsize{61.92}{64}\selectfont}
+\renewcommand{\Huge}{\fontsize{74.3}{77}\selectfont}
+\renewcommand{\veryHuge}{\fontsize{89.16}{93}\selectfont}
+\renewcommand{\VeryHuge}{\fontsize{107}{112}\selectfont}
+\renewcommand{\VERYHuge}{\fontsize{121.14}{134}\selectfont}
+
+% Graphics
+% font=times is nice on posters, but you might want to switch it off and go for CMR fonts.
+\usepackage{graphicx}
+\usepackage{wrapfig,times}
+\graphicspath{{../Figs/}}
+% These colours are well-tested for titles and headers. Don't over use color!
+\usepackage{color}
+\definecolor{DarkBlue}{rgb}{0.1,0.1,0.5}
+\definecolor{Red}{rgb}{0.9,0.0,0.1}
+\usepackage{subfig}
+% set caption font
+% \usepackage[sf,bf,labelfont = normalsize, textfont = normalsize]{caption}
+\usepackage[font=normalsize,textfont=it,labelfont=bf,format=hang,justification=raggedright]{caption}
+\setlength{\belowcaptionskip}{0pt}
+\setlength{\abovecaptionskip}{0pt}
+% \renewcommand{\captionfont}{\sffamily}
+% 'sidecap' allows captions on right or left of figure
+\usepackage[leftcaption]{sidecap} % but side can't be set per figure :-(
+% gotta have AQMEII-NA left-captioned
+% \usepackage{sidecap} % but side can't be set per figure :-(
+
+% The textpos package is necessary to position textblocks at arbitary places on the page.
+\usepackage[absolute]{textpos}
+\usepackage{listings}         % for code listings
+\lstset{language=R,breaklines=true,basicstyle=\small,breakatwhitespace=true,breakindent=25pt,prebreak={\textbackslash},frame=tb}
+
+% package=hyperref wants to be loaded last (per its texdoc)
+\usepackage[hidelinks]{hyperref} % no link decoration
+
+%   end package loading-------------------------------------------------
+
+% definitions of document parts and their font sizes
+% see documentation for a0poster class for the size options here
+\let\Textsize\normalsize
+\def\LHead#1{\noindent\hbox{{\LARGE\color{DarkBlue}\textsc{#1}}}\vspace*{-7.6mm}\newline\rule{\textwidth}{5pt}}
+% why does this fail ...
+% \def\CHead#1{\begin{center}\LARGE\color{DarkBlue}\uppercase{#1}\end{center}\vspace*{-7.6mm}\newline\rule{\textwidth}{5pt}}
+% ... but this works
+\def\CHead#1{\vspace*{-7.6mm}\begin{center}\LARGE\color{DarkBlue}\textsc{#1}\end{center}\vspace*{-15.2mm}\rule{\textwidth}{5pt}}
+\def\RHead#1{\noindent\hbox to \hsize{\hfil{\LARGE\color{DarkBlue}\textsc{#1}}}\vspace*{-7.6mm}\newline\rule{\textwidth}{5pt}}
+\def\NHead#1{\noindent\hbox{{\LARGE\color{DarkBlue} #1}}\medskip\\}
+\def\lHead#1{\noindent\hbox{{\Large\color{DarkBlue} #1}}\smallskip\\}
+% Move up Acknowledgements and Contacts, but not References
+\def\Aknlg#1{\vspace*{-10mm}\underline{\noindent\hbox to \hsize{\hfil{\Large\color{DarkBlue}#1}}}}
+% \def\Aknlg#1{\underline{\noindent\hbox to \hsize{\hfil{\large\color{DarkBlue}#1}}}}
+\def\Cntct#1{\vspace*{-20mm}\underline{\noindent\hbox to \hsize{\hfil{\Large\color{DarkBlue}#1}}}}
+\def\Rfncs#1{\underline{\noindent\hbox to \hsize{\hfil{\Large\color{DarkBlue}#1}}}}
+\def\Subhead#1{\noindent\hbox {{\large\color{DarkBlue} #1}\hfil}\bigskip}
+
+%% what uses 'refname'?
+% \def\refname{\textnormal{\Rfncs{References}}}
+\def\refname{\textnormal{\RHead{References}}}
+
+% This works for BHH's short title, not my long one
+% \def\Title#1{\center{\veryHuge\color{DarkBlue}#1}}
+\def\Title#1{\center{\huge\color{DarkBlue}#1}}
+
+% Set up the page grid
+
+% Note that [40mm,40mm] is the page margin, _not_ the grid size.
+% Grid size is always defined as PAGE_WIDTH/HGRID and PAGE_HEIGHT/VGRID.
+% Here we define grid=23w x 12h. This provides
+% 3 columns of width=7 boxes (with gap=1 box between columns), and
+% 12 vertical boxes ("a good number to work with").
+
+% Note however that textblocks can be positioned fractionally as well,
+% so really any convenient grid size can be used.
+%
+% Note that on 
+% paper size              grid spec  ->    grid cell
+% ---------------------  -----------    ----------------
+% 1189w x  841h mm (A0)   27w x  12h    44w   x 70h mm
+% CMAS ∩ ENVR printer:
+% 1778w x  914h mm        27w x  12h    66w   x 76h mm
+% 1778w x  914h mm        32w x  12h    55.5w x 76h mm
+% 1778w x  914h mm        62w x  26h    28.7w x 35.1h mm
+% CMAS ∩ {EPA, Odum} printer:
+% 1778w x 1066h mm       122w x 100h    14.6w x 10.7h mm
+% AGU ∩ aguposterprinting.com printer:
+% 1830w x 1220h mm       183w x 122h    10  w x 10  h mm
+
+%  width conversion (same page width) from 62w -> 122w ~= 28.7/14.6 ~= 1.97
+% height conversion (new page height) from 26h -> 100h ~= 35.1/10.7 ~= 3.28
+
+% 'gc'==grid cells
+% 3 cols width={40 gc, 584 mm} plus 2 gaps width={1 gc, 14.6 mm}
+% \TPGrid[10mm,10mm]{122}{100}
+% now 5 col + 4 gaps:
+% 1 col width={45 gc, 450 mm}
+% 1 gap width={1 gc, 10 mm}
+% 1 col width={30 gc, 300 mm}
+% 1 gap width={1 gc, 10 mm}
+% 1 col width={30 gc, 300 mm}
+% 1 gap width={1 gc, 10 mm}
+% 1 col width={30 gc, 300 mm}
+% 1 gap width={1 gc, 10 mm}
+% 1 col width={44 gc, 440 mm}
+\TPGrid[10mm,10mm]{183}{122}
+\parindent=0pt
+\parskip=0.5\baselineskip
+\setlength\fboxsep{0pt}
+\setlength\fboxrule{0.5pt}
+\begin{document}
+
+% Understanding textblocks is the key to being able to do a poster in LaTeX. In
+
+%    \begin{textblock}{wid}(x,y)
+%    ...
+%    \end{textblock}
+
+% the first argument gives the block width in units of the grid cells specified above in \TPGrid;
+% the second gives the (x,y) position on the grid, with the y axis pointing down.
+% You will have to do a lot of previewing to get everything in the right place.
+
+% start header (title, logos)-----------------------------------------
+
+% "Watch out for hyphenation in titles--LaTeX will do it but it looks awful."
+% use full page with in gc for textblock, then overwrite with graphics
+% \begin{textblock}{122}(0,0)
+\begin{textblock}{183}(0,0)
+    \centering
+    % use chemical formulae from package=mhchem
+    \Title{Roadmap to Simulation of \cf{N2O} Production and Transport in the Central US with Comparison to Observations}\\
+%    \bigskip
+    \NHead{Tom Roche$^{1}$, Ellen J. Cooter$^{2}$, Eri Saikawa$^{3}$}
+    \lHead{\textsl{$^1$Environmental Sciences and Engineering, UNC Chapel Hill, \url{Tom_Roche@pobox.com}; $^2$Atmospheric Modeling and Analysis Division, US EPA; $^3$Center for Global Change Science, MIT; Environmental Studies, Emory University}}
+    \bigskip
+    \hrule
+\end{textblock}
+
+% Academic logo in the top left corner, government logo @ top right.
+
+% \begin{textblock}{10}(0,0) % == 146 mm
+% works with 100 mm and image sans well
+\begin{textblock}{10}(0,0) % == 100 mm
+    \begin{figure}\includegraphics[scale=1.9]{unc_gillings_noWell}\end{figure}
+\end{textblock}
+
+% 116 gc == paperwidth=122 gc - blockwidth=6 gc=87.6 mm
+% \begin{textblock}{6}(116,0)
+% 176 gc == paperwidth=183 gc - blockwidth=7 gc=70 mm
+\begin{textblock}{7}(176,0)
+%    \begin{figure}\includegraphics[width = 2.75in]{epalogo.pdf}\end{figure}
+%    \begin{figure}\includegraphics[width = 69.8mm]{epalogo}\end{figure}
+\end{textblock}
+
+% draw a placeholder box when we don't have actual graphics
+% see responses @ http://tex.stackexchange.com/questions/39982/use-default-figure-if-file-is-missing
+\newcommand{\placeholder}[2]{%
+  \setlength{\fboxsep}{-\fboxrule}%
+  \fbox{\phantom{\rule{#1}{#2}}}%   framed box, width=#1, height=#2
+}
+
+%   end header--------------------------------------------------------
+% start content-------------------------------------------------------
+
+% start column=1 (leftmost)
+% \begin{textblock}{40}(0,8.2) % 40 gc -> 584 mm, 8.2 gc -> 119.7 mm
+% \begin{textblock}{45}(0,9)     % 45 gc -> 450 mm, 9   gc ->  90   mm
+\begin{textblock}{45}(0,8.5)     % 45 gc -> 450 mm, 8.5 gc ->  85   mm
+    \LHead{Motivation}
+        {\color{Red}Why does \cf{N2O} matter?} \cf{N2O} (nitrous oxide) is the most significant depleter of stratospheric ozone [\citet{ravishankara_nitrous_2009}] and the third most important radiative forcer [\citet{butler_noaa_2012}] among current anthropogenic emissions.
+
+        {\color{Red}Why \textit{model} \cf{N2O}?} Modeling improves monitoring of environmental variables in many applications, and the value of monitoring increases with the cost of monitoring. \cf{N2O} sources are mostly areal (soils, oceans) [\citet{thomson_biological_2012}, Fig 1], and \cf{N2O} lacks effective remote sensing (e.g., via satellite), so \cf{N2O} monitoring costs scale poorly. Modeling can increase the utility of a given areal-monitoring effort, and target locations for additional monitoring so as to improve the marginal utility of effort. 
+
+        {\color{Red}Why model \cf{N2O} \textit{regionally}?} {\color{Red}Science:} \cf{N2O} is currently mostly modeled at either very small or very large spatiotemporal scales. Field-scale studies develop and calibrate models of soil processes which dominate the \cf{N2O} budget. While necessary for development of process models, intensive monitoring at this scale is not feasible. At global scale, much effort is devoted to coarse-scaled emissions inventories (EIs) such as CLM-CN ([\citet{oleson_clm3.5_2007}], Fig 4), EDGAR ([\citet{european_commission_joint_research_centre_jrc_emission_2011}], Figs 7, 9, 10), GEIA ([\citet{bouwman_uncertainties_1995}], Fig 3), and GFED ([\citet{van_der_werf_global_2010}], Fig 8). But monitoring has identified smaller-scale seasonal patterns (``signal'') in \cf{N2O} concentrations ([\citet{miller_regional_2012}], Fig 2): regional and seasonal variability is also implied by the biogeochemistry of \cf{N2O} production, which responds to local weather and soil conditions (notably, soil moisture and temperature) [\citet{smith_effects_1998}]. The finer spatiotemporal scales used in regional modeling should prove useful in better identifying and modifying this behavior. {\color{Red}Governance:} more accurate identification and characterization of emissions ``hot spots'' should increase the efficiency of their control [\citet{eagle_Greenhouse_Gas_Mitigation_2012}]. Modeling is also more likely to be policy-relevant when conducted at a policy-relevant scale and resolution. The locus of governance for regional emissions will likely be regional (local, state/provincial, or national), given the relative absence of effective global emissions control actors.
+
+        {\color{Red}Why \textit{process-model} \cf{N2O} regionally?} Being long-lived, \cf{N2O} has a large global atmospheric ``background.'' Better attribution of regional sources requires the ability to properly mix (vertically and horizontally) regional flows with the global stock (Fig 6). Current regional modeling of \cf{N2O} is mostly geostatistical: e.g., \citet{miller_regional_2012}. A process model makes stronger claims regarding its representation of a system, which can allow more credible prediction, and can facilitate prospective, policy-relevant testing of proposed emission mitigation strategies.
+
+        {\color{Red} Why process-model \cf{N2O} regionally \textit{with CMAQ and EPIC}?} Skill at modeling \cf{N2O} likely requires a mix of skills from the air-quality (AQ) and biogeochemical modeling domains. \cf{N2O} emissions, especially from the dominant soil source, are influenced by multimedia exchange between natural and anthropogenic processes. Natural sources are influenced by soil and weather conditions and the size of available nitrogen (N) pools [\citet{smith_effects_1998}]. In managed soils, these pools are dominated by fertilizer applications, but natural ecosystems may be strongly influenced by atmospheric N deposition. Skillful modeling of \cf{N2O} emissions therefore requires bidirectional modeling of multiple N species, as well as both meteorological and agricultural competence. The Community Multi-Scale Air Quality (CMAQ) [\citet{byun_review_2006}] is an established regional-scale chemical-transport model with demonstrated skill in AQ research and policy applications [\citet{foley_CMAQ_47_2010}]. CMAQ is usually one-way-coupled with the Weather Research and Forecasting Model (WRF) [\citet{skamarock_description_2005}], for meteorological skill; a two-way-coupled WRF/CMAQ model has been developed to explore radiative feedbacks on meteorology [\citet{wong_WRF_CMAQ_2012}]. We seek to apply CMAQ's physical mechanisms to horizontally and vertically advect \cf{N2O} emissions from various regional and global EIs, to exploit its source apportionment capabilities, and to augment its chemical mechanisms to better estimate \cf{N2O} sources and sinks. EPIC ([\citet{texas_agrilife_blackland_research_and_extension_center_epic_2011}], Fig 5) is an established model for agricultural biogeochemical processes which is being run at regional scale and extended to natural soils. CMAQ and EPIC have already been coupled to characterize bidirectional \cf{NH3} fluxes [\citet{cooter_linking_2012}]. {\color{Red}Linking regional atmospheric and pedospheric models should more effectively identify \cf{N2O} mitigation opportunities on policy-relevant scales} [\citet{olander_using_2011}]; the current work hopes to enable future testing of this hypothesis with CMAQ and EPIC.
+
+% section=Process overflowed space for section=Strategy
+%% % \vspace{-10mm}
+%% \LHead{Strategy}
+%%     The present study seeks to perform forward process modeling of \cf{N2O} over the North American AQMEII domain (AQMEII-NA), focusing on agricultural emissions. We seek to leverage the following resources:
+%%     % Remove the big gap between intro and start of list.
+%%     % TODO: more elegant solution! e.g., more compact list layout (package)
+%%     \vspace{-5mm}
+%%     \begin{itemize}
+%%         \item NOAA has four monitors in the central US with daily observations for 2008
+%%         \item EPA and partners are generating \cf{N2O} emissions from EPIC over AQMEII-NA (and can do 2008) for agricultural soils
+%%         \item EDGAR-4.2 (a global anthropogenic EI) has \cf{N2O} with 0.1\degree resolution for 2008 over many source sectors
+%%         \item CLM-CN-3.5 is adopting a global EI for natural soils
+%%         \item EPA has a CMAQ run over AQMEII-NA for 2008
+%% %        \item CMAQ ≥ 5 uses namelists so as to more easily incorporate new non-reactive species
+%% % nope: gotta enter math mode and use plain-TeX macro
+%%         \item CMAQ $\geq$ 5 uses species namelists, allowing easier incorporation of new non-reactive species
+%%     \end{itemize}
+
+% \vspace{-10mm}
+\LHead{Process}
+    % Remove the big gap between section=Process rule and start of list.
+    % TODO: more elegant solution! e.g., more compact list layout (package)
+    \vspace{-20mm}
+    \begin{enumerate}
+        \item Acquire \cf{N2O} NOAA observations for 2008 over CONUS. \textit{(completed)}
+        \item Acquire standard/AQ inputs from the 2008 CDC/EPA PHASE run over AQMEII-NA. \textit{(completed)}
+        \item Add \cf{N2O} to CMAQ 5.0.1 as non-reactive (NR) species. \textit{(completed)}
+        \item Develop comprehensive, CMAQ-consumable \cf{N2O} EIs and IC/BCs focusing on the CONUS from best available sources \textit{(in process)}
+%        \begin{itemize}
+%            \item assemble best available EIs and model outputs for the various N2O source sectors and activities
+%            \item (all) convert units to meet CMAQ requirements (e.g., for emissions, molar mass rate over the spatiotemporal quantum)
+%            \item (all) ''retime'' (temporally interpolate) inputs to match run requirements (e.g., hourly)
+%            \item (all) ''regrid'' (horizontally interpolate) to match run requirements (e.g., AQMEII-NA=12 km LCC)
+%            \item (IC/BC) ''rebox'' (vertically interpolate) to match run requirements (e.g., AQMEII-NA=34 levels to 50 mb)
+%            \item (all) convert to CMAQ-required file formats (i.e., IOAPI-formatted netCDF)
+%            \item (all) merge \cf{N2O} as separate specie with the previous CMAQ run's inputs (AQ emissions, ICs, BCs)
+% TODO: add EDGAR category codes
+% TODO: make table like https://github.com/TomRoche/cornbeltN2O/wiki/Simulation-of-N2O-Production-and-Transport-in-the-US-Cornbelt-Compared-to-Tower-Measurements#wiki-inventories-proposal
+        \begin{enumerate}
+            \item IC/BCs: use CGCS MOZART global run for 2008, 3D-regrid to AQMEII-NA (from lon-lat) (Fig 6)
+            \item natural marine EI: use undated global GEIA \textit{ocea}, regrid to AQMEII-NA (from lon-lat) (Fig 3)
+            \item natural soil EI: use global 2008 run of CGCS DNDC-based model for CLM-CNv3.5, regrid to AQMEII-NA (from lon-lat) (Fig 4)
+            \item agricultural soil EIs:
+                \begin{itemize}
+                    \item CONUS: use EPIC runs for 2008 (Fig 5)
+                    \item southern Canada, northern Mexico: use EDGAR-4.2 global 2008, mask CONUS, and regrid to AQMEII-NA (from lon-lat) (Fig 7)
+                \end{itemize}
+            \item natural and agricultural burning: use time-downscaled GFED-3.1 global runs for 2008, regrid to AQMEII-NA (from lon-lat) (Fig 8)
+            \item all other anthropogenic sources: where available, use EDGAR-4.2 global 2008, and regrid to AQMEII-NA (from lon-lat) (Fig 9)
+            \item tropospheric sources from non-agricultural \cf{NH3} and \cf{NOx}: use EDGAR-4.2 global 2008, and regrid to AQMEII-NA (from lon-lat) (Fig 10)
+%        \end{itemize}
+        \end{enumerate}
+        \item Merge developed \cf{N2O} EI into counterparts from 2008 CDC/EPA PHASE run.
+        \item Run the model, and evaluate its estimations:
+        \begin{itemize}
+            \item Compare estimations to observations at NOAA sites using, e.g., standard deviation of residuals, autocorrelations, AICc
+            \item Compare estimations to results from other models, e.g., \citet{miller_regional_2012}
+        \end{itemize}
+        \item Justifiably augment model inputs. E.g., repeat previous 2 steps after
+        \begin{itemize}
+            \item imposing seasonality 
+            \item imposing diurnality
+        \end{itemize}
+    \end{enumerate}
+\end{textblock} % end left column=1
+
+% start middle block spanning columns=2:4
+% 40 gc -> 584 mm, 41 gc -> 598.6 mm, 8.2 gc -> 119.7 mm (-vspace=10 mm)
+% begin{textblock}{40}(41,8.2) % was middle column 2/3
+% 30 gc -> 300 mm, 41 gc -> col1 + gaps=1, 8.5 gc -> 85 mm
+
+% 92 gc -> 920 mm == col[2:4] + gaps=2, 46 gc -> col1 + gaps=1, 8.5 gc -> 85 mm
+% note: starts higher than columns={1,5} due to weirdness with \CHead
+\begin{textblock}{92}(46,8.5)
+    \CHead{Research Question}
+    \vspace{-20mm} % centering problem statement moved it down a *lot*
+    \begin{center}
+% broke line ('\\') to fit single column
+%        {\color{Red}\LARGE{How skillfully can current CMAQ and emission inventories model\\\cf{N2O} concentrations observed at 4 NOAA monitors in the central US?}}
+        {\color{Red}\LARGE{How skillfully can current CMAQ and emission inventories model \cf{N2O} concentrations observed at 4 central-US monitors?}}
+    \end{center}
+\end{textblock} % end middle block spanning columns=2:4
+
+% start column=2
+% 40 gc -> 584 mm, 41 gc -> 598.6 mm, 8.2 gc -> 119.7 mm (-vspace=10 mm)
+% begin{textblock}{40}(41,8.2) % was middle column 2/3
+% 30 gc -> 300 mm, 41 gc -> col1 + gaps=1, 8.5 gc -> 85 mm
+% \begin{textblock}{30}(46,8.5)
+% 30 gc -> 300 mm, 41 gc -> col1 + gaps=1, 12 gc -> 120 mm
+% note: starts under Problem span
+\begin{textblock}{30}(46,13)
+
+%      \Subhead{Result Subset 1}
+%      This is where the pretty picture go that make the first point.
+
+%      \Subhead{Result Subset 2}
+%      This is where the pretty picture go that make the second point.
+
+\begin{figure}[h!] % 'h!' == position *here*
+  \centering
+    \includegraphics[scale=2]{Thomson_et_al_2012__F1_medium}
+% caption under graphic
+    \caption{Proportions of total global \cf{N2O} emitted by major sources and activities, from \citet{thomson_biological_2012}.}
+\end{figure}
+% caption to side of graphic--
+% but SCfigure does not allow per-column choice of side, only per-page
+% \begin{SCfigure}
+%   \raggedright        % figure should be left-justified, but cannot :-(
+%     \includegraphics[scale=2.2]{Thomson_et_al_2012__F1_medium}
+%     \caption{Proportions of total global \cf{N2O} emitted by major sources and activities, from \citet{thomson_biological_2012}.}
+% \end{SCfigure}
+
+% separate figures per DBS: add space ...
+% \vspace{+10mm}
+% ... or add line snugly underneath previous figure's caption
+\vspace{-20mm}\rule{\textwidth}{1pt}
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[scale=1.5]{Miller_et_al_2012_fig02}
+% caption under graphic
+    \caption{\citet{miller_regional_2012} use back-trajectory geostatistics to estimate the regions responsible for contributing 75\% and 90\% of the \cf{N2O} observed at four NOAA ESRL towers May-Aug 2008.}
+\end{figure}
+% add line snugly underneath previous figure's caption
+\vspace{-20mm}\rule{\textwidth}{1pt}
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[scale=1.0]{GEIA_N2O_oceanic_regrid}
+% caption under graphic
+    \caption{GEIA estimate of marine \cf{N2O} emitted within the AQMEII-NA domain.}
+\end{figure}
+% add line snugly underneath caption
+\vspace{-20mm}\rule{\textwidth}{1pt}
+
+\begin{figure}[h!]
+  \centering
+%    \includegraphics[scale=1.0]{CLM-CNv3.5_regrid}
+% placeholder/dummy graphic: \rule{width}{height}
+% but that's a solid-black box
+%    \rule{838px}{486px} % sizeof GEIA graphic (with bottom cropped)
+% Instead, draw a hollow box:
+    \placeholder{838px}{486px}
+% caption under graphic
+    \caption{CLM-CNv3.5 estimate of \cf{N2O} emitted from natural soils within the AQMEII-NA domain.}
+\end{figure}
+% add line snugly underneath caption
+\vspace{-20mm}\rule{\textwidth}{1pt}
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[scale=1.0]{EPIC_window_all_crops}
+% placeholder/dummy graphic: \rule{width}{height}
+%    \rule{685px}{450px}
+% caption under graphic
+    \caption{EPIC estimate of total \cf{N2O} emitted via denitrification in managed soils under 42 crops in the upper midwestern US.}
+\end{figure}
+% add line snugly underneath caption
+\vspace{-20mm}\rule{\textwidth}{1pt}
+
+\end{textblock} % end column=2
+
+% start column=3
+% 30 gc -> 300 mm, 77 gc -> col1 + col2 + gaps=2, 9 gc -> 90 mm
+\begin{textblock}{30}(77,13)
+
+% one big graphic for the IC/BCs? for the many layers
+\begin{figure}[h!]
+  \centering
+%    \includegraphics[scale=1.0]{ICs_regrid}
+% placeholder/dummy graphic: draw a hollow box:
+    \placeholder{838px}{2900px}
+% caption under graphic
+    \caption{CGCS MOZART-based estimate of global \cf{N2O} 3D-regridded to the AQMEII-NA domain.}
+\end{figure}
+% add line snugly underneath caption
+\vspace{-20mm}\rule{\textwidth}{1pt}
+
+\end{textblock} % end column=3
+
+% start column=4
+% 30 gc -> 300 mm, 108 gc -> col1 + col2 + col3 + gaps=3, 9 gc -> 90 mm
+\begin{textblock}{30}(108,13)
+
+\begin{figure}[h!]
+  \centering
+%    \includegraphics[scale=1.0]{EDGAR-4.2_regrid_masked}
+% placeholder/dummy graphic: draw a hollow box:
+    \placeholder{838px}{660px}
+% caption under graphic
+    \caption{EDGAR-4.2 estimate of \cf{N2O} emitted from agricultural soils within the AQMEII-NA domain.}
+\end{figure}
+% add line snugly underneath caption
+\vspace{-20mm}\rule{\textwidth}{1pt}
+
+\begin{figure}[h!]
+  \centering
+%    \includegraphics[scale=1.0]{GFED-3.1_regrid}
+% placeholder/dummy graphic: draw a hollow box:
+    \placeholder{838px}{660px}
+% caption under graphic
+    \caption{GFED-3.1 estimate of \cf{N2O} emitted by agricultural and natural biomass burning within the AQMEII-NA domain.}
+\end{figure}
+% add line snugly underneath caption
+\vspace{-20mm}\rule{\textwidth}{1pt}
+
+\begin{figure}[h!]
+  \centering
+%    \includegraphics[scale=1.0]{GFED-3.1_regrid}
+% placeholder/dummy graphic: draw a hollow box:
+    \placeholder{838px}{660px}
+% caption under graphic
+    \caption{EDGAR-4.2 estimate of \cf{N2O} produced in troposphere by non-agricultural \cf{NH3} and \cf{NOx} within the AQMEII-NA domain.}
+\end{figure}
+% add line snugly underneath caption
+\vspace{-20mm}\rule{\textwidth}{1pt}
+
+\begin{figure}[h!]
+  \centering
+%    \includegraphics[scale=1.0]{GFED-3.1_regrid}
+% placeholder/dummy graphic: draw a hollow box:
+    \placeholder{838px}{660px}
+% caption under graphic
+    \caption{EDGAR-4.2 estimate of all non-agricultural anthropogenic sources of \cf{N2O} within the AQMEII-NA domain.}
+\end{figure}
+% add line snugly underneath caption
+\vspace{-20mm}\rule{\textwidth}{1pt}
+
+\end{textblock} % end column=4
+
+% start column=5 (rightmost)
+% \begin{textblock}{40}(82,8.2) % was right column=3/3, with \vspace{-20mm}
+% 44 gc -> 440 mm, 139 gc -> col[1:4] + gaps=4, 7 gc -> 70 mm
+\begin{textblock}{44}(139,7)
+    % References
+    \vspace{-10mm} % this moves the heading up, not the references themselves
+%    \bibliographystyle{plainnat} % selects plainnat.bst -> /usr/share/texlive/texmf-dist/bibtex/bst/natbib/plainnat.bst
+    \bibliographystyle{plainnat4} % selects my TeX/plainnat4.bst
+%    \bibliography{poster}         % selects poster.bib
+% reduce references font size from normal to small (next stop, footnotesize)
+% see other suggestions @ http://tex.stackexchange.com/questions/329/how-to-change-font-size-for-bibliography
+    {\normalsize\bibliography{poster}}
+% doesn't work here: maybe above?
+%    \def\bibfont{small} % since we're using package=natbib
+
+%    \Aknlg{Acknowledgments}
+    \RHead{Acknowledgments}
+    Special thanks to many colleagues at EPA (especially Barron Henderson! now at UFlorida) and to many developers and users of R and its extension packages (especially Dave Pierce of UCSD for his package=ncdf4).
+
+    This research was supported in part by EPA contract EP11D000511, but {\color{Red}this research does not reflect official EPA policy}.
+
+%     Although this work was reviewed by EPA and approved for publication, it may not necessarily reflect official Agency policy.
+%    }}
+
+%    \Cntct{
+    \vspace{-10mm}
+    \RHead{Contacts}
+%    \Large{
+        \begin{itemize}
+            \item comments, complaints, questions? ping the lead author at \url{Tom_Roche@pobox.com}
+            \item explore this project's wiki at \url{http://tinyurl.com/cmaqn2o}
+            \item this poster's code and links live at \url{https://github.com/TomRoche/AGU-2012-poster}
+        \end{itemize}
+%    }
+% QR codes
+% \vspace{-10mm} % I want this, but this fails: border around QRs overlays the previous text. Instead ...
+\begin{figure}[h!]
+  \centering
+  \begin{minipage}{.4\textwidth}
+    \centering
+    \includegraphics[scale=0.9]{posterRepoQR} % ... scale down the QRs
+    % create caption with no prefix="Figure <n>."
+    \caption*{QR code for poster repository}
+  \end{minipage}
+  \begin{minipage}{.4\textwidth}
+    \centering
+    \includegraphics[scale=0.9]{wikiRepoQR}
+    \caption*{QR code for project wiki repository}
+  \end{minipage}
+\end{figure}
+
+% remove AQMEII-NA domain figure per DBS
+% \vspace{-40mm}        % move the image up. TODO: use a more compact list package!
+% % \begin{figure}[b]   % place @ bottom page/column
+% % \begin{SCfigure}[b] % sidecap figure
+% \begin{SCfigure}      % does not allow page placement?
+%   \raggedleft         % figure is right-justified
+%     \includegraphics[scale=1.8]{cmaq_aqmeii_domain}
+%     \caption{Horizontal extents of the North American AQMEII domain.}
+% % \end{figure}
+% \end{SCfigure}
+
+    \end{textblock} % end right column=5
+\end{document}

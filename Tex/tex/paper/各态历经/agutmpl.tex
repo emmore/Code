@@ -1,0 +1,843 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% American Geophysical Union (AGU)
+% LaTeX Template
+% Version 1.0 (3/6/13)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% The AGUTeX class and agu-ps referencing style were created and are owned 
+% by AGU: http://publications.agu.org/author-resource-center/author-guide/latex-formatting-toolkit/
+%
+% This template has been modified from the blank AGU template to include
+% examples of how to insert content and drastically change commenting. The
+% structural integrity is maintained as in the original blank template.
+%
+% Important notes: 
+% This template retains extensive commenting from the AGU template. It is heavily 
+% advised you read these comments and follow them in order to insure a speedy 
+% submission process.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% AGUtmpl.tex: this template file is for articles formatted with LaTeX2e,
+% Modified March 2013
+%
+% This template includes commands and instructions
+% given in the order necessary to produce a final output that will
+% satisfy AGU requirements.
+%
+% PLEASE DO NOT USE YOUR OWN MACROS
+% DO NOT USE \newcommand, \renewcommand, or \def.
+%
+% FOR FIGURES, DO NOT USE \psfrag or \subfigure.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% All questions should be e-mailed to latex@agu.org.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Step 1: Set the \documentclass
+
+% There are two options for article format: two column (default) and draft.
+
+% PLEASE USE THE DRAFT OPTION TO SUBMIT YOUR PAPERS.
+% The draft option produces double spaced output.
+
+% Choose the journal abbreviation for the journal you are submitting to:
+
+% jgrga	JOURNAL OF GEOPHYSICAL RESEARCH
+% gbc	GLOBAL BIOCHEMICAL CYCLES
+% grl		GEOPHYSICAL RESEARCH LETTERS
+% pal	PALEOCEANOGRAPHY
+% ras	RADIO SCIENCE
+% rog	REVIEWS OF GEOPHYSICS
+% tec	TECTONICS
+% wrr	WATER RESOURCES RESEARCH
+% gc		GEOCHEMISTRY, GEOPHYSICS, GEOSYSTEMS
+% sw	SPACE WEATHER
+% ms	JAMES
+%
+%
+%
+% (If you are submitting to a journal other than jgrga,
+% substitute the initials of the journal for "jgrga" below.)
+
+\documentclass[draft,wrr]{AGUTeX}
+
+% To create numbered lines:
+
+% If you don't already have lineno.sty, you can download it from http://www.ctan.org/tex-archive/macros/latex/contrib/ednotes/ (or search the internet for lineno.sty ctan), available at TeX Archive Network (CTAN). Take care that you always use the latest version.
+
+% To activate the commands, uncomment \usepackage{lineno} and \linenumbers*[1]command, below:
+
+%\usepackage{lineno}
+%\linenumbers*[1]
+
+%  To add line numbers to lines with equations:
+%  \begin{linenomath*}
+%  \begin{equation}
+%  \end{equation}
+%  \end{linenomath*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Figures and Tables
+
+% DO NOT USE \psfrag or \subfigure commands.
+
+%  Figures and tables should be placed AT THE END OF THE ARTICLE, after the references.
+
+%  Uncomment the following command to include .eps files (comment out this line for draft format):
+%\usepackage[dvips]{graphicx}
+\usepackage{graphicx}
+\usepackage{amsmath}
+ 
+% Substitute one of the following for [dvips] above if you are using a different driver program and want to proof your illustrations on your machine:
+% [xdvi], [dvipdf], [dvipsone], [dviwindo], [emtex], [dviwin],
+% [pctexps],  [pctexwin],  [pctexhp],  [pctex32], [truetex], [tcidvi],
+% [oztex], [textures]
+
+%  Uncomment the following command to allow illustrations to print when using Draft:
+\setkeys{Gin}{draft=false}
+
+% See how to enter figures and tables at the end of the article, after references.
+
+%----------------------------------------------------------------------------------------
+%	RUNNING HEAD AND CORRESPONDING AUTHOR
+%----------------------------------------------------------------------------------------
+
+% Author names in capital letters:
+\authorrunninghead{PAN ET AL.}
+
+%------------------------------------------------
+
+% Shorter version of title entered in capital letters:
+\titlerunninghead{SHORT TITLE}
+
+%------------------------------------------------
+
+% Corresponding author mailing address and e-mail address:
+\authoraddr{Corresponding author: Baoxiang Pan, Center for Hydrometeorology and Remote Sensing, University of California, Irvine, California, USA. (baoxianp@uci.edu)}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+\title{Title of the article}
+
+%----------------------------------------------------------------------------------------
+%	AUTHORS AND AFFILIATIONS
+%----------------------------------------------------------------------------------------
+
+% Use \author{\altaffilmark{}} and \altaffiltext{}
+
+% \altaffilmark will produce footnote; matching \altaffiltext will appear at bottom of page.
+
+\authors{Baoxiang Pan,\altaffilmark{1,2}
+Zhentao Cong,\altaffilmark{1}}
+
+\altaffiltext{1}{Institute of Hydrology and Water Resource, Tsinghua University, Beijing, China.}
+
+\altaffiltext{2}{Center for Hydrometeorology and Remote Sensing, University of California, Irvine, California, USA.}
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT
+%----------------------------------------------------------------------------------------
+
+% Do NOT include any \begin...\end commands within the body of the abstract.
+
+\begin{abstract}
+Catchment hydrological process takes on different patterns across temporal scales. To clarify the uncertainty revealed by observation and simulation during transition from the daily runoff generation  evapotranspiration mechanism to annual water-heat correlation pattern is of fundamental importance in reaching a self-consistent observation simulation system. 
+
+The stochastic soil moisture model provides reasonable solution to solve scale problems besides the classical paradigms of  bottom-up and top-down approaches. Through incorporating the catchment storage capacity curve in the runoff generation portion of soil moisture stochastic equation, the thesis derived the function that describe basin-scale soil moisture dynamics. The derivation also suits for transforming other mechanism-focused conceptual hydrological models into probability form to clarify its dynamic properties.
+
+
+The ergodicity feature of stochastic soil moisture equation guarantees that the temporal average of soil moisture is the same as the ensemble average, thus, the long term water balance condition can be represented by the equilibrium solution of the stochastic function. The thesis simulated and analysed the scale and accuracy of applying its equilibrium solution  in depicting the long range catchment hydrological pattern within the time and frequency domain. Results show that the soil moisture distribution can always reach its stable state given any meteorological and underlying surface conditions. Higher average soil moisture is correlated  with  more uniform underlying surface. The speed in reaching the equilibrium distribution is dominated by the relative magnitude of potential evapotranspiration. When focusing on small temporal scales, the soil moisture behaves as one step auto regress pattern in the time domain, red noise in the frequency domain. When focusing on large temporal scales, the soil moisture acts as stable process in the time domain, being white noise in the frequency domain, responsively. The water and energy supply determine the shape of the equilibrium distribution. The two factors determine the accuracy of applying the equilibrium distribution in depicting the long range catchment hydrological pattern through controlling the variance of the distribution. The variance is larger in catchments with higher water energy supplies.
+  
+ 
+In order to quantify the uncertainty in observation and simulation across temporal scales, the thesis checks the significance of entropy and mutual information in a Bayesian view,  quantized entropy of runoff observations can be used to represent the prior uncertainty in determining the catchment's hydrological patterns. Mutual information between runoff observation and the catchment's water energy provisions is employed to denote the uncertainty decrease given the existed observations. Mutual information between runoff observation and simulation is employed to denote the uncertainty decrease given the models. The differences of these items, as constrained by the functional transformation of the Bayes' theorem and data processing inequality, construct sound framework in evaluating the observation and simulation systems. An improved approach combining K-nearest-neighbor method and support-vector-regression is employed to tackle with high dimensional information item estimation. 
+
+We implement the information analysis with clustered daily hydrometeorological observations from MOPEX data set to analyse the uncertainty and its dominants across temporal scales. The estimations quantified the  information contents and flows of hydrological items, the specific information contributions of former hydrological behaviours and new items. The estimations are closely related with the climate type of the catchments. It also shows that information distilled by the monthly and annual water balance models applied here does not correspond to that provided by observations around temporal scale from two months to half a year. This calls for a better understanding of seasonal hydrological mechanism.
+ 
+
+\end{abstract}
+
+%----------------------------------------------------------------------------------------
+%	ARTICLE CONTENT
+%----------------------------------------------------------------------------------------
+
+% The body of the article must start with a \begin{article} command
+% \end{article} must follow the references section, before the figures and tables.
+
+\begin{article}
+
+\section{Introduction}
+
+Nam fermentum sapien at enim varius consectetur. Quisque lobortis imperdiet mauris, et accumsan libero vulputate vitae. Integer lacinia purus vel metus tempus suscipit. Curabitur ac sapien quis mauris euismod commodo. Sed pharetra sem elit. Fusce ultrices, mauris eu fermentum tempor, tellus sem ornare lectus, in convallis nunc urna id dolor. Donec convallis ligula vitae sem viverra fermentum. Mauris in ullamcorper erat. Donec ultrices tempus nibh quis vestibulum. This statement requires citation \citep{AtkinsonSloan}. This one is an in-text citation because the authors of \citet{ColtonKress1} are specifically mentioned.
+
+ 
+
+%------------------------------------------------
+
+\section{Mathematical Derivation} 
+ 
+\begin{equation}
+\label{sbalance}
+nR_{L}\frac{ds}{dt}=I(s,t)-E(s,t)-L(s,t)
+\end{equation}
+
+
+\begin{equation}
+\label{basic1}
+f(s,t+dt)ds= \underbrace{(1-p_{rain})\Bigg \{ f(s+\Delta s,t)d(s+\Delta s) \Bigg \} }_{no-rain} +\underbrace{p_{rain} \int_{0}^{s} f(z,t)p_{i|z}(s-z+\Delta z)dzds}_{rain}
+\end{equation}
+
+ 
+\begin{equation}
+\label{norain1}
+\begin{split}
+&f(s+\Delta s,t)d(s+\Delta s)\\=&f(s+\rho(s)dt+o(dt),t)d(s+\rho(s)dt+o(dt))
+\\=&[f(s,t)+\frac{\partial{f(s,t)}}{\partial s}\rho(s)dt+o(dt)](1+\frac{d\rho(s)}{ds}dt)ds
+\\=&[f(s,t)+\frac{\partial{f(s,t)}}{\partial s}\rho(s)dt+f(s,t)\frac{d\rho(s)}{ds}dt+o(dt)]ds
+\\=&[f(s,t)+\frac{\partial{f(s,t)\rho(s)}}{\partial s}dt+o(dt)]ds
+\end{split}
+\end{equation}
+
+\begin{equation}
+s-z=I-\int_t^{t+dt} \rho[s(t)]dt
+\end{equation}
+
+\begin{equation}
+s(t)=z
+\end{equation}
+   
+   
+\begin{equation}
+\label{deltat}
+\begin{split}
+\Delta z&=\int_t^{t+dt} \rho[s(t)]dt\\
+&=k\rho(z)dt+(1-k)\rho(s)dt+o(dt)
+\end{split}
+\end{equation} 
+ 
+
+
+
+\begin{equation}
+\label{change2}
+\begin{split}
+&\int_{0}^{s} f(z,t)p_{i|z}(s-z+\Delta z)dzds\\
+=&\int_{0}^{s} f(z,t)p_{i|z-k\rho(z)dt-o(dt)}[s-z+k\rho(z)dt+(1-k)\rho(s)dt+o(dt)]dzds\\
+=&\int_{0}^{s} f(z,t)\lbrace p_{i|z}(s-z)-\frac{\partial p_{i|z}(x)}{\partial z}[k\rho(z)dt+o(dt)]+\frac{\partial p_{i|z}(x)}{\partial x}[k\rho(z)dt+(1-k)\rho(s)dt+o(dt)]\rbrace dzds\\
+=&\int_{0}^{s} f(z,t)\lbrace \frac{\partial p_{i|z}(x)}{\partial x}[k\rho(z)+(1-k)\rho(s)]-\frac{\partial p_{i|z}(x)}{\partial z}k\rho(z)\rbrace dzdsdt \\
+&+\int_{0}^{s} f(z,t)p_{i|z}(s-z)dzds+o(dt)\\
+ \end{split}
+\end{equation}
+ 
+ 
+\begin{equation}
+\label{basic2}
+\begin{split}
+f(s,t+dt)ds=&(1-p_{rain})\times [f(s,t)+\frac{\partial{f(s,t)\rho(s)}}{\partial s}dt+o(dt)]ds\\
+&+p_{rain} \times [\int_{0}^{s} f(z,t)p_{i|z}(s-z)dzds+o(dt)]\\
+&+p_{rain} \times \int_{0}^{s} f(z,t)\lbrace \frac{\partial p_{i|z}(x)}{\partial x}[k\rho(z)+(1-k)\rho(s)]-\frac{\partial p_{i|z}(x)}{\partial z}k\rho(z)\rbrace dzdsdt
+\end{split}
+\end{equation}
+ 
+\begin{equation}
+\label{rc}
+p_{rain}=\lambda(t) dt
+\end{equation}
+ 
+
+\begin{equation}
+\label{basic3}
+ \frac{\partial{f(s,t)}}{\partial t}=\frac{\partial{[\rho(s)f(s,t)]}}{\partial s}-\lambda(t)f(s,t)+\lambda(t)\int_{0}^{s} f(z,t)p_{i|z}(s-z)dz
+ \end{equation}
+ 
+ \begin{equation}
+ \delta(x)\equiv
+ \begin{cases}
+ 0&x\neq0;\\\infty&x=0
+ \end{cases}
+ \end{equation}
+ 
+ \begin{equation}
+ \int_{-\infty}^{\infty} \delta(x)dx=1
+ \end{equation}
+ 
+ \begin{equation}
+ f(s,t)=g(s,t)+\delta[s(1-s)](1-G)
+ \end{equation} 
+ 
+ \begin{equation}
+G\equiv\int_{0^+}^{1^-} g(z,t)dz
+ \end{equation}
+
+\paragraph{$s=0$}
+ 
+\begin{equation}
+\label{basic00}
+\begin{split}
+p_0(t+dt)=&\underbrace{(1-p_{rain})[p_0(t)+\int_{0^{+}}^{\rho (0)dt} f(s,t)ds]}_{no-rain} +\underbrace{p_{rain} \int_{0}^{kdt}\int_{0}^{s} f(z,t)p_{i|z}(s-z+\Delta z)dzds}_{rain}
+\end{split}
+\end{equation}
+ 
+ \begin{equation}
+ p_0(t+dt)\\=[1-\lambda(t)dt]p_0(t)+o(dt)
+ \end{equation} 
+ 
+ \begin{equation}
+ \frac{dp_0(t)}{dt}=-\lambda(t) p_0(t)
+ \end{equation}
+ 
+ \begin{equation}
+ p_0(t)=p_0(0)e^{-\lambda(t) t}
+ \end{equation}
+
+ 
+
+
+\paragraph{$s=1$ } 
+ 
+\begin{equation}
+\label{basic00}
+\begin{split}
+p_1(t+dt)=&\underbrace{(1-p_{rain})\times 0}_{no-rain}+\underbrace{p_{rain} \int_{1}^{1}\int_{0}^{s} f(z,t)p_{i|z}(s-z+\Delta z)dzds}_{rain}
+\end{split}
+\end{equation}
+将方程\ref{rc}带入上式，$lim(dt) \to 0$，有：
+\begin{equation}
+p_1(t)=0
+\end{equation} 
+ 
+ \begin{equation}
+\label{basic4}
+ \frac{\partial{f(s,t)}}{\partial t}=\frac{\partial{[\rho(s)f(s,t)]}}{\partial s}-\lambda(t)f(s,t)+\lambda(t)\int_{0^{+}}^{s} f(z,t)p_{i|z}(s-z)dz+\lambda(t)\int_{0}^{0^{+}} f(z,t)p_{i|z}(s-z)dz
+ \end{equation}
+ 
+ \begin{equation}
+ \label{bb}
+ \begin{split}
+ &\int_{0^+}^{s} f(z,t)p_{i|z}(s-z)dz\\=&\int_{0}^{s} g(z,t)p_{i|z}(s-z)dz-\int_{0}^{0^+} g(z,t)p_{i|z}(s-z)dz\\=&\int_{0}^{s} g(z,t)p_{i|z}(s-z)dz
+ \end{split}
+ \end{equation}
+ 
+ \begin{equation}
+g(z,t)\equiv
+ \begin{cases}
+ f(z,t),&z\neq 0;\\0,&z=0
+ \end{cases}
+ \end{equation}
+ 
+ 
+ \begin{equation}
+  \label{bbb}
+ \begin{split}
+ &\int_{0}^{0^+} f(z,t)p_{i|z}(s-z)dz\\=&\int_{0}^{0^+} f(z,t)[p_{i|0}(s)+\frac{\partial p_{i|z}(s-z)}{\partial z}z+o(z)]dz
+ \\=&p_{i|0}(s)\int_{0}^{0^+} f(z,t)dz
+ \\=&p_{i|0}(s)p_0(t)
+ \end{split}
+ \end{equation}
+ 
+  
+ \begin{equation}
+ \label{basic5}
+ \frac{\partial{g(s,t)}}{\partial t}=\frac{\partial{[\rho(s)g(s,t)]}}{\partial s}-\lambda(t)g(s,t)+\lambda(t)\int_{0}^{s} g(z,t)p_{i|z}(s-z)dz+\lambda(t)p_0(0)e^{-\lambda(t) t}p_{i|0}(s)
+ \end{equation}
+ 
+
+
+\section{降水入渗产流过程}
+ 
+
+ 
+
+\subsection{单点蓄满产流}
+ 
+\begin{equation}
+R=
+ \begin{cases}
+ 0&{P+z\leq 1};\\P+z-1 &{p+z>1}
+ \end{cases}
+\end{equation}
+ 
+\begin{equation}
+\label{rpoint}
+p_{R|z}(x)=f_P(x+1-z)+\delta(x)\int_{0}^{1-z} f_P(u) du 
+\end{equation}
+ 
+\begin{equation}
+I|z=
+ \begin{cases}
+ P&{P+z\leq 1};\\1-z &{P+z>1}
+ \end{cases}
+\end{equation}
+ 
+\begin{equation}
+\label{point}
+p_{i|z}(x)=f_P(x)+\delta(x-1+z)\int_{1-z}^{\infty} f_P(u) du 
+\end{equation}
+
+
+\subsection{基于流域蓄水容量曲线的面尺度蓄满产流}
+ 
+\begin{equation}
+F(w)=P(W \leq w)=1-(1-\frac{w}{WM})^b
+\end{equation} 
+ 
+\begin{equation}
+\overline{w}=\int_{0}^{WM} wdF(w)=\frac{WM}{1+b}=1
+\end{equation} 
+
+ 
+ 
+\begin{equation}
+R=
+ \begin{cases}
+ p+z-1+[1-\frac{p+a}{1+b}]^{1+b}&{a+p\leq 1+b};\\p+z-1 &{a+p> 1+b}
+ \end{cases}
+\end{equation}
+ 
+\begin{equation}
+a=(1+b)[1-(1-z)^{\frac{1}{1+b}}]
+\end{equation}
+ 
+\begin{equation}
+\label{rxaj}
+p_{R|z}=
+ \begin{cases}
+ f_p(\phi_z^{-1}(x))&{a+x \leq z+b};\\f_p(x+1-z) &{a+x> z+b}
+ \end{cases}
+\end{equation}
+ 
+\begin{equation}
+\phi_z(x)=x+z-1+(1-\frac{x+a}{1+b})^{1+b}
+\end{equation}
+ 
+\begin{equation}
+I\vert z=
+ \begin{cases}
+ 1-z-[1-\frac{P+a}{1+b}]^{1+b}&{a+P\leq 1+b};\\1-z &{a+P> 1+b}
+ \end{cases}
+\end{equation}
+ 
+\begin{equation}
+\label{xaj}
+p_{i|z}(x)=f_P\bigg \{(1+b)\big [(1-z)^{\frac{1}{1+b}}-(1-z-x)^{\frac{1}{1+b}}\big ]\bigg \}+\delta(x-1+z)\int_{(1+b)(1-z)^{\frac{1}{1+b}}}^{\infty} f_P(u) du 
+\end{equation}
+
+ 
+ 
+
+ 
+
+\section{蒸散发与深层渗漏过程}
+ 
+\begin{equation}
+\label{linearep}
+\rho (s)=EP_r \times s
+\end{equation}
+ 
+\begin{equation}
+\label{rree}
+EP_r=\frac{EP}{nR_L}
+\end{equation}
+
+ 述\cite{eagleson2011land}：
+ \begin{equation}
+\rho (s)=
+ \begin{cases}
+ \frac{\eta}{s^*} s  &s\leq s^{*}\\ 
+ \eta &s^*<s\leq s_1\\
+ \eta+k\frac{s-s_1}{1-s_1} &s_1<s\leq 1
+ \end{cases}
+ \end{equation} 
+ 
+ 
+
+
+
+ 
+\begin{equation}
+\label{ssd}
+\frac{\partial{g(s,t)}}{\partial t}=\frac{\partial{[\rho(s)g(s,t)]}}{\partial s}-\lambda(t)g(s,t)+\lambda(t)\int_{0}^{s} g(z,t)f_{p}(s-z)dz+\lambda(t)p_0(0)e^{-\lambda(t) t}p_{i|0}(s)
+\end{equation}
+
+\begin{equation}\small
+\label{ssm}
+\frac{\partial{g(s,t)}}{\partial t}=\frac{\partial{[\rho(s)g(s,t)]}}{\partial s}-\lambda(t)g(s,t)+\lambda(t)\int_{0}^{s} g(z,t)f_{p}\{(1+b) [(1-z)^{\frac{1}{1+b}}-(1-s)^{\frac{1}{1+b}} ] \}dz+\lambda(t)p_0(0)e^{-\lambda(t) t}p_{i|0}(s)
+\end{equation}
+ 
+
+%------------------------------------------------
+
+\section{Numerical Simulation}
+
+ 
+
+\section{Field Test}
+ 
+%------------------------------------------------
+
+\section{Discussion}
+
+ 
+
+\section{Conclusion}
+
+%----------------------------------------------------------------------------------------
+%	APPENDICES (OPTIONAL)
+%----------------------------------------------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Optional Appendix goes here
+
+% \appendix resets counters and redefines section heads
+% but doesn't print anything.
+% After typing  \appendix
+
+% \section{Here Is Appendix Title}
+% will show
+% Appendix A: Here Is Appendix Title
+
+\appendix
+
+\section{Appendix Title}
+ 
+
+%----------------------------------------------------------------------------------------
+%	GLOSSARY OR NOTATION (OPTIONAL)
+%----------------------------------------------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Optional Glossary or Notation section, goes here
+%
+%%%%%%%%%%%%%%
+% Glossary is only allowed in Reviews of Geophysics
+% \section*{Glossary}
+% \paragraph{Term}
+% Term Definition here
+%
+%%%%%%%%%%%%%%
+% Notation -- End each entry with a period.
+% \begin{notation}
+% Term & definition.\\
+% Second term & second definition.\\
+% \end{notation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	ACKNOWLEDGEMENTS
+%----------------------------------------------------------------------------------------
+
+\begin{acknowledgments}
+This work was partially supported by a grant from the Spanish Ministry of Science and Technology.
+\end{acknowledgments}
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+% Either type in your references using
+% \begin{thebibliography}{}
+% \bibitem{}
+% Text
+% \end{thebibliography}
+
+% Or,
+
+% If you use BiBTeX for your references, please use the agufull08.bst file (available at % ftp://ftp.agu.org/journals/latex/journals/Manuscript-Preparation/) to produce your .bbl
+% file and copy the contents into your paper here.
+
+% Follow these steps:
+% 1. Run LaTeX on your LaTeX file.
+
+% 2. Make sure the bibliography style appears as \bibliographystyle{agufull08}. Run BiBTeX on your LaTeX
+% file.
+
+% 3. Open the new .bbl file containing the reference list and
+%   copy all the contents into your LaTeX file here.
+
+% 4. Comment out the old \bibliographystyle and \bibliography commands.
+
+% 5. Run LaTeX on your new file before submitting.
+
+% AGU does not want a .bib or a .bbl file. Please copy in the contents of your .bbl file here.
+
+\begin{thebibliography}{}
+
+\providecommand{\natexlab}[1]{#1}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+
+\bibitem[{\textit{Atkinson and Sloan}(1991)}]{AtkinsonSloan}
+Atkinson, K., and I.~Sloan (1991), The numerical solution of first-kind
+  logarithmic-kernel integral equations on smooth open arcs, \textit{Math.
+  Comp.}, \textit{56}(193), 119--139.
+
+\bibitem[{\textit{Colton and Kress}(1983)}]{ColtonKress1}
+Colton, D., and R.~Kress (1983), \textit{Integral Equation Methods in
+  Scattering Theory}, John Wiley, New York.
+
+\bibitem[{\textit{Hsiao et~al.}(1991)\textit{Hsiao, Stephan, and
+  Wendland}}]{StephanHsiao}
+Hsiao, G.~C., E.~P. Stephan, and W.~L. Wendland (1991), On the {D}irichlet
+  problem in elasticity for a domain exterior to an arc, \textit{J. Comput.
+  Appl. Math.}, \textit{34}(1), 1--19.
+
+\bibitem[{\textit{Lu and Ando}(2012)}]{LuAndo}
+Lu, P., and M.~Ando (2012), Difference of scattering geometrical optics
+  components and line integrals of currents in modified edge representation,
+  \textit{Radio Sci.}, \textit{47},  RS3007, \doi{10.1029/2011RS004899}.
+
+\end{thebibliography}
+
+% Reference citation examples:
+
+%...as shown by \textit{Kilby} [2008].
+%...as shown by {\textit  {Lewin}} [1976], {\textit  {Carson}} [1986], {\textit  {Bartholdy and Billi}} [2002], and {\textit  {Rinaldi}} [2003].
+%...has been shown [\textit{Kilby et al.}, 2008].
+%...has been shown [{\textit  {Lewin}}, 1976; {\textit  {Carson}}, 1986; {\textit  {Bartholdy and Billi}}, 2002; {\textit  {Rinaldi}}, 2003].
+%...has been shown [e.g., {\textit  {Lewin}}, 1976; {\textit  {Carson}}, 1986; {\textit  {Bartholdy and Billi}}, 2002; {\textit  {Rinaldi}}, 2003].
+
+%...as shown by \citet{jskilby}.
+%...as shown by \citet{lewin76}, \citet{carson86}, \citet{bartoldy02}, and \citet{rinaldi03}.
+%...has been shown \citep{jskilbye}.
+%...has been shown \citep{lewin76,carson86,bartoldy02,rinaldi03}.
+%...has been shown \citep [e.g.,][]{lewin76,carson86,bartoldy02,rinaldi03}.
+
+% Please use ONLY \citet and \citep for reference citations.
+% DO NOT use other cite commands (e.g., \cite, \citeyear, \nocite, \citealp, etc.).
+
+\end{article}
+
+%----------------------------------------------------------------------------------------
+%	FIGURES AND TABLES
+%----------------------------------------------------------------------------------------
+
+%% Enter Figures and Tables here:
+%
+% DO NOT USE \psfrag or \subfigure commands.
+%
+% Figure captions go below the figure.
+% Table titles go above tables; all other caption information should be placed in footnotes below the table.
+%
+%----------------
+% EXAMPLE FIGURE
+%
+% \begin{figure}
+% \noindent\includegraphics[width=20pc]{samplefigure.eps}
+% \caption{Caption text here}
+% \label{figure_label}
+% \end{figure}
+%
+% ---------------
+% EXAMPLE TABLE
+%
+%\begin{table}
+%\caption{Time of the Transition Between Phase 1 and Phase 2\tablenotemark{a}}
+%\centering
+%\begin{tabular}{l c}
+%\hline
+% Run  & Time (min)  \\
+%\hline
+%  $l1$  & 260   \\
+%  $l2$  & 300   \\
+%  $l3$  & 340   \\
+%  $h1$  & 270   \\
+%  $h2$  & 250   \\
+%  $h3$  & 380   \\
+%  $r1$  & 370   \\
+%  $r2$  & 390   \\
+%\hline
+%\end{tabular}
+%\tablenotetext{a}{Footnote text here.}
+%\end{table}
+
+% See below for how to make sideways figures or tables.
+
+\newpage
+
+\begin{figure}
+\includegraphics[width=0.4\linewidth]{placeholder.jpg}
+\caption{Figure caption}\label{placeholder}
+\end{figure}
+
+\begin{table}
+\caption{Table caption}\label{sampletable}
+\begin{tabular}{l l l}
+\hline
+\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
+\hline
+Treatment 1 & 0.0003262 & 0.562 \\
+Treatment 2 & 0.0015681 & 0.910 \\
+Treatment 3 & 0.0009271 & 0.296 \\
+\hline
+\end{tabular}
+\end{table}
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+More Information and Advice:
+
+%% ------------------------------------------------------------------------ %%
+%
+%  SECTION HEADS
+%
+%% ------------------------------------------------------------------------ %%
+
+% Capitalize the first letter of each word (except for
+% prepositions, conjunctions, and articles that are
+% three or fewer letters).
+
+% AGU follows standard outline style; therefore, there cannot be a section 1 without
+% a section 2, or a section 2.3.1 without a section 2.3.2.
+% Please make sure your section numbers are balanced.
+% ---------------
+% Level 1 head
+%
+% Use the \section{} command to identify level 1 heads;
+% type the appropriate head wording between the curly
+% brackets, as shown below.
+%
+%An example:
+%\section{Level 1 Head: Introduction}
+%
+% ---------------
+% Level 2 head
+%
+% Use the \subsection{} command to identify level 2 heads.
+%An example:
+%\subsection{Level 2 Head}
+%
+% ---------------
+% Level 3 head
+%
+% Use the \subsubsection{} command to identify level 3 heads
+%An example:
+%\subsubsection{Level 3 Head}
+%
+%---------------
+% Level 4 head
+%
+% Use the \subsubsubsection{} command to identify level 3 heads
+% An example:
+%\subsubsubsection{Level 4 Head} An example.
+%
+%% ------------------------------------------------------------------------ %%
+%
+%  IN-TEXT LISTS
+%
+%% ------------------------------------------------------------------------ %%
+%
+% Do not use bulleted lists; enumerated lists are okay.
+% \begin{enumerate}
+% \item
+% \item
+% \item
+% \end{enumerate}
+%
+%% ------------------------------------------------------------------------ %%
+%
+%  EQUATIONS
+%
+%% ------------------------------------------------------------------------ %%
+
+% Single-line equations are centered.
+% Equation arrays will appear left-aligned.
+
+Math coded inside display math mode \[ ...\]
+ will not be numbered, e.g.,:
+ \[ x^2=y^2 + z^2\]
+
+ Math coded inside \begin{equation} and \end{equation} will
+ be automatically numbered, e.g.,:
+ \begin{equation}
+ x^2=y^2 + z^2
+ \end{equation}
+
+% IF YOU HAVE MULTI-LINE EQUATIONS, PLEASE
+% BREAK THE EQUATIONS INTO TWO OR MORE LINES
+% OF SINGLE COLUMN WIDTH (20 pc, 8.3 cm)
+% using double backslashes (\\).
+
+% To create multiline equations, use the
+% \begin{eqnarray} and \end{eqnarray} environment
+% as demonstrated below.
+\begin{eqnarray}
+  x_{1} & = & (x - x_{0}) \cos \Theta \nonumber \\
+        && + (y - y_{0}) \sin \Theta  \nonumber \\
+  y_{1} & = & -(x - x_{0}) \sin \Theta \nonumber \\
+        && + (y - y_{0}) \cos \Theta.
+\end{eqnarray}
+
+%If you don't want an equation number, use the star form:
+%\begin{eqnarray*}...\end{eqnarray*}
+
+% Break each line at a sign of operation
+% (+, -, etc.) if possible, with the sign of operation
+% on the new line.
+
+% Indent second and subsequent lines to align with the first character following the equal sign on the first line.
+
+% Use an \hspace{} command to insert horizontal space into your equation if necessary. Place an appropriate unit of measure between the curly braces, e.g. \hspace{1in}; you may have to experiment to achieve the correct amount of space.
+
+
+%% ------------------------------------------------------------------------ %%
+%
+%  EQUATION NUMBERING: COUNTER
+%
+%% ------------------------------------------------------------------------ %%
+
+% You may change equation numbering by resetting
+% the equation counter or by explicitly numbering
+% an equation.
+
+% To explicitly number an equation, type \eqnum{}
+% (with the desired number between the brackets)
+% after the \begin{equation} or \begin{eqnarray}
+% command.  The \eqnum{} command will affect only
+% the equation it appears with; LaTeX will number
+% any equations appearing later in the manuscript
+% according to the equation counter.
+%
+
+% If you have a multiline equation that needs only
+% one equation number, use a \nonumber command in
+% front of the double backslashes (\\) as shown in
+% the multiline equation above.
+
+%% ------------------------------------------------------------------------ %%
+%
+%  SIDEWAYS FIGURE AND TABLE EXAMPLES
+%
+%% ------------------------------------------------------------------------ %%
+%
+% For tables and figures, add \usepackage{rotating} to the paper and add the rotating.sty file to the folder.
+% AGU prefers the use of {sidewaystable} over {landscapetable} as it causes fewer problems.
+%
+% \begin{sidewaysfigure}
+% \includegraphics[width=20pc]{samplefigure.eps}
+% \caption{caption here}
+% \label{label_here}
+% \end{sidewaysfigure}
+%
+% \begin{sidewaystable}
+% \caption{}
+% \begin{tabular}
+% Table layout here.
+% \end{tabular}
+% \end{sidewaystable}

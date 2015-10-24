@@ -1,0 +1,991 @@
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
+
+\chapter{随机土壤水模型}
+\label{cha:china}
+\section{引言}
+流域水文过程涉及大气-土壤-植被连续体（SPAC）各组分间复杂的相互作用。在该过程中，土壤水扮演着控制降水划分为入渗、径流、蒸散发等水文变量的枢纽角色，并通过与生态系统的耦合作用，决定流域的水文形态和生态系统的结构与功能。SPAC连续体水文生态动态响应过程见图\ref{soilfunction}。
+\begin{figure}[H]
+\centering
+\includegraphics[width=13cm]{soilfunction.png}
+\caption{SPAC连续体水文生态动态响应过程\cite{rodriguez2001plants}}
+\label{soilfunction}
+\end{figure}
+
+在对上图中涉及非线性与时空变异性的水文、生态过程\cite{clark2001ecological}进行模拟时，需要进行不同程度的简化假设以得到各过程主要控制因素\cite{porporato2002ecohydrology}。一个典型的例子是随机土壤水模型，该类模型以降水作为随机驱动项，通过概化入渗产流、蒸散发、地下水补给等过程，描述流域水文动态特性。根据各过程控制方程不同，已有的随机土壤水模型可大致分为如下几类：
+
+\begin{table}[H] 
+\caption{随机土壤水模型}
+\label{ssmm}
+\resizebox{\textwidth}{!}{
+\centering
+\begin{tabular}{cccccccc}
+\toprule[1.5 pt]
+开发者&空间尺度&	降水&	截留&	产流&	蒸散发&	地下水补给&	稳态概率类型\\
+\midrule[1 pt]
+Cox \& Isham\cite{cox1986virtual}&\multirow{5}{*}{点尺度}&\multirow{5}{*}{复合泊松过程} &\multirow{5}{*}{固定值}&未考虑&线性&\multirow{2}{*}{未考虑}&伽马分布\\
+
+Milly\cite{ milly1993analytic,milly1994climate}&  &&&\multirow{4}{*}{蓄满产流}&常值&&指数分布 \\
+
+
+Rodriguez\cite{rodriguez1999probabilistic}&& &&&两阶段线性&线性&三段分布\\
+Laios\cite{laio2001plants}&& &&&多段线性&指数&四段分布\\ 
+Porporato\cite{porporato2004soil}& &&&&线性&线性&伽马分布\\
+\bottomrule[1.5 pt]
+\end{tabular}
+}
+\end{table}
+
+在承认简化假设能够提供含义明确的反映流域动态的解析表达式的同时，必须认识到，过度的简化会隐藏一些重要的控制因素，继而影响模型模拟效果与应用范围。本章遵循假设只在必要时才被引入的原则，重新推导土壤水随机方程，针对原有模型仅适用于点尺度的不足，借助流域蓄水容量分布曲线的概念，将点尺度方程扩展到流域面尺度，为后续基于随机土壤水模型的时间尺度分析提供理论基础。
+
+
+\iffalse
+以降水作为随机驱动的随机土壤水模型在刻画流域水文生态特性方面
+From the modeling viewpoint, the very large number
+of processes that make up the dynamics of the soil water
+balance and the extremely large degree of nonlinearity and
+space-time variability of hydrological and ecological phenomena (Clark et al. 2001; Porporato and RodriguezIturbe 2002) call for simplifying assumptions at different
+levels. Whenever possible, the development of a lowdimensional description in which the dominating deterministic (and possibly nonlinear) components are separated from the high-dimensional (i.e., stochastic)
+environmental forcing is especially valuable
+
+ In particular,
+simple models of soil moisture dynamics have been used
+to capture the essential features of the terrestrial water
+cycle and the resulting vegetation response
+
+在流域水文过程中，土壤水扮演着控制大气-土壤-植被连续体\cite{philip1966plant}（SPAC）枢纽的角色
+
+
+
+简化的必要性，简化带来的误差，简化带来的坏处。
+
+除极端事件外，影响流域水文生态特性的往往是一定时期内的气象统计特征。本章以降水作为随机驱动要素，在既有研究的基础上，重新推导土壤水随机方程，并借助流域蓄水容量曲线将点尺度方程扩展到流域面尺度，为后续？？提供理论基础。
+\iffalse
+
+降水到达下垫面，土壤以一种非线性形式控制其转化为径流、渗漏、蒸散发等\cite{pxy}。大气-土壤-植被连续体（SPAC）对不同的气象条件作出不同的响应，通过与生态系统耦合作用，决定了流域水文形态和生态系统的结构与功能\cite{knapp2002rainfall}。SPAC连续体水文生态动态响应过程见图\ref{soilfunction}。
+
+
+流域水文过程中各变量在不同时空尺度上具有不确定性。在一定气象条件下，降水到达下垫面，土壤水以一种非线性形式控制其转化为径流、渗漏、蒸散发等\cite{pxy}。在该过程中，土壤水虽然只占很小一部分，却扮演着控制大气-土壤-植被连续体\cite{philip1966plant}（SPAC）枢纽的角色。在水文模型中，土壤含水量作为最重要的状态变量之一，一方面通过状态更新保证非连续气象条件下流域的水量平衡，另一方面决定流域对气象输入的水文与生态响应。土壤水对流域生态过程与水文过程的作用见图\ref{soilfunction}。
+
+如前文所述，虽然流域气象输入条件具有不确定性，但往往服从某一随机过程分布。这些气象条件的统计特性经过土壤水调蓄作用，反映流域的水文动力特征，并通过与生态系统的耦合作用，决定流域水文形态和生态系统结构与功能。本章以降水作为随机驱动要素，在既有研究的基础上，重新推导土壤水随机方程，并借助流域蓄水容量曲线将点尺度方程扩展到流域面尺度。
+\fi
+
+在推导过程中我们遵从
+%$Lisp$程序语言解释器和$Mathematica$数学软件优雅的求值哲学
+如下原则：从普适性方程出发，假设仅仅在必要的时候才会引入。因此，随着推导过程的深入，理论普适性会降低，而假设的引入则会使方程形式逐步简化。
+
+
+根据对观测数据统计分析以及既有模型模拟评估，我们作如下先验假设：
+
+\begin{itemize}
+\item[(1)]降水可由降水发生频率和次雨深两个随机变量表示，且两变量相互独立.
+\item[(2)]不考虑土壤水垂向分布对流域水文响应的影响，采用单变量表示土壤水含量.
+\item[(3)]不考虑侧向水流运动与底层地下水补给.
+\end{itemize}
+
+在此假设基础上，列出描述土壤水概率密度函数随时间变化的Kolmogorov向前微分方程如下：
+\fi
+\section{土壤水量平衡方程概率形式}
+\subsection{基本方程}
+不考虑土壤水垂向分布对流域水文响应的影响，采用单变量表示土壤含水量，并假定入渗、蒸散发、渗漏项均为土壤含水量函数，则土壤水量平衡方程可表述如下：
+\begin{equation}
+\label{sbalance}
+nR_{L}\frac{ds}{dt}=I(s,t)-E(s,t)-L(s,t)
+\end{equation}
+其中$n$表示孔隙度，$R_{L}$表示土壤深度，$s$为归一化的土壤含水量，这里认为土壤含水量到达凋萎含水量时$s=0$，到达田间持水量时$s=1$。$I(s,t)$、$E(s,t)$、$L(s,t)$分别表示$t$时刻土壤含水量为$s$条件下的入渗、蒸散发以及地下水渗漏速率。之后的推导中，各水文变量均以除以$nR_L$后的规范化无量纲形式表示。
+
+在任意时刻，可认为土壤含水量服从某一概率分布。
+\iffalse
+由于有持续干旱或持续降水的可能性，该分布应当为离散-连续混合分布，即归一化的土壤水含水量以一定概率处于0值或1值，以一定概率密度分布处于$(0,1)$区间。
+
+
+首先考虑$s \in (0,1)$时概率密度分布函数。
+\fi
+假定是否发生降水与降水量大小相互独立，则描述该概率分布函数随时间$t$变化的Chapman-Kolmogorov向前微分方程如下：
+\begin{equation}
+\label{basic1}
+f(s,t+dt)ds= \underbrace{(1-p_{rain})\Bigg \{ f(s+\Delta s,t)d(s+\Delta s) \Bigg \} }_{no-rain} +\underbrace{p_{rain} \int_{0}^{s} f(z,t)p_{i|z}(s-z+\Delta z)dzds}_{rain}
+\end{equation}
+
+其中$f(s,t)$表示在$t$时刻，土壤水含量为$s$的概率密度函数，相应地，$f(s,t)ds$表示在$t$时刻，土壤含水量在$(s,s+ds)$区间的概率。 $ p_{rain}$表示在时间区间$(t,t+dt)$内发生降水的概率。$\Delta s$ 和 $\Delta z$均表示在时间区间$(t,t+dt)$内由于蒸发渗漏造成的土壤水损失量。$p_{i|z}(x)$ 表示当土壤含水量为$z$时，降水入渗补充土壤水量为$x$的概率密度函数。
+
+方程\ref{basic1}为条件概率公式，等号右边两项分别表示在$(t,t+dt)$时段内无雨和有雨条件下，时段末土壤水含量位于$(s,s+ds)$区间的概率。
+
+\paragraph{$dt$时段内无雨情况}
+
+
+在$dt$时段内无雨条件下，为了保证在$t+dt$时刻，土壤水含量在$(s,s+ds)$区间，应满足如下条件：
+\begin{equation}
+\label{el}
+\Delta s=\int_t^{t+dt} \rho[s(t)]dt
+\end{equation}
+且有边界条件：
+\begin{equation}
+s(t)=s+\Delta s
+\end{equation}
+其中$\rho(*)$为蒸散发与渗漏项之和。式\ref{el}一阶泰勒展开，有
+\begin{equation}
+\Delta s=\rho(s)dt+o(dt)
+\end{equation}
+故在无雨条件下，$t+dt$时刻土壤水含量在$(s,s+ds)$区间的概率为：
+\begin{equation}
+\label{norain1}
+\begin{split}
+&f(s+\Delta s,t)d(s+\Delta s)\\=&f(s+\rho(s)dt+o(dt),t)d(s+\rho(s)dt+o(dt))
+\\=&[f(s,t)+\frac{\partial{f(s,t)}}{\partial s}\rho(s)dt+o(dt)](1+\frac{d\rho(s)}{ds}dt)ds
+\\=&[f(s,t)+\frac{\partial{f(s,t)}}{\partial s}\rho(s)dt+f(s,t)\frac{d\rho(s)}{ds}dt+o(dt)]ds
+\\=&[f(s,t)+\frac{\partial{f(s,t)\rho(s)}}{\partial s}dt+o(dt)]ds
+\end{split}
+\end{equation}
+
+
+\paragraph{$dt$时段内有雨情况} 
+
+在$dt$时段内有雨条件下，为了保证在$t+dt$时刻，土壤水含量位于$(s,s+ds)$区间，应满足如下条件：
+\begin{equation}
+s-z=I-\int_t^{t+dt} \rho[s(t)]dt
+\end{equation}
+且有边界条件：
+\begin{equation}
+s(t)=z
+\end{equation}
+假设降水以脉冲形式发生在$t+kdt$时刻，其中$k \in [0,1]$，则有：
+\begin{equation}
+\label{deltat}
+\begin{split}
+\Delta z&=\int_t^{t+dt} \rho[s(t)]dt\\
+&=k\rho(z)dt+(1-k)\rho(s)dt+o(dt)
+\end{split}
+\end{equation} 
+且降水发生时刻，土壤含水量为$z-k\rho(z)dt+o(dt)$。
+
+因此，在有雨条件下，$t+dt$时刻土壤含水量在$(s,s+ds)$区间的概率为：
+
+
+
+\begin{equation}
+\label{change2}
+\begin{split}
+&\int_{0}^{s} f(z,t)p_{i|z}(s-z+\Delta z)dzds\\
+=&\int_{0}^{s} f(z,t)p_{i|z-k\rho(z)dt-o(dt)}[s-z+k\rho(z)dt+(1-k)\rho(s)dt+o(dt)]dzds\\
+=&\int_{0}^{s} f(z,t)\lbrace p_{i|z}(s-z)-\frac{\partial p_{i|z}(x)}{\partial z}[k\rho(z)dt+o(dt)]+\frac{\partial p_{i|z}(x)}{\partial x}[k\rho(z)dt+(1-k)\rho(s)dt+o(dt)]\rbrace dzds\\
+=&\int_{0}^{s} f(z,t)\lbrace \frac{\partial p_{i|z}(x)}{\partial x}[k\rho(z)+(1-k)\rho(s)]-\frac{\partial p_{i|z}(x)}{\partial z}k\rho(z)\rbrace dzdsdt \\
+&+\int_{0}^{s} f(z,t)p_{i|z}(s-z)dzds+o(dt)\\
+ \end{split}
+\end{equation}
+联立式\ref{basic1}、\ref{norain1}、\ref{change2}，有：
+ 
+\begin{equation}
+\label{basic2}
+\begin{split}
+f(s,t+dt)ds=&(1-p_{rain})\times [f(s,t)+\frac{\partial{f(s,t)\rho(s)}}{\partial s}dt+o(dt)]ds\\
+&+p_{rain} \times [\int_{0}^{s} f(z,t)p_{i|z}(s-z)dzds+o(dt)]\\
+&+p_{rain} \times \int_{0}^{s} f(z,t)\lbrace \frac{\partial p_{i|z}(x)}{\partial x}[k\rho(z)+(1-k)\rho(s)]-\frac{\partial p_{i|z}(x)}{\partial z}k\rho(z)\rbrace dzdsdt
+\end{split}
+\end{equation}
+假定充分小的时段$dt$内发生降水事件的概率为$\lambda(t) dt$，即：
+\begin{equation}
+\label{rc}
+p_{rain}=\lambda(t) dt
+\end{equation}
+代入式\ref{basic2}，消去$ds$，$lim(dt)\rightarrow0$，有：
+
+\begin{equation}
+\label{basic3}
+ \frac{\partial{f(s,t)}}{\partial t}=\frac{\partial{[\rho(s)f(s,t)]}}{\partial s}-\lambda(t)f(s,t)+\lambda(t)\int_{0}^{s} f(z,t)p_{i|z}(s-z)dz
+ \end{equation}
+方程\ref{basic3}即为土壤水量平衡方程的基本概率形式。
+
+
+\subsection{方程边界条件}
+
+在流域水文过程中，由于有持续干旱或持续降水的可能性，土壤含水量概率分布应当为离散-连续混合分布，即归一化的土壤含水量以一定概率处于0值或1值，以一定概率密度分布处于$(0,1)$区间。在随机土壤水方程中，这反映在$f(s,t)$在$s=0$或$s=1$时可能存在不连续现象。经典的做法是引入Dirac函数来表示土壤含水量概率分布函数。Dirac函数定义如下：
+ \begin{equation}
+ \delta(x)\equiv
+ \begin{cases}
+ 0&x\neq0;\\\infty&x=0
+ \end{cases}
+ \end{equation}
+且满足规范性条件：
+ \begin{equation}
+ \int_{-\infty}^{\infty} \delta(x)dx=1
+ \end{equation}
+利用Dirac函数表示离散-连续混合分布土壤水概率函数如下：
+ \begin{equation}
+ f(s,t)=g(s,t)+\delta[s(1-s)](1-G)
+ \end{equation} 
+ 其中$g(s,t)$表示t时刻土壤含水量位于区间$(0^+,1^-)$内的概率密度函数，$F$表示t时刻土壤水含量既不为0也不为1的概率：
+ \begin{equation}
+G\equiv\int_{0^+}^{1^-} g(z,t)dz
+ \end{equation}
+
+\paragraph{$s=0$情况}
+t时刻土壤含水量为0的概率$p_0(t)$满足如下Kolmogorov向前微分方程：
+\begin{equation}
+\label{basic00}
+\begin{split}
+p_0(t+dt)=&\underbrace{(1-p_{rain})[p_0(t)+\int_{0^{+}}^{\rho (0)dt} f(s,t)ds]}_{no-rain} +\underbrace{p_{rain} \int_{0}^{kdt}\int_{0}^{s} f(z,t)p_{i|z}(s-z+\Delta z)dzds}_{rain}
+\end{split}
+\end{equation}
+将方程\ref{change2}，\ref{rc}带入上式，得：
+ \begin{equation}
+ p_0(t+dt)\\=[1-\lambda(t)dt]p_0(t)+o(dt)
+ \end{equation} 
+ 因此:
+ \begin{equation}
+ \frac{dp_0(t)}{dt}=-\lambda(t) p_0(t)
+ \end{equation}
+设$0$时刻土壤含水量为0的概率是$p_0(t)$，则$t$时刻土壤含水量为0的概率$p_0(t)$为： 
+ \begin{equation}
+ p_0(t)=p_0(0)e^{-\lambda(t) t}
+ \end{equation}
+
+ 
+
+
+\paragraph{$s=1$情况} 
+t时刻土壤含水量为1的概率$p_1(t)$满足如下Kolmogorov向前微分方程：
+\begin{equation}
+\label{basic00}
+\begin{split}
+p_1(t+dt)=&\underbrace{(1-p_{rain})\times 0}_{no-rain}+\underbrace{p_{rain} \int_{1}^{1}\int_{0}^{s} f(z,t)p_{i|z}(s-z+\Delta z)dzds}_{rain}
+\end{split}
+\end{equation}
+将方程\ref{rc}带入上式，$lim(dt) \to 0$，有：
+\begin{equation}
+p_1(t)=0
+\end{equation} 
+因此，在任意时刻，土壤水达到饱和的概率为$0$（这并不表示土壤水永远不能达到饱和）。Ignacio在其论文中对这一现象给出了解释\cite{rodriguez1999probabilistic}：在限制土壤蓄水容量条件下，土壤含水量处于$[0,1]$区间的概率会高于不限制蓄水容量条件下的情况，然而由于其马氏链性质，在该区间任意点的驻留时间相对比例是不变的。是否限制蓄水容量大小并不能影响土壤含水量这个随机变量在$[0,1]$区间的过程轨迹。
+\iffalse
+It  is initially  surprising  that  the  atom  of probability 
+at  1  -  s  in  the 
+state-dependent  distribution  b(y;  s)  of  jumps  in  soil  moisture  has  not  been  used  explicitly  in  the  above  derivation.  In  fact,  the  only  effect  of  the  saturation  of  the  soil  at  s  =  1  is  the  restricted  range  over  which  p(s)  is  normalized  in  (4.8).  The  explanation  for  this  lies  in  the  Markov nature  of  the  soil  moisture  process.  If  excursions  of  the  process  above  unity  are  impossible,  the  process  will  spend  more  time  in  states  {s:  s  <  1}  than  would  be  the  case  otherwise,  but  the  relative  proportions  of  times  in  those  states  will  be  unchanged.  For,  imagine  two  processes  with,  and  without,  the  restriction  to  s  <  1.  In  the  latter  case,  trajectories  of  the  soil  moisture  process  will  jump  above  the  level  s  -  1  and,  eventually,  drift  down  across  this  level  once  more.  In  the  former  case,  these  excursions  are  effectively  excised,  as  the  process  jumps  only  to  s  =  1 and  then  immediately  begins  its  downward  decay.  The  trajectories  below  s  =  1  in  the  two  processes  are  indistinguishable.  
+\fi 
+
+%\subsection{小结}
+\subsection{小结}
+考虑到$f(s,t)$在$s=0$处不连续，将方程\ref{basic3}重写为如下形式：
+ \begin{equation}
+\label{basic4}
+ \frac{\partial{f(s,t)}}{\partial t}=\frac{\partial{[\rho(s)f(s,t)]}}{\partial s}-\lambda(t)f(s,t)+\lambda(t)\int_{0^{+}}^{s} f(z,t)p_{i|z}(s-z)dz+\lambda(t)\int_{0}^{0^{+}} f(z,t)p_{i|z}(s-z)dz
+ \end{equation}
+\iffalse 
+ \begin{equation}
+ \begin{split}
+ p_0(t)\equiv&\int_0^{0^+} f(z,t)dz\\=&1-\int_{0^+}^1 f(z,t)dz
+ \end{split}
+ \end{equation}
+ \fi
+ 
+方程\ref{basic4}右式第二项表示$t$时刻土壤含水量不为为0条件下，经降水产流过程后，$t+\delta t$时刻土壤含水量为$s$的概率，该项可做如下变换：
+ \begin{equation}
+ \label{bb}
+ \begin{split}
+ &\int_{0^+}^{s} f(z,t)p_{i|z}(s-z)dz\\=&\int_{0}^{s} g(z,t)p_{i|z}(s-z)dz-\int_{0}^{0^+} g(z,t)p_{i|z}(s-z)dz\\=&\int_{0}^{s} g(z,t)p_{i|z}(s-z)dz
+ \end{split}
+ \end{equation}
+其中：
+ \begin{equation}
+g(z,t)\equiv
+ \begin{cases}
+ f(z,t),&z\neq 0;\\0,&z=0
+ \end{cases}
+ \end{equation}
+ 
+方程\ref{basic4}右式第三项表示$t$时刻土壤含水量为0条件下，经降水产流过程后，$t+\delta t$时刻土壤含水量为$s$的概率，该项可做如下变换：
+ \begin{equation}
+  \label{bbb}
+ \begin{split}
+ &\int_{0}^{0^+} f(z,t)p_{i|z}(s-z)dz\\=&\int_{0}^{0^+} f(z,t)[p_{i|0}(s)+\frac{\partial p_{i|z}(s-z)}{\partial z}z+o(z)]dz
+ \\=&p_{i|0}(s)\int_{0}^{0^+} f(z,t)dz
+ \\=&p_{i|0}(s)p_0(t)
+ \end{split}
+ \end{equation}
+方程\ref{basic4},\ref{bb},\ref{bbb}联立，有
+  
+ \begin{equation}
+ \label{basic5}
+ \frac{\partial{g(s,t)}}{\partial t}=\frac{\partial{[\rho(s)g(s,t)]}}{\partial s}-\lambda(t)g(s,t)+\lambda(t)\int_{0}^{s} g(z,t)p_{i|z}(s-z)dz+\lambda(t)p_0(0)e^{-\lambda(t) t}p_{i|0}(s)
+ \end{equation}
+方程\ref{basic5}即为概率形式的土壤水量平衡方程。方程未定项为在土壤含水量为$z$条件下，降水入渗补给为$s-z$的条件概率密度函数$p_{i|z}(s-z)$，以及蒸散发与渗漏对土壤含水量$s$的函数$\rho(s)$。
+
+
+\section{降水入渗产流过程}
+
+降到流域下垫面的雨水，经土壤调蓄作用，一部分生成径流侧向流出，另一部分入渗补给土壤。在单点垂向上，下层介质的透水性往往小于上层介质，在降水强度超过透水速率处产生径流，降水强度小于透水速率处产生入渗补给\cite{ruixiaofang}。土壤垂向上的初始含水量分布、土壤质地结构、包气带厚度以及降水强度变化过程、降水总量均深深地影响着产流入渗过程。在流域面尺度上，上述各要素分布是不均匀的。在土壤浅薄、含水量高处容易优先产流，而随着降水的继续，产流面积逐渐扩大。
+
+本节选取点尺度蓄满产流模型和基于土壤蓄水容量曲线的面尺度蓄满产流模型，以各模型中入渗产流、降水量、前期含水量函数关系为基础，根据单次降水量概率分布函数推求已知前期含水量条件下的入渗补给条件概率分布，为随机土壤水量平衡方程提供概率形式的本构关系式。
+
+\iffalse
+鉴于降水产流入渗机制的复杂性以及观测的局限性，通常对该过程进行一定程度的简化。例如，在土壤透水速率大于一般降水强度的条件下，通常认为径流只有在降雨完全补充土壤缺水量时在土壤表面生成，这被称作``蓄满产流''；而在土壤透水率小于一般降水强度时的产流机制称为``超渗产流''。许多简化的产流模型均假设产流量为单次降水总量和研究下垫面前期土壤含水量的函数。本节选用其中具有较强物理意义且应用效果良好的几类产流模型，以模型中入渗产流、降水量、前期含水量函数关系为基础，根据单次降水量概率分布函数推求已知前期含水量条件下的入渗补给条件概率分布，为随机土壤水量平衡方程提供概率形式的本构关系式。
+\fi
+
+
+\subsection{单点蓄满产流}
+假定径流只在降雨完全补充土壤缺水量时在土壤表面生成，则
+\begin{equation}
+R=
+ \begin{cases}
+ 0&{P+z\leq 1};\\P+z-1 &{p+z>1}
+ \end{cases}
+\end{equation}
+其中$R$表示径流，$P$表示降水，$z$表示归一化土壤含水量。
+产流量作为降水量的分段函数，其概率密度函数可由下式表示：
+\begin{equation}
+\label{rpoint}
+p_{R|z}(x)=f_P(x+1-z)+\delta(x)\int_{0}^{1-z} f_P(u) du 
+\end{equation}
+其中$f_P(x)$表示次雨深的概率密度函数，$\delta(*)$为Dirac函数。
+
+根据水量平衡，可得在土壤含水量为$z$条件下，单次降水补充土壤水量为：
+\begin{equation}
+I|z=
+ \begin{cases}
+ P&{P+z\leq 1};\\1-z &{P+z>1}
+ \end{cases}
+\end{equation}
+土壤水补充量为降水量的分段函数，其概率密度函数为：
+\begin{equation}
+\label{point}
+p_{i|z}(x)=f_P(x)+\delta(x-1+z)\int_{1-z}^{\infty} f_P(u) du 
+\end{equation}
+
+
+\subsection{基于流域蓄水容量曲线的面尺度蓄满产流}
+以流域面上各点蓄水容量（饱和含水量与凋萎含水量之差）$w$为随机变量，大量观测及模拟反馈说明，$w$累积概率分布函数可由如下幂函数方程形式表示\cite{zrj}：
+\begin{equation}
+F(w)=P(W \leq w)=1-(1-\frac{w}{WM})^b
+\end{equation} 
+其中$WM$为各点中最大蓄水容量值，$b$为表征各点蓄水容量的空间变异性的参数：如图\ref{ununity}所示，$b=0$表示流域所有点蓄水容量相等，$b=1$表示流域各点蓄水容量在其样本空间均匀分布。$b$值越大，蓄水容量在各量级分布越均衡，产流条件与点尺度概化模式差别越大。
+\begin{figure}[H]
+\centering
+\includegraphics[width=10cm]{capacity_distribution_curve.png}
+\caption{流域蓄水容量累积概率分布}
+\label{ununity}
+\end{figure}
+在面尺度上，归一化表示下的平均蓄水容量$\overline{w}=sup(S)=1$，即：
+\begin{equation}
+\overline{w}=\int_{0}^{WM} wdF(w)=\frac{WM}{1+b}=1
+\end{equation} 
+
+流域初始平均含水量为$z$，假定流域内各点含水量服从同样幂指数形式，则
+\iffalse
+\begin{itemize}
+\item 
+\item 
+\end{itemize}
+
+根据上述假设，在平均流域初始土壤含水量为$z$时，
+\fi
+单次降水$p$的产流量$R$为：
+\begin{equation}
+R=
+ \begin{cases}
+ p+z-1+[1-\frac{p+a}{1+b}]^{1+b}&{a+p\leq 1+b};\\p+z-1 &{a+p> 1+b}
+ \end{cases}
+\end{equation}
+其中，
+\begin{equation}
+a=(1+b)[1-(1-z)^{\frac{1}{1+b}}]
+\end{equation}
+根据产流量与次雨深的函数关系，可得在前期平均含水量为$z$条件下，单次降水产流的概率密度函数为：
+\begin{equation}
+\label{rxaj}
+p_{R|z}=
+ \begin{cases}
+ f_p(\phi_z^{-1}(x))&{a+x \leq z+b};\\f_p(x+1-z) &{a+x> z+b}
+ \end{cases}
+\end{equation}
+其中，$\phi_z^{-1}(*)$为$\phi_z(*)$的反函数，
+\begin{equation}
+\phi_z(x)=x+z-1+(1-\frac{x+a}{1+b})^{1+b}
+\end{equation}
+根据质量守恒，土壤水补充量为：
+\begin{equation}
+I\vert z=
+ \begin{cases}
+ 1-z-[1-\frac{P+a}{1+b}]^{1+b}&{a+P\leq 1+b};\\1-z &{a+P> 1+b}
+ \end{cases}
+\end{equation}
+根据如上函数关系，求得土壤水入渗补充量概率密度函数如下：
+\begin{equation}
+\label{xaj}
+p_{i|z}(x)=f_P\bigg \{(1+b)\big [(1-z)^{\frac{1}{1+b}}-(1-z-x)^{\frac{1}{1+b}}\big ]\bigg \}+\delta(x-1+z)\int_{(1+b)(1-z)^{\frac{1}{1+b}}}^{\infty} f_P(u) du 
+\end{equation}
+
+当$b=0$时，流域内各点蓄水容量相等，方程\ref{rxaj}、\ref{xaj}退化为方程\ref{rpoint}、\ref{point}。
+ 
+
+
+\iffalse
+\subsection{基于SCS曲线的面尺度蓄满产流}
+SCS曲线产流计算方法是20世纪50年代由美国农业部土壤保持局提出\cite{}。该方法在美国2000多个小流域实测资料的基础上经过统计分析并总结得到。理论依据：于伯孚\cite{}
+
+SCS曲线计算地表径流的经验关系为：
+\begin{equation}
+\label{SCS}
+R=\frac{p-I_a}{p-I_a+S}
+\end{equation}
+其中，$R$为产流量，$p$为次雨深，$I_a$为初损量，包括填挖，截留等，$S$为截留量。初损量$I_a$一般假定为$0.2S$，截留量随着土壤属性、土地利用类型、坡度而变化，在时间上，它是土壤含水量的函数。SWAT2005版中提供的函数形式如下\ref{}：
+\begin{equation}
+S=S_{max}{1-\frac{SW}{[SW+exp(\omega _1-\omega _2*SW)]}}
+\end{equation}
+方程包含三个参数，$S_{max}$为最大可能截留量，$\omega _1$ $\omega _2$为形状系数。$SW$为状态变量，表示土壤含水量。
+
+
+根据产流公式\ref{SCS}，结合水量平衡方程，得到单次降水土壤水补充量公式如下：
+\begin{equation}
+I\vert z=
+ \begin{cases}
+ 1-z-[1-\frac{P+a}{1+b}]^{1+b}&{a+P\leq (1+b)};\\1-z &{a+P\geq (1+b)}
+ \end{cases}
+\end{equation}
+
+\subsection{HBV超渗产流}
+\iffalse
+HBtrom (1976) and it was selected because it has a relatively low number
+of parameters and requires only standard meteorological data
+
+The model used in this analysis was based on the HBV3 model developed for
+Scandinavian catchments by Bergstrom (1976) and co-workers at the Swedish
+Meteorological and Hydrological Institute (SMHI). It was further refined by
+Jensen (1982) and Braun (1985) and applied to Swiss lowland and lower alpine
+basins. A detailed description of the model structure is given by Renner (1988). 
+\fi
+超渗产流
+\begin{equation}
+R=
+ \begin{cases}
+ P+z-1+[1-\frac{P+a}{1+b}]^{1+b}&{a+P\leq (1+b)};\\P+z-1 &{a+P\geq (1+b)}
+ \end{cases}
+\end{equation}
+
+
+ 
+
+ 
+\fi
+
+\section{蒸散发与深层渗漏过程}
+概率形式的土壤水量平衡方程\ref{basic5}中，另一未定项为蒸散发与渗漏对土壤含水量的函数$\rho (s)$。在既有的研究中，有时为了分析简便，忽略深层渗漏项，并将蒸散发项简化为土壤含水量的线性函数：
+\begin{equation}
+\label{linearep}
+\rho (s)=EP_r \times s
+\end{equation}
+其中$EP_r$为线性函数系数，$s=1$时，认为土壤水以潜在蒸散发速率损失，故系数$EP_r$可视为相对潜在蒸散发值，即：
+\begin{equation}
+\label{rree}
+EP_r=\frac{EP}{nR_L}
+\end{equation}
+
+在日或更大时间尺度上更为精确的蒸散发与深层渗漏过程可由如下分段线性函数描述\cite{eagleson2011land}：
+ \begin{equation}
+\rho (s)=
+ \begin{cases}
+ \frac{\eta}{s^*} s  &s\leq s^{*}\\ 
+ \eta &s^*<s\leq s_1\\
+ \eta+k\frac{s-s_1}{1-s_1} &s_1<s\leq 1
+ \end{cases}
+ \end{equation} 
+当$s<s^*$时，植物受到水分胁迫，$s>s_1$时，土壤水发生线性形式深层渗漏，速率为$k$。$s^*<s\leq s_1$时，土壤水以稳定速率$\eta$蒸散发。
+
+入渗产流项及蒸散发项已定条件下，即可根据降水随机过程推求土壤水随机过程描述，继而根据降水、蒸散发对土壤含水量的函数关系推求其随机方程。
+
+\iffalse
+At any given time $t$, we assume that evapotranspiration $EP$ is a monotonic increasing function of soil moisture $s$. The function form is assumed to be as follows:
+\begin{equation}
+EP=E(s)
+\end{equation}
+Since function $E$ is monotonic increasing, 
+\section{径流的随机特征描述}
+The probability that there to be a normalized run-off between $(r,r+dr)$ during period $(t,t+dt)$, which is denoted as $p(r,t)drdt$, could be expressed as follows:
+ \begin{equation}
+ p(r,t)drdt=\int_{0}^{1} f(z,t)[f_p(r+1-z,t)drdt]dz
+ \end{equation}
+where $f_p(x,t)dxdt$ denotes the probability that the there to be normalized rainfall depth within $(x, x+dx)$ during $(t, t+dt)$. 
+
+According to assumption(), the rainfall opportunity $\lambda$ and the normalized single rainfall depth $r$ are independent random variables, thus:
+\begin{equation}
+f_p(r+1-z,t)drdt=p_{rain}p_{r\_depth}(r+1-z)dr
+\end{equation}
+where
+\begin{equation}
+p_{rain}=\lambda(t)dt+o(dt)
+\end{equation}
+Combine equation(25),(26),(27),erase the higher order term, we have:
+ \begin{equation}
+ p(r,t)=\lambda(t)\int_{0}^{1} f(z,t)f_{r\_depth}(r+1-z)dz
+ \end{equation} 
+It could be interpreted as that for a single time step, the probability density for there being a run-off generated of depth $r$ equals to $\lambda(t)\int_{0}^{1} f(z,t)f_{r\_depth}(r+1-z)dz$.
+ 
+\section{水文过程随机特征的贝叶斯解释}
+概率：对某种未知情况出现可能性大小的一个主观测度。
+classification： 主观测度 客观测度
+人们关于统计推断该如何做这个问题的主张和想法，大致都可以纳入两个体系之内，其一叫做频率学派，其特点是把需要推断的参数$\theta$视为固定的未知常数而样本X为随机的，其着眼点在样本空间，有关的概率计算都是针对$X$的分布，另一叫做贝叶斯学派，其特点正好与上述相反：参数$theta$视为随机变量而样本$X$视为固定的，其着眼点在参数空间，重视的是参数$theta$的分布。
+
+分布产生于有样本之前还是之后，先验分布与后验分布
+
+先验分布+样本信息=后验分布，这一转换只涉及条件分布的计算，而没有原则的困难：在原来认识的基础上，由于有了新的信息（样本），而使我们修正了原来的认识，它体现在后验分布中。
+
+既然对参数$\theta$ 之值一无所知，那么设定的先验分布，就应当避免可能的倾向性，因而包含的关于参数的信息应当愈少愈好
+\fi
+
+
+
+\section{本章小结}
+本章以降水作为随机驱动项，以降水频次与次雨深两个相互独立随机变量表示降水过程，在此基础上，推求了土壤水量平衡方程的随机过程形式。针对入渗产流过程未定的情况，在点尺度蓄满产流、基于流域蓄水容量曲线蓄满产流模型的基础上，推求了单次降水入渗的概率密度函数。针对蒸散发与深层渗漏项未定的情况，设定了两类不同程度简化的蒸散发与渗漏模式。守恒方程与本构方程共同构建了闭合的流域水文随机过程描述：
+\begin{equation}
+\label{ssd}
+\frac{\partial{g(s,t)}}{\partial t}=\frac{\partial{[\rho(s)g(s,t)]}}{\partial s}-\lambda(t)g(s,t)+\lambda(t)\int_{0}^{s} g(z,t)f_{p}(s-z)dz+\lambda(t)p_0(0)e^{-\lambda(t) t}p_{i|0}(s)
+\end{equation}
+
+\begin{equation}\small
+\label{ssm}
+\frac{\partial{g(s,t)}}{\partial t}=\frac{\partial{[\rho(s)g(s,t)]}}{\partial s}-\lambda(t)g(s,t)+\lambda(t)\int_{0}^{s} g(z,t)f_{p}\{(1+b) [(1-z)^{\frac{1}{1+b}}-(1-s)^{\frac{1}{1+b}} ] \}dz+\lambda(t)p_0(0)e^{-\lambda(t) t}p_{i|0}(s)
+\end{equation}
+方程\ref{ssd}、\ref{ssm}分别表示点尺度和面尺度的随机土壤水方程。
+
+本章推求的面尺度的随机土壤水方程可以视为对单水源新安江模型的随机过程描述。对任意使用单一状态变量的机理驱动的水文模型，在假定输入变量随机过程条件下，均可使用上述范式进行该模型的随机动力系统分析。对于多状态变量模型，可以依照相似的方法建立随机微分方程组。考虑到对输入变量的概化，结构过于复杂的模型并不一定能够带来更好的模拟效果，反而损害了理论的简洁与优雅，因此这里不再进行多状态变量模型的随机微分方程组推求。
+
+
+\iffalse
+\begin{table}[H] 
+\caption{随机土壤水方程}
+\label{function}
+\resizebox{\textwidth}{!}{
+\centering
+\begin{tabular}{ccc}
+\toprule[1.5 pt]
+产流入渗模式&蒸散发模式&方程\\ 
+\midrule[1 pt]
+&& $\frac{\partial{g(s,t)}}{\partial t}=\frac{\partial{[\rho(s)g(s,t)]}}{\partial s}-\lambda(t)g(s,t)+\lambda(t)\int_{0}^{s} g(z,t)p_{p}(s-z)dz+\lambda(t)p_0(0)e^{-\lambda(t) t}p_{i|0}(s)$\\ 
+&&$\frac{\partial{g(s,t)}}{\partial t}=\frac{\partial{[\rho(s)g(s,t)]}}{\partial s}-\lambda(t)g(s,t)+\lambda(t)\int_{0}^{s} g(z,t)p_{p}\{(1+b)\big [(1-z)^{\frac{1}{1+b}}-(1-s)^{\frac{1}{1+b}}\big ]\bigg \}dz+\lambda(t)p_0(0)e^{-\lambda(t) t}p_{i|0}(s)$\\
+\bottomrule[1.5 pt]
+\end{tabular}
+}
+\end{table}
+\fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\iffalse
+
+
+一般通过改变土壤含水量这一状态变量的值来保证非连续气象条件下流域的水量平衡。在本章中，我们用连续参数马尔科夫链来模拟土壤含水量在日尺度上的变化状态。方程的随机项由各降水要素驱动。
+
+我们忽略如下各项：
+\begin{itemize}
+\item[(1)] lateral flow
+\item[(2)] vertical distribution
+\item[(3)] 
+\end{itemize}
+
+为了保证理论的普适性，推导过程将遵从如下方式：追求理论简洁，假设仅仅在必要的时候才会引入，最后总结。因此，随着推导过程的深入，理论普适性会变差，但形式会越来越简洁。
+推导过程的假设not practical， but useful for the understanding. eval-apply loop.
+
+
+
+Soil is the pivot in the soil-plant-atmosphere continuum (SPAC) system. The moisture content in soil reflects the catchment hydrological condition and determines its hydrological and ecological reaction to the meteorological stimulus. In hydrological models, soil moisture acts as the most significant state variable that guarantees the mass conservation along the calculating time line whose continuity is disrupted by the inconstant meteorological inputs. It could rain or not, there may be cloud or sunshine. In this research, we use a consecutive Markov process model to represent the soil moisture state. The origin of randomness comes from the well-studied stochastic nature of precipitation. Once the stochastic soil moisture function was established, we could determine the probability distribution of other hydrological variables, such as runoff, leakage and evapotranspiration.
+
+The technical route of this section is as follows: based on the conservation law, we construct the Chapman-Kormogorov forward stochastic differential function of soil moisture, which models the hydrologic procedure as a consecutive Markov process.  Based on the stochastic differential equation of soil moisture, the random process analysis functions of other hydrologic variables are derived. In the whole derivation, we prevent from  including assumptions until necessary to gain a general meaning of each step.
+
+
+Following the previous work(citatn),The forward differential equation is derived. To gain a general meaning, here we select as few assumptions as possible in this step, which are listed as follows:
+
+The replenishment of soil moisture comes mainly from  precipitation. we can characterise the run-off generation mechanism of a series of rainfall affairs using the following two variables:
+\begin{equation}
+i=I(r,s)
+\end{equation}
+$i$ denotes the replenishment of soil moisture in a single rainfall affair, $r$ denotes the rainfall depth of such an affair, and $s$ denotes the soil moisture level before the rain.
+\begin{equation}
+\lambda=\Lambda(t)
+\end{equation}
+$\lambda$ denotes the probability that a rainfall affair happens during a unit time period at the moment t, which is a function of time t.
+
+The loss of soil moisture comes mainly from evapotranspiration and leakage, which could be denoted as the function of soil moisture.
+\begin{equation}
+\rho=EL(s)
+\end{equation}
+$\rho$ denotes the evapotranpiration and leakage loss during a single calculate time step.
+\section{降水的随机特征描述}
+\section{土壤水的随机特征描述}
+
+Given the assumptions above, we  proceed  to derive the forward differential function that links the soil moisture at different time.
+在上述假设下，我们列出基本的土壤水  Kolmogorov向前微分方程：
+\fi
+
+
+
+\iffalse
+不考虑降水补充土壤含水量造成的$dt$时段内蒸散发速率变化，根据之前分析，有：
+\begin{equation}
+\label{deltat}
+\begin{split}
+\Delta z&=\int_t^{t+dt} \rho[s(t)]dt\\&=\rho(z)dt+o(dt)
+\end{split}
+\end{equation} 
+故在有雨条件下，$t+dt$时刻土壤含水量在$(s,s+ds)$区间的概率为：
+
+
+\begin{equation}
+\begin{split}
+f(s,t+dt)ds=&[f(s,t)+\frac{\partial{f(s,t)}\rho(s)}{\partial s}dt]ds\\
+&-\lambda dt f(s,t)+\lambda dt \times [\int_{0}^{s} f(z,t)p_{i|z}(s-z)dzds+o(dt)]+o(dt)
+\end{split}
+\end{equation}
+消去$ds$，$lim(dt)\rightarrow0$，有：
+\begin{equation}
+\begin{split}
+\frac{f(s,t+dt)-f(s,t)}{dt}=&\frac{\partial{f(s,t)\rho(s)}}{\partial s}-\lambda  f(s,t)+\lambda \times \int_{0}^{s} f(z,t)p_{i|z}(s-z)dz 
+\end{split}
+\end{equation} 
+即：
+
+
+
+
+
+在$t$时刻，土壤含水量为$z+\Delta z$，假定$dt$时段内降水以脉冲形式发生，则为了使$t+dt$时刻，土壤含水量位于$(s,s+ds)$区间，必须满足：
+\begin{enumerate}
+\item $dt$时段内？
+
+\end{enumerate}
+
+方程\ref{basic1}右边第二项表示在时间$(t,t+dt)$内有降雨条件下，$t+dt$时刻，土壤含水量位于$(s,s+ds)$区间内的概率。在$t$时刻，土壤函数量为$z+\Delta z$。$\Delta t$时段内土壤水的损失量为$\Delta z$，$\Delta t$时段内存在瞬时脉冲产流量为$s-z$。各项以卷积形式联系起来，从而保证了$t+dt$时刻，土壤含水量位于$(s,s+ds)$区间内。
+
+根据之前分析，$\Delta t$时段内土壤水的损失量$\Delta z$为:
+\begin{equation}
+\label{deltat}
+\begin{split}
+\Delta z&=\int_t^{t+dt} \rho[z(t)]dt\\&=\rho(z)dt+o(dt)
+\end{split}
+\end{equation} 
+对式$\int_{0}^{s} f(z+\Delta z,t)p_{i|z}(s-z)d(z+\Delta z)$中$z+\Delta z$进行积分变量替换，有：
+\begin{equation}
+\label{change}
+\begin{split}
+ &\int_{0}^{s} f(z+\Delta z,t)p_{i|z}(s-z)d(z+\Delta z)\\
+ =&\int_{0}^{s} f(z,t)p_{i|z-\Delta z}[s-z+\Delta z]dz\\
+ \end{split}
+\end{equation}
+将方程\ref{deltat}带入方程\ref{change}中，一阶泰勒展开，有：
+
+\begin{equation}
+\label{change2}
+\begin{split}
+&\int_{0}^{s} f(z+\Delta z,t)p_{i|z}(s-z)d(z+\Delta z)\\
+=&\int_{0}^{s} f(z,t)p_{i|z-\Delta z}[s-z+\Delta z]dz\\
+=&\int_{0}^{s} f(z,t)p_{i|z-\rho(z)dt-o(dt)}[s-z+\rho(z)dt+o(dt)]dz\\
+ =&\int_{0}^{s} f(z,t)\lbrace p_{i|z}(s-z)-\frac{\partial p_{i|z}(s-z)}{\partial z}[\rho(z)dt+o(dt)]\rbrace dz\\
+ =&\int_{0}^{s} f(z,t)p_{i|z}(s-z)dz+o(dt)
+ \end{split}
+\end{equation}
+
+
+
+
+
+\iffalse
+假定降水过程服从复合泊松过程，即
+
+
+
+
+
+
+
+假定降水频次$\lambda$与降水量相互独立，为时间$t$的函数，则有：
+\begin{equation}
+\label{rainchance}
+\begin{split}
+p_{rain}=&\int_t^{t+dt} \lambda(x)dx\\=&\lambda(t)dt+o(dt)
+\end{split}
+\end{equation}
+
+
+
+
+在无降水情况下，为了保证在$t+dt$时刻，土壤含水量在$(s,s+ds)$区间，$(t,t+dt)$时间段内土壤水损失量应为$\Delta s$，因此：
+\begin{equation}
+\Delta s=\int_t^{t+dt} \rho[s(t)]dt
+\end{equation}
+Since $s(t+dt)= s$, take the second order Taylor expansion of $\Delta s$, we have:
+\begin{equation}
+\label{loss}
+\Delta s=\rho(s)dt+o(dt)
+\end{equation}
+假设2：土壤水损失量是土壤含水量的函数
+
+由于$s(t+dt)= s$, 对式\ref{loss}右项泰勒展开，得：
+\begin{equation}
+\Delta s=\rho(s)dt+o(dt)
+\end{equation}
+因此:
+\begin{equation}
+\label{norain1}
+\begin{split}
+&f(s+\Delta s,t)d(s+\Delta s)\\=&f(s+\rho(s)dt+o(dt),t)d(s+\rho(s)dt+o(dt))
+\\=&[f(s,t)+\frac{\partial{f(s,t)}}{\partial s}\rho(s)dt+o(dt)](1+\frac{d\rho(s)}{ds}dt)ds
+\\=&[f(s,t)+\frac{\partial{f(s,t)}}{\partial s}\rho(s)dt+f(s,t)\frac{d\rho(s)}{ds}dt+o(dt)]ds
+\end{split}
+\end{equation}
+ 
+
+ 
+ 
+方程\ref{basic1}右边第二项表示在时间$(t,t+dt)$内有降雨条件下，$t+dt$时刻，土壤含水量位于$(s,s+ds)$区间内的概率。在$t$时刻，土壤函数量为$z+\Delta z$。$\Delta t$时段内土壤水的损失量为$\Delta z$，$\Delta t$时段内存在瞬时脉冲产流量为$s-z$。各项以卷积形式联系起来，从而保证了$t+dt$时刻，土壤含水量位于$(s,s+ds)$区间内。
+
+根据之前分析，$\Delta t$时段内土壤水的损失量$\Delta z$为:
+\begin{equation}
+\label{deltat}
+\begin{split}
+\Delta z&=\int_t^{t+dt} \rho[z(t)]dt\\&=\rho(z)dt+o(dt)
+\end{split}
+\end{equation} 
+对式$\int_{0}^{s} f(z+\Delta z,t)p_{i|z}(s-z)d(z+\Delta z)$中$z+\Delta z$进行积分变量替换，有：
+\begin{equation}
+\label{change}
+\begin{split}
+ &\int_{0}^{s} f(z+\Delta z,t)p_{i|z}(s-z)d(z+\Delta z)\\
+ =&\int_{0}^{s} f(z,t)p_{i|z-\Delta z}[s-z+\Delta z]dz\\
+ \end{split}
+\end{equation}
+将方程\ref{deltat}带入方程\ref{change}中，一阶泰勒展开，有：
+
+\begin{equation}
+\label{change2}
+\begin{split}
+&\int_{0}^{s} f(z+\Delta z,t)p_{i|z}(s-z)d(z+\Delta z)\\
+=&\int_{0}^{s} f(z,t)p_{i|z-\Delta z}[s-z+\Delta z]dz\\
+=&\int_{0}^{s} f(z,t)p_{i|z-\rho(z)dt-o(dt)}[s-z+\rho(z)dt+o(dt)]dz\\
+ =&\int_{0}^{s} f(z,t)\lbrace p_{i|z}(s-z)-\frac{\partial p_{i|z}(s-z)}{\partial z}[\rho(z)dt+o(dt)]\rbrace dz\\
+ =&\int_{0}^{s} f(z,t)p_{i|z}(s-z)dz+o(dt)
+ \end{split}
+\end{equation}
+\fi
+方程\ref{basic1},\ref{rainchance},\ref{norain1},\ref{change2}联立，有
+\begin{equation}
+\begin{split}
+ &f(s,t+dt)ds\\=&f(s,t)ds+\rho(s)\frac{\partial{f(s,t)}}{\partial s}dtds+f(s,t)\frac{d\rho(s)}{ds}dtds-\lambda(t)f(s,t)dtds\\&+\lambda(t)dt\int_{0}^{s} f(z,t)p_{i|z}(s-z)dzds+o(dt)
+ \end{split}
+ \end{equation}
+
+方程两边除以$ds$，$lim(dt)\rightarrow0$，有
+ \begin{equation}
+\label{basic2}
+ \frac{\partial{f(s,t)}}{\partial t}=\frac{\partial{[\rho(s)f(s,t)]}}{\partial s}-\lambda(t)f(s,t)+\lambda(t)\int_{0}^{s} f(z,t)p_{i|z}(s-z)dz
+ \end{equation}
+
+方程\ref{basic2}即为随机土壤水方程的基本微分形式。
+\fi
+
+\iffalse
+1,点尺度产流
+
+蓄满
+
+超渗
+
+2,产流空间分布
+
+流域产流在空间中分布不均匀，取决于降雨特性和下垫面特性的空间分布\cite{ruixiaofang}。所涉及的降雨特性主要指降雨量和降雨强度；所涉及的下垫面特性主要指包气带厚度和含水量。
+
+流域下垫面蓄水能力分布不均。在土壤浅薄地区，土壤含水量较大地区优先产流。随着降水的继续，产流面积逐渐扩大。
+
+单状态马尔科夫链，理论上所有具有0状态或单一状态的产流模型均可应用(不考虑垂向分布)。在本章中，我们选用单点蓄满产流，以流域蓄水容量曲线\ref{}为基础的流域面尺度蓄满产流，以SCS曲线\ref{}为基础的流域面尺度蓄满产流，以HBV模型\ref{}为基础的流域面尺度超渗产流。
+符号解释：假设单次降水深度$p$概率密度函数为$f_P(p)$,降水前土壤含水量为$z$,降水产流量为$R$,产流量概率密度函数为$f_R(r)$
+
+
+
+
+
+\subsection{蓄满产流}
+The general and specific stochastic soil moisture functions are as follows:
+\begin{equation}
+\frac{\partial{f(s,t)}}{\partial t}=\frac{\partial{[\rho(s)f(s,t)]}}{\partial s}-\lambda(t)f(s,t)+\lambda(t)\int_{0}^{s} f(z,t)p_{i|z}(s-z)dz
+\end{equation}
+\begin{equation}
+ \begin{split}
+ \frac{\partial{f(s,t)}}{\partial t}=&\frac{\partial{[\rho(s)f(s,t)]}}{\partial s}-\lambda(t)f(s,t)+\lambda(t)\int_{0}^{s} g(z,t)p_{i|z}(s-z)dz\\&+\lambda(t)p_0(0)e^{-\lambda(t) t}p_{i|0}(s)
+ \end{split}
+ \end{equation}
+Since the mass conservation principle can be viewed as applicable in all the scales in hydrology, we could extent the functions above to a macro spatial situation. 
+We assume:
+
+
+1,Evapotranspiration and Leakage occur uniformly in the study region.
+
+2,There is a distribution pattern of soil water replenishment function.
+
+
+
+According to assumption 1, the spatial upscaling of no-rain condition is a linear process which requires no adaptation.
+Due to the heterogeneity of the soil, we should parameterize the soil replenishment process, which refers to $p_{i|z}(s-z)$.
+
+$p_{i|z}(s-z)$ denotes the probability density that the soil replenishment equals to $(s-z)$ on the condition that the priori soil moisture equals to z.
+ 
+In the original point scale stochastic soil moisture model, this probability density equals to the probability density that the normalized rainfall depth equals to $(s-z)$, as long as $s<1$, or not smaller than $1-z$, when $s=1$.  
+
+In the spatial upscaling condition, $z$ represents the average soil moisture level of the whole region. Given $z$, the more heterogeneous the region is, the more it is likely to generate run-off with the same rainfall input. 
+
+We adopt the two different schemes to deal with heterogeneity of the soil moisture replenish process, namely the Catchment Storage Capacity Curve from Xinanjiang Model and topographic index method from TOPMODEL.
+
+ 
+Points with larger watershed area and lower water conductivities are easier to be saturated and generate runoff in a catchment.
+
+Assumptions
+
+1.The hydraulic gradient of subsurface flow is equal to the land-surface slope.
+\begin{equation}
+q_i=T_itan\beta_i
+\end{equation}
+
+2.The actual lateral discharge is proportional to the specific watershed area (drainage area per unit length of
+contour line).
+\begin{equation}
+q_i=Ra_i
+\end{equation}
+
+3.The conductivity is a negative exponent function of saturated underground water depth.
+\begin{equation}
+T_i=T_oexp(-z_i/S_{zm})
+\end{equation}
+
+Deduction:
+
+During a given infinitesimal time period, with a high resolution DEM, the lateral flow converges to a point immediately. 
+there would be water accumulation if the speed of water converging at a point exceeds its conductivity speed.
+
+Under steady state conditions:
+\begin{equation}
+q_i=T_oexp(-z_i/S_{zm})tan\beta_i=Ra_i
+\end{equation}
+thus:
+\begin{equation}
+z_i=-S_{zm}ln\frac{Ra_i}{T_otan\beta_i}
+\end{equation}
+
+
+流域产流在空间中分布不均匀，取决于降雨特性和下垫面特性的空间分布\cite{ruixiaofang}。所涉及的降雨特性主要指降雨量和降雨强度；所涉及的下垫面特性主要指包气带厚度和含水量。
+
+
+由降水特性和下垫面特性的空间分布决定。其中降水特性主要包括降雨量和降雨强度，下垫面特性主要包括包气带厚度和含水量
+流域下垫面蓄水能力分布不均。在土壤浅薄地区，土壤含水量较大地区优先产流。随着降水的继续，产流面积逐渐扩大。
+
+以包气带达到田间持水率的土壤含水量$w$为随机变量，大量观测及模拟反馈说明，其累积概率分布函数可写为如下形式：
+\begin{equation}
+F(w)=P(W \leq w)=1-(1-\frac{w}{wm})^b
+\end{equation} 
+
+
+
+横坐标为归一化的土壤含水量，纵坐标为不足概率。
+$F(w)=\alpha  $意义为包气带达到相对田间持水量小于$w$的点占流域总面积的比例为$\alpha $。
+ 
+
+ 
+\begin{figure}[H]
+\centering
+\includegraphics[width=9.5cm]{capacity_distribution_curve.png}
+\caption{包气带蓄水容量累积概率分布}
+\end{figure}
+
+具有物理意义的$b$的取值范围为$[0,1]$，$b=0$表示流域所有点包气带蓄水容量相等，$b=1$表示流域各店包气带蓄水容量在其样本空间平均分布。$b$值越大，蓄水容量在各量级分布越均衡，产流条件与点尺度概化模式差别越大。
+
+
+假定流域初始含水量服从同形式同参数的分布，平均含水量为$S$， $\bar{w}$
+
+
+
+
+假定降雨前流域土壤含水量在空间上服从分布G。平均的初始含水量为$W_{aver}$，最大值为$a$,则流域已蓄满的面积比例为$\alpha_0 =G^{-1}(W_aver)$,降在该面积上得雨量形成径流，设剩余面积($1-\alpha$)上的雨量有$x$形成径流，$1-x$入渗补充土壤水，则：
+\begin{equation}
+x=
+\end{equation}
+综上所述，
+
+A general introduction of catchment storage capacity curve. (its assumption, application, etc.)
+\begin{equation}
+R=
+ \begin{cases}
+ P+z-1+[1-\frac{P+a}{1+b}]^{1+b}&{a+P\leq (1+b)};\\P+z-1 &{a+P\geq (1+b)}
+ \end{cases}
+\end{equation}
+where:
+\begin{equation}
+a=(1+b)[1-(1-z^{\frac{1}{1+b}})]
+\end{equation}
+
+Given:
+\begin{equation}
+R=
+ \begin{cases}
+ P+z-1+[1-\frac{P+a}{1+b}]^{1+b}&{a+P\leq (1+b)};\\P+z-1 &{a+P\geq (1+b)}
+ \end{cases}
+\end{equation}
+we have:
+\begin{equation}
+I\vert z=
+ \begin{cases}
+ 1-z-[1-\frac{P+a}{1+b}]^{1+b}&{a+P\leq (1+b)};\\1-z &{a+P\geq (1+b)}
+ \end{cases}
+\end{equation}
+thus:
+\begin{equation}
+p_{i|z}(s-z)=
+ \begin{cases}
+ p([1-\frac{P+a}{1+b}]^{1+b}=1-s)&{a+P\leq (1+b)};\\p(s=1) &{a+P\geq (1+b)}
+ \end{cases}
+\end{equation}
+
+Since:
+\begin{equation}
+p(s=1)=0
+\end{equation}
+we have the simplified form:
+\begin{equation}
+p_{i|z}(s-z)=p_{rain\_depth} \lbrace(1+b)[(1-z^{\frac{1}{1+b}})-(1-s)^{\frac{1}{1+b}}]\rbrace
+\end{equation}
+and
+\begin{equation}
+p_{i|0}(s)=p_{rain\_depth} \lbrace(1+b)[1-(1-s)^{\frac{1}{1+b}}]\rbrace
+\end{equation}
+
+thus we reached the spatical upscaled stochastic soil moisture equation:
+ \begin{equation}
+ \begin{split}
+ &\frac{\partial{f(s,t)}}{\partial t}=\frac{\partial{[\rho(s)f(s,t)]}}{\partial s}-\lambda(t)f(s,t)\\&+\lambda(t)\int_{0}^{s} g(z,t)p_{rain\_depth} \lbrace(1+b)[(1-z^{\frac{1}{1+b}})-(1-s)^{\frac{1}{1+b}}]\rbrace dz\\&+\lambda(t)p_0(0)e^{-\lambda(t) t}p_{rain\_depth} \lbrace(1+b)[1-(1-s)^{\frac{1}{1+b}}]\rbrace
+ \end{split}
+ \end{equation}
+We note that as $b\rightarrow0$, which denotes a homogeneous rainfall replenish condition, equation $(40)$ degenerates to the original function.
+\fi
+
+

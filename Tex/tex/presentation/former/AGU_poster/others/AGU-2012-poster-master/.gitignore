@@ -1,0 +1,18 @@
+# ignore backups
+*~
+
+# ignore "non-inputs", e.g. temporary products
+*.bib.* # temporary bibliography fiddling
+*.odt*
+
+# ignore products
+*.pdf*
+TeX/Roche_AGU2012.bbl
+
+# ignore byproducts
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.ps

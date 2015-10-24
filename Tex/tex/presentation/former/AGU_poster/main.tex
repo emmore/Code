@@ -1,0 +1,428 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Jacobs Landscape Poster
+% LaTeX Template
+% Version 1.1 (14/06/14)
+%
+% Created by:
+% Computational Physics and Biophysics Group, Jacobs University
+% https://teamwork.jacobs-university.de:8443/confluence/display/CoPandBiG/LaTeX+Poster
+% 
+% Further modified by:
+% Nathaniel Johnston (nathaniel@njohnston.ca)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[final]{beamer}
+
+\usepackage[scale=1.24]{beamerposter} % Use the beamerposter package for laying out the poster
+
+\usetheme{confposter} % Use the confposter theme supplied with this template
+
+\setbeamercolor{block title}{fg=ngreen,bg=white} % Colors of the block titles
+\setbeamercolor{block body}{fg=black,bg=white} % Colors of the body of blocks
+\setbeamercolor{block alerted title}{fg=white,bg=dblue!70} % Colors of the highlighted block titles
+\setbeamercolor{block alerted body}{fg=black,bg=dblue!10} % Colors of the body of highlighted blocks
+% Many more colors are available for use in beamerthemeconfposter.sty
+
+%-----------------------------------------------------------
+% Define the column widths and overall poster size
+% To set effective sepwid, onecolwid and twocolwid values, first choose how many columns you want and how much separation you want between columns
+% In this template, the separation width chosen is 0.024 of the paper width and a 4-column layout
+% onecolwid should therefore be (1-(# of columns+1)*sepwid)/# of columns e.g. (1-(4+1)*0.024)/4 = 0.22
+% Set twocolwid to be (2*onecolwid)+sepwid = 0.464
+% Set threecolwid to be (3*onecolwid)+2*sepwid = 0.708
+
+\newlength{\sepwid}
+\newlength{\onecolwid}
+\newlength{\twocolwid}
+\newlength{\threecolwid}
+\setlength{\paperwidth}{48in} % A0 width: 46.8in
+\setlength{\paperheight}{36in} % A0 height: 33.1in
+\setlength{\sepwid}{0.024\paperwidth} % Separation width (white space) between columns
+\setlength{\onecolwid}{0.22\paperwidth} % Width of one column
+\setlength{\twocolwid}{0.464\paperwidth} % Width of two columns
+\setlength{\threecolwid}{0.708\paperwidth} % Width of three columns
+\setlength{\topmargin}{-0.5in} % Reduce the top margin size
+%-----------------------------------------------------------
+
+\usepackage{graphicx}  % Required for including images
+
+\usepackage{booktabs} % Top and bottom rules for tables
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION 
+%----------------------------------------------------------------------------------------
+
+\title{\huge Information Analysis of Watershed Hydrological Patterns Across Temporal Scales} % Poster title
+\author{Baoxiang Pan, Zhentao Cong and Dawen Yang} % Author(s)
+
+\institute{Institute of Hydrology and Water Resources, Tsinghua University} % Institution(s)
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+\addtobeamertemplate{headline}{} 
+{
+\begin{tikzpicture}[remember picture,overlay] 
+\node [shift={(-5.3 cm,-5.8cm)}] at (current page.north east) {\includegraphics[height=9.5cm]{logo}}; 
+\end{tikzpicture} 
+}
+\addtobeamertemplate{block end}{}{\vspace*{2ex}} % White space under blocks
+\addtobeamertemplate{block alerted end}{}{\vspace*{2ex}} % White space under highlighted (alert) blocks
+
+\setlength{\belowcaptionskip}{2ex} % White space under figures
+\setlength\belowdisplayshortskip{2ex} % White space under equations
+
+\begin{frame}[t] % The whole poster is enclosed in one beamer frame
+
+\begin{columns}[t] % The whole poster consists of three major columns, the second of which is split into two columns twice - the [t] option aligns each column's content to the top
+
+\begin{column}{\sepwid}\end{column} % Empty spacer column
+
+\begin{column}{\onecolwid} % The first column
+
+%----------------------------------------------------------------------------------------
+%	OBJECTIVES
+%----------------------------------------------------------------------------------------
+
+\begin{alertblock}{Objectives}
+Explain the following issues in the context of Information Theory: 
+\begin{itemize}
+\item The existence and transition of  watershed hydrological patterns across temporal scales revealed by data.
+\item To what extent models capture these patterns.
+\end{itemize}
+
+\end{alertblock}
+
+%----------------------------------------------------------------------------------------
+%	INTRODUCTION
+%----------------------------------------------------------------------------------------
+
+\begin{block}{Introduction}
+Hydrological cycle takes on different patterns and calls for different models across temporal scales. The clustering of daily hydrological observations causes information loss of the time domain details, but, on the other hand, presents a water-heat correlation pattern as the temporal scale expands. 
+
+To quantify the two impacts during temporal upscaling, we employ two basic conceptions from \emph{information theory}:
+
+\begin{table}[H] \scriptsize
+\begin{center}
+\begin{tabular}{ccc}
+\toprule
+& \textbf{\textcolor{red}{Entropy}} & \textbf{\textcolor{red} {Mutual Information}} \\
+\midrule
+\textbf{Discrete}&$H(X)=-\Sigma p(x)logp(x)$& $I(X;Y)=\sum_{x,y}p(x,y)log\frac{p(x,y)}{p(x)p(y)}$\\ 
+\\
+\textbf{Continuous}&$h(X)=-\int f(x)logf(x)dx$& $I(X;Y)=\int \int f(x,y)log\frac{f(x,y)}{f(x)f(y)}dxdy$\\
+ \bottomrule
+\end{tabular}
+\end{center}
+\end{table}
+
+Entropy is a measure of uncertainty of a random variable. Mutual information depicts the information decrease of a random variable given the knowledge of the other, and vice versa. Both of their dimensions are $nat$ for logarithm base $e$.
+
+Certain logical and methodological issues should be clarified before applying these terms to quantify the information existence and flow revealed by hydrological data and models.
+
+\end{block}
+
+\begin{block}{Logical Consideration}
+\begin{center}
+Estimated Information Terms
+\end{center}
+\begin{table}[H]\tiny
+\begin{center}
+\begin{tabular}{ccc}
+\toprule
+\multicolumn{2}{c}{Classification} &  Estimated Terms \\
+\midrule
+\multicolumn{2}{c}{Model} &$h(Q_t)$ \\
+\multicolumn{2}{c}{Irrelevant}\\
+%$I(Q_t;P_t,P_{t-1}),...$,$I(Q_t;P_t,P_{t-1},...,P_{t-n})$\\
+%\multicolumn{2}{c}{Irrelevant}&\\
+&&$I(Q_t;P_t)...I(Q_t;P_t,P_{t-1}...P_{t-n})$\\
+\\
+&&
+$I(Q_t;P_t,EP_t),I(Q_t;P_t,P_{t-1},EP_t,EP_{t-1}),...$\\
+&&$I(Q_t;P_t,P_{t-1},...,P_{t-n},EP_t,EP_{t-1},...EP_{t-n})$\\
+&&\\
+&&$I(Q_t;P_t,P_{t-1},EP_t,EP_{t-1},Q_t-1),...$\\
+&&$I(Q_t;P_t,P_{t-1},...,P_{t-6},EP_t,EP_{t-1},...EP_{t-6},Q_{t-1},...Q_{t-n})$\\
+&&\\
+%Model    & HyMod&$I(Q_t;Qs_t),$ $I(Q_t;P_t,EP_t,S_t)$  \\
+Model & TPWB&$I(Q_t;Qs_t),$ $I(Q_t;P_t,EP_t,S_t)$  \\
+Relevant      & Budyko& $I(Q_t;Qs_t)$\\
+
+ \bottomrule
+\end{tabular}
+\end{center}
+\end{table}
+\tiny{\textbf{Symbol Explanation:} $h$ denotes differential entropy; $I$ denotes mutual information; $P_t$,$EP_t$,$Q_t$,$Qs_t$denotes precipitation, potential evapotranspiration runoff observation and runoff simulation at time step $t$. TPWB is a monthly iterative water balance model\cite{xiong1999two},$S_t$ is its state variable; Budyko is yearly water-heat correlation model.}
+ 
+
+
+\end{block}
+
+
+
+
+%------------------------------------------------
+
+ 
+
+%----------------------------------------------------------------------------------------
+
+\end{column} % End of the first column
+
+
+\begin{column}{\onecolwid} % The third column
+
+%----------------------------------------------------------------------------------------
+%	LOGICAL CONSIDERATION
+%----------------------------------------------------------------------------------------
+\begin{block}{}
+Information content of continuous random variable is infinite. $h(X)+n$ is the number of nats on the average required to describe $X$ to $n$-nat \cite{cover2012elements}. 
+ 
+ \begin{figure}
+%\begin{tabular}{cc}   
+\begin{minipage}{0.48\linewidth}
+The $n$-nat accuracy means $X$ takes a same value in a bin-width of $e^{-n}$ in the p.d.f curve.
+ 
+\end{minipage}
+\hfill
+\begin{minipage}{.48\linewidth}
+  \centerline{\includegraphics[width=12.8cm]{Quantization.png}}
+ 
+\end{minipage}
+\end{figure}
+We pre-require the relative bin-width stays the same  during temporal upscaling:
+\begin{equation*}
+\frac{e^{-p}}{m}=\frac{e^{-q}}{n}
+\end{equation*}
+Here $m$ and $n$ are two temporal scales at which we re-cluster the runoff data; $p$,$q$ are their accuracy requirements. Thus, the information content difference when quantizing runoff observations $Q$ to $p$ and $q$ nat accuracy approximates:
+\begin{equation*}
+\begin{split}
+\Delta H &\approx h(Q_m)+p-h(Q_n)-q\\
+&=h(Q_m)-logkm-h(Q_n)+logkn\\
+&=h(Q_m)-h(Q_n)+log\frac{n}{m} 
+\end{split}
+\end{equation*}
+
+Mutual information still represents the amount of discrete information that can be transmitted over a channel that admits a continuous space of values\cite{cover2012elements},thus:
+\begin{itemize}
+\item For a fixed temporal scale, the difference of mutual information with different previous input steps represents the correlation between temporal neighbouring hydrological cycles at this scale\cite{gong2013estimating}. 
+\item For fixed previous input steps, mutual information estimated at different temporal scales represents the information contribution of the input observation to the output observation.  
+\end{itemize}
+\end{block}
+%----------------------------------------------------------------------------------------
+%	Methodological Consideration
+%----------------------------------------------------------------------------------------
+\begin{block}{Methodological Consideration}
+Due to the curse of dimensionality, the high dimensional mutual information terms in table 1 could not be accurately estimated. An improved approach combining K-nearest neighbour method and support vector regression is employed in this research.
+
+\begin{footnotesize}
+ \begin{equation*}
+\left\{
+\begin{aligned}
+&I(X,Y)=\psi(k)-N^{-1}\sum_{i=1}^{N}[\psi(n_x(i)+1)+\psi(n_y(i)+1)]+\psi(N)\\
+&SVM\_Metric(x_1,x_2)=|f(x_1)-f(x_2)|\\
+\end{aligned}
+\right.
+\end{equation*}
+\end{footnotesize}
+
+
+
+\end{block}
+
+
+ 
+
+%----------------------------------------------------------------------------------------
+
+\end{column} % End of the third column
+%----------------------------------------------------------------------------------------
+%	Methodological Consideration
+%----------------------------------------------------------------------------------------
+\begin{column}{\onecolwid} % The third column
+
+\begin{block}{}
+The first equation estimated MI with statistics that depict the average concentrating density of each window opened around a sample point\cite{kraskov2004estimating}, the second equation applied the kernel trick in support vector regression to depict \emph{distances} between high dimensional hydrological terms by implicitly mapping them into feature spaces\cite{phdgong}. Numerical experiments shows that even less than 30 sample size produces good results\cite{kraskov2004estimating}.
+\end{block}
+%----------------------------------------------------------------------------------------
+%	Data & Method
+%----------------------------------------------------------------------------------------
+
+\begin{block}{ Data $\&$ Method }
+
+ \begin{itemize}
+ \item Re-cluster daily hydrological records (P,EP,Q) from MOPEX basins into temporal scales from 1 day to a year.
+ \item Calculate the  model irrelevant information terms.
+ \item Implement hydrological simulation and calculate the model relevant mutual information terms.
+ \end{itemize}
+\end{block}
+%----------------------------------------------------------------------------------------
+%	Result
+%----------------------------------------------------------------------------------------
+
+\begin{block}{Result}
+
+\begin{figure}[H]\centering
+\includegraphics[width=.35\textwidth]{MI_QP_SHORT.png}
+\includegraphics[width=.35\textwidth]{MI_QPEP_SHORT.png}
+\includegraphics[width=.35\textwidth]{MI_QPEPQ_SHORT.png}
+\end{figure} 
+
+
+
+
+\begin{figure}[H]\centering
+\includegraphics[width=.35\textwidth]{MI_QP_LONG.png}
+\includegraphics[width=.35\textwidth]{MI_QPEP_LONG.png}
+\includegraphics[width=.35\textwidth]{MI_QPEPQ_LONG.png}
+
+MI,Scale,Previous-Input-Step Relationship
+\vspace{39pt}
+\end{figure} 
+
+\vspace{12pt}
+
+
+ \begin{figure}
+%\begin{tabular}{cc}   
+
+
+\begin{minipage}{.48\linewidth}
+  \centerline{\includegraphics[width=13.6cm]{entropy_aligned.png}}
+
+\end{minipage}
+\hfill
+\begin{minipage}{0.50\linewidth}
+\begin{itemize}
+\item Blue curve: same absolute accuracy.
+\item Green curve: same relative accuracy.
+\end{itemize}
+The bottom curve depicts the remaining information
+of runoff that can not be provided by input observations ($P$,$EP$,$Q_{former}$).
+\end{minipage}
+\end{figure}
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+\end{block}
+
+ 
+
+ 
+ 
+
+ 
+
+%----------------------------------------------------------------------------------------
+
+\end{column} % End of the third column
+
+
+
+
+
+ 
+
+
+
+\begin{column}{\onecolwid} % The third column
+\begin{block}{ }
+\begin{figure}
+\includegraphics[width=0.8\linewidth]{model.png}
+
+MI revealed by data and models
+\end{figure}
+
+ 
+ 
+%Accuracy is a negative linear function of the logarithm of the scale in the green curve, constant in the blue curve.
+
+
+ 
+
+\end{block}
+%----------------------------------------------------------------------------------------
+%	CONCLUSION
+%----------------------------------------------------------------------------------------
+
+\begin{block}{Conclusion}
+\begin{itemize}
+\item Precipitation provides most of the information contribution to runoff observation.The impact of previous runoff input vanishes quickly as time scale expands. 
+\item The correlation between temporal neighbouring hydrological cycles weakens as scale expands. 
+\item \textbf{The data reveals a seasonal pattern of hydrological cycle}. 
+\item The information content that TPWB and Budyko
+model distil from data approximates as time scale expands. The state variable is capable of representing the information of former inputs. 
+\item The two models employed could not discern the seasonal pattern revealed by the data. 
+\end{itemize}
+ 
+
+\end{block} 
+
+\begin{block}{References}
+
+\nocite{*} % Insert publications even if they are not cited in the poster
+\tiny{\bibliographystyle{unsrt}
+\bibliography{sample}\vspace{0.in}}
+
+\end{block}
+
+%----------------------------------------------------------------------------------------
+%	ACKNOWLEDGEMENTS
+%----------------------------------------------------------------------------------------
+
+\setbeamercolor{block title}{fg=red,bg=white} % Change the block title color
+
+%\begin{block}{Acknowledgements}
+
+%\small{\rmfamily{We thank Wei Gong for providing the comprehensive framework of using entropy and mutual information to evaluate observations and models. Also, We thank Hoshin V. Gupta for the academic discussion and Chang $\&$ Lin for the libsvm matlab package.}}
+
+%\end{block}
+
+%----------------------------------------------------------------------------------------
+%	CONTACT INFORMATION
+%----------------------------------------------------------------------------------------
+
+\setbeamercolor{block alerted title}{fg=black,bg=norange} % Change the alert block title colors
+\setbeamercolor{block alerted body}{fg=black,bg=white} % Change the alert block body colors
+
+\begin{alertblock}{Contact Information}
+
+\begin{itemize}
+
+\item Email: \href{mailto:john@smith.com}{ http://panbaoxiang@hotmail.com}
+\item Github: \href{http://www.university.edu/smithlab}{https://github.com/morepenn}
+\item Phone: +86 133 6672 0253
+\end{itemize}
+
+\end{alertblock}
+ 
+%----------------------------------------------------------------------------------------
+\end{column} % End of the third column
+
+
+
+
+\end{columns} % End of all the columns in the poster
+
+\end{frame} % End of the enclosing frame
+
+\end{document}

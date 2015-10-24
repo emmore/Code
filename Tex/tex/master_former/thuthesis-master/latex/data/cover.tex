@@ -1,0 +1,77 @@
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
+\secretlevel{绝密} \secretyear{2115}
+
+\ctitle{基于随机特征的流域水文模型~时间尺度研究}
+%\ctitle{流域水文尺度研究}
+% 根据自己的情况选，不用这样复杂
+\makeatletter
+
+\cdegree{工学硕士}
+
+\makeatother
+
+
+\cdepartment[水利系]{水利水电工程系}
+\cmajor{水利工程}
+\cauthor{潘宝祥} 
+\csupervisor{丛振涛副教授}
+ 
+\cdate{二○一五年五月}
+  
+\etitle{Temporal Scale Analysis of Catchment Hydrological Models Based on Stochastic Features}  
+%\etitle{Scale Issues in Catchment Hydrology} 
+\edegree{Master of Science} 
+\emajor{Hydraulic Engineering} 
+\eauthor{Pan Baoxiang} 
+\esupervisor{Associate Professor Cong Zhentao} 
+\edate{May, 2015}
+
+% 定义中英文摘要和关键字
+\begin{cabstract}
+流域水文过程在不同的时间尺度下呈现出不同的形态。为了建立自洽的观测模拟体系，需要明确日尺度上的降水产流与蒸散发过程如何在时间升尺度后表现出水热耦合关系，以及在该过程中由观测数据和模型体现的不确定度的变化。
+
+
+随机土壤水模型提供了在既有的自下而上与自上而下范式之外解决时间尺度融合问题的合理方法。本论文在总结归纳原有点尺度随机土壤水模型的基础上，利用土壤蓄水能力曲线，推导适用于流域面尺度的土壤水随机微分方程。该推导过程同样适用于将其它机理驱动的概念性水文模型转化为概率形式描述，继而研究其随机动力性质。
+
+
+
+土壤水随机微分方程满足各态历经条件，因此长时序水量平衡状态可由集合平均表示，进而用方程稳态解逼近。论文从时域和频域两个角度模拟并分析了以方程稳态解刻画流域中长期水文形态的应用尺度范围和精度，结果表明：给定不同的气象、下垫面条件，当模拟时间足够长时，土壤含水量分布均趋于稳定。稳定分布的形态由各输入变量决定，特别地，下垫面越均匀，土壤平均含水量越高。到达稳定分布的速率由相对潜在蒸散发量决定，关注的时间尺度较小时，土壤含水量在时域上表现为一阶自回归过程，在频域上表现为红噪声；关注的时间尺度较大时，土壤含水量在时域上表现为平稳过程，在频域上表现为白噪声。稳态方程刻画流域长时序的水量平衡状态的控制因子为水量供给条件和能量供给条件；同时二者通过控制稳态分布方差决定了以稳态方程刻画长时序水量平衡状态的精度：当水量或能量占主要控制地位时，稳态分布方差较小，均值更能精确地刻画流域长期水量平衡状态；当两者大小相当时，稳态分布方差较大，且能量水量供给越大，方差越大，这说明，在水文循环越活跃的地区，使用稳态分布均值刻画流域长期水量平衡状态误差越大。
+
+
+
+为了量化不同尺度下观测模拟不确定度，本文从贝叶斯统计学角度分析基于信息熵和互信息的水文观测模拟评估体系的意义，以径流离散化信息熵表征水文形态先验不确定度；以流域水热供给观测与径流的互信息表征数据支撑下不确定度的缩减；以模型模拟值与实测径流的互信息表征模型支撑下不确定度的缩减，各项通过贝叶斯定理泛函变形和数据处理不等式联系，构成了理论完善的观测模拟评估体系。针对高维互信息维数灾与间接计算误差问题，提出结合$k$近邻和支持向量机的高维水文变量互信息估算方法。
+
+最后，应用MOPEX数据集数据，利用建立的不确定度评估体系，分析不同时间尺度水文观测模不确定度及其控制因素。估算结果量化了各水文变量在不同时间尺度上的信息量与信息流动。论文进一步分析了不同时间尺度下各水文变量及前期水文过程对当前水文响应的信息贡献。估算结果显示在长时间尺度上，水文变量的信息量和信息交流与其气候特性紧密相关。应用的两个模型在不同气候类型流域提取观测信息的能力不同，并且在季节尺度上存在不确定度较大的问题，需要在季节尺度上建立信息提取能力更强的模型。
+
+
+\end{cabstract}
+\ckeywords{随机过程；水文模型；水热耦合；尺度；信息论}
+\begin{eabstract} 
+Catchment hydrological process takes on different patterns across temporal scales. To clarify the uncertainty revealed by observation and simulation during transition from the daily runoff generation  evapotranspiration mechanism to annual water-heat correlation pattern is of fundamental importance in reaching a self-consistent observation simulation system. 
+
+The stochastic soil moisture model provides reasonable solution to solve scale problems besides the classical paradigms of  bottom-up and top-down approaches. Through incorporating the catchment storage capacity curve in the runoff generation portion of soil moisture stochastic equation, the thesis derived the function that describe basin-scale soil moisture dynamics. The derivation also suits for transforming other mechanism-focused conceptual hydrological models into probability form to clarify its dynamic properties.
+
+
+The ergodicity feature of stochastic soil moisture equation guarantees that the temporal average of soil moisture is the same as the ensemble average, thus, the long term water balance condition can be represented by the equilibrium solution of the stochastic function. The thesis simulated and analysed the scale and accuracy of applying its equilibrium solution  in depicting the long range catchment hydrological pattern within the time and frequency domain. Results show that the soil moisture distribution can always reach its stable state given any meteorological and underlying surface conditions. Higher average soil moisture is correlated  with  more uniform underlying surface. The speed in reaching the equilibrium distribution is dominated by the relative magnitude of potential evapotranspiration. When focusing on small temporal scales, the soil moisture behaves as one step auto regress pattern in the time domain, red noise in the frequency domain. When focusing on large temporal scales, the soil moisture acts as stable process in the time domain, being white noise in the frequency domain, responsively. The water and energy supply determine the shape of the equilibrium distribution. The two factors determine the accuracy of applying the equilibrium distribution in depicting the long range catchment hydrological pattern through controlling the variance of the distribution. The variance is larger in catchments with higher water energy supplies.
+  
+ 
+In order to quantify the uncertainty in observation and simulation across temporal scales, the thesis checks the significance of entropy and mutual information in a Bayesian view,  quantized entropy of runoff observations can be used to represent the prior uncertainty in determining the catchment's hydrological patterns. Mutual information between runoff observation and the catchment's water energy provisions is employed to denote the uncertainty decrease given the existed observations. Mutual information between runoff observation and simulation is employed to denote the uncertainty decrease given the models. The differences of these items, as constrained by the functional transformation of the Bayes' theorem and data processing inequality, construct sound framework in evaluating the observation and simulation systems. An improved approach combining K-nearest-neighbor method and support-vector-regression is employed to tackle with high dimensional information item estimation. 
+
+We implement the information analysis with clustered daily hydrometeorological observations from MOPEX data set to analyse the uncertainty and its dominants across temporal scales. The estimations quantified the  information contents and flows of hydrological items, the specific information contributions of former hydrological behaviours and new items. The estimations are closely related with the climate type of the catchments. It also shows that information distilled by the monthly and annual water balance models applied here does not correspond to that provided by observations around temporal scale from two months to half a year. This calls for a better understanding of seasonal hydrological mechanism.
+ 
+\end{eabstract}
+ 
+\ekeywords{Stochastic Process, Hydrologic Modelling, Water-Heat Correlation, Scale, Information Theory}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,242 @@
+\documentclass{beamer}
+\usetheme{Warsaw}
+\usepackage{CJKutf8}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{authblk} 
+\usepackage{graphicx} 
+\usepackage{diagbox}
+\usepackage{indentfirst}
+\usepackage{float}
+\begin{document}
+\begin{CJK}{UTF8}{gkai}
+\title{土壤水含量频域分析}
+\date{\today}
+\author{潘宝祥}
+\maketitle
+
+\begin{frame}
+\frametitle{Outline}
+\begin{itemize}
+\item 背景知识
+\item 理论推导
+\item 
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{背景知识}
+\begin{itemize}
+\item 时域与频域
+\item 噪声的颜色
+\item 土壤水频域表示
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{理论推导}
+ 
+\end{frame}
+
+\begin{frame}
+\frametitle{理论分析}
+ \begin{itemize}
+ \item 概率空间：不考虑非一致性，将日数据累加为不同尺度构成不同尺度下的概率空间
+ \item 微分熵不表示绝对信息量，但是两微分熵之差表示同一精确度下信息量之差的绝对值
+ \end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{table}[H]\tiny
+\caption{Estimated Information Terms} 
+\begin{center}
+\begin{tabular}{ccc}
+\toprule
+\multicolumn{2}{c}{Classification} &  Estimated Terms \\
+\midrule
+\multicolumn{2}{c}{Model} &$H(Q_t)$ \\
+\multicolumn{2}{c}{Irrelevant}\\
+%$I(Q_t;P_t,P_{t-1}),...$,$I(Q_t;P_t,P_{t-1},...,P_{t-n})$\\
+%\multicolumn{2}{c}{Irrelevant}&\\
+&&
+$I(Q_t;P_t,EP_t),I(Q_t;P_t,P_{t-1},EP_t,EP_{t-1}),...$\\
+&&$I(Q_t;P_t,P_{t-1},...,P_{t-n},EP_t,EP_{t-1},...EP_{t-n})$\\
+&&\\
+&&$I(Q_t;P_t,P_{t-1},EP_t,EP_{t-1},Q_t-1),...$\\
+&&$I(Q_t;P_t,P_{t-1},...,P_{t-6},EP_t,EP_{t-1},...EP_{t-6},Q_{t-1},...Q_{t-n})$\\
+&&\\
+%Model    & HyMod&$I(Q_t;Qs_t),$ $I(Q_t;P_t,EP_t,S_t)$  \\
+Model & TPWB&$I(Q_t;Qs_t),$ $I(Q_t;P_t,EP_t,S_t)$  \\
+Relevant      & Budyko& $I(Q_t;Qs_t)$\\
+
+ \bottomrule
+\end{tabular}
+\end{center}
+\end{table}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+\item 固定时间尺度，不同前期输入项互信息表示了该尺度下相邻时间水文循环的依赖关系，前期信息贡献很小时为完整循环。
+\item 固定前期输入，不同尺度下互信息表示输入对输出的信息贡献，其差异由量方面决定
+\begin{itemize}
+\item 数据造成，不同尺度数据信息量大小不同
+\item 机制造成，不同尺度水文变量依赖程度不同
+\end{itemize}
+用信息熵之差表示数据造成的尺度间互信息的差别，进而可以得到由于机制造成的信息贡献的差别（对随机不确定性的重新解释——仅具有相对大小的意义）。
+\end{itemize} 
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{信息量计算方法改进}
+\begin{itemize}
+\item ICA 方法缺陷：非线性相关数据计算得到的信息熵偏大；计算互信息造成误差累积。
+\item KNN+Support Vector Regression：
+\begin{equation*}
+I(X,Y)=\psi(k)-N^{-1}\sum_{i=1}^{N}[\psi(n_x(i)+1)+\psi(n_y(i)+1)]+\psi(N)
+\end{equation*}
+\begin{equation}
+SVM\_Metric(x_1,x_2)=|f(x_1)-f(x_2)|
+\end{equation}
+Here $f(x)$ is the support vector regression function that fit the input to the output of the sample.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{数据}
+MOPEX日水文数据（降水，潜在蒸散发，径流）
+\begin{table}[H] \tiny
+\caption{Basin Conditions} 
+\begin{center}
+\begin{tabular}{cccccccccc}
+\toprule
+Number &Location& Area($km^2$)& $P_{mean}(mm)$& $EP_{mean}(mm)$&  $Q_{mean}(mm)$  \\
+\midrule
+01048000&69.9392W, 44.7072N& 1331   & 3.1848  &  1.9570  &  1.8973\\
+ 02143000&81.4030W,35.6840 N& 215    & 3.5595  &  2.4159 &   1.5140\\
+  02165000&82.1764W, 34.4444 N& 611   & 3.4290  &  2.6437  &  1.4767\\
+02296750&81.8761W, 27.2219N& 3541   &
+3.5356 &   3.3299   & 0.6885\\
+02329000&84.3842W, 30.5539N& 2953 &
+3.6193 &   3.0152 &   0.9050\\   
+02375500 &87.2342W, 30.9650 N& 9886   & 3.9772  &  2.9060   & 1.5039\\
+02478500  &88.5480W, 31.1480 N& 6967  & 3.9457  &  2.8913  &  1.3403\\
+07243500 &96.0650W, 35.6750 N& 5227  & 2.5619  &  3.5702  &  0.4392\\
+ 08033500 &94.3986W, 31.0247 N& 9418   & 3.0982  &  3.5425   & 0.6016\\
+08167500 &98.3828W, 29.8606  N& 3406   & 2.1148   & 4.1929  &  0.2851\\
+  08171000& 98.0886W, 29.9942 N& 919  & 2.2709  &  4.0492  &  0.3973\\
+08172000&97.6497W, 29.6650N& 2170   & 2.3097  &  3.9740  &  0.4521\\
+08205500&99.1444W, 28.7364N& 8881   & 1.8627  &  4.2143 &   0.0385\\
+ 11025500& 116.8653W, 33.1069N& 290  & 1.4289  &  3.8556  &  0.0938\\
+11080500&117.8050W, 34.2360 N&  220 & 2.0235 &   4.0137   & 0.7134\\
+11532500&124.0539W, 41.7894N& 1577   & 7.5278  &  2.0572  &  6.0607\\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{table}
+\end{frame}
+\begin{frame}
+\frametitle{方法}
+\begin{itemize}
+\item 日数据按从1天到年际尺度组合
+\item 计算模型无关信息量
+\item 跑模型，计算模型相关信息量
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{结果 case 11532500}
+
+ 
+ \begin{figure}
+%\begin{tabular}{cc}   
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width=4.2cm]{zs.png}}
+ 
+\end{minipage}
+\hfill
+\begin{minipage}{.48\linewidth}
+  \centerline{\includegraphics[width=4.2cm]{zsr.png}}
+ 
+\end{minipage}
+\vfill
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width=4.2cm]{z.png}}
+ 
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width=4.2cm]{zr.png}}
+ 
+\end{minipage}
+%\end{tabular}
+\caption{I-N-T}
+\label{fig:res}
+\end{figure}
+ 
+
+
+\end{frame}
+
+\begin{frame}
+投影到互信息-时间尺度平面:
+\begin{figure}[H]
+\centering
+\includegraphics[width=5cm]{ou.png}
+\includegraphics[width=5cm]{ou2.png}
+\caption{Compressed $I(X_o;X_i)$-$T$ Slice}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=5cm]{TPWB_BUDYKO.png}
+\caption{ $I(X_o;X_s)$-$T$ of TPWB and Budyko }
+\end{figure}
+\end{frame}
+
+\begin{frame}
+
+\frametitle{结果}
+\begin{figure}[H]
+\centering
+\includegraphics[width=5cm]{au.png}
+\end{figure}
+ 
+\end{frame}
+
+\begin{frame}
+
+\frametitle{结果}
+ 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=5cm]{rau.png}
+\includegraphics[width=5cm]{performance.png}
+\caption{Relative Aleatory Uncertainty}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=5cm]{finalresult.png}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{结论}
+There is a best performance temporal scale when clustering hydrological data into different scales!
+\end{frame}
+
+
+ 
+
+\end{CJK}
+
+\end{document}

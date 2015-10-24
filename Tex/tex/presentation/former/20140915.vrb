@@ -1,0 +1,12 @@
+\frametitle{水文模型泛函编码范式描述}
+\begin{lstlisting}
+(define (SCE_UA object_function range)
+  (define (mainline i lis)
+    (cond ((eq? i 1)
+           (mainline (+ i 1)
+           (divide (generate_strings))))
+          ((< i MAXN)
+           (mainline (+ i 1) (shuffle (evolve lis))))
+          (else (car (reverse (car (reverse lis)))))))
+  (mainline 1 '()))
+\end{lstlisting}

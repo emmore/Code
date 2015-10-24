@@ -1,0 +1,1228 @@
+\documentclass{beamer}
+\usepackage{latexsym,amssymb,amsmath,amsbsy,amsopn,amstext,xcolor,multicol}
+\usepackage{graphicx,wrapfig,fancybox}
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
+\usepackage{CJKutf8}
+\usepackage{multirow}
+\usepackage{beamerthemeTsinghua}
+\usepackage{amsmath}
+\setbeamertemplate{footline}[frame number]{}
+\title{基于随机特征的流域水文模型时间尺度研究}
+\subtitle{硕士论文答辩}
+\author{答辩人：潘宝祥\\指导老师：丛振涛}
+\institute{水文与水资源研究所\\ \\清华大学}
+\date{\small{2015年6月5日}}
+\logo{\includegraphics[height=1.2cm]{logo.png}\vspace{220pt}}
+
+\begin{document}
+\begin{CJK}{UTF8}{gkai}
+\frame{
+\titlepage
+}
+
+\newcommand{\nologo}{\setbeamertemplate{logo}{}}
+{\nologo
+  \section*{目录}
+  \frame {
+    \frametitle{\secname}
+    \tableofcontents
+  }
+
+  \AtBeginSubsection[] {
+  \frame<handout:0> {
+  \frametitle{Outline}
+  \tableofcontents[current,currentsubsection]
+    }
+  }
+
+  \section{研究背景与现状}
+  \subsection{研究背景}
+  \frame{
+  \frametitle{不同时间尺度下的水文过程}
+\begin{center}
+\begin{table*}
+ {
+\centering
+\begin{tabular}{ccc}
+\hline  
+ &\textcolor[rgb]{0.455,0.204,0.506}{日尺度}&\textcolor[rgb]{0.455,0.204,0.506}{年际尺度}\\
+\hline 
+\multirow{2}{*}{\textcolor[rgb]{0.455,0.204,0.506}{本构关系}}&降水-产流过程&\multirow{2}{*}{水热耦合}\\
+&蒸散发过程&\\
+\\
+\multirow{4}{*}{\textcolor[rgb]{0.455,0.204,0.506}{控制因素}}&降水量、降水强度&\multirow{2}{*}{降水总量}\\
+&潜在蒸散发&\multirow{2}{*}{潜在蒸散发总量}\\
+&前期土壤蓄水量&\multirow{2}{*}{水量能量时间分布}\\
+&坡度、土地类型等&\\
+\\
+\textcolor[rgb]{0.455,0.204,0.506}{精度}&几毫米&几十毫米\\
+\\
+\multirow{3}{*}{\textcolor[rgb]{0.455,0.204,0.506}{经典模型}}&新安江模型&\multirow{2}{*}{径流系数模型}\\
+&GBHM模型&\multirow{2}{*}{Budyko模型}\\
+&神经网络&\\
+\hline 
+\end{tabular}
+\end{table*}
+}
+\end{center}
+}
+
+
+  \frame{
+  \frametitle{不同时间尺度下的水文过程}
+\begin{center}
+\onslide<1->{
+\begin{table*}
+ {
+\centering
+\begin{tabular}{cccc}
+\hline  
+ &\textcolor[rgb]{0.455,0.204,0.506}{日尺度}&\textbf{...}&\textcolor[rgb]{0.455,0.204,0.506}{年际尺度}\\
+\hline 
+\multirow{2}{*}{\textcolor[rgb]{0.455,0.204,0.506}{本构关系}}&降水-产流过程&\multirow{13}{*}{\textbf{...}}&\multirow{2}{*}{水热耦合}\\
+&蒸散发过程&\\
+\\
+\multirow{4}{*}{\textcolor[rgb]{0.455,0.204,0.506}{控制因素}}&降水量、降水强度&&\multirow{2}{*}{降水总量}\\
+&潜在蒸散发&&\multirow{2}{*}{潜在蒸散发总量}\\
+&前期土壤蓄水量&&\multirow{2}{*}{水量能量时间分布}\\
+&坡度、土地类型等&\\
+\\
+\textcolor[rgb]{0.455,0.204,0.506}{精度}&几毫米&&几十毫米\\
+\\
+\multirow{3}{*}{\textcolor[rgb]{0.455,0.204,0.506}{经典模型}}&新安江模型&&\multirow{2}{*}{径流系数模型}\\
+&GBHM模型&&\multirow{2}{*}{Budyko模型}\\
+&神经网络&&\\
+\hline 
+\end{tabular}
+\end{table*}
+}
+}
+\onslide<2->
+{
+\begin{enumerate}
+\uncover<2->{\item  \textcolor[rgb]{1,0,0}{日尺度水文过程}如何在\textcolor[rgb]{1,0,0}{升尺度}后表现为\textcolor[rgb]{1,0,0}{水热耦合}？}
+\uncover<3->{\item 各模型适用的\textcolor[rgb]{1,0,0}{时间尺度范围}是什么？}
+\uncover<4->{\item 各模型在不同时间尺度上的\textcolor[rgb]{1,0,0}{精度}如何？}
+\end{enumerate}
+}
+\end{center}
+}  
+  
+  \subsection{研究现状}
+ \frame{
+ \frametitle{水文模型范式}
+ \onslide<1->{
+模型组成部分：模型结构（Structure）\emph{,} \emph{输入变量（$X_i$），输出变量（$X_o$），状态变量（$S$），模型参数（$Para$）}.
+}
+\onslide<2->{
+ \begin{figure*}
+\centering
+\includegraphics[width=11cm]{modelparadigm.png}
+\caption{}
+\end{figure*}
+ }
+\only<3>{
+\textbf{不确定度来源：}
+\begin{itemize}
+    \item \textcolor[rgb]{1,0,0}{观测数据}
+        \begin{itemize}
+            \item 观测数据\textcolor[rgb]{0.455,0.204,0.506}{不准确}
+            \item 观测数据\textcolor[rgb]{0.455,0.204,0.506}{不充分}
+        \end{itemize}
+    \item \textcolor[rgb]{1,0,0}{概化模型}
+\end{itemize}
+}
+\only<4->
+{
+\textcolor[rgb]{1,0,0}{不准确}、\textcolor[rgb]{1,0,0}{不充分}的观测数据，通过\textcolor[rgb]{1,0,0}{概化模型}数据处理，能够在多大程度上抓住\textcolor[rgb]{1,0,0}{不同时间尺度}下水文过程的\textcolor[rgb]{1,0,0}{信息}？
+}
+}
+
+ 
+  
+  
+  
+  
+  
+  
+  
+\iffalse 
+  \frame{
+  \frametitle{概率表示————随机土壤水模型}
+
+ \onslide<1->{
+ \begin{center}
+ \begin{figure*}
+\centering
+\includegraphics[width=5cm]{random.png}
+\caption{}
+\end{figure*}
+\end{center}
+}
+ 
+ 
+ \onslide<2->
+  {
+ \begin{table}[H] 
+\resizebox{\textwidth}{!}{
+\centering
+\begin{tabular}{cccccccc}
+\hline 
+开发者&空间尺度&	降水&	截留&	产流&	蒸散发&	地下水补给&	稳态概率类型\\
+\hline 
+Cox \& Isham &\multirow{5}{*}{点尺度}&\multirow{5}{*}{复合泊松过程} &\multirow{5}{*}{固定值}&未考虑&线性&\multirow{2}{*}{未考虑}&伽马分布\\
+
+Milly &  &&&\multirow{4}{*}{蓄满产流}&常值&&指数分布 \\
+
+
+Rodriguez && &&&两阶段线性&线性&三段分布\\
+Laios && &&&多段线性&指数&四段分布\\ 
+Porporato & &&&&线性&线性&伽马分布\\
+\hline 
+\end{tabular}
+}
+\end{table}
+}
+
+}
+\fi
+  
+ \subsection{技术路线}
+ \frame{
+ \frametitle{技术路线}
+ \begin{center}
+ \begin{figure*}
+\centering
+\includegraphics[width=10cm]{routine.png}
+\caption{}
+\end{figure*}
+\end{center}
+ }
+ 
+ 
+  
+\section{随机土壤水模型}
+\subsection{模型简介}
+\frame{
+\frametitle{概率表示————随机土壤水模型}
+
+ \onslide<1->{
+ \begin{center}
+ \begin{figure*}
+\centering
+\includegraphics[width=5cm]{random.png}
+\caption{}
+\end{figure*}
+\end{center}
+}
+ 
+ 
+ \onslide<2->
+  {
+ \begin{table}[H] 
+\resizebox{\textwidth}{!}{
+\centering
+\begin{tabular}{cccccccc}
+\hline 
+开发者&空间尺度&	降水&	截留&	产流&	蒸散发&	地下水补给&	稳态概率类型\\
+\hline 
+Cox \& Isham &\multirow{5}{*}{点尺度}&\multirow{5}{*}{复合泊松过程} &\multirow{5}{*}{固定值}&未考虑&线性&\multirow{2}{*}{未考虑}&伽马分布\\
+
+Milly &  &&&\multirow{4}{*}{蓄满产流}&常值&&指数分布 \\
+
+
+Rodriguez && &&&两阶段线性&线性&三段分布\\
+Laios && &&&多段线性&指数&四段分布\\ 
+Porporato & &&&&线性&线性&伽马分布\\
+\hline 
+\end{tabular}
+}
+\end{table}
+}
+
+\onslide<3->
+{
+\begin{itemize}
+\item \textcolor[rgb]{1,0,0}{点尺度} $\to$ \textcolor[rgb]{1,0,0}{面尺度}
+\item \textcolor[rgb]{1,0,0}{稳态分布均值}为何能表示\textcolor[rgb]{1,0,0}{中长期水量平衡状态}
+\item \textcolor[rgb]{1,0,0}{稳态分布均值}表示中长期水量平衡状态\textcolor[rgb]{1,0,0}{精度}
+\end{itemize}
+
+
+}
+}
+
+
+
+\subsection{概率形式守恒方程}
+
+\frame{
+\frametitle{概率形式守恒方程}
+
+\onslide<1->
+{
+\begin{equation*}
+\label{sbalance}
+nR_{L}\frac{ds}{dt}=I(s,t)-E(s,t)-L(s,t)
+\end{equation*}
+}
+
+\onslide<2->
+{
+
+\centering{\textcolor[rgb]{1,0,0}{$\Downarrow$}}
+\underleftdownarrow{\textcolor[rgb]{1,0,0}{微元法分析}}
+\begin{scriptsize}
+\begin{equation*}
+\label{basic1}
+f(s,t+dt)ds= \underbrace{(1-p_{rain})\Bigg \{ f(s+\Delta s,t)d(s+\Delta s) \Bigg \} }_{no-rain} +\underbrace{p_{rain} \int_{0}^{s} f(z,t)p_{i|z}(s-z+\Delta z)dzds}_{rain}
+\end{equation*}
+\end{scriptsize}
+}
+
+\onslide<3->
+{
+
+\centering{\textcolor[rgb]{1,0,0}{$\Downarrow$}}
+\underleftdownarrow{\textcolor[rgb]{1,0,0}{取极限}}
+\begin{equation*}
+\label{basic3}
+ \frac{\partial{f(s,t)}}{\partial t}=\frac{\partial{[\rho(s)f(s,t)]}}{\partial s}-\lambda(t)f(s,t)+\lambda(t)\int_{0}^{s} f(z,t)p_{i|z}(s-z)dz
+ \end{equation*}
+}
+
+}
+
+\frame{
+\frametitle{边界条件}
+
+\onslide<1->
+{
+\begin{equation*}
+\label{basic3}
+ \frac{\partial{f(s,t)}}{\partial t}=\frac{\partial{[\rho(s)f(s,t)]}}{\partial s}-\lambda(t)f(s,t)+\lambda(t)\int_{0}^{s} f(z,t)p_{i|z}(s-z)dz
+ \end{equation*}
+}
+
+\onslide<2->
+{
+
+\leftdownarrow{\textcolor[rgb]{0.5,0.5,0.5}{$p_0(t)=p_0(0)e^{-\lambda(t) t}$}}
+\centering{\textcolor[rgb]{1,0,0}{\Huge{$\Downarrow$}}}
+\rightdownarrow{\textcolor[rgb]{0.5,0.5,0.5}{$p_1(t)=0$}}
+ 
+\begin{equation*}
+\begin{split}
+ \frac{\partial{g(s,t)}}{\partial t}=&\frac{\partial{[\rho(s)g(s,t)]}}{\partial s}-\lambda(t)g(s,t)+\\
+ &\lambda(t)\int_{0}^{s} g(z,t)p_{i|z}(s-z)dz+\lambda(t)p_0(0)e^{-\lambda(t) t}p_{i|0}(s)
+ \end{split}
+\end{equation*}
+}
+}
+
+ 
+
+ 
+
+
+
+
+\subsection{概率形式本构方程}
+\frame{
+\frametitle{入渗产流方程}
+
+\only<1>
+{
+\begin{table}[H] 
+\centering
+\begin{tabular}{ccccccc}
+
+\hline 
+&点尺度\\
+\hline 
+产流方程
+&
+\begin{equation*}
+R=
+ \begin{cases}
+ 0&{P+z\leq 1};\\P+z-1 &{p+z>1}
+ \end{cases}
+\end{equation*}
+\\
+\\
+产流p.d.f.
+&
+\begin{equation*}
+\label{rpoint}
+p_{R|z}(x)=f_P(x+1-z)+\delta(x)\int_{0}^{1-z} f_P(u) du 
+\end{equation*}
+\\
+\\
+入渗方程
+&
+\begin{equation*}
+I\vert z=
+ \begin{cases}
+ P&{P+z\leq 1};\\1-z &{P+z>1}
+ \end{cases}
+\end{equation*}
+\\
+\\
+入渗p.d.f
+&
+\begin{equation*}
+\label{point}
+p_{i|z}(x)=f_P(x)+\delta(x-1+z)\int_{1-z}^{\infty} f_P(u) du 
+\end{equation*}
+\\
+\hline 
+\end{tabular}
+\end{table}
+}
+
+\only<2>
+ {
+ \begin{table}[H] 
+\resizebox{\textwidth}{!}{
+\centering
+\begin{tabular}{ccccccc}
+\hline 
+&面尺度\\ 
+\hline 
+产流方程
+&
+ 
+\begin{equation*}
+R=
+ \begin{cases}
+ p+z-1+[1-\frac{p+a}{1+b}]^{1+b}&{a+p\leq 1+b};\\p+z-1 &{a+p> 1+b}
+ \end{cases}
+\end{equation*}
+\\
+\\
+产流p.d.f.
+&
+ 
+\begin{equation*}
+p_{R|z}(x)=
+ \begin{cases}
+ p+z-1+[1-\frac{p+a}{1+b}]^{1+b}&{a+p\leq 1+b};\\p+z-1 &{a+p> 1+b}
+ \end{cases}
+\end{equation*}\\
+\\
+入渗方程
+&
+ 
+\begin{equation*}
+I\vert z=
+ \begin{cases}
+ 1-z-[1-\frac{P+a}{1+b}]^{1+b}&{a+P\leq 1+b};\\1-z &{a+P> 1+b}
+ \end{cases}
+\end{equation*}\\
+\\
+入渗p.d.f
+&
+\begin{equation*}
+\label{xaj}
+p_{i|z}(x)=f_P\bigg \{(1+b)\big [(1-z)^{\frac{1}{1+b}}-(1-z-x)^{\frac{1}{1+b}}\big ]\bigg \}+\delta(x-1+z)\int_{(1+b)(1-z)^{\frac{1}{1+b}}}^{\infty} f_P(u) du 
+\end{equation*}\\
+\hline 
+\end{tabular}
+}
+\end{table}
+ }
+
+\only<3>
+{
+\onslide<1->
+{
+\begin{table}[H] 
+\resizebox{\textwidth}{!}{
+\centering
+\begin{tabular}{cccccccc}
+\hline 
+&点尺度&面尺度\\ 
+\hline 
+产流方程
+&
+\begin{equation*}
+R=
+ \begin{cases}
+ 0&{P+z\leq 1};\\P+z-1 &{p+z>1}
+ \end{cases}
+\end{equation*}
+&
+\begin{equation*}
+R=
+ \begin{cases}
+ p+z-1+[1-\frac{p+a}{1+b}]^{1+b}&{a+p\leq 1+b};\\p+z-1 &{a+p> 1+b}
+ \end{cases}
+\end{equation*}
+\\
+\\
+产流p.d.f.
+&
+\begin{equation*}
+\label{rpoint}
+p_{R|z}(x)=f_P(x+1-z)+\delta(x)\int_{0}^{1-z} f_P(u) du 
+\end{equation*}
+&
+\begin{equation*}
+R=
+ \begin{cases}
+ p+z-1+[1-\frac{p+a}{1+b}]^{1+b}&{a+p\leq 1+b};\\p+z-1 &{a+p> 1+b}
+ \end{cases}
+\end{equation*}\\
+\\
+入渗方程
+&
+\begin{equation*}
+I\vert z=
+ \begin{cases}
+ P&{P+z\leq 1};\\1-z &{P+z>1}
+ \end{cases}
+\end{equation*}
+&
+\begin{equation*}
+I\vert z=
+ \begin{cases}
+ 1-z-[1-\frac{P+a}{1+b}]^{1+b}&{a+P\leq 1+b};\\1-z &{a+P> 1+b}
+ \end{cases}
+\end{equation*}\\
+\\
+入渗p.d.f
+&
+\begin{equation*}
+\label{point}
+p_{i|z}(x)=f_P(x)+\delta(x-1+z)\int_{1-z}^{\infty} f_P(u) du 
+\end{equation*}
+&
+\begin{equation*}
+\label{xaj}
+p_{i|z}(x)=f_P\bigg \{(1+b)\big [(1-z)^{\frac{1}{1+b}}-(1-z-x)^{\frac{1}{1+b}}\big ]\bigg \}+\delta(x-1+z)\int_{(1+b)(1-z)^{\frac{1}{1+b}}}^{\infty} f_P(u) du 
+\end{equation*}\\
+\hline 
+\end{tabular}
+}
+\end{table}
+}
+
+\onslide<2->
+{
+\begin{equation*}
+R=F(P,z)~~~~I=G(P,z)
+\end{equation*}
+\centering{\textcolor[rgb]{1,0,0}{\Huge{$\Downarrow$}}}
+\begin{equation*}
+f(R)=f(P|z)~~~~g(I)=g(P|z)
+\end{equation*}
+}
+}
+}
+  
+
+\frame{
+\frametitle{蒸散发与渗漏方程}
+\begin{table}[H] 
+\centering
+\begin{tabular}{cccccccc}
+\hline 
+线性蒸散&分段线性蒸散渗漏\\ 
+\hline 
+ \begin{equation*}
+\label{linearep}
+\rho (s)=\frac{EP}{nR_L} \times s
+\end{equation*}
+&
+ \begin{equation*}
+\rho (s )=
+ \begin{cases}
+ \frac{\eta}{s^*} s  &s\leq s^{*}\\ 
+ \eta &s^*<s\leq s_1\\
+ \eta+k\frac{s-s_1}{1-s_1} &s_1<s\leq 1
+ \end{cases}
+ \end{equation*}\\
+\hline 
+\end{tabular}
+\end{table}
+}
+ 
+ 
+  
+  
+  
+  
+\frame{
+\frametitle{小结}
+\only<1->
+{
+\begin{scriptsize}
+\begin{equation*} 
+\label{ssd}
+\frac{\partial{g(s,t)}}{\partial t}=\frac{\partial{[\rho(s)g(s,t)]}}{\partial s}-\lambda(t)g(s,t)+\lambda(t)\int_{0}^{s} g(z,t)f_{p}(s-z)dz+\lambda(t)p_0(0)e^{-\lambda(t) t}p_{i|0}(s)
+\end{equation*}
+\end{scriptsize}
+\begin{tiny}
+\begin{equation*}\small
+\label{ssm}
+\frac{\partial{g(s,t)}}{\partial t}=\frac{\partial{[\rho(s)g(s,t)]}}{\partial s}-\lambda(t)g(s,t)+\lambda(t)\int_{0}^{s} g(z,t)f_{p}\{(1+b) [(1-z)^{\frac{1}{1+b}}-(1-s)^{\frac{1}{1+b}} ] \}dz+\lambda(t)p_0(0)e^{-\lambda(t) t}p_{i|0}(s)
+\end{equation*}
+\end{tiny}
+}
+\only<2>
+{
+\newline
+\newline  
+\centering{\textcolor[rgb]{1,0,0}{$b=0$}时下式退化为上式.}
+} 
+\only<3>
+{  
+\begin{itemize}
+\item SCS曲线（Green-Ampt产流）
+\item HBV模型
+\item ...
+\end{itemize}
+}
+} 
+ 
+  \subsection{时间尺度分析}
+ \frame{
+\frametitle{土壤含水量随机过程模拟}
+\begin{figure*}
+\centering
+\includegraphics[width=\textwidth]{monte.png}
+ 
+\label{ununity}
+\end{figure*}
+}  
+  
+  
+ \frame{
+   \frametitle{不同降水参数流域土壤含水量随机过程模拟}
+ \begin{table*} \small
+\resizebox{\textwidth}{!}{
+\centering
+\begin{tabular}{cccc}
+ 
+\hline
+$\lambda=0.05d^{-1}$&$\lambda=0.1d^{-1}$&$\lambda=0.2d^{-1}$\\
+\hline
+\\
+\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{montelambda5.png}\end{minipage}
+&\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{montelambda10.png}\end{minipage}
+&\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{montelambda05.png}\end{minipage}
+\\
+\\ 
+ 
+\hline
+$\alpha=2.0 $&$\alpha=1.0 $&$\alpha=0.5 $\\
+\hline
+\\
+\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{montelalpha2.png}\end{minipage}
+&\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{montelalpha1.png}\end{minipage}
+&\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{montelalpha05.png}\end{minipage}
+\\
+\hline
+\end{tabular}
+}
+\end{table*}
+  }
+  
+ \frame{
+   \frametitle{不同参数流域土壤含水量随机过程模拟}
+ \begin{table*} \small
+\resizebox{\textwidth}{!}{
+\centering
+\begin{tabular}{cccc}
+\hline
+$EP_r=0.01$&$EP_r=0.03$&$EP_r=0.05$\\
+\hline
+\\
+\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{monte1.png}\end{minipage}
+&\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{monte3.png}\end{minipage}
+&\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{monte5.png}\end{minipage}
+\\
+\\
+\hline
+$b=0$&$b=0.5$&$b=1$\\
+\hline
+\\
+\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{monteb0.png}\end{minipage}
+&\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{monteb05.png}\end{minipage}
+&\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{monteb1.png}\end{minipage}
+\\ 
+\\ 
+\hline
+$S_{Initial}=0$&$S_{Initial}=0.5 $&$S_{Initial}=1.0 $\\
+\hline
+\\
+\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{montei0.png}\end{minipage}
+&\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{montei05.png}\end{minipage}
+&\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{montei1.png}\end{minipage}
+\\
+
+ 
+\hline
+\end{tabular}
+}
+\end{table*}
+  }  
+  
+  
+  
+\frame{
+\frametitle{时域分析——自相关系数}
+\only<1>
+{
+\begin{figure*}
+\centering
+\includegraphics[width=\textwidth]{day_a_corr.png} 
+ 
+ 
+
+\end{figure*}
+}
+\only<2>
+{
+\begin{figure*}
+\centering
+\includegraphics[width=\textwidth]{dep_a_corr.png} 
+ 
+ 
+
+\end{figure*}
+}
+\only<3>
+{
+\begin{figure*}
+\centering
+\includegraphics[width=\textwidth]{ep_r_corr.png} 
+ 
+\end{figure*}
+}
+\only<4>
+{
+\begin{figure*}
+\centering
+\includegraphics[width=\textwidth]{b_corr.png} 
+ 
+\end{figure*}
+}
+\only<5>
+{
+\begin{figure*}
+\centering
+\includegraphics[width=\textwidth]{initial_s_corr.png} 
+ 
+\end{figure*}
+}
+\only<6>
+{
+\begin{table}[H] 
+\centering
+\begin{tabular}{cccccccc}
+\hline 
+控制因素&$\rho (k)$大小&$\rho (k)$变化率\\
+\hline 
+$day_a$&$+$&$-$ \\ 
+$dep_a$&$-$ &$0$\\ 
+$EP_r$&$-$ &$+$ \\ 
+$b$&$0$ &$0$ \\ 
+$S_{initial}$&$0$ &$0$ \\ 
+\hline 
+\end{tabular}
+\end{table}
+\centering{\small{$+$表示正相关；$-$表示负相关；$0$表示不相关.}}
+}
+}
+
+  
+\frame{
+\frametitle{频域分析——功率谱密度}
+\onslide<1->
+{
+\begin{equation*}
+\label{dsbalance}
+\eta R_L \times \frac{ds(t)}{dt}+E(t)=I(t)
+\end{equation*} 
+}
+\onslide<2->
+{
+\centering{\textcolor[rgb]{1,0,0}{$\Downarrow$}}
+\underleftdownarrow{\textcolor[rgb]{1,0,0}{傅里叶变换}}
+\begin{equation*}
+s(\omega )=\frac{I(\omega )}{i\omega \eta R_L+EP}
+\end{equation*} 
+} 
+\onslide<3->
+{  
+\leftdownarrow{\textcolor[rgb]{1,0,0}{$\Phi(\omega) \equiv  \frac{F(\omega)F^*(\omega)}{2\pi}$}}
+\centering{\textcolor[rgb]{1,0,0}{\Huge{$\Downarrow$}}}
+\rightdownarrow{\textcolor[rgb]{1,0,0}{$\Phi$为$\rho$的傅里叶变换}}
+\begin{equation*}
+E_s (\omega)=\frac{|I(\omega)|^2}{EP_r ^2+\omega ^2}
+\end{equation*}  
+}
+
+\onslide<4->
+{
+\begin{enumerate}
+\uncover<2->{\item  $\omega$较大时，\textcolor[rgb]{1,0,0}{红噪音}，ARMA，土壤水记忆作用不能忽略，
+
+$\omega$较小时，\textcolor[rgb]{1,0,0}{白噪音}，独立过程，土壤水记忆作用可以忽略.}
+\uncover<3->{\item $EP_r$较大时，较小的时间尺度即可忽略土壤水记忆作用.}
+\uncover<4->{\item 时间间隔趋于$\infty$时，$\rho \to 0$. 过程满足\textcolor[rgb]{1,0,0}{各态历经}条件.
+
+\centering{\textcolor[rgb]{1,0,0}{时间平均$=$集合平均}}}
+\end{enumerate}
+}  
+} 
+
+
+ 
+
+\frame{
+\frametitle{稳态解分析}
+\onslide<1->
+{
+\centering{\textcolor[rgb]{1,0,0}{时间平均$=$集合平均$\to$稳态分布均值}}
+}
+\onslide<2->
+{
+\begin{equation*} 
+\label{jxj}
+g(s)=\frac{N}{EP_r} \times s^{\lambda / EP_r -1} e^{-\alpha s}
+\end{equation*}
+\leftline{其中，$N$为归一化系数，由$\int_{0}^{1} g(s)=1$，得:}
+\begin{equation*} 
+\label{normalizationfactor}
+N=\frac{EP_r \alpha ^{\frac{\lambda} {\ EP_r}}}{\gamma (\lambda /EP_r , \alpha)}
+\end{equation*}
+\leftline{$\gamma(*,*)$为下不完全$\Gamma$函数：}
+\begin{equation*}
+\gamma(s,x)=\int_{0}^{x} t^{s-1}e^{-t}dt
+\end{equation*}
+}
+}
+
+\frame{
+\frametitle{稳态解均值}
+ \begin{equation*}
+\label{meanman}
+\begin{split}
+E(s)=&\int_{0}^{1} \frac{N}{EP_r} \times s^{(\lambda / EP_r -1)} e^{-\alpha s} \times s ds\\
+=&\frac{\lambda}{\alpha EP_r}-\frac{\alpha^{\frac{\lambda}{EP_r}-1} e^{-\alpha}}{\gamma (\frac{\lambda}{EP_r},\alpha)}
+\end{split}
+\end{equation*}
+\begin{figure*}
+\centering
+\includegraphics[width=\textwidth]{average.png} 
+ 
+\end{figure*} 
+}
+
+\frame{
+\frametitle{稳态解方差}
+ \begin{equation*} 
+\label{ssiiggmmaa}
+\begin{split}
+Var(s)=&\int_{0}^{1} \frac{N}{EP_r} \times s^{(\lambda / EP_r -1)} e^{-\alpha s} \times s^2 ds-E^2(s)\\
+=&\frac{\gamma (\frac{\lambda}{EP_r}+2,\alpha)}{\alpha ^2\gamma (\frac{\lambda}{EP_r},\alpha)}-E^2(s)
+\end{split}
+\end{equation*}
+\begin{figure*}
+\centering
+\includegraphics[width=\textwidth]{var.png} 
+ 
+\end{figure*}
+}
+
+
+  
+  \section{基于信息理论的水文模拟不确定度评估}
+  \subsection{理论分析}
+    \frame{
+  \frametitle{信息是什么}
+\only<1,2>
+{
+\begin{figure*}
+\centering
+\includegraphics[width=.78\textwidth]{ss.png} 
+ 
+\end{figure*}  
+}
+\only<3>
+{
+\begin{figure*}
+\centering
+\includegraphics[width=.78\textwidth]{ss.png} 
+ 
+\end{figure*}  
+
+\begin{figure*}
+\centering
+\includegraphics[width=.78\textwidth]{hs.png} 
+ 
+\end{figure*}  
+}
+\only<2>
+{ 
+  \begin{itemize}
+  \item \textcolor[rgb]{1,0,0}{信息}即为\textcolor[rgb]{1,0,0}{不确定度}.
+  \item \textcolor[rgb]{1,0,0}{不确定度}是\textcolor[rgb]{1,0,0}{概率}的\textcolor[rgb]{1,0,0}{减函数}.
+  \item \textcolor[rgb]{1,0,0}{独立事件信息量可加}.
+  \end{itemize}
+  因此，对随机变量$X$：
+  
+  ${X=a}$ 事件的信息量为$-logP(X=a)$.
+  
+ 随机变量$X$的平均信息量为$-\Sigma p(x)logp(x)$.
+}
+}  
+ 
+\frame{
+\frametitle{数据如何提供信息}
+\onslide<1->
+{
+给定观测数据条件下，模拟变量的不确定度减小，这体现为如下公式：
+\begin{equation*}
+\textcolor[rgb]{1,0,0}{H(X|Y)}\equiv \Sigma p(y)H(X|Y=y) \textcolor[rgb]{1,0,0}{\leq} \textcolor[rgb]{1,0,0}{H(X)} 
+\end{equation*}
+}
+\onslide<2->
+{
+定义\textcolor[rgb]{1,0,0}{互信息}为给定另一随机变量知识的条件下，原随机变量不确定度的缩减量：
+\begin{equation*}
+MI(X;Y)\equiv H(X)-H(X|Y)=\sum_{x,y}p(x,y)log\frac{p(x,y)}{p(x)p(y)}
+\end{equation*}
+} 
+}
+ 
+\frame{
+\frametitle{数据提供信息的限度}
+\onslide<1->
+{
+如果随机变量$Z$的\textcolor[rgb]{1,0,0}{条件分布}仅依赖于随机变量$Y$的分布，而与随机变量$X$是\textcolor[rgb]{1,0,0}{条件独立}的，即$X$,$Y$,$Z$构成\textcolor[rgb]{1,0,0}{马尔科夫链}（记为\textcolor[rgb]{1,0,0}{$X \to Y \to Z$} ），则有：
+\begin{equation*}
+\label{in}
+I(X;Y) \geq I(X;Z)
+\end{equation*}
+}
+\onslide<2->
+{
+\leftline{由}
+\begin{equation*}
+X_o \to Xi_{original} ~\& Xi_{new}\to Xi_{original}
+\end{equation*}
+得：
+\begin{equation*}
+\label{new}
+I(X_o;Xi_{original} , Xi_{new})\geq I(X_o;Xi_{original})
+\end{equation*}
+} 
+
+\onslide<3->
+{
+\leftline{由}
+\begin{equation*}
+X_o \to X_i \to X_s
+\end{equation*}
+得：
+\begin{equation*}
+\label{new}
+I(X_o;X_i) \geq I(X_o;X_s)
+\end{equation*}
+}
+}   
+  
+  
+\frame{
+\frametitle{基于信息理论的不确定度分析框架}
+\onslide<1->
+{
+\begin{figure*}
+\centering
+\includegraphics[width=11cm]{theory.png}
+\caption{}
+\end{figure*}
+}
+\onslide<2->
+{
+\begin{itemize}
+\item  \textcolor[rgb]{1,0,0}{\textbf{随机不确定度}}：\textcolor[rgb]{1,0,0}{观测数据}支撑下的\textcolor[rgb]{1,0,0}{后验不确定度}.
+\begin{equation*}
+\label{aaa}
+\text{Aleotory Uncertainty}\equiv H(X_{o})-I(X_{o};X_{i})
+\end{equation*}
+
+
+\item  \textcolor[rgb]{1,0,0}{\textbf{认知不确定度}}：\textcolor[rgb]{1,0,0}{观测数据}支撑下的\textcolor[rgb]{1,0,0}{后验不确定度}与\textcolor[rgb]{1,0,0}{模型模拟}支撑下的\textcolor[rgb]{1,0,0}{后验不确定度}之差.
+\begin{equation*}
+\label{aaa}
+\text{Epitemic Uncertainty}\equiv I(X_{o};X_{i})-I(X_{o};X_{s})
+\end{equation*}
+
+\end{itemize}
+}
+}  
+
+
+ 
+  
+  
+\subsection{技术分析}
+\frame{
+\frametitle{高维互信息估算}
+\onslide<1->
+{
+\begin{itemize}
+\item 维数灾
+\item 间接计算 
+\end{itemize}
+}
+\onslide<2->
+{
+利用\textcolor[rgb]{1,0,0}{核函数}，将高维水文观测数据\textcolor[rgb]{1,0,0}{隐式}地映射到\textcolor[rgb]{1,0,0}{特征空间}上，通过构建各样本点在\textcolor[rgb]{1,0,0}{特征空间}的\textcolor[rgb]{1,0,0}{距离统计量}，\textcolor[rgb]{1,0,0}{直接}估算样本点互信息.
+} 
+}
+ 
+\subsection{实例分析}
+\frame{
+\frametitle{实验简介}
+\only<1>
+{
+\begin{center}
+\begin{table*} 
+\centering
+\centerline{\caption{实验待估信息项}}
+\label{lalala}
+\begin{tabular}{cc}
+\hline 
+ 类别  &  估算项 \\
+\hline
+观测   &$h(R)$ \\
+
+ &$I(R;P),I(R;P,P_{former})$\\
+ &
+$I(R;P,PE),I(R;P,P_{former},PE,PE_{former})$\\
+ &
+$I(R;P,P_{former}, PE,PE_{former},R_{former})$\\
+\\
+%Model    & HyMod&$I(R_t;Rs_t),$ $I(R_t;P_t,PE_t,S_t)$  \\
+模型  & TPWB: $I(R;Rs),$ $I(R;P,PE,S)$  \\
+ & Budyko:  $I(R;Rs)$\\
+\hline 
+\end{tabular}
+\end{table*}
+\end{center}
+}
+\only<2>
+{
+\begin{center}
+ \begin{figure*}
+\centering
+\includegraphics[width=7cm]{algorithm.png}
+\end{figure*}
+\end{center}
+
+}
+}
+\frame
+{
+\frametitle{随机不确定度}
+\begin{table*}  \small 
+\resizebox{\textwidth}{!}{
+\centering
+\begin{tabular}{cccc}
+\hline
+\textbf{气候类型}&\textbf{$AU(R;P)$}&\textbf{$AU(R;P,PE)$}&\textbf{$AU(R;P,PE,R_{former})$}\\
+
+\hline
+
+WA(02143000)
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/02143000p_rela.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/02143000pep_rela.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/02143000pepq_rela.png}\end{minipage}
+\\
+WS(05585000)
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/05585000p_rela.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/05585000pep_rela.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/05585000pepq_rela.png}\end{minipage}
+\\
+SA(11532500)
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/11532500p_rela.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/11532500pep_rela.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/11532500pepq_rela.png}\end{minipage}
+\\
+SS(06810000)
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/06810000p_rela.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/06810000pep_rela.png}\end{minipage}
+&\begin{minipage}{.3\textwidth}\includegraphics[width=\linewidth]{resultgraph/06810000pepq_rela.png}\end{minipage}
+\\
+\hline
+\end{tabular}
+}
+\end{table*}
+}
+
+\frame
+{
+\frametitle{随机不确定度}
+\begin{enumerate}
+\item 雨热不同期流域随机不确定度量级大于雨热同期流域.
+\item 水量占主导控制的流域随机不确定度较大.
+\item 能量占主导控制的流域随机不确定度较小.
+\end{enumerate}
+}
+
+
+
+\frame
+{
+\frametitle{认知不确定度}
+\begin{table*}  \small
+\resizebox{\textwidth}{!}
+{
+\centering
+\begin{tabular}{ccc}
+\hline
+气候类型& 弱季节性 & 强季节性 \\
+\hline
+雨热同期
+&\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{resultgraph/05585000EU.png}\end{minipage}
+
+&\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{resultgraph/06810000EU.png}\end{minipage}
+\\
+雨热不同期
+&\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{resultgraph/02143000EU.png}\end{minipage}
+ 
+&\begin{minipage}{.6\textwidth}\includegraphics[width=\linewidth]{resultgraph/11532500EU.png}\end{minipage}
+\\
+\hline
+\end{tabular}
+}
+\end{table*} 
+}
+
+\frame
+{
+\frametitle{认知不确定度}
+\begin{enumerate}
+\item 雨热不同期流域认知不确定度量级小于雨热同期流域.
+\item TPWB模型认知不确定度极大值出现在季节尺度.
+\item Budyko模型在雨热不同期流域较小时间尺度下认知不确定度较大.
+\end{enumerate}
+}
+  
+  \section{总结与展望}
+  \frame{
+  \frametitle{主要结论}
+  \begin{enumerate}%[<+-| alert@+>]
+  \item 以单水源新安江模型为例论证了概念性水文模型均可转化为概率形式，继而研究其随机动力性质.
+  \item 土壤含水量随机过程具有各态历经性，其稳态解刻画了流域中长期水量平衡状态.
+  \item 到达稳定分布的速率由相对潜在蒸散发量决定，关注的时间尺度较小时，土壤蓄水量在时域上表现为一阶自回归过程，在频域上表现为红噪声；关注的时间尺度较大时，土壤蓄水量在时域上表现为平稳过程，在频域上表现为白噪声.
+  \item 稳态解形态由水量供给条件$\frac{1}{\alpha}$和能量供给条件$\frac{EP_r}{\lambda}$决定，二者同时.通过控制稳态分布方差决定了以稳态方程刻画长时序水量平衡状态的精度：当水量或能量占主要控制地位时，稳态分布方差较小，均值更能精确地刻画流域长期水量平衡状态；当两者大小相当时，稳态分布方差较大，且能量水量供给越大，方差越大，这说明，在水文循环越活跃的地区，使用稳态分布均值刻画流域长期水量平衡状态误差越大。
+  \end{enumerate}
+  }
+  
+    \frame{
+  \frametitle{主要结论}
+  \begin{enumerate}%[<+-| alert@+>]
+  \item 基于信息理论的不确定度评估框架可由贝叶斯定理解释.
+  \item 长时间尺度上，水文变量的信息量和信息交流与其气候特性紧密相关.
+  \item 雨热不同期流域随机不确定度量级大于雨热同期流域.
+  \item 雨热不同期流域认知不确定度量级小于雨热同期流域.
+  \item TPWB与Budyko模型在不同气候类型流域提取观测信息能力不同，且在季节尺度上存在不确定度较大的问题.
+  \end{enumerate}
+  }
+ 
+  \frame
+  {
+  \frametitle{不足与展望}
+  \begin{enumerate}%[<+-| alert@+>]
+  \item 频域分析过于简化，没有能够将降水频次与次雨深分离，进而讨论其对土壤水记忆的影响. 
+  \item 高维互信息估算中径向基核函数不一定能够达到最优效果，可以尝试根据既有的模型本构建立适用于水文数据的核函数。核技巧也可以用来进行模型融合.
+  \item 没有利用蒙特卡洛模拟进行不同时间尺度观测模拟信息分析以量化各因素的影响.
+  \end{enumerate}
+  }
+\subsection*{Thanks}
+
+\frame{
+  %\frametitle{}
+  \onslide<1->
+  {
+  \begin{figure}[H]\centering
+  \includegraphics[width=0.9\textwidth]{github.png}
+  \end{figure}
+  \center{https://github.com/morepenn}
+  }
+  \onslide<2->
+  {
+  \center{谢谢！欢迎各位老师同学批评指正}
+  }
+}
+}
+\end{CJK}
+\end{document}
+
+  
+%\frame{
+%  %\frametitle{\subsecname~ frame b}
+%  \begin{itemize}[<+-| alert@+>]
+%  \item
+%  item a
+%  \end{itemize}
+%}
+%\begin{figure}
+%\includegraphics[height=10cm,width=12cm]{a3.eps}
+%\caption{}
+%\label{a3}
+%\end{figure}
+\iffalse  
+ \frame{
+  \frametitle{贝叶斯公式的“熵”形式}
+ \footnotesize{
+\begin{itemize}
+\item[(1)] 贝叶斯公式对数变换:
+\begin{equation*}
+\label{log}
+logP(A|B) =logP(A)+log \frac{P (AB)}{P(A)P(B)} 
+\end{equation*}
+\item[(2)] 两边乘以$-P(A,B)$:
+\begin{equation*}
+\label{element}
+-P(A,B)logP(A|B) =-P(A,B) logP(A)-P(A,B) log \frac{P (AB)}{P(A)P(B)} 
+\end{equation*} 
+\item[(3)] 在概率空间求和或积分:
+\begin{tiny}
+\begin{equation*}
+\label{element1}
+-\sum_{A} \sum_{B} P(A,B)logP(A|B) =-\sum_{A} \sum_{B} P(A,B) logP(A)-\sum_{A} \sum_{B} P(A,B) log \frac{P (AB)}{P(A)P(B)}
+\end{equation*} 
+\end{tiny}
+or
+\begin{tiny}
+\begin{equation*}
+\label{element2}
+-\int\int P(A,B)logP(A|B)dAdB =-\int\int P(A,B)logP(A)dAdB -\int \int P(A,B)log \frac{P (AB)}{P(A)P(B)}dAdB
+\end{equation*}
+\end{tiny}
+\end{itemize}
+
+\begin{equation*}
+\label{bayesuncertainty}
+H(A|B) = H(A)-MI(A,B)
+\end{equation*}
+\begin{center}
+\centering{后验不确定度$=$先验不确定度$-$样本信息}
+\end{center}
+}
+  
+  }
+ 
+  \frame{
+  \frametitle{样本信息\\ ---奥卡姆剃刀与信息处理不等式}
+  
+  
+  }
+\fi  

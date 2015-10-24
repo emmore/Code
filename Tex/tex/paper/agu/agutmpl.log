@@ -1,0 +1,1152 @@
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.8.28)  5 JUL 2015 08:46
+entering extended mode
+**agutmpl.tex
+(G:\library\tex\paper\agu\agutmpl.tex
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
+abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
+croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
+lician, german, german-x-2013-05-26, greek, gujarati, hindi, hungarian, iceland
+ic, indonesian, interlingua, irish, italian, kannada, kurmanji, latin, latvian,
+ lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerman, n
+german-x-2013-05-26, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
+ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
+an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
+ishmax, welsh, loaded.
+(G:\library\tex\paper\agu\AGUTeX.cls
+
+
+ AGUTeX Journal Style, American Geophysical Union 
+ This version is dated Feb 9, 2008
+
+
+
+LaTeX Warning: You have requested document class `AGUTeX',
+               but the document class provides `agutex'.
+
+Document Class: agutex 02/09/2008
+\c@chapter=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@figure=\count83
+\c@table=\count84
+\mathindent=\dimen102
+\abovefigcaptionskip=\skip41
+\abovetabcaptionskip=\skip42
+\abovetableskip=\skip43
+\belowtabcaptionskip=\dimen103
+\landscapebox=\box26
+\c@plate=\count85
+\savecurrtable=\box27
+\abovetabularskip=\skip44
+\belowtabularskip=\skip45
+\timing=\count86
+\hourcount=\count87
+\oldtime=\count88
+\totpages=\count89
+\belowtitleskip=\dimen104
+\abovesubtitleskip=\dimen105
+\belowsubtitleskip=\dimen106
+\aboveauthorskip=\dimen107
+\belowauthorskip=\dimen108
+\thanksnum=\count90
+\dothanks=\count91
+\thankscounter=\count92
+\titlethanksnum=\count93
+\dotitlethanks=\count94
+\titlethankscounter=\count95
+\thanksnum=\count96
+\dothanks=\count97
+\thankscounter=\count98
+\authorwidth=\dimen109
+\authorbaselineskip=\dimen110
+\aboveaffilskip=\dimen111
+\belowaffilskip=\dimen112
+\affilwidth=\dimen113
+\aboveabstractskip=\dimen114
+\belowabstractskip=\dimen115
+\belowabstractnameskip=\dimen116
+\abstractmargin=\dimen117
+\abovereceivedskip=\skip46
+\aboverevisedskip=\skip47
+\aboveacceptedskip=\skip48
+\abovepublishededskip=\skip49
+\barticle=\box28
+\thanksbox=\box29
+\titlethanksbox=\box30
+\c@appendnum=\count99
+\footnum=\count100
+\savefootnum=\count101
+\ackskip=\skip50
+\saveparskip=\dimen118
+\captionskip=\dimen119
+\PushOneColTopFig=\dimen120
+\PushOneColBotFig=\dimen121
+\PushOneColTopTab=\dimen122
+\PushOneColBotTab=\dimen123
+\PushTwoColTopFig=\dimen124
+\PushTwoColBotFig=\dimen125
+\PushTwoColTopTab=\dimen126
+\PushTwoColBotTab=\dimen127
+\intextfloatskip=\skip51
+\c@appfigure=\count102
+\c@apptable=\count103
+\c@appplate=\count104
+\checkforspace=\dimen128
+\savetopinsert=\box31
+\savebotinsert=\box32
+\secondsavetopinsert=\box33
+\secondsavebotinsert=\box34
+\firstcolbox=\box35
+\secondcolbox=\box36
+\thefirstbox=\box37
+\thesecondbox=\box38
+\firstcol=\dimen129
+\secondcol=\dimen130
+\checkheight=\dimen131
+\loopnum=\count105
+\firstcolsavefignum=\count106
+\footnotebox=\box39
+\ColUsed=\dimen132
+\FigSpace=\dimen133
+\testdblbotins=\box40
+\pageloopnum=\count107
+\endcolsavetopinsert=\box41
+\endcolsavebotinsert=\box42
+\testpagesize=\box43
+\savelastskip=\dimen134
+\partialpage=\box44
+\figandtabnumber=\count108
+\figandtabbox=\box45
+\pagefloatnumber=\count109
+\sizeoffloat=\box46
+\bogus=\count110
+\figinsert=\insert233
+\herebox=\box47
+\endfigbox=\box48
+\spanbox=\box49
+\dbltopins=\box50
+\dblbotins=\box51
+\dblbotskip=\skip52
+\dblfigandtabnumber=\count111
+\dblfigandtabbox=\box52
+\dblloopnum=\count112
+\savedblfigandtabnumber=\count113
+\dblspanherebox=\box53
+\bigpagenum=\count114
+\littlepagenum=\count115
+\wholepagenum=\count116
+\@cprtype=\count117
+\@slugcmmntwidth=\dimen135
+\affilnum=\count118
+\totalaffils=\count119
+\figcount=\count120
+\saveequation=\count121
+\c@currlett=\count122
+\notationwidth=\dimen136
+\betweennotationskip=\skip53
+\WidestEntry=\dimen137
+\premulticols=\dimen138
+\page@free=\dimen139
+\partial@page=\box54
+\multicoltolerance=\count123
+\doublecol@number=\count124
+\multicolbaselineskip=\skip54
+\c@collectmore=\count125
+\loopcount=\count126
+\fixdimen=\dimen140
+\c@unbalance=\count127
+\savedimen=\dimen141
+\savehsize=\dimen142
+\mycolumnwidth=\dimen143
+\saveparindent=\dimen144
+\saveparskip=\dimen145
+\abstractwidth=\dimen146
+\currlastnumber=\count128
+\altaffilbox=\box55
+\sectskip=\skip55
+\belowsectionskip=\skip56
+\subsectskip=\skip57
+\belowsubsectskip=\skip58
+\subsubsectskip=\skip59
+\belowsubsubsectskip=\skip60
+\c@subsubsubsection=\count129
+\captionwidth=\dimen147
+\widecaptionwidth=\dimen148
+\landscapecaptionwidth=\dimen149
+\@temptokenb=\toks14
+\beforeendskip=\skip61
+
+
+ WRR class option, October 1, 2001,
+ \documentclass[wrr]{AGUTeX}
+ ``Water Resources Research'', 
+ Published by American Geophysical Union
+
+
+\titlesize=\dimen150
+LaTeX Info: Redefining \cite on input line 7471.
+\c@NAT@ctr=\count130
+) (D:\miktex\tex\latex\graphics\graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(D:\miktex\tex\latex\graphics\keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks15
+)
+(D:\miktex\tex\latex\graphics\graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(D:\miktex\tex\latex\graphics\trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(D:\miktex\tex\latex\00miktex\graphics.cfg
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+(D:\miktex\tex\latex\pdftex-def\pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(D:\miktex\tex\generic\oberdiek\infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(D:\miktex\tex\generic\oberdiek\ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count131
+))
+\Gin@req@height=\dimen151
+\Gin@req@width=\dimen152
+)
+(D:\miktex\tex\latex\tools\tabularx.sty
+Package: tabularx 1999/01/07 v2.07 `tabularx' package (DPC)
+ (D:\miktex\tex\latex\tools\array.sty
+Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen153
+\extrarowheight=\dimen154
+\NC@list=\toks16
+\extratabsurround=\skip62
+\backup@length=\skip63
+)
+\TX@col@width=\dimen155
+\TX@old@table=\dimen156
+\TX@old@col=\dimen157
+\TX@target=\dimen158
+\TX@delta=\dimen159
+\TX@cols=\count132
+\TX@ftn=\toks17
+)
+(D:\miktex\tex\latex\multirow\multirow.sty
+\bigstrutjot=\dimen160
+)
+(D:\miktex\tex\latex\amsmath\amsmath.sty
+Package: amsmath 2013/01/14 v2.14 AMS math features
+\@mathmargin=\skip64
+
+For additional information on amsmath, use the `?' option.
+(D:\miktex\tex\latex\amsmath\amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(D:\miktex\tex\latex\amsmath\amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks18
+\ex@=\dimen161
+))
+(D:\miktex\tex\latex\amsmath\amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen162
+)
+(D:\miktex\tex\latex\amsmath\amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count133
+LaTeX Info: Redefining \frac on input line 210.
+\uproot@=\count134
+\leftroot@=\count135
+LaTeX Info: Redefining \overline on input line 306.
+\classnum@=\count136
+\DOTSCASE@=\count137
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
+\Mathstrutbox@=\box56
+\strutbox@=\box57
+\big@size=\dimen163
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
+\macc@depth=\count138
+\c@MaxMatrixCols=\count139
+\dotsspace@=\muskip10
+\c@parentequation=\count140
+\dspbrk@lvl=\count141
+\tag@help=\toks19
+\row@=\count142
+\column@=\count143
+\maxfields@=\count144
+\andhelp@=\toks20
+\eqnshift@=\dimen164
+\alignsep@=\dimen165
+\tagshift@=\dimen166
+\tagwidth@=\dimen167
+\totwidth@=\dimen168
+\lineht@=\dimen169
+\@envbody=\toks21
+\multlinegap=\skip65
+\multlinetaggap=\skip66
+\mathdisplay@stack=\toks22
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
+)
+(C:\Users\new\AppData\Roaming\MiKTeX\2.9\tex\latex\booktabs\booktabs.sty
+Package: booktabs 2005/04/14 v1.61803 publication quality tables
+\heavyrulewidth=\dimen170
+\lightrulewidth=\dimen171
+\cmidrulewidth=\dimen172
+\belowrulesep=\dimen173
+\belowbottomsep=\dimen174
+\aboverulesep=\dimen175
+\abovetopsep=\dimen176
+\cmidrulesep=\dimen177
+\cmidrulekern=\dimen178
+\defaultaddspace=\dimen179
+\@cmidla=\count145
+\@cmidlb=\count146
+\@aboverulesep=\dimen180
+\@belowrulesep=\dimen181
+\@thisruleclass=\count147
+\@lastruleclass=\count148
+\@thisrulewidth=\dimen182
+)
+(C:\Users\new\AppData\Roaming\MiKTeX\2.9\tex\latex\diagbox\diagbox.sty
+Package: diagbox 2011/11/23 v2.0 Making table heads with diagonal lines
+
+(C:\Users\new\AppData\Roaming\MiKTeX\2.9\tex\latex\pict2e\pict2e.sty
+Package: pict2e 2014/01/12 v0.2z Improved picture commands (HjG,RN,JT)
+
+(D:\miktex\tex\latex\00miktex\pict2e.cfg
+File: pict2e.cfg 2005/12/29 v1.0 MiKTeX 'pict2e' configuration
+)
+Package pict2e Info: Driver file: pdftex.def on input line 119.
+Package pict2e Info: Driver file for pict2e: p2e-pdftex.def on input line 121.
+
+(C:\Users\new\AppData\Roaming\MiKTeX\2.9\tex\latex\pict2e\p2e-pdftex.def
+File: p2e-pdftex.def 2011/04/05 v0.1t Driver-dependant file (RN,HjG,JT)
+)
+\pIIe@GRAPH=\toks23
+\@arclen=\dimen183
+\@arcrad=\dimen184
+\@tempdimd=\dimen185
+)
+(C:\Users\new\AppData\Roaming\MiKTeX\2.9\tex\latex\fp\fp.sty
+Package: fp 1995/04/02
+
+`Fixed Point Package', Version 0.8, April 2, 1995 (C) Michael Mehlich
+(C:\Users\new\AppData\Roaming\MiKTeX\2.9\tex\latex\fp\defpattern.sty
+Package: defpattern 1994/10/12
+\actioncount=\count149
+)
+(C:\Users\new\AppData\Roaming\MiKTeX\2.9\tex\latex\fp\fp-basic.sty
+Package: fp-basic 1996/05/13
+\FP@xs=\count150
+\FP@xia=\count151
+\FP@xib=\count152
+\FP@xfa=\count153
+\FP@xfb=\count154
+\FP@rega=\count155
+\FP@regb=\count156
+\FP@regs=\count157
+\FP@times=\count158
+)
+(C:\Users\new\AppData\Roaming\MiKTeX\2.9\tex\latex\fp\fp-addons.sty
+Package: fp-addons 1995/03/15
+)
+(C:\Users\new\AppData\Roaming\MiKTeX\2.9\tex\latex\fp\fp-snap.sty
+Package: fp-snap 1995/04/05
+)
+(C:\Users\new\AppData\Roaming\MiKTeX\2.9\tex\latex\fp\fp-exp.sty
+Package: fp-exp 1995/04/03
+)
+(C:\Users\new\AppData\Roaming\MiKTeX\2.9\tex\latex\fp\fp-trigo.sty
+Package: fp-trigo 1995/04/14
+)
+(C:\Users\new\AppData\Roaming\MiKTeX\2.9\tex\latex\fp\fp-pas.sty
+Package: fp-pas 1994/08/29
+)
+(C:\Users\new\AppData\Roaming\MiKTeX\2.9\tex\latex\fp\fp-random.sty
+Package: fp-random 1995/02/23
+\FPseed=\count159
+)
+(C:\Users\new\AppData\Roaming\MiKTeX\2.9\tex\latex\fp\fp-eqn.sty
+Package: fp-eqn 1995/04/03
+)
+(C:\Users\new\AppData\Roaming\MiKTeX\2.9\tex\latex\fp\fp-upn.sty
+Package: fp-upn 1996/10/21
+)
+(C:\Users\new\AppData\Roaming\MiKTeX\2.9\tex\latex\fp\fp-eval.sty
+Package: fp-eval 1995/04/03
+))
+\diagbox@boxa=\box58
+\diagbox@boxb=\box59
+\diagbox@boxm=\box60
+\diagbox@wd=\dimen186
+\diagbox@ht=\dimen187
+\diagbox@sepl=\dimen188
+\diagbox@sepr=\dimen189
+)
+(D:\miktex\tex\latex\tools\indentfirst.sty
+Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
+)
+(D:\miktex\tex\latex\float\float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count160
+\float@exts=\toks24
+\float@box=\box61
+\@float@everytoks=\toks25
+\@floatcapt=\box62
+) (G:\library\tex\paper\agu\agutmpl.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+
+(C:\Users\new\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count161
+\scratchdimen=\dimen190
+\scratchbox=\box63
+\nofMPsegments=\count162
+\nofMParguments=\count163
+\everyMPshowfont=\toks26
+\MPscratchCnt=\count164
+\MPscratchDim=\dimen191
+\MPnumerator=\count165
+\makeMPintoPDFobject=\count166
+\everyMPtoPDFconversion=\toks27
+) [1{C:/Users/new/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
+
+]
+Overfull \hbox (18.69403pt too wide) in paragraph at lines 180--180
+\OT1/cmr/bx/n/12 Abstract.   \OT1/cmr/m/n/12 Catch-ment hy-dro-log-i-cal cy-cle
+ takes on dif-fer-ent pat-terns across
+ []
+
+
+Overfull \hbox (19.83096pt too wide) in paragraph at lines 180--180
+\OT1/cmr/m/n/12 of runoff ob-ser-va-tions to rep-re-sent the prior un-cer-taint
+y in de-ter-min-ing catch-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 180--180
+\OT1/cmr/m/n/12 ment's hy-dro-log-i-cal pat-terns. Mu-tual in-for-ma-tion be-tw
+een runoff ob-ser-va-
+ []
+
+
+Overfull \hbox (13.1546pt too wide) in paragraph at lines 180--180
+\OT1/cmr/m/n/12 tion and po-ten-tial evap-o-tran-spi-ra-tion, is em-ployed to d
+e-note the un-cer-tainty
+ []
+
+
+Overfull \hbox (13.01306pt too wide) in paragraph at lines 180--180
+\OT1/cmr/m/n/12 given the mod-els. The dif-fer-ences of these terms, as con-str
+ained by the func-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 180--180
+\OT1/cmr/m/n/12 tional trans-for-ma-tion of Bayes' the-o-rem, con-struct the fr
+ame-work of epis-
+ []
+
+
+Overfull \hbox (17.59906pt too wide) in paragraph at lines 180--180
+\OT1/cmr/m/n/12 ments from MOPEX data set to de-tect the catch-ments' hy-dro-lo
+g-i-cal pat-terns
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 180--180
+\OT1/cmr/m/n/12 re-vealed by data and two ex-isted wa-ter bal-ance mod-els. An 
+im-proved ap-
+ []
+
+
+Overfull \hbox (16.04489pt too wide) in paragraph at lines 180--180
+\OT1/cmr/m/n/12 tion. The es-ti-ma-tions of in-for-ma-tion con-tents and flows 
+of hy-dro-log-i-cal terms
+ []
+
+[2]
+Overfull \hbox (19.17998pt too wide) in paragraph at lines 180--180
+[]\OT1/cmr/bx/n/12 keywords: \OT1/cmr/m/n/12 in-for-ma-tion the-ory, tem-po-ral
+ scale, hy-dro-log-i-cal model, Budyko 
+ []
+
+[3] [4] [5] [6] [7] [8] [9] <Quantization.png, id=39, 722.7pt x 440.39531pt>
+File: Quantization.png Graphic file (type png)
+
+<use Quantization.png>
+Package pdftex.def Info: Quantization.png used on input line 255.
+(pdftex.def)             Requested size: 227.62204pt x 138.7051pt.
+ [10] [11] [12] [13] [14] [15] [16] [17] [18]
+<resultgraph/02143000p_abs.png, id=75, 578.6418pt x 434.1018pt>
+File: resultgraph/02143000p_abs.png Graphic file (type png)
+
+<use resultgraph/02143000p_abs.png>
+Package pdftex.def Info: resultgraph/02143000p_abs.png used on input line 567.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/02143000pep_abs.png, id=76, 578.6418pt x 434.1018pt>
+File: resultgraph/02143000pep_abs.png Graphic file (type png)
+
+<use resultgraph/02143000pep_abs.png>
+Package pdftex.def Info: resultgraph/02143000pep_abs.png used on input line 568
+.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/02143000pepq_abs.png, id=77, 578.6418pt x 434.1018pt>
+File: resultgraph/02143000pepq_abs.png Graphic file (type png)
+
+<use resultgraph/02143000pepq_abs.png>
+Package pdftex.def Info: resultgraph/02143000pepq_abs.png used on input line 56
+9.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/05585000p_abs.png, id=78, 578.6418pt x 434.1018pt>
+File: resultgraph/05585000p_abs.png Graphic file (type png)
+
+<use resultgraph/05585000p_abs.png>
+Package pdftex.def Info: resultgraph/05585000p_abs.png used on input line 572.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/05585000pep_abs.png, id=79, 578.6418pt x 434.1018pt>
+File: resultgraph/05585000pep_abs.png Graphic file (type png)
+
+<use resultgraph/05585000pep_abs.png>
+Package pdftex.def Info: resultgraph/05585000pep_abs.png used on input line 573
+.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/05585000pepq_abs.png, id=80, 578.6418pt x 434.1018pt>
+File: resultgraph/05585000pepq_abs.png Graphic file (type png)
+
+<use resultgraph/05585000pepq_abs.png>
+Package pdftex.def Info: resultgraph/05585000pepq_abs.png used on input line 57
+4.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/11532500p_abs.png, id=81, 578.6418pt x 434.1018pt>
+File: resultgraph/11532500p_abs.png Graphic file (type png)
+
+<use resultgraph/11532500p_abs.png>
+Package pdftex.def Info: resultgraph/11532500p_abs.png used on input line 577.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/11532500pep_abs.png, id=82, 578.6418pt x 434.1018pt>
+File: resultgraph/11532500pep_abs.png Graphic file (type png)
+
+<use resultgraph/11532500pep_abs.png>
+Package pdftex.def Info: resultgraph/11532500pep_abs.png used on input line 578
+.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/11532500pepq_abs.png, id=83, 578.6418pt x 434.1018pt>
+File: resultgraph/11532500pepq_abs.png Graphic file (type png)
+
+<use resultgraph/11532500pepq_abs.png>
+Package pdftex.def Info: resultgraph/11532500pepq_abs.png used on input line 57
+9.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/06810000p_abs.png, id=84, 578.6418pt x 434.1018pt>
+File: resultgraph/06810000p_abs.png Graphic file (type png)
+
+<use resultgraph/06810000p_abs.png>
+Package pdftex.def Info: resultgraph/06810000p_abs.png used on input line 582.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/06810000pep_abs.png, id=85, 578.6418pt x 434.1018pt>
+File: resultgraph/06810000pep_abs.png Graphic file (type png)
+
+<use resultgraph/06810000pep_abs.png>
+Package pdftex.def Info: resultgraph/06810000pep_abs.png used on input line 583
+.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/06810000pepq_abs.png, id=86, 578.6418pt x 434.1018pt>
+File: resultgraph/06810000pepq_abs.png Graphic file (type png)
+
+<use resultgraph/06810000pepq_abs.png>
+Package pdftex.def Info: resultgraph/06810000pepq_abs.png used on input line 58
+4.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+Overfull \hbox (64.68805pt too wide) in paragraph at lines 560--588
+ [][] 
+ []
+
+[19] <resultgraph/02143000p_rela.png, id=91, 578.6418pt x 434.1018pt>
+File: resultgraph/02143000p_rela.png Graphic file (type png)
+
+<use resultgraph/02143000p_rela.png>
+Package pdftex.def Info: resultgraph/02143000p_rela.png used on input line 616.
+
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/02143000pep_rela.png, id=92, 578.6418pt x 434.1018pt>
+File: resultgraph/02143000pep_rela.png Graphic file (type png)
+
+<use resultgraph/02143000pep_rela.png>
+Package pdftex.def Info: resultgraph/02143000pep_rela.png used on input line 61
+7.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/02143000pepq_rela.png, id=93, 578.6418pt x 434.1018pt>
+File: resultgraph/02143000pepq_rela.png Graphic file (type png)
+
+<use resultgraph/02143000pepq_rela.png>
+Package pdftex.def Info: resultgraph/02143000pepq_rela.png used on input line 6
+18.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/05585000p_rela.png, id=94, 578.6418pt x 434.1018pt>
+File: resultgraph/05585000p_rela.png Graphic file (type png)
+
+<use resultgraph/05585000p_rela.png>
+Package pdftex.def Info: resultgraph/05585000p_rela.png used on input line 621.
+
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/05585000pep_rela.png, id=95, 578.6418pt x 434.1018pt>
+File: resultgraph/05585000pep_rela.png Graphic file (type png)
+
+<use resultgraph/05585000pep_rela.png>
+Package pdftex.def Info: resultgraph/05585000pep_rela.png used on input line 62
+2.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/05585000pepq_rela.png, id=96, 578.6418pt x 434.1018pt>
+File: resultgraph/05585000pepq_rela.png Graphic file (type png)
+
+<use resultgraph/05585000pepq_rela.png>
+Package pdftex.def Info: resultgraph/05585000pepq_rela.png used on input line 6
+23.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/11532500p_rela.png, id=97, 578.6418pt x 434.1018pt>
+File: resultgraph/11532500p_rela.png Graphic file (type png)
+
+<use resultgraph/11532500p_rela.png>
+Package pdftex.def Info: resultgraph/11532500p_rela.png used on input line 626.
+
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/11532500pep_rela.png, id=98, 578.6418pt x 434.1018pt>
+File: resultgraph/11532500pep_rela.png Graphic file (type png)
+
+<use resultgraph/11532500pep_rela.png>
+Package pdftex.def Info: resultgraph/11532500pep_rela.png used on input line 62
+7.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/11532500pepq_rela.png, id=99, 578.6418pt x 434.1018pt>
+File: resultgraph/11532500pepq_rela.png Graphic file (type png)
+
+<use resultgraph/11532500pepq_rela.png>
+Package pdftex.def Info: resultgraph/11532500pepq_rela.png used on input line 6
+28.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/06810000p_rela.png, id=100, 578.6418pt x 434.1018pt>
+File: resultgraph/06810000p_rela.png Graphic file (type png)
+
+<use resultgraph/06810000p_rela.png>
+Package pdftex.def Info: resultgraph/06810000p_rela.png used on input line 631.
+
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/06810000pep_rela.png, id=101, 578.6418pt x 434.1018pt>
+File: resultgraph/06810000pep_rela.png Graphic file (type png)
+
+<use resultgraph/06810000pep_rela.png>
+Package pdftex.def Info: resultgraph/06810000pep_rela.png used on input line 63
+2.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/06810000pepq_rela.png, id=102, 578.6418pt x 434.1018pt>
+File: resultgraph/06810000pepq_rela.png Graphic file (type png)
+
+<use resultgraph/06810000pepq_rela.png>
+Package pdftex.def Info: resultgraph/06810000pepq_rela.png used on input line 6
+33.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+Overfull \hbox (64.68805pt too wide) in paragraph at lines 609--637
+ [][] 
+ []
+
+<resultgraph/05585000EU.png, id=103, 578.6418pt x 434.1018pt>
+File: resultgraph/05585000EU.png Graphic file (type png)
+
+<use resultgraph/05585000EU.png>
+Package pdftex.def Info: resultgraph/05585000EU.png used on input line 666.
+(pdftex.def)             Requested size: 273.52177pt x 205.2003pt.
+
+<resultgraph/06810000EU.png, id=104, 578.6418pt x 434.1018pt>
+File: resultgraph/06810000EU.png Graphic file (type png)
+
+<use resultgraph/06810000EU.png>
+Package pdftex.def Info: resultgraph/06810000EU.png used on input line 666.
+(pdftex.def)             Requested size: 273.52177pt x 205.2003pt.
+
+<resultgraph/02143000EU.png, id=105, 578.6418pt x 434.1018pt>
+File: resultgraph/02143000EU.png Graphic file (type png)
+
+<use resultgraph/02143000EU.png>
+Package pdftex.def Info: resultgraph/02143000EU.png used on input line 666.
+(pdftex.def)             Requested size: 273.52177pt x 205.2003pt.
+
+<resultgraph/11532500EU.png, id=106, 578.6418pt x 434.1018pt>
+File: resultgraph/11532500EU.png Graphic file (type png)
+
+<use resultgraph/11532500EU.png>
+Package pdftex.def Info: resultgraph/11532500EU.png used on input line 666.
+(pdftex.def)             Requested size: 273.52177pt x 205.2003pt.
+ [20]
+<resultgraph/e05585000.png, id=110, 578.6418pt x 434.1018pt>
+File: resultgraph/e05585000.png Graphic file (type png)
+
+<use resultgraph/e05585000.png>
+Package pdftex.def Info: resultgraph/e05585000.png used on input line 703.
+(pdftex.def)             Requested size: 273.52177pt x 205.2003pt.
+
+<resultgraph/e06810000.png, id=111, 578.6418pt x 434.1018pt>
+File: resultgraph/e06810000.png Graphic file (type png)
+
+<use resultgraph/e06810000.png>
+Package pdftex.def Info: resultgraph/e06810000.png used on input line 703.
+(pdftex.def)             Requested size: 273.52177pt x 205.2003pt.
+
+<resultgraph/e02143000.png, id=112, 578.6418pt x 434.1018pt>
+File: resultgraph/e02143000.png Graphic file (type png)
+
+<use resultgraph/e02143000.png>
+Package pdftex.def Info: resultgraph/e02143000.png used on input line 703.
+(pdftex.def)             Requested size: 273.52177pt x 205.2003pt.
+
+<resultgraph/e11532500.png, id=113, 578.6418pt x 434.1018pt>
+File: resultgraph/e11532500.png Graphic file (type png)
+
+<use resultgraph/e11532500.png>
+Package pdftex.def Info: resultgraph/e11532500.png used on input line 703.
+(pdftex.def)             Requested size: 273.52177pt x 205.2003pt.
+
+<resultgraph/02143000p.png, id=114, 578.6418pt x 434.1018pt>
+File: resultgraph/02143000p.png Graphic file (type png)
+
+<use resultgraph/02143000p.png>
+Package pdftex.def Info: resultgraph/02143000p.png used on input line 721.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/02143000pep.png, id=115, 578.6418pt x 434.1018pt>
+File: resultgraph/02143000pep.png Graphic file (type png)
+
+<use resultgraph/02143000pep.png>
+Package pdftex.def Info: resultgraph/02143000pep.png used on input line 722.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/02143000pepq.png, id=116, 578.6418pt x 434.1018pt>
+File: resultgraph/02143000pepq.png Graphic file (type png)
+
+<use resultgraph/02143000pepq.png>
+Package pdftex.def Info: resultgraph/02143000pepq.png used on input line 723.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/05585000p.png, id=117, 578.6418pt x 434.1018pt>
+File: resultgraph/05585000p.png Graphic file (type png)
+
+<use resultgraph/05585000p.png>
+Package pdftex.def Info: resultgraph/05585000p.png used on input line 726.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/05585000pep.png, id=118, 578.6418pt x 434.1018pt>
+File: resultgraph/05585000pep.png Graphic file (type png)
+
+<use resultgraph/05585000pep.png>
+Package pdftex.def Info: resultgraph/05585000pep.png used on input line 727.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/05585000pepq.png, id=119, 578.6418pt x 434.1018pt>
+File: resultgraph/05585000pepq.png Graphic file (type png)
+
+<use resultgraph/05585000pepq.png>
+Package pdftex.def Info: resultgraph/05585000pepq.png used on input line 728.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/11532500p.png, id=120, 578.6418pt x 434.1018pt>
+File: resultgraph/11532500p.png Graphic file (type png)
+
+<use resultgraph/11532500p.png>
+Package pdftex.def Info: resultgraph/11532500p.png used on input line 731.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/11532500pep.png, id=121, 578.6418pt x 434.1018pt>
+File: resultgraph/11532500pep.png Graphic file (type png)
+
+<use resultgraph/11532500pep.png>
+Package pdftex.def Info: resultgraph/11532500pep.png used on input line 732.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/11532500pepq.png, id=122, 578.6418pt x 434.1018pt>
+File: resultgraph/11532500pepq.png Graphic file (type png)
+
+<use resultgraph/11532500pepq.png>
+Package pdftex.def Info: resultgraph/11532500pepq.png used on input line 733.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/06810000p.png, id=123, 578.6418pt x 434.1018pt>
+File: resultgraph/06810000p.png Graphic file (type png)
+
+<use resultgraph/06810000p.png>
+Package pdftex.def Info: resultgraph/06810000p.png used on input line 736.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/06810000pep.png, id=124, 578.6418pt x 434.1018pt>
+File: resultgraph/06810000pep.png Graphic file (type png)
+
+<use resultgraph/06810000pep.png>
+Package pdftex.def Info: resultgraph/06810000pep.png used on input line 737.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/06810000pepq.png, id=125, 578.6418pt x 434.1018pt>
+File: resultgraph/06810000pepq.png Graphic file (type png)
+
+<use resultgraph/06810000pepq.png>
+Package pdftex.def Info: resultgraph/06810000pepq.png used on input line 738.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+Overfull \hbox (46.02554pt too wide) in paragraph at lines 716--742
+ [][] 
+ []
+
+[21]
+File: resultgraph/02143000p.png Graphic file (type png)
+ <use resultgraph/02143000p.png>
+Package pdftex.def Info: resultgraph/02143000p.png used on input line 758.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/02143000diff_ep.png, id=129, 578.6418pt x 434.1018pt>
+File: resultgraph/02143000diff_ep.png Graphic file (type png)
+
+<use resultgraph/02143000diff_ep.png>
+Package pdftex.def Info: resultgraph/02143000diff_ep.png used on input line 759
+.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/02143000diff_q.png, id=130, 578.6418pt x 434.1018pt>
+File: resultgraph/02143000diff_q.png Graphic file (type png)
+
+<use resultgraph/02143000diff_q.png>
+Package pdftex.def Info: resultgraph/02143000diff_q.png used on input line 760.
+
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+File: resultgraph/05585000p.png Graphic file (type png)
+ <use resultgraph/05585000p.png>
+Package pdftex.def Info: resultgraph/05585000p.png used on input line 763.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/05585000diff_ep.png, id=131, 578.6418pt x 434.1018pt>
+File: resultgraph/05585000diff_ep.png Graphic file (type png)
+
+<use resultgraph/05585000diff_ep.png>
+Package pdftex.def Info: resultgraph/05585000diff_ep.png used on input line 764
+.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/05585000diff_q.png, id=132, 578.6418pt x 434.1018pt>
+File: resultgraph/05585000diff_q.png Graphic file (type png)
+
+<use resultgraph/05585000diff_q.png>
+Package pdftex.def Info: resultgraph/05585000diff_q.png used on input line 765.
+
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+File: resultgraph/11532500p.png Graphic file (type png)
+ <use resultgraph/11532500p.png>
+Package pdftex.def Info: resultgraph/11532500p.png used on input line 768.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/11532500diff_ep.png, id=133, 578.6418pt x 434.1018pt>
+File: resultgraph/11532500diff_ep.png Graphic file (type png)
+
+<use resultgraph/11532500diff_ep.png>
+Package pdftex.def Info: resultgraph/11532500diff_ep.png used on input line 769
+.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/11532500diff_q.png, id=134, 578.6418pt x 434.1018pt>
+File: resultgraph/11532500diff_q.png Graphic file (type png)
+
+<use resultgraph/11532500diff_q.png>
+Package pdftex.def Info: resultgraph/11532500diff_q.png used on input line 770.
+
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+File: resultgraph/06810000p.png Graphic file (type png)
+ <use resultgraph/06810000p.png>
+Package pdftex.def Info: resultgraph/06810000p.png used on input line 773.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/06810000diff_ep.png, id=135, 578.6418pt x 434.1018pt>
+File: resultgraph/06810000diff_ep.png Graphic file (type png)
+
+<use resultgraph/06810000diff_ep.png>
+Package pdftex.def Info: resultgraph/06810000diff_ep.png used on input line 774
+.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/06810000diff_q.png, id=136, 578.6418pt x 434.1018pt>
+File: resultgraph/06810000diff_q.png Graphic file (type png)
+
+<use resultgraph/06810000diff_q.png>
+Package pdftex.def Info: resultgraph/06810000diff_q.png used on input line 775.
+
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+Overfull \hbox (46.02554pt too wide) in paragraph at lines 752--779
+ [][] 
+ []
+
+<resultgraph/02143000pdiff_former.png, id=137, 578.6418pt x 434.1018pt>
+File: resultgraph/02143000pdiff_former.png Graphic file (type png)
+
+<use resultgraph/02143000pdiff_former.png>
+Package pdftex.def Info: resultgraph/02143000pdiff_former.png used on input lin
+e 797.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/02143000epdiff_former.png, id=138, 578.6418pt x 434.1018pt>
+File: resultgraph/02143000epdiff_former.png Graphic file (type png)
+
+<use resultgraph/02143000epdiff_former.png>
+Package pdftex.def Info: resultgraph/02143000epdiff_former.png used on input li
+ne 798.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/02143000qdiff_former.png, id=139, 578.6418pt x 434.1018pt>
+File: resultgraph/02143000qdiff_former.png Graphic file (type png)
+
+<use resultgraph/02143000qdiff_former.png>
+Package pdftex.def Info: resultgraph/02143000qdiff_former.png used on input lin
+e 799.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/05585000pdiff_former.png, id=140, 578.6418pt x 434.1018pt>
+File: resultgraph/05585000pdiff_former.png Graphic file (type png)
+
+<use resultgraph/05585000pdiff_former.png>
+Package pdftex.def Info: resultgraph/05585000pdiff_former.png used on input lin
+e 802.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/05585000epdiff_former.png, id=141, 578.6418pt x 434.1018pt>
+File: resultgraph/05585000epdiff_former.png Graphic file (type png)
+
+<use resultgraph/05585000epdiff_former.png>
+Package pdftex.def Info: resultgraph/05585000epdiff_former.png used on input li
+ne 803.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/05585000qdiff_former.png, id=142, 578.6418pt x 434.1018pt>
+File: resultgraph/05585000qdiff_former.png Graphic file (type png)
+
+<use resultgraph/05585000qdiff_former.png>
+Package pdftex.def Info: resultgraph/05585000qdiff_former.png used on input lin
+e 804.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/11532500pdiff_former.png, id=143, 578.6418pt x 434.1018pt>
+File: resultgraph/11532500pdiff_former.png Graphic file (type png)
+
+<use resultgraph/11532500pdiff_former.png>
+Package pdftex.def Info: resultgraph/11532500pdiff_former.png used on input lin
+e 807.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/11532500epdiff_former.png, id=144, 578.6418pt x 434.1018pt>
+File: resultgraph/11532500epdiff_former.png Graphic file (type png)
+
+<use resultgraph/11532500epdiff_former.png>
+Package pdftex.def Info: resultgraph/11532500epdiff_former.png used on input li
+ne 808.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/11532500qdiff_former.png, id=145, 578.6418pt x 434.1018pt>
+File: resultgraph/11532500qdiff_former.png Graphic file (type png)
+
+<use resultgraph/11532500qdiff_former.png>
+Package pdftex.def Info: resultgraph/11532500qdiff_former.png used on input lin
+e 809.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/06810000pdiff_former.png, id=146, 578.6418pt x 434.1018pt>
+File: resultgraph/06810000pdiff_former.png Graphic file (type png)
+
+<use resultgraph/06810000pdiff_former.png>
+Package pdftex.def Info: resultgraph/06810000pdiff_former.png used on input lin
+e 812.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/06810000epdiff_former.png, id=147, 578.6418pt x 434.1018pt>
+File: resultgraph/06810000epdiff_former.png Graphic file (type png)
+
+<use resultgraph/06810000epdiff_former.png>
+Package pdftex.def Info: resultgraph/06810000epdiff_former.png used on input li
+ne 813.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+<resultgraph/06810000qdiff_former.png, id=148, 578.6418pt x 434.1018pt>
+File: resultgraph/06810000qdiff_former.png Graphic file (type png)
+
+<use resultgraph/06810000qdiff_former.png>
+Package pdftex.def Info: resultgraph/06810000qdiff_former.png used on input lin
+e 814.
+(pdftex.def)             Requested size: 136.76088pt x 102.59683pt.
+
+Overfull \hbox (46.02554pt too wide) in paragraph at lines 791--818
+ [][] 
+ []
+
+[22] <resultgraph/05585000MI.png, id=152, 578.6418pt x 434.1018pt>
+File: resultgraph/05585000MI.png Graphic file (type png)
+
+<use resultgraph/05585000MI.png>
+Package pdftex.def Info: resultgraph/05585000MI.png used on input line 848.
+(pdftex.def)             Requested size: 273.52177pt x 205.2003pt.
+
+<resultgraph/06810000MI.png, id=153, 578.6418pt x 434.1018pt>
+File: resultgraph/06810000MI.png Graphic file (type png)
+
+<use resultgraph/06810000MI.png>
+Package pdftex.def Info: resultgraph/06810000MI.png used on input line 848.
+(pdftex.def)             Requested size: 273.52177pt x 205.2003pt.
+
+<resultgraph/02143000MI.png, id=154, 578.6418pt x 434.1018pt>
+File: resultgraph/02143000MI.png Graphic file (type png)
+
+<use resultgraph/02143000MI.png>
+Package pdftex.def Info: resultgraph/02143000MI.png used on input line 848.
+(pdftex.def)             Requested size: 273.52177pt x 205.2003pt.
+
+<resultgraph/11532500MI.png, id=155, 578.6418pt x 434.1018pt>
+File: resultgraph/11532500MI.png Graphic file (type png)
+
+<use resultgraph/11532500MI.png>
+Package pdftex.def Info: resultgraph/11532500MI.png used on input line 848.
+(pdftex.def)             Requested size: 273.52177pt x 205.2003pt.
+ [23] [24] [25] [26] [27] [28] [29]
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ” in font cmr12!
+ [30]
+[31] [32] [33] [34 <G:/library/tex/paper/agu/Quantization.png>] [35] [36 <G:/li
+brary/tex/paper/agu/resultgraph/02143000p_abs.png (PNG copy)> <G:/library/tex/p
+aper/agu/resultgraph/02143000pep_abs.png (PNG copy)> <G:/library/tex/paper/agu/
+resultgraph/02143000pepq_abs.png (PNG copy)> <G:/library/tex/paper/agu/resultgr
+aph/05585000p_abs.png (PNG copy)> <G:/library/tex/paper/agu/resultgraph/0558500
+0pep_abs.png (PNG copy)> <G:/library/tex/paper/agu/resultgraph/05585000pepq_abs
+.png (PNG copy)> <G:/library/tex/paper/agu/resultgraph/11532500p_abs.png (PNG c
+opy)> <G:/library/tex/paper/agu/resultgraph/11532500pep_abs.png (PNG copy)> <G:
+/library/tex/paper/agu/resultgraph/11532500pepq_abs.png (PNG copy)> <G:/library
+/tex/paper/agu/resultgraph/06810000p_abs.png (PNG copy)> <G:/library/tex/paper/
+agu/resultgraph/06810000pep_abs.png (PNG copy)> <G:/library/tex/paper/agu/resul
+tgraph/06810000pepq_abs.png (PNG copy)>] [37 <G:/library/tex/paper/agu/resultgr
+aph/02143000p_rela.png (PNG copy)> <G:/library/tex/paper/agu/resultgraph/021430
+00pep_rela.png (PNG copy)> <G:/library/tex/paper/agu/resultgraph/02143000pepq_r
+ela.png (PNG copy)> <G:/library/tex/paper/agu/resultgraph/05585000p_rela.png (P
+NG copy)> <G:/library/tex/paper/agu/resultgraph/05585000pep_rela.png (PNG copy)
+> <G:/library/tex/paper/agu/resultgraph/05585000pepq_rela.png (PNG copy)> <G:/l
+ibrary/tex/paper/agu/resultgraph/11532500p_rela.png (PNG copy)> <G:/library/tex
+/paper/agu/resultgraph/11532500pep_rela.png (PNG copy)> <G:/library/tex/paper/a
+gu/resultgraph/11532500pepq_rela.png (PNG copy)> <G:/library/tex/paper/agu/resu
+ltgraph/06810000p_rela.png (PNG copy)> <G:/library/tex/paper/agu/resultgraph/06
+810000pep_rela.png (PNG copy)> <G:/library/tex/paper/agu/resultgraph/06810000pe
+pq_rela.png (PNG copy)>] [38 <G:/library/tex/paper/agu/resultgraph/05585000EU.p
+ng (PNG copy)> <G:/library/tex/paper/agu/resultgraph/06810000EU.png (PNG copy)>
+ <G:/library/tex/paper/agu/resultgraph/02143000EU.png (PNG copy)> <G:/library/t
+ex/paper/agu/resultgraph/11532500EU.png (PNG copy)>] [39 <G:/library/tex/paper/
+agu/resultgraph/e05585000.png (PNG copy)> <G:/library/tex/paper/agu/resultgraph
+/e06810000.png (PNG copy)> <G:/library/tex/paper/agu/resultgraph/e02143000.png 
+(PNG copy)> <G:/library/tex/paper/agu/resultgraph/e11532500.png (PNG copy)>]
+[40 <G:/library/tex/paper/agu/resultgraph/02143000p.png (PNG copy)> <G:/library
+/tex/paper/agu/resultgraph/02143000pep.png (PNG copy)> <G:/library/tex/paper/ag
+u/resultgraph/02143000pepq.png (PNG copy)> <G:/library/tex/paper/agu/resultgrap
+h/05585000p.png (PNG copy)> <G:/library/tex/paper/agu/resultgraph/05585000pep.p
+ng (PNG copy)> <G:/library/tex/paper/agu/resultgraph/05585000pepq.png (PNG copy
+)> <G:/library/tex/paper/agu/resultgraph/11532500p.png (PNG copy)> <G:/library/
+tex/paper/agu/resultgraph/11532500pep.png (PNG copy)> <G:/library/tex/paper/agu
+/resultgraph/11532500pepq.png (PNG copy)> <G:/library/tex/paper/agu/resultgraph
+/06810000p.png (PNG copy)> <G:/library/tex/paper/agu/resultgraph/06810000pep.pn
+g (PNG copy)> <G:/library/tex/paper/agu/resultgraph/06810000pepq.png (PNG copy)
+>] [41 <G:/library/tex/paper/agu/resultgraph/02143000diff_ep.png (PNG copy)> <G
+:/library/tex/paper/agu/resultgraph/02143000diff_q.png (PNG copy)> <G:/library/
+tex/paper/agu/resultgraph/05585000diff_ep.png (PNG copy)> <G:/library/tex/paper
+/agu/resultgraph/05585000diff_q.png (PNG copy)> <G:/library/tex/paper/agu/resul
+tgraph/11532500diff_ep.png (PNG copy)> <G:/library/tex/paper/agu/resultgraph/11
+532500diff_q.png (PNG copy)> <G:/library/tex/paper/agu/resultgraph/06810000diff
+_ep.png (PNG copy)> <G:/library/tex/paper/agu/resultgraph/06810000diff_q.png (P
+NG copy)>] [42 <G:/library/tex/paper/agu/resultgraph/02143000pdiff_former.png (
+PNG copy)> <G:/library/tex/paper/agu/resultgraph/02143000epdiff_former.png (PNG
+ copy)> <G:/library/tex/paper/agu/resultgraph/02143000qdiff_former.png (PNG cop
+y)> <G:/library/tex/paper/agu/resultgraph/05585000pdiff_former.png (PNG copy)> 
+<G:/library/tex/paper/agu/resultgraph/05585000epdiff_former.png (PNG copy)> <G:
+/library/tex/paper/agu/resultgraph/05585000qdiff_former.png (PNG copy)> <G:/lib
+rary/tex/paper/agu/resultgraph/11532500pdiff_former.png (PNG copy)> <G:/library
+/tex/paper/agu/resultgraph/11532500epdiff_former.png (PNG copy)> <G:/library/te
+x/paper/agu/resultgraph/11532500qdiff_former.png (PNG copy)> <G:/library/tex/pa
+per/agu/resultgraph/06810000pdiff_former.png (PNG copy)> <G:/library/tex/paper/
+agu/resultgraph/06810000epdiff_former.png (PNG copy)> <G:/library/tex/paper/agu
+/resultgraph/06810000qdiff_former.png (PNG copy)>] [43 <G:/library/tex/paper/ag
+u/resultgraph/05585000MI.png (PNG copy)> <G:/library/tex/paper/agu/resultgraph/
+06810000MI.png (PNG copy)> <G:/library/tex/paper/agu/resultgraph/02143000MI.png
+ (PNG copy)> <G:/library/tex/paper/agu/resultgraph/11532500MI.png (PNG copy)>]
+(G:\library\tex\paper\agu\agutmpl.aux) ) 
+Here is how much of TeX's memory you used:
+ 4121 strings out of 493921
+ 56488 string characters out of 3154506
+ 168819 words of memory out of 3000000
+ 7290 multiletter control sequences out of 15000+200000
+ 15591 words of font info for 55 fonts, out of 3000000 for 9000
+ 841 hyphenation exceptions out of 8191
+ 32i,14n,25p,1848b,543s stack positions out of 5000i,500n,10000p,200000b,50000s
+<D:/miktex/fonts/type1/public/amsfonts/
+cm/cmbx12.pfb><D:/miktex/fonts/type1/public/amsfonts/cm/cmbx9.pfb><D:/miktex/fo
+nts/type1/public/amsfonts/cm/cmex10.pfb><D:/miktex/fonts/type1/public/amsfonts/
+cmextra/cmex9.pfb><D:/miktex/fonts/type1/public/amsfonts/cm/cmmi12.pfb><D:/mikt
+ex/fonts/type1/public/amsfonts/cm/cmmi5.pfb><D:/miktex/fonts/type1/public/amsfo
+nts/cm/cmmi6.pfb><D:/miktex/fonts/type1/public/amsfonts/cm/cmmi7.pfb><D:/miktex
+/fonts/type1/public/amsfonts/cm/cmmi8.pfb><D:/miktex/fonts/type1/public/amsfont
+s/cm/cmmi9.pfb><D:/miktex/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/miktex/f
+onts/type1/public/amsfonts/cm/cmr12.pfb><D:/miktex/fonts/type1/public/amsfonts/
+cm/cmr5.pfb><D:/miktex/fonts/type1/public/amsfonts/cm/cmr7.pfb><D:/miktex/fonts
+/type1/public/amsfonts/cm/cmr8.pfb><D:/miktex/fonts/type1/public/amsfonts/cm/cm
+r9.pfb><D:/miktex/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/miktex/fonts/ty
+pe1/public/amsfonts/cm/cmsy8.pfb><D:/miktex/fonts/type1/public/amsfonts/cm/cmsy
+9.pfb><D:/miktex/fonts/type1/public/amsfonts/cm/cmti12.pfb><D:/miktex/fonts/typ
+e1/public/amsfonts/cm/cmtt12.pfb>
+Output written on agutmpl.pdf (43 pages, 3845376 bytes).
+PDF statistics:
+ 295 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 346 words of extra memory for PDF output out of 10000 (max. 10000000)
+

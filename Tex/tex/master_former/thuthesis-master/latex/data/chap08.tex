@@ -1,0 +1,70 @@
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
+
+\chapter{总结与展望}
+\label{cha:intro}
+\section{主要结论}
+流域日尺度上的入渗产流与蒸散发过程在时间升尺度后表现出水热耦合关系。随机土壤水模型提供了理解该过程及其不确定度的合理方法。本文梳理归纳了原有点尺度随机土壤水模型，针对其无法处理复杂下垫面的结构缺陷，利用流域蓄水容量曲线推导了面尺度上的土壤含水量随机微分方程。该推导过程同样适用于将其它机理驱动的概念性水文模型转化为概率形式，继而研究其随机动力性质。
+
+土壤含水量随机微分方程稳态解均值可以用来刻画流域中长期水文形态，然而其具体的适用时间尺度和精度却有待研究。本文从时域和频域对这一问题进行了模拟和分析。结果表明：给定不同的气象、下垫面条件，当$t$足够大时，土壤含水量分布均趋于稳定。稳定分布的形态由各输入变量决定，在其它条件不变的前提下，潜在蒸散发越小，降水频次越大，次雨深越大，下垫面越均匀，土壤平均蓄水量越高；到达稳定分布的速率由相对潜在蒸散发量决定，关注的时间尺度较小时，土壤蓄水量在时域上表现为一阶自回归过程，在频域上表现为红噪声；关注的时间尺度较大时，土壤蓄水量在时域上表现为平稳过程，在频域上表现为白噪声。稳态方程可以刻画流域长时序的水量平衡状态，其控制因子为水量供给条件$\frac{1}{\alpha}$和能量供给条件$\frac{EP_r}{\lambda}$；二者同时通过控制稳态分布方差决定了以稳态方程刻画长时序水量平衡状态的精度：当水量或能量占主要控制地位时，稳态分布方差较小，均值更能精确地刻画流域长期水量平衡状态；当两者大小相当时，稳态分布方差较大，且能量水量供给越大，方差越大，这说明，在水文循环越活跃的地区，使用稳态分布均值刻画流域长期水量平衡状态误差越大。
+
+利用上述模型进行大时间尺度水文模拟时，不可避免地面临数据不准确、数据不充分以及不能有效利用观测数据的问题，需要构建合理可行的不确定度评价准则。本文从贝叶斯统计学角度分析基于信息熵和互信息的水文观测模拟评估体系的意义。在该体系下，实测径流离散化的信息熵被用来表征水文形态的先验不确定度，模型输入数据观测值与实测径流的互信息被用来表征观测对先验不确定度的减少量。模拟模拟值与实测径流的互信息被用来表征模型对观测数据的利用程度。各项通过贝叶斯定理的泛函变形和数据处理不等式联系，构成了理论完善的观测模拟评估体系。
+
+水文过程控制因素的复杂性决定了在互信息估算中必须处理维数灾的问题。 本文利用基于核函数的支持向量机将数据隐式地映射到其特征空间中以估算高维点之间的距离，以该距离为基础，通过$k$近邻法估算高维互信息。
+
+
+最后，利用MOPEX数据集，通过将实测日水文数据按不同时间尺度聚合，估算不同尺度下水文观测模拟不确定度及其控制因素，估算结果量化了各水文变量在不同时间尺度上的信息量与信息流动，进一步分析了不同时间尺度下各水文变量及前期水文过程对当前水文响应的信息贡献。估算结果显示了在长时间尺度上，水文变量的信息量和信息交流与其气候特性紧密相关。应用的两个模型在不同气候类型流域提取观测信息的能力不同，并且在季节尺度上存在不确定度较大的问题。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\iffalse
+本文主要进行了如下两方面工作：一方面，拓展点尺度随机土壤水模型结构，分析随机土壤水方程在不同时间尺度下的应用条件与效果，具体包括：在总结归纳原有点尺度随机土壤水模型的基础上，开发空间升尺度的土壤水随机微分方程（第二章）；根据方程稳态解分析土壤蓄水容量不均匀性对多年平均尺度下流域各水文变量的弹性影响因子；利用蒙特卡洛模拟分析土壤水方程达到稳态条件的时间尺度，通过对土壤水随机方程进行傅里叶分析，讨论影响流域土壤水记忆的因素（第三章）。
+
+另一方面，从贝叶斯公式出发重建基于信息熵和互信息的水文观测模拟评估体系。针对连续信息熵无法表示先验不确定度的问题，提出预设精度，以离散化信息熵表示先验不确定度的方法。针对高维互信息维数灾与间接计算误差问题，提出结合$k$近邻和支持向量机的高维水文变量互信息估算方法。最后，使用随机模拟和实测数据，利用建立的水文模拟不确定度评估体系，分析变化时间尺度下水文过程的观测与模型精度，对理论推测做出验证。
+
+
+
+This research explores the hydrological patterns revealed by observations and models at temporal scales from 10 days to a year with an information theoretical approach. We apply the quantized differential entropy of runoff observations to represent the prior uncertainty in figuring out the catchment's hydrological compositions. Mutual information between hydrometeorological observations and runoff is applied to denote the best performance we could potentially reach given the existed observation system. The non-linear support vector regression processed data is taken as sufficient statistic in depicting  high dimensional mutual information.
+The performances of two existed water balance models are represented by mutual information between runoff observations and their simulations. All the estimations are constrained by the  data-processing inequality. 
+
+The estimations revealed the existence and flows of information in catchment across temporal scales, which could be used to explain hydrological patterns in the framework of aleatory and epistemic uncertainty. Results showed that these patterns are related to the seasonality type of the catchments, which calls for more case studies to figure out the mechanism under the phenomenon. It also shows that information distilled by the monthly and annual water balance models applied here does not correspond to the information provided by input observations around temporal scale from two months to half a year. This calls for a better understanding of seasonal hydrological mechanism. 
+
+
+\fi
+
+
+
+
+
+
+\section{不足与展望}
+\begin{enumerate}
+\item[(1)]对土壤蓄水容量随机序列的频域分析过于简化。没有能够将降水频次与次雨深分离进而探讨其对流域土壤水记忆长度的影响。
+\item[(2)]对流域水文观测模拟信息分析仅应用了时域样本，没有进行频域上的分析。
+\item[(3)]高维互信息估算中使用的径向基核函数不一定能够达到最好效果，可以尝试根据既有的模型本构建立适用于水文数据的核函数。核函数技巧也可以用来进行模型融合。
+\end{enumerate}
+
+\iffalse
+”当你沉浸在自己的理论宇宙中太久，你会察觉不到他人对于你的理论的困惑，因为你先入为主地假设了所有人都明白很多基础知识“\ref{}牛津大学数学教授金明迥。
+\fi
+
+ 
+
+ 

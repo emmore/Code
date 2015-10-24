@@ -1,0 +1,17 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: elsarticle-template.aux
+The style file: elsarticle-num.bst
+Database file #1: mybibfile.bib
+You're missing a field name---line 428 of file mybibfile.bib
+ : @article{P,
+ :            2000,a
+I'm skipping whatever remains of this entry
+Name 4 in "A. M. J. Gerrits and H. H. G. Savenije and E. J. M. Veling and et al ," has a comma at the end for entry gerrits2009analytical
+while executing---line 1495 of file elsarticle-num.bst
+Name 4 in "A. M. J. Gerrits and H. H. G. Savenije and E. J. M. Veling and et al ," has a comma at the end for entry gerrits2009analytical
+while executing---line 1495 of file elsarticle-num.bst
+Warning--empty journal in abcd
+Name 4 in "Y. B. Dibike and S. Velickov and D. Solomatine and et al ," has a comma at the end for entry dibike2001model
+while executing---line 1495 of file elsarticle-num.bst
+Name 4 in "Y. B. Dibike and S. Velickov and D. Solomatine and et al ," has a comma at the end for entry dibike2001model
+while executing---line 1495 of file elsarticle-num.bst
+(There were 5 error messages)

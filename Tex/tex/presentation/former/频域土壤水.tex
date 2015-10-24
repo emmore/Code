@@ -1,0 +1,197 @@
+\documentclass{beamer}
+\usetheme{Warsaw}
+\usepackage{CJKutf8}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{authblk} 
+\usepackage{graphicx} 
+\usepackage{diagbox}
+\usepackage{indentfirst}
+\usepackage{float}
+\usepackage{xcolor}
+\begin{document}
+\begin{CJK}{UTF8}{gkai}
+\title{土壤水含量频域分析}
+\date{\today}
+\author{潘宝祥}
+\maketitle
+
+\begin{frame}
+\frametitle{Outline}
+\begin{itemize}
+\item 背景知识
+\item 理论推导
+\item 理论解释与应用
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{背景知识}
+\begin{itemize}
+\item 时域与频域
+\item 噪声以及噪声的颜色
+\item 降水与土壤水的频域表示
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{时域与频域}
+一个信号可以在时域或频域中表示. 虽然两种表示方式等价，但表达式复杂程度不同.
+\begin{figure}[H]
+\centering
+\includegraphics[width=8cm]{fourier.png}
+\end{figure}
+%\begin{equation*}
+%F(\omega)=\int_{-\infty}^{\infty}f(t)e^{-i\omega t}dt
+%\end{equation*}
+%\begin{equation*}
+%f(t)=\frac{1}{2\pi}\int_{-\infty}^{\infty}F(\omega)e^{i\omega t}d\omega
+%wai\end{equation*}
+ 
+\end{frame}
+
+\begin{frame}
+\frametitle{噪声}
+噪声是一个随机过程，而随机过程有其频域表示函数，其形状则决定了噪声的``颜色''（性质）.
+
+信号的频率特性：
+\begin{itemize}
+\item \textcolor{red}{频谱（Spectral）}：时域信号在频域下的表示方式. 以振幅及相位为因变量，频率为自变量的函数，包含振幅频谱与相位频谱.
+\item \textcolor{red}{频谱密度（Spectral Density）}： 一个能量信号$f(t)$的频域表达式$F(\omega)$.
+\item \textcolor{red}{功率/能量谱密度（Power Spectral Density）}：$\Phi(\omega)=\frac{F(\omega)F^*(\omega)}{2\pi}$
+\end{itemize}
+噪声根据其功率谱密度函数决定``颜色''.
+\end{frame}
+
+\begin{frame}
+\frametitle{噪声的颜色}
+噪声功率谱密度为频率的幂律函数：
+\begin{equation*}
+\Phi(\omega)=\frac{F(\omega)F^*(\omega)}{2\pi} \propto \frac{1}{w^\beta}
+\end{equation*}
+\begin{itemize}
+\item \textcolor{red}{白噪声} $\beta=0$
+\item 粉噪声 $\beta=1$
+\item \textcolor{red}{红噪声} $\beta=2$
+\item 蓝噪声 $\beta=-1$
+\item 紫噪声 $\beta=-2$
+\end{itemize}
+ 
+\end{frame}
+
+\begin{frame}
+\frametitle{土壤水含量s的时域频域表示}
+\begin{figure}[H]
+\centering
+\includegraphics[width=5cm]{laurenz.png}
+\caption{土壤水含量s时域频域洛伦兹图（Gabriel et al.,2007）}
+\end{figure} 
+s的时域表示分布均衡，频域表示分布不均衡. 在频域上需要很少的系数来表示该信号.
+\end{frame}
+
+\begin{frame}
+\frametitle{土壤水含量s频域特征提取}
+提取能量最大的0.38\% 傅里叶系数，令剩余系数为0，重建信号精度如下：
+\begin{figure}[H]
+\centering
+\includegraphics[width=5cm]{reconstruct.png}
+\caption{频域特征提取土壤水信号（Gabriel et al.,2007）}
+\end{figure} 
+回归斜率 $=0.97$, 截距 $= 0.024$, 相关系数你 $r^2
+=0.96$
+
+\end{frame}
+
+\begin{frame}
+\frametitle{降水与土壤水的频域表示}
+\begin{figure}[H]
+\centering
+\includegraphics[width=8cm]{noise.png}
+\end{figure} 
+\end{frame} 
+
+
+
+\begin{frame}
+\frametitle{理论推导}
+\begin{equation*}
+\frac{ds(t)}{dt}+\frac{L(t)}{\eta R_L}=\frac{p(t)}{\eta R_L}
+\end{equation*} 
+两边同时乘以$e^{-ift}$，由$-\infty$到$\infty$对$t$ 积分，得：
+\begin{equation*}
+\int_{-\infty}^{\infty}e^{-ift}ds(t)+\frac{\int_{-\infty}^{\infty}e^{-ift}L(t)dt}{\eta R_L}=\frac{\int_{-\infty}^{\infty}e^{-ift}p(t)dt}{\eta R_L}
+\end{equation*} 
+\end{frame}
+
+\begin{frame}
+右边等于
+\begin{equation*}
+\frac{P(f)}{\eta R_L} 
+\end{equation*}
+左边第一项等于：
+\begin{equation*}
+\begin{split}
+&s(t)e^{-ift}|_{-\infty}^{\infty}+if\int_{-\infty}^{\infty}e^{-ift}s(t)dt\\=&s(t)e^{-ift}|_{-\infty}^{\infty}+ifS(f)
+\end{split}
+\end{equation*}
+假定为平稳过程，则$s(t)e^{-ift}|_{-\infty}^{\infty}=0$（Priestley，1981）.
+\begin{equation*}
+\begin{split}
+&s(t)e^{-ift}|_{-\infty}^{\infty}+if\int_{-\infty}^{\infty}e^{-ift}s(t)dt\\=&s(t)e^{-ift}|_{-\infty}^{\infty}+ifS(f)\\=&ifS(f)
+\end{split}
+\end{equation*}
+\end{frame}
+
+\begin{frame}
+假设：
+\begin{equation*}
+L(t)=ET_{max}\times  s(t)
+\end{equation*}
+则右边第二项等于：
+\begin{equation*}
+\frac{ET_{max}}{\eta R_L} S(f)
+\end{equation*}
+将上述三式带入原方程，移项，得：
+\begin{equation*}
+S(f)=\frac{P(f)}{if\eta R_L+ET_{max}}
+\end{equation*}
+\end{frame}
+
+\begin{frame}
+\frametitle{土壤水含量功率谱密度}
+由
+\begin{equation*}
+E_s (f)=|S(f)|^2
+\end{equation*}
+得：
+\begin{equation*}
+E_s (f)=\frac{|P(f)|^2}{\beta ^2+f^2}
+\end{equation*}
+其中
+\begin{equation*}
+\beta=\frac{ET_{max}}{\eta R_L}
+\end{equation*}
+\end{frame}
+
+\begin{frame}
+\frametitle{水文解释}
+$f/\beta$决定了土壤水含量为白噪音或红噪音.
+f相对$\beta$较小时，s为白噪音；
+f相对$\beta$较大时，s为红噪音. 
+\begin{figure}[H]
+\centering
+\includegraphics[width=4cm]{experiment.png}
+\end{figure}
+对某一流域，若$\beta$较小，在较小的模拟时间尺度上($f$较小)，土壤水含量信号s即转化为红噪音，相邻尺度间相关关系显著，土壤水记忆较长，必须采用迭代结构的模型求解；相反，若$\beta$较大，模拟时间尺度$f$必须非常大，s才会转化为红噪音，因此，该类地区土壤水记忆较短，估计Budyko模型会得到更好的应用.
+\end{frame}
+
+
+ 
+
+\end{CJK}
+
+\end{document}

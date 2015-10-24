@@ -1,0 +1,269 @@
+\documentclass{beamer}
+\usepackage{latexsym,amssymb,amsmath,amsbsy,amsopn,amstext,xcolor,multicol}
+\usepackage{graphicx,wrapfig,fancybox}
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
+\usepackage{CJKutf8}
+
+\usepackage{beamerthemeTsinghua}
+
+\title{基于随机土壤水模型的流域水文尺度分析}
+\subtitle{硕士论文答辩}
+\author{答辩人：潘宝祥\\指导老师：丛振涛}
+\institute{水文与水资源研究所\\ \\清华大学}
+\date{\small{2015年6月X日}}
+\logo{\includegraphics[height=1.2cm]{logo.png}\vspace{220pt}}
+
+\begin{document}
+\begin{CJK}{UTF8}{gkai}
+\frame{
+\titlepage
+}
+
+\newcommand{\nologo}{\setbeamertemplate{logo}{}}
+{\nologo
+  \section*{目录}
+  \frame {
+    \frametitle{\secname}
+    \tableofcontents
+  }
+
+  \AtBeginSubsection[] {
+  \frame<handout:0> {
+  \frametitle{Outline}
+  \tableofcontents[current,currentsubsection]
+    }
+  }
+
+  \section{研究背景与现状}
+  \subsection{研究背景}
+  \frame{
+  \frametitle{“自上而下”与“自下而下”水文模拟}
+  }
+  \frame{
+  \frametitle{概念性模型能够抓住多少信息}
+  }
+  \subsection{研究现状}
+  \frame{
+  \frametitle{“自上而下”与“自下而下”水文模拟}
+  }
+  \frame{
+  \frametitle{概念性模型能够抓住多少信息}
+  }
+  \subsection{技术路线}
+  \frame{
+  \frametitle{“自上而下”与“自下而下”水文模拟}
+  }
+  \frame{
+  \frametitle{概念性模型能够抓住多少信息}
+  }
+  
+  \section{随机土壤水模型} 
+  \subsection{基本方程}
+
+  \frame{
+  %\frametitle{\subsecname~}
+  Itemize item, just items:
+    \begin{itemize}[<+-| alert@+>]
+    \item
+   item a
+    \item 
+   item b
+    \item
+   item c
+    \item
+   item d
+    \end{itemize}
+  }
+
+  \subsection{空间升尺度}
+  \frame{
+    %\frametitle{\subsecname~Goods}
+	The enumarate item:
+    \begin{enumerate}[<+-| alert@+>]
+    \item
+	 Item start with number
+    \item
+     This is item 2
+  \end{enumerate}
+  }
+  
+  \subsection{时间升尺度}
+  \frame{
+    %\frametitle{\subsecname~Goods}
+	The enumarate item:
+    \begin{enumerate}[<+-| alert@+>]
+    \item
+	 Item start with number
+    \item
+     This is item 2
+  \end{enumerate}
+  }
+  
+  
+  
+  \section{基于信息理论的水文模拟不确定度评价体系}
+  \subsection{理论分析}
+    \frame{
+  \frametitle{信息是什么}
+  \begin{itemize}
+  \item 信息即为不确定度.
+  \item 不确定度是概率的减函数.
+  \item 独立事件信息量可加.
+  \end{itemize}
+  因此，对随机变量$X$，${X=a}$ 事件的信息量为$-logP(X=a)$.
+   \begin{equation*}
+   Information=Bit+Context
+   \end{equation*}
+  }  
+  
+  
+  
+  
+  
+  
+  \frame{
+  \frametitle{先验不确定度与后验不确定度}
+  \begin{figure*}
+\centering
+\includegraphics[width=11cm]{theory.png}
+\caption{}
+\end{figure*}
+  }  
+  
+ \frame{
+  \frametitle{贝叶斯公式的“熵”形式}
+ \footnotesize{
+\begin{itemize}
+\item[(1)] 贝叶斯公式对数变换:
+\begin{equation*}
+\label{log}
+logP(A|B) =logP(A)+log \frac{P (AB)}{P(A)P(B)} 
+\end{equation*}
+\item[(2)] 两边乘以$-P(A,B)$:
+\begin{equation*}
+\label{element}
+-P(A,B)logP(A|B) =-P(A,B) logP(A)-P(A,B) log \frac{P (AB)}{P(A)P(B)} 
+\end{equation*} 
+\item[(3)] 在概率空间求和或积分:
+\begin{tiny}
+\begin{equation*}
+\label{element1}
+-\sum_{A} \sum_{B} P(A,B)logP(A|B) =-\sum_{A} \sum_{B} P(A,B) logP(A)-\sum_{A} \sum_{B} P(A,B) log \frac{P (AB)}{P(A)P(B)}
+\end{equation*} 
+\end{tiny}
+or
+\begin{tiny}
+\begin{equation*}
+\label{element2}
+-\int\int P(A,B)logP(A|B)dAdB =-\int\int P(A,B)logP(A)dAdB -\int \int P(A,B)log \frac{P (AB)}{P(A)P(B)}dAdB
+\end{equation*}
+\end{tiny}
+\end{itemize}
+
+\begin{equation*}
+\label{bayesuncertainty}
+H(A|B) = H(A)-MI(A,B)
+\end{equation*}
+\begin{center}
+\centering{后验不确定度$=$先验不确定度$-$样本信息}
+\end{center}
+}
+  
+  }
+  
+  \frame{
+  \frametitle{样本信息\\ ---奥卡姆剃刀与信息处理不等式}
+  
+  
+  }
+  
+  \frame{
+  \frametitle{随机不确定度\&认知不确定度}
+  
+  
+  }
+  
+  
+  \subsection{技术分析}
+  \frame{
+  \frametitle{分辨率}
+  
+  
+  }
+  \frame{
+  \frametitle{高维互信息估算}
+  
+  
+  }
+  \frame{
+  \frametitle{高维互信息估算}
+  
+  
+  }
+
+  \subsection{实例分析}
+
+
+  \frame{
+  \frametitle{\subsecname}
+  Description item:
+  \begin{description}%[<+-| alert@+>]
+  \item[description] Item starts with description.
+  \item[Fermion] This is item 2.
+  \end{description}
+  }
+  \section{总结与展望}
+  \frame{
+  \frametitle{\secname}
+  \onslide<1,2,3>
+  {
+  论文主要工作
+  \begin{description}%[<+-| alert@+>]
+  \item[description] Item starts with description.
+  \item[Fermion] This is item 2.
+  \end{description}
+  }
+  \onslide<2,3>
+  {
+   缺点与不足
+  \begin{description}%[<+-| alert@+>]
+  \item[description] Item starts with description.
+  \item[Fermion] This is item 2.
+  \end{description}
+  }
+   \onslide<3>
+  {
+   展望
+  \begin{description}%[<+-| alert@+>]
+  \item[description] Item starts with description.
+  \item[Fermion] This is item 2.
+  \end{description}
+  }
+  }
+\subsection*{Thanks}
+
+\frame{
+  %\frametitle{}
+  \begin{figure}[H]\centering
+  \includegraphics[width=0.2\textwidth]{goat.jpg}
+  \end{figure}
+  \center{https://github.com/morepenn}
+  \center{谢谢！欢迎各位老师同学批评指正}
+}
+}
+\end{CJK}
+\end{document}
+
+  
+%\frame{
+%  %\frametitle{\subsecname~ frame b}
+%  \begin{itemize}[<+-| alert@+>]
+%  \item
+%  item a
+%  \end{itemize}
+%}
+%\begin{figure}
+%\includegraphics[height=10cm,width=12cm]{a3.eps}
+%\caption{}
+%\label{a3}
+%\end{figure}

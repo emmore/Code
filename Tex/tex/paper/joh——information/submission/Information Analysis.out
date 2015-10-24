@@ -1,0 +1,20 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Methodology}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Bits in Hydrological Simulation Context}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Quantization Schemes for Runoff Differential Entropy}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{High Dimensional Mutual Information Estimator}{section.2}% 5
+\BOOKMARK [1][-]{section.3}{Data}{}% 6
+\BOOKMARK [1][-]{section.4}{Results}{}% 7
+\BOOKMARK [2][-]{subsection.4.1}{Aleatory Uncertainty Across Temporal Scales}{section.4}% 8
+\BOOKMARK [3][-]{subsubsection.4.1.1}{Aleatory Uncertainty of Absolute Constant Resolution}{subsection.4.1}% 9
+\BOOKMARK [3][-]{subsubsection.4.1.2}{Aleatory Uncertainty of Relative Constant Resolution}{subsection.4.1}% 10
+\BOOKMARK [2][-]{subsection.4.2}{Epistemic Uncertainty Across Temporal Scales}{section.4}% 11
+\BOOKMARK [1][-]{section.5}{Discussion}{}% 12
+\BOOKMARK [2][-]{subsection.5.1}{Prior Uncertainty\204Runoff Entropy}{section.5}% 13
+\BOOKMARK [2][-]{subsection.5.2}{Mutual Information Between Runoff Observation and Input Data}{section.5}% 14
+\BOOKMARK [3][-]{subsubsection.5.2.1}{Mutual Information with Different Input Terms}{subsection.5.2}% 15
+\BOOKMARK [3][-]{subsubsection.5.2.2}{Mutual Information with Different Lagged Input Steps}{subsection.5.2}% 16
+\BOOKMARK [2][-]{subsection.5.3}{Mutual Information Between Runoff Observation and Simulation}{section.5}% 17
+\BOOKMARK [2][-]{subsection.5.4}{Uncertainty Across Temporal Scales}{section.5}% 18
+\BOOKMARK [1][-]{section.6}{Conclusion}{}% 19
+\BOOKMARK [1][-]{section.7}{Acknowledgements}{}% 20

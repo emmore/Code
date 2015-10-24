@@ -1,0 +1,2328 @@
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.8.28)  4 MAY 2015 14:30
+entering extended mode
+**information_analysis_of_hydrological_simulation.tex
+(G:\library\tex\paper\information_analysis_of_hydrological_simulation.tex
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
+abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
+croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
+lician, german, german-x-2013-05-26, greek, gujarati, hindi, hungarian, iceland
+ic, indonesian, interlingua, irish, italian, kannada, kurmanji, latin, latvian,
+ lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerman, n
+german-x-2013-05-26, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
+ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
+an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
+ishmax, welsh, loaded.
+(D:\miktex\tex\latex\base\article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(D:\miktex\tex\latex\base\size11.clo
+File: size11.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+) (D:\miktex\tex\latex\amsmath\amsmath.sty
+Package: amsmath 2013/01/14 v2.14 AMS math features
+\@mathmargin=\skip43
+For additional information on amsmath, use the `?' option.
+(D:\miktex\tex\latex\amsmath\amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(D:\miktex\tex\latex\amsmath\amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks14
+\ex@=\dimen103
+))
+(D:\miktex\tex\latex\amsmath\amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen104
+)
+(D:\miktex\tex\latex\amsmath\amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count87
+LaTeX Info: Redefining \frac on input line 210.
+\uproot@=\count88
+\leftroot@=\count89
+LaTeX Info: Redefining \overline on input line 306.
+\classnum@=\count90
+\DOTSCASE@=\count91
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen105
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
+\macc@depth=\count92
+\c@MaxMatrixCols=\count93
+\dotsspace@=\muskip10
+\c@parentequation=\count94
+\dspbrk@lvl=\count95
+\tag@help=\toks15
+\row@=\count96
+\column@=\count97
+\maxfields@=\count98
+\andhelp@=\toks16
+\eqnshift@=\dimen106
+\alignsep@=\dimen107
+\tagshift@=\dimen108
+\tagwidth@=\dimen109
+\totwidth@=\dimen110
+\lineht@=\dimen111
+\@envbody=\toks17
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks18
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
+)
+(C:\Users\new\AppData\Roaming\MiKTeX\2.9\tex\latex\booktabs\booktabs.sty
+Package: booktabs 2005/04/14 v1.61803 publication quality tables
+\heavyrulewidth=\dimen112
+\lightrulewidth=\dimen113
+\cmidrulewidth=\dimen114
+\belowrulesep=\dimen115
+\belowbottomsep=\dimen116
+\aboverulesep=\dimen117
+\abovetopsep=\dimen118
+\cmidrulesep=\dimen119
+\cmidrulekern=\dimen120
+\defaultaddspace=\dimen121
+\@cmidla=\count99
+\@cmidlb=\count100
+\@aboverulesep=\dimen122
+\@belowrulesep=\dimen123
+\@thisruleclass=\count101
+\@lastruleclass=\count102
+\@thisrulewidth=\dimen124
+)
+(C:\Users\new\AppData\Roaming\MiKTeX\2.9\tex\latex\diagbox\diagbox.sty
+Package: diagbox 2011/11/23 v2.0 Making table heads with diagonal lines
+
+(D:\miktex\tex\latex\graphics\keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks19
+)
+(C:\Users\new\AppData\Roaming\MiKTeX\2.9\tex\latex\pict2e\pict2e.sty
+Package: pict2e 2014/01/12 v0.2z Improved picture commands (HjG,RN,JT)
+
+(D:\miktex\tex\latex\00miktex\pict2e.cfg
+File: pict2e.cfg 2005/12/29 v1.0 MiKTeX 'pict2e' configuration
+)
+Package pict2e Info: Driver file: pdftex.def on input line 119.
+
+(D:\miktex\tex\latex\pdftex-def\pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(D:\miktex\tex\generic\oberdiek\infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(D:\miktex\tex\generic\oberdiek\ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count103
+)
+Package pict2e Info: Driver file for pict2e: p2e-pdftex.def on input line 121.
+
+(C:\Users\new\AppData\Roaming\MiKTeX\2.9\tex\latex\pict2e\p2e-pdftex.def
+File: p2e-pdftex.def 2011/04/05 v0.1t Driver-dependant file (RN,HjG,JT)
+)
+(D:\miktex\tex\latex\graphics\trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+\pIIe@GRAPH=\toks20
+\@arclen=\dimen125
+\@arcrad=\dimen126
+\@tempdimd=\dimen127
+)
+(C:\Users\new\AppData\Roaming\MiKTeX\2.9\tex\latex\fp\fp.sty
+Package: fp 1995/04/02
+
+`Fixed Point Package', Version 0.8, April 2, 1995 (C) Michael Mehlich
+(C:\Users\new\AppData\Roaming\MiKTeX\2.9\tex\latex\fp\defpattern.sty
+Package: defpattern 1994/10/12
+\actioncount=\count104
+)
+(C:\Users\new\AppData\Roaming\MiKTeX\2.9\tex\latex\fp\fp-basic.sty
+Package: fp-basic 1996/05/13
+\FP@xs=\count105
+\FP@xia=\count106
+\FP@xib=\count107
+\FP@xfa=\count108
+\FP@xfb=\count109
+\FP@rega=\count110
+\FP@regb=\count111
+\FP@regs=\count112
+\FP@times=\count113
+)
+(C:\Users\new\AppData\Roaming\MiKTeX\2.9\tex\latex\fp\fp-addons.sty
+Package: fp-addons 1995/03/15
+)
+(C:\Users\new\AppData\Roaming\MiKTeX\2.9\tex\latex\fp\fp-snap.sty
+Package: fp-snap 1995/04/05
+)
+(C:\Users\new\AppData\Roaming\MiKTeX\2.9\tex\latex\fp\fp-exp.sty
+Package: fp-exp 1995/04/03
+)
+(C:\Users\new\AppData\Roaming\MiKTeX\2.9\tex\latex\fp\fp-trigo.sty
+Package: fp-trigo 1995/04/14
+)
+(C:\Users\new\AppData\Roaming\MiKTeX\2.9\tex\latex\fp\fp-pas.sty
+Package: fp-pas 1994/08/29
+)
+(C:\Users\new\AppData\Roaming\MiKTeX\2.9\tex\latex\fp\fp-random.sty
+Package: fp-random 1995/02/23
+\FPseed=\count114
+)
+(C:\Users\new\AppData\Roaming\MiKTeX\2.9\tex\latex\fp\fp-eqn.sty
+Package: fp-eqn 1995/04/03
+)
+(C:\Users\new\AppData\Roaming\MiKTeX\2.9\tex\latex\fp\fp-upn.sty
+Package: fp-upn 1996/10/21
+)
+(C:\Users\new\AppData\Roaming\MiKTeX\2.9\tex\latex\fp\fp-eval.sty
+Package: fp-eval 1995/04/03
+))
+\diagbox@boxa=\box28
+\diagbox@boxb=\box29
+\diagbox@boxm=\box30
+\diagbox@wd=\dimen128
+\diagbox@ht=\dimen129
+\diagbox@sepl=\dimen130
+\diagbox@sepr=\dimen131
+)
+(D:\miktex\tex\latex\tools\indentfirst.sty
+Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
+)
+(D:\miktex\tex\latex\float\float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count115
+\float@exts=\toks21
+\float@box=\box31
+\@float@everytoks=\toks22
+\@floatcapt=\box32
+)
+(D:\miktex\tex\latex\graphics\graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(D:\miktex\tex\latex\graphics\graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(D:\miktex\tex\latex\00miktex\graphics.cfg
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+)
+\Gin@req@height=\dimen132
+\Gin@req@width=\dimen133
+)
+(D:\miktex\tex\latex\tools\array.sty
+Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen134
+\extrarowheight=\dimen135
+\NC@list=\toks23
+\extratabsurround=\skip46
+\backup@length=\skip47
+)
+(D:\miktex\tex\latex\multirow\multirow.sty
+\bigstrutjot=\dimen136
+)
+(C:\Users\new\AppData\Roaming\MiKTeX\2.9\tex\latex\apalike\apalike.sty
+\bibhang=\skip48
+)
+(D:\miktex\tex\latex\hyperref\hyperref.sty
+Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
+
+(D:\miktex\tex\generic\oberdiek\hobsub-hyperref.sty
+Package: hobsub-hyperref 2012/04/25 v1.12 Bundle oberdiek, subset hyperref (HO)
+
+
+(D:\miktex\tex\generic\oberdiek\hobsub-generic.sty
+Package: hobsub-generic 2012/04/25 v1.12 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2012/04/25 v1.12 Construct package bundles (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+Package: intcalc 2007/09/27 v1.1 Expandable calculations with integers (HO)
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+Package: pdfescape 2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2012/04/08 v1.3 Expandable calculations on big integers (HO
+)
+Package: bitset 2011/01/30 v1.1 Handle bit-vector datatype (HO)
+Package: uniquecounter 2011/01/30 v1.2 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+Package: hopatch 2011/06/24 v1.1 Wrapper for package hooks (HO)
+Package: xcolor-patch 2011/01/30 xcolor patch
+Package: atveryend 2011/06/30 v1.8 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
+Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
+Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+)
+(D:\miktex\tex\generic\ifxetex\ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+(D:\miktex\tex\latex\oberdiek\auxhook.sty
+Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
+)
+(D:\miktex\tex\latex\oberdiek\kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+)
+\@linkdim=\dimen137
+\Hy@linkcounter=\count116
+\Hy@pagecounter=\count117
+
+(D:\miktex\tex\latex\hyperref\pd1enc.def
+File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+)
+\Hy@SavedSpaceFactor=\count118
+
+(D:\miktex\tex\latex\00miktex\hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Hyper figures OFF on input line 4443.
+Package hyperref Info: Link nesting OFF on input line 4448.
+Package hyperref Info: Hyper index ON on input line 4451.
+Package hyperref Info: Plain pages OFF on input line 4458.
+Package hyperref Info: Backreferencing OFF on input line 4463.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4688.
+\c@Hy@tempcnt=\count119
+ (D:\miktex\tex\latex\url\url.sty
+\Urlmuskip=\muskip11
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5041.
+\XeTeXLinkMargin=\dimen138
+\Fld@menulength=\count120
+\Field@Width=\dimen139
+\Fld@charsize=\dimen140
+Package hyperref Info: Hyper figures OFF on input line 6295.
+Package hyperref Info: Link nesting OFF on input line 6300.
+Package hyperref Info: Hyper index ON on input line 6303.
+Package hyperref Info: backreferencing OFF on input line 6310.
+Package hyperref Info: Link coloring OFF on input line 6315.
+Package hyperref Info: Link coloring with OCG OFF on input line 6320.
+Package hyperref Info: PDF/A mode OFF on input line 6325.
+LaTeX Info: Redefining \ref on input line 6365.
+LaTeX Info: Redefining \pageref on input line 6369.
+\Hy@abspage=\count121
+\c@Item=\count122
+\c@Hfootnote=\count123
+)
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(D:\miktex\tex\latex\hyperref\hpdftex.def
+File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
+\Fld@listcount=\count124
+\c@bookmark@seq@number=\count125
+
+(D:\miktex\tex\latex\oberdiek\rerunfilecheck.sty
+Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip49
+)
+Package hyperref Info: Option `unicode' set `true' on input line 15.
+
+(D:\miktex\tex\latex\hyperref\puenc.def
+File: puenc.def 2012/11/06 v6.83m Hyperref: PDF Unicode definition (HO)
+)
+Package hyperref Info: Option `CJKbookmarks' set `true' on input line 15.
+Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 15.
+Package hyperref Info: Option `bookmarksopen' set `true' on input line 15.
+Package hyperref Info: Option `breaklinks' set `true' on input line 15.
+Package hyperref Info: Option `colorlinks' set `false' on input line 15.
+Package hyperref Info: Option `plainpages' set `false' on input line 15.
+
+
+Package hyperref Warning: Option `pdfpagelabels' has already been used,
+(hyperref)                setting the option has no effect on input line 15.
+
+(G:\library\tex\paper\information_analysis_of_hydrological_simulation.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+
+(C:\Users\new\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count126
+\scratchdimen=\dimen141
+\scratchbox=\box33
+\nofMPsegments=\count127
+\nofMParguments=\count128
+\everyMPshowfont=\toks24
+\MPscratchCnt=\count129
+\MPscratchDim=\dimen142
+\MPnumerator=\count130
+\makeMPintoPDFobject=\count131
+\everyMPtoPDFconversion=\toks25
+)
+\AtBeginShipoutBox=\box34
+Package hyperref Info: Link coloring OFF on input line 17.
+ (D:\miktex\tex\latex\hyperref\nameref.sty
+Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
+
+(D:\miktex\tex\generic\oberdiek\gettitlestring.sty
+Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
+)
+\c@section@level=\count132
+)
+LaTeX Info: Redefining \ref on input line 17.
+LaTeX Info: Redefining \pageref on input line 17.
+LaTeX Info: Redefining \nameref on input line 17.
+
+(G:\library\tex\paper\information_analysis_of_hydrological_simulation.out)
+(G:\library\tex\paper\information_analysis_of_hydrological_simulation.out)
+\@outlinefile=\write3
+
+
+LaTeX Warning: No \author given.
+
+[1
+
+{C:/Users/new/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
+(G:\library\tex\paper\information_analysis_of_hydrological_simulation.toc)
+\tf@toc=\write4
+
+[3] [4] [5] [6] [7] <Quantization.png, id=181, 722.7pt x 440.39531pt>
+File: Quantization.png Graphic file (type png)
+
+<use Quantization.png>
+Package pdftex.def Info: Quantization.png used on input line 426.
+(pdftex.def)             Requested size: 227.62204pt x 138.7051pt.
+ [8] [9 <G:/library/tex/paper/Quantization.png>] [10]
+[11] [12] [13] [14] [15]
+Underfull \hbox (badness 10000) in paragraph at lines 665--668
+
+ []
+
+<resultgraph/AU/02143000p_abs.png, id=273, 578.6418pt x 434.1018pt>
+File: resultgraph/AU/02143000p_abs.png Graphic file (type png)
+
+<use resultgraph/AU/02143000p_abs.png>
+Package pdftex.def Info: resultgraph/AU/02143000p_abs.png used on input line 70
+5.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/AU/02143000pep_abs.png, id=274, 578.6418pt x 434.1018pt>
+File: resultgraph/AU/02143000pep_abs.png Graphic file (type png)
+
+<use resultgraph/AU/02143000pep_abs.png>
+Package pdftex.def Info: resultgraph/AU/02143000pep_abs.png used on input line 
+705.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/AU/02143000pepq_abs.png, id=275, 578.6418pt x 434.1018pt>
+File: resultgraph/AU/02143000pepq_abs.png Graphic file (type png)
+
+<use resultgraph/AU/02143000pepq_abs.png>
+Package pdftex.def Info: resultgraph/AU/02143000pepq_abs.png used on input line
+ 705.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/AU/05585000p_abs.png, id=276, 578.6418pt x 434.1018pt>
+File: resultgraph/AU/05585000p_abs.png Graphic file (type png)
+
+<use resultgraph/AU/05585000p_abs.png>
+Package pdftex.def Info: resultgraph/AU/05585000p_abs.png used on input line 70
+5.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/AU/05585000pep_abs.png, id=277, 578.6418pt x 434.1018pt>
+File: resultgraph/AU/05585000pep_abs.png Graphic file (type png)
+
+<use resultgraph/AU/05585000pep_abs.png>
+Package pdftex.def Info: resultgraph/AU/05585000pep_abs.png used on input line 
+705.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/AU/05585000pepq_abs.png, id=278, 578.6418pt x 434.1018pt>
+File: resultgraph/AU/05585000pepq_abs.png Graphic file (type png)
+
+<use resultgraph/AU/05585000pepq_abs.png>
+Package pdftex.def Info: resultgraph/AU/05585000pepq_abs.png used on input line
+ 705.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/AU/11532500p_abs.png, id=279, 578.6418pt x 434.1018pt>
+File: resultgraph/AU/11532500p_abs.png Graphic file (type png)
+
+<use resultgraph/AU/11532500p_abs.png>
+Package pdftex.def Info: resultgraph/AU/11532500p_abs.png used on input line 70
+5.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/AU/11532500pep_abs.png, id=280, 578.6418pt x 434.1018pt>
+File: resultgraph/AU/11532500pep_abs.png Graphic file (type png)
+
+<use resultgraph/AU/11532500pep_abs.png>
+Package pdftex.def Info: resultgraph/AU/11532500pep_abs.png used on input line 
+705.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/AU/11532500pepq_abs.png, id=281, 578.6418pt x 434.1018pt>
+File: resultgraph/AU/11532500pepq_abs.png Graphic file (type png)
+
+<use resultgraph/AU/11532500pepq_abs.png>
+Package pdftex.def Info: resultgraph/AU/11532500pepq_abs.png used on input line
+ 705.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/AU/06810000p_abs.png, id=282, 578.6418pt x 434.1018pt>
+File: resultgraph/AU/06810000p_abs.png Graphic file (type png)
+
+<use resultgraph/AU/06810000p_abs.png>
+Package pdftex.def Info: resultgraph/AU/06810000p_abs.png used on input line 70
+5.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/AU/06810000pep_abs.png, id=283, 578.6418pt x 434.1018pt>
+File: resultgraph/AU/06810000pep_abs.png Graphic file (type png)
+
+<use resultgraph/AU/06810000pep_abs.png>
+Package pdftex.def Info: resultgraph/AU/06810000pep_abs.png used on input line 
+705.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/AU/06810000pepq_abs.png, id=284, 578.6418pt x 434.1018pt>
+File: resultgraph/AU/06810000pepq_abs.png Graphic file (type png)
+
+<use resultgraph/AU/06810000pepq_abs.png>
+Package pdftex.def Info: resultgraph/AU/06810000pepq_abs.png used on input line
+ 705.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+ [16]
+<resultgraph/AU/02143000p_rela.png, id=291, 578.6418pt x 434.1018pt>
+File: resultgraph/AU/02143000p_rela.png Graphic file (type png)
+
+<use resultgraph/AU/02143000p_rela.png>
+Package pdftex.def Info: resultgraph/AU/02143000p_rela.png used on input line 7
+42.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/AU/02143000pep_rela.png, id=292, 578.6418pt x 434.1018pt>
+File: resultgraph/AU/02143000pep_rela.png Graphic file (type png)
+
+<use resultgraph/AU/02143000pep_rela.png>
+Package pdftex.def Info: resultgraph/AU/02143000pep_rela.png used on input line
+ 742.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/AU/02143000pepq_rela.png, id=293, 578.6418pt x 434.1018pt>
+File: resultgraph/AU/02143000pepq_rela.png Graphic file (type png)
+
+<use resultgraph/AU/02143000pepq_rela.png>
+Package pdftex.def Info: resultgraph/AU/02143000pepq_rela.png used on input lin
+e 742.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/AU/05585000p_rela.png, id=294, 578.6418pt x 434.1018pt>
+File: resultgraph/AU/05585000p_rela.png Graphic file (type png)
+
+<use resultgraph/AU/05585000p_rela.png>
+Package pdftex.def Info: resultgraph/AU/05585000p_rela.png used on input line 7
+42.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/AU/05585000pep_rela.png, id=295, 578.6418pt x 434.1018pt>
+File: resultgraph/AU/05585000pep_rela.png Graphic file (type png)
+
+<use resultgraph/AU/05585000pep_rela.png>
+Package pdftex.def Info: resultgraph/AU/05585000pep_rela.png used on input line
+ 742.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/AU/05585000pepq_rela.png, id=296, 578.6418pt x 434.1018pt>
+File: resultgraph/AU/05585000pepq_rela.png Graphic file (type png)
+
+<use resultgraph/AU/05585000pepq_rela.png>
+Package pdftex.def Info: resultgraph/AU/05585000pepq_rela.png used on input lin
+e 742.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/AU/11532500p_rela.png, id=297, 578.6418pt x 434.1018pt>
+File: resultgraph/AU/11532500p_rela.png Graphic file (type png)
+
+<use resultgraph/AU/11532500p_rela.png>
+Package pdftex.def Info: resultgraph/AU/11532500p_rela.png used on input line 7
+42.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/AU/11532500pep_rela.png, id=298, 578.6418pt x 434.1018pt>
+File: resultgraph/AU/11532500pep_rela.png Graphic file (type png)
+
+<use resultgraph/AU/11532500pep_rela.png>
+Package pdftex.def Info: resultgraph/AU/11532500pep_rela.png used on input line
+ 742.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/AU/11532500pepq_rela.png, id=299, 578.6418pt x 434.1018pt>
+File: resultgraph/AU/11532500pepq_rela.png Graphic file (type png)
+
+<use resultgraph/AU/11532500pepq_rela.png>
+Package pdftex.def Info: resultgraph/AU/11532500pepq_rela.png used on input lin
+e 742.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/AU/06810000p_rela.png, id=300, 578.6418pt x 434.1018pt>
+File: resultgraph/AU/06810000p_rela.png Graphic file (type png)
+
+<use resultgraph/AU/06810000p_rela.png>
+Package pdftex.def Info: resultgraph/AU/06810000p_rela.png used on input line 7
+42.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/AU/06810000pep_rela.png, id=301, 578.6418pt x 434.1018pt>
+File: resultgraph/AU/06810000pep_rela.png Graphic file (type png)
+
+<use resultgraph/AU/06810000pep_rela.png>
+Package pdftex.def Info: resultgraph/AU/06810000pep_rela.png used on input line
+ 742.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/AU/06810000pepq_rela.png, id=302, 578.6418pt x 434.1018pt>
+File: resultgraph/AU/06810000pepq_rela.png Graphic file (type png)
+
+<use resultgraph/AU/06810000pepq_rela.png>
+Package pdftex.def Info: resultgraph/AU/06810000pepq_rela.png used on input lin
+e 742.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+ [17 <G:/library/tex/paper/resultgraph/AU/02143000p_abs.png (PNG copy)> <G:/lib
+rary/tex/paper/resultgraph/AU/02143000pep_abs.png (PNG copy)> <G:/library/tex/p
+aper/resultgraph/AU/02143000pepq_abs.png (PNG copy)> <G:/library/tex/paper/resu
+ltgraph/AU/05585000p_abs.png (PNG copy)> <G:/library/tex/paper/resultgraph/AU/0
+5585000pep_abs.png (PNG copy)> <G:/library/tex/paper/resultgraph/AU/05585000pep
+q_abs.png (PNG copy)> <G:/library/tex/paper/resultgraph/AU/11532500p_abs.png (P
+NG copy)> <G:/library/tex/paper/resultgraph/AU/11532500pep_abs.png (PNG copy)> 
+<G:/library/tex/paper/resultgraph/AU/11532500pepq_abs.png (PNG copy)> <G:/libra
+ry/tex/paper/resultgraph/AU/06810000p_abs.png (PNG copy)> <G:/library/tex/paper
+/resultgraph/AU/06810000pep_abs.png (PNG copy)> <G:/library/tex/paper/resultgra
+ph/AU/06810000pepq_abs.png (PNG copy)>] <resultgraph/05585000EU.png, id=308, 57
+8.6418pt x 434.1018pt>
+File: resultgraph/05585000EU.png Graphic file (type png)
+
+<use resultgraph/05585000EU.png>
+Package pdftex.def Info: resultgraph/05585000EU.png used on input line 772.
+(pdftex.def)             Requested size: 216.0022pt x 162.0459pt.
+
+<resultgraph/06810000EU.png, id=309, 578.6418pt x 434.1018pt>
+File: resultgraph/06810000EU.png Graphic file (type png)
+
+<use resultgraph/06810000EU.png>
+Package pdftex.def Info: resultgraph/06810000EU.png used on input line 772.
+(pdftex.def)             Requested size: 216.0022pt x 162.0459pt.
+
+<resultgraph/02143000EU.png, id=310, 578.6418pt x 434.1018pt>
+File: resultgraph/02143000EU.png Graphic file (type png)
+
+<use resultgraph/02143000EU.png>
+Package pdftex.def Info: resultgraph/02143000EU.png used on input line 772.
+(pdftex.def)             Requested size: 216.0022pt x 162.0459pt.
+
+<resultgraph/11532500EU.png, id=311, 578.6418pt x 434.1018pt>
+File: resultgraph/11532500EU.png Graphic file (type png)
+
+<use resultgraph/11532500EU.png>
+Package pdftex.def Info: resultgraph/11532500EU.png used on input line 772.
+(pdftex.def)             Requested size: 216.0022pt x 162.0459pt.
+ [18 <G:/library/tex/paper/resultgraph/AU/02143000p_rela.png (PNG copy)> <G:/li
+brary/tex/paper/resultgraph/AU/02143000pep_rela.png (PNG copy)> <G:/library/tex
+/paper/resultgraph/AU/02143000pepq_rela.png (PNG copy)> <G:/library/tex/paper/r
+esultgraph/AU/05585000p_rela.png (PNG copy)> <G:/library/tex/paper/resultgraph/
+AU/05585000pep_rela.png (PNG copy)> <G:/library/tex/paper/resultgraph/AU/055850
+00pepq_rela.png (PNG copy)> <G:/library/tex/paper/resultgraph/AU/11532500p_rela
+.png (PNG copy)> <G:/library/tex/paper/resultgraph/AU/11532500pep_rela.png (PNG
+ copy)> <G:/library/tex/paper/resultgraph/AU/11532500pepq_rela.png (PNG copy)> 
+<G:/library/tex/paper/resultgraph/AU/06810000p_rela.png (PNG copy)> <G:/library
+/tex/paper/resultgraph/AU/06810000pep_rela.png (PNG copy)> <G:/library/tex/pape
+r/resultgraph/AU/06810000pepq_rela.png (PNG copy)>] <resultgraph/e05585000.png,
+ id=317, 578.6418pt x 434.1018pt>
+File: resultgraph/e05585000.png Graphic file (type png)
+
+<use resultgraph/e05585000.png>
+Package pdftex.def Info: resultgraph/e05585000.png used on input line 801.
+(pdftex.def)             Requested size: 216.0022pt x 162.0459pt.
+
+<resultgraph/e06810000.png, id=318, 578.6418pt x 434.1018pt>
+File: resultgraph/e06810000.png Graphic file (type png)
+
+<use resultgraph/e06810000.png>
+Package pdftex.def Info: resultgraph/e06810000.png used on input line 801.
+(pdftex.def)             Requested size: 216.0022pt x 162.0459pt.
+
+<resultgraph/e02143000.png, id=319, 578.6418pt x 434.1018pt>
+File: resultgraph/e02143000.png Graphic file (type png)
+
+<use resultgraph/e02143000.png>
+Package pdftex.def Info: resultgraph/e02143000.png used on input line 801.
+(pdftex.def)             Requested size: 216.0022pt x 162.0459pt.
+
+<resultgraph/e11532500.png, id=320, 578.6418pt x 434.1018pt>
+File: resultgraph/e11532500.png Graphic file (type png)
+
+<use resultgraph/e11532500.png>
+Package pdftex.def Info: resultgraph/e11532500.png used on input line 801.
+(pdftex.def)             Requested size: 216.0022pt x 162.0459pt.
+ [19 <G:/library/tex/paper/resultgraph/05585000EU.png (PNG copy)> <G:/library/t
+ex/paper/resultgraph/06810000EU.png (PNG copy)> <G:/library/tex/paper/resultgra
+ph/02143000EU.png (PNG copy)> <G:/library/tex/paper/resultgraph/11532500EU.png 
+(PNG copy)>]
+<resultgraph/02143000p.png, id=330, 578.6418pt x 434.1018pt>
+File: resultgraph/02143000p.png Graphic file (type png)
+
+<use resultgraph/02143000p.png>
+Package pdftex.def Info: resultgraph/02143000p.png used on input line 845.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/02143000pep.png, id=331, 578.6418pt x 434.1018pt>
+File: resultgraph/02143000pep.png Graphic file (type png)
+
+<use resultgraph/02143000pep.png>
+Package pdftex.def Info: resultgraph/02143000pep.png used on input line 845.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/02143000pepq.png, id=332, 578.6418pt x 434.1018pt>
+File: resultgraph/02143000pepq.png Graphic file (type png)
+
+<use resultgraph/02143000pepq.png>
+Package pdftex.def Info: resultgraph/02143000pepq.png used on input line 845.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/05585000p.png, id=333, 578.6418pt x 434.1018pt>
+File: resultgraph/05585000p.png Graphic file (type png)
+
+<use resultgraph/05585000p.png>
+Package pdftex.def Info: resultgraph/05585000p.png used on input line 845.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/05585000pep.png, id=334, 578.6418pt x 434.1018pt>
+File: resultgraph/05585000pep.png Graphic file (type png)
+
+<use resultgraph/05585000pep.png>
+Package pdftex.def Info: resultgraph/05585000pep.png used on input line 845.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/05585000pepq.png, id=335, 578.6418pt x 434.1018pt>
+File: resultgraph/05585000pepq.png Graphic file (type png)
+
+<use resultgraph/05585000pepq.png>
+Package pdftex.def Info: resultgraph/05585000pepq.png used on input line 845.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/11532500p.png, id=336, 578.6418pt x 434.1018pt>
+File: resultgraph/11532500p.png Graphic file (type png)
+
+<use resultgraph/11532500p.png>
+Package pdftex.def Info: resultgraph/11532500p.png used on input line 845.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/11532500pep.png, id=337, 578.6418pt x 434.1018pt>
+File: resultgraph/11532500pep.png Graphic file (type png)
+
+<use resultgraph/11532500pep.png>
+Package pdftex.def Info: resultgraph/11532500pep.png used on input line 845.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/11532500pepq.png, id=338, 578.6418pt x 434.1018pt>
+File: resultgraph/11532500pepq.png Graphic file (type png)
+
+<use resultgraph/11532500pepq.png>
+Package pdftex.def Info: resultgraph/11532500pepq.png used on input line 845.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/06810000p.png, id=339, 578.6418pt x 434.1018pt>
+File: resultgraph/06810000p.png Graphic file (type png)
+
+<use resultgraph/06810000p.png>
+Package pdftex.def Info: resultgraph/06810000p.png used on input line 845.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/06810000pep.png, id=340, 578.6418pt x 434.1018pt>
+File: resultgraph/06810000pep.png Graphic file (type png)
+
+<use resultgraph/06810000pep.png>
+Package pdftex.def Info: resultgraph/06810000pep.png used on input line 845.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/06810000pepq.png, id=341, 578.6418pt x 434.1018pt>
+File: resultgraph/06810000pepq.png Graphic file (type png)
+
+<use resultgraph/06810000pepq.png>
+Package pdftex.def Info: resultgraph/06810000pepq.png used on input line 845.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+ [20 <G:/library/tex/paper/resultgraph/e05585000.png (PNG copy)> <G:/library/te
+x/paper/resultgraph/e06810000.png (PNG copy)> <G:/library/tex/paper/resultgraph
+/e02143000.png (PNG copy)> <G:/library/tex/paper/resultgraph/e11532500.png (PNG
+ copy)>]
+File: resultgraph/02143000p.png Graphic file (type png)
+ <use resultgraph/02143000p.png>
+Package pdftex.def Info: resultgraph/02143000p.png used on input line 887.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/02143000diff_ep.png, id=351, 578.6418pt x 434.1018pt>
+File: resultgraph/02143000diff_ep.png Graphic file (type png)
+
+<use resultgraph/02143000diff_ep.png>
+Package pdftex.def Info: resultgraph/02143000diff_ep.png used on input line 887
+.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/02143000diff_q.png, id=352, 578.6418pt x 434.1018pt>
+File: resultgraph/02143000diff_q.png Graphic file (type png)
+
+<use resultgraph/02143000diff_q.png>
+Package pdftex.def Info: resultgraph/02143000diff_q.png used on input line 887.
+
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+File: resultgraph/05585000p.png Graphic file (type png)
+ <use resultgraph/05585000p.png>
+Package pdftex.def Info: resultgraph/05585000p.png used on input line 887.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/05585000diff_ep.png, id=353, 578.6418pt x 434.1018pt>
+File: resultgraph/05585000diff_ep.png Graphic file (type png)
+
+<use resultgraph/05585000diff_ep.png>
+Package pdftex.def Info: resultgraph/05585000diff_ep.png used on input line 887
+.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/05585000diff_q.png, id=354, 578.6418pt x 434.1018pt>
+File: resultgraph/05585000diff_q.png Graphic file (type png)
+
+<use resultgraph/05585000diff_q.png>
+Package pdftex.def Info: resultgraph/05585000diff_q.png used on input line 887.
+
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+File: resultgraph/11532500p.png Graphic file (type png)
+ <use resultgraph/11532500p.png>
+Package pdftex.def Info: resultgraph/11532500p.png used on input line 887.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/11532500diff_ep.png, id=355, 578.6418pt x 434.1018pt>
+File: resultgraph/11532500diff_ep.png Graphic file (type png)
+
+<use resultgraph/11532500diff_ep.png>
+Package pdftex.def Info: resultgraph/11532500diff_ep.png used on input line 887
+.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/11532500diff_q.png, id=356, 578.6418pt x 434.1018pt>
+File: resultgraph/11532500diff_q.png Graphic file (type png)
+
+<use resultgraph/11532500diff_q.png>
+Package pdftex.def Info: resultgraph/11532500diff_q.png used on input line 887.
+
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+File: resultgraph/06810000p.png Graphic file (type png)
+ <use resultgraph/06810000p.png>
+Package pdftex.def Info: resultgraph/06810000p.png used on input line 887.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/06810000diff_ep.png, id=357, 578.6418pt x 434.1018pt>
+File: resultgraph/06810000diff_ep.png Graphic file (type png)
+
+<use resultgraph/06810000diff_ep.png>
+Package pdftex.def Info: resultgraph/06810000diff_ep.png used on input line 887
+.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/06810000diff_q.png, id=358, 578.6418pt x 434.1018pt>
+File: resultgraph/06810000diff_q.png Graphic file (type png)
+
+<use resultgraph/06810000diff_q.png>
+Package pdftex.def Info: resultgraph/06810000diff_q.png used on input line 887.
+
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+ [21 <G:/library/tex/paper/resultgraph/02143000p.png (PNG copy)> <G:/library/te
+x/paper/resultgraph/02143000pep.png (PNG copy)> <G:/library/tex/paper/resultgra
+ph/02143000pepq.png (PNG copy)> <G:/library/tex/paper/resultgraph/05585000p.png
+ (PNG copy)> <G:/library/tex/paper/resultgraph/05585000pep.png (PNG copy)> <G:/
+library/tex/paper/resultgraph/05585000pepq.png (PNG copy)> <G:/library/tex/pape
+r/resultgraph/11532500p.png (PNG copy)> <G:/library/tex/paper/resultgraph/11532
+500pep.png (PNG copy)> <G:/library/tex/paper/resultgraph/11532500pepq.png (PNG 
+copy)> <G:/library/tex/paper/resultgraph/06810000p.png (PNG copy)> <G:/library/
+tex/paper/resultgraph/06810000pep.png (PNG copy)> <G:/library/tex/paper/resultg
+raph/06810000pepq.png (PNG copy)>]
+<resultgraph/02143000pdiff_former.png, id=365, 578.6418pt x 434.1018pt>
+File: resultgraph/02143000pdiff_former.png Graphic file (type png)
+
+<use resultgraph/02143000pdiff_former.png>
+Package pdftex.def Info: resultgraph/02143000pdiff_former.png used on input lin
+e 930.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/02143000epdiff_former.png, id=366, 578.6418pt x 434.1018pt>
+File: resultgraph/02143000epdiff_former.png Graphic file (type png)
+
+<use resultgraph/02143000epdiff_former.png>
+Package pdftex.def Info: resultgraph/02143000epdiff_former.png used on input li
+ne 930.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/02143000qdiff_former.png, id=367, 578.6418pt x 434.1018pt>
+File: resultgraph/02143000qdiff_former.png Graphic file (type png)
+
+<use resultgraph/02143000qdiff_former.png>
+Package pdftex.def Info: resultgraph/02143000qdiff_former.png used on input lin
+e 930.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/05585000pdiff_former.png, id=368, 578.6418pt x 434.1018pt>
+File: resultgraph/05585000pdiff_former.png Graphic file (type png)
+
+<use resultgraph/05585000pdiff_former.png>
+Package pdftex.def Info: resultgraph/05585000pdiff_former.png used on input lin
+e 930.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/05585000epdiff_former.png, id=369, 578.6418pt x 434.1018pt>
+File: resultgraph/05585000epdiff_former.png Graphic file (type png)
+
+<use resultgraph/05585000epdiff_former.png>
+Package pdftex.def Info: resultgraph/05585000epdiff_former.png used on input li
+ne 930.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/05585000qdiff_former.png, id=370, 578.6418pt x 434.1018pt>
+File: resultgraph/05585000qdiff_former.png Graphic file (type png)
+
+<use resultgraph/05585000qdiff_former.png>
+Package pdftex.def Info: resultgraph/05585000qdiff_former.png used on input lin
+e 930.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/11532500pdiff_former.png, id=371, 578.6418pt x 434.1018pt>
+File: resultgraph/11532500pdiff_former.png Graphic file (type png)
+
+<use resultgraph/11532500pdiff_former.png>
+Package pdftex.def Info: resultgraph/11532500pdiff_former.png used on input lin
+e 930.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/11532500epdiff_former.png, id=372, 578.6418pt x 434.1018pt>
+File: resultgraph/11532500epdiff_former.png Graphic file (type png)
+
+<use resultgraph/11532500epdiff_former.png>
+Package pdftex.def Info: resultgraph/11532500epdiff_former.png used on input li
+ne 930.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/11532500qdiff_former.png, id=373, 578.6418pt x 434.1018pt>
+File: resultgraph/11532500qdiff_former.png Graphic file (type png)
+
+<use resultgraph/11532500qdiff_former.png>
+Package pdftex.def Info: resultgraph/11532500qdiff_former.png used on input lin
+e 930.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/06810000pdiff_former.png, id=374, 578.6418pt x 434.1018pt>
+File: resultgraph/06810000pdiff_former.png Graphic file (type png)
+
+<use resultgraph/06810000pdiff_former.png>
+Package pdftex.def Info: resultgraph/06810000pdiff_former.png used on input lin
+e 930.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/06810000epdiff_former.png, id=375, 578.6418pt x 434.1018pt>
+File: resultgraph/06810000epdiff_former.png Graphic file (type png)
+
+<use resultgraph/06810000epdiff_former.png>
+Package pdftex.def Info: resultgraph/06810000epdiff_former.png used on input li
+ne 930.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/06810000qdiff_former.png, id=376, 578.6418pt x 434.1018pt>
+File: resultgraph/06810000qdiff_former.png Graphic file (type png)
+
+<use resultgraph/06810000qdiff_former.png>
+Package pdftex.def Info: resultgraph/06810000qdiff_former.png used on input lin
+e 930.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+ [22 <G:/library/tex/paper/resultgraph/02143000diff_ep.png (PNG copy)> <G:/libr
+ary/tex/paper/resultgraph/02143000diff_q.png (PNG copy)> <G:/library/tex/paper/
+resultgraph/05585000diff_ep.png (PNG copy)> <G:/library/tex/paper/resultgraph/0
+5585000diff_q.png (PNG copy)> <G:/library/tex/paper/resultgraph/11532500diff_ep
+.png (PNG copy)> <G:/library/tex/paper/resultgraph/11532500diff_q.png (PNG copy
+)> <G:/library/tex/paper/resultgraph/06810000diff_ep.png (PNG copy)> <G:/librar
+y/tex/paper/resultgraph/06810000diff_q.png (PNG copy)>] [23 <G:/library/tex/pap
+er/resultgraph/02143000pdiff_former.png (PNG copy)> <G:/library/tex/paper/resul
+tgraph/02143000epdiff_former.png (PNG copy)> <G:/library/tex/paper/resultgraph/
+02143000qdiff_former.png (PNG copy)> <G:/library/tex/paper/resultgraph/05585000
+pdiff_former.png (PNG copy)> <G:/library/tex/paper/resultgraph/05585000epdiff_f
+ormer.png (PNG copy)> <G:/library/tex/paper/resultgraph/05585000qdiff_former.pn
+g (PNG copy)> <G:/library/tex/paper/resultgraph/11532500pdiff_former.png (PNG c
+opy)> <G:/library/tex/paper/resultgraph/11532500epdiff_former.png (PNG copy)> <
+G:/library/tex/paper/resultgraph/11532500qdiff_former.png (PNG copy)> <G:/libra
+ry/tex/paper/resultgraph/06810000pdiff_former.png (PNG copy)> <G:/library/tex/p
+aper/resultgraph/06810000epdiff_former.png (PNG copy)> <G:/library/tex/paper/re
+sultgraph/06810000qdiff_former.png (PNG copy)>] <resultgraph/05585000MI.png, id
+=394, 578.6418pt x 434.1018pt>
+File: resultgraph/05585000MI.png Graphic file (type png)
+
+<use resultgraph/05585000MI.png>
+Package pdftex.def Info: resultgraph/05585000MI.png used on input line 1315.
+(pdftex.def)             Requested size: 216.0022pt x 162.0459pt.
+
+<resultgraph/06810000MI.png, id=395, 578.6418pt x 434.1018pt>
+File: resultgraph/06810000MI.png Graphic file (type png)
+
+<use resultgraph/06810000MI.png>
+Package pdftex.def Info: resultgraph/06810000MI.png used on input line 1315.
+(pdftex.def)             Requested size: 216.0022pt x 162.0459pt.
+
+<resultgraph/02143000MI.png, id=396, 578.6418pt x 434.1018pt>
+File: resultgraph/02143000MI.png Graphic file (type png)
+
+<use resultgraph/02143000MI.png>
+Package pdftex.def Info: resultgraph/02143000MI.png used on input line 1315.
+(pdftex.def)             Requested size: 216.0022pt x 162.0459pt.
+
+<resultgraph/11532500MI.png, id=397, 578.6418pt x 434.1018pt>
+File: resultgraph/11532500MI.png Graphic file (type png)
+
+<use resultgraph/11532500MI.png>
+Package pdftex.def Info: resultgraph/11532500MI.png used on input line 1315.
+(pdftex.def)             Requested size: 216.0022pt x 162.0459pt.
+ [24] [25 <G:/library/tex/paper/resultgraph/05585000MI.png (PNG copy)> <G:/libr
+ary/tex/paper/resultgraph/06810000MI.png (PNG copy)> <G:/library/tex/paper/resu
+ltgraph/02143000MI.png (PNG copy)> <G:/library/tex/paper/resultgraph/11532500MI
+.png (PNG copy)>]
+File: resultgraph/05585000EU.png Graphic file (type png)
+
+<use resultgraph/05585000EU.png>
+Package pdftex.def Info: resultgraph/05585000EU.png used on input line 1348.
+(pdftex.def)             Requested size: 216.0022pt x 162.0459pt.
+File: resultgraph/06810000EU.png Graphic file (type png)
+ <use resultgraph/06810000EU.png>
+Package pdftex.def Info: resultgraph/06810000EU.png used on input line 1348.
+(pdftex.def)             Requested size: 216.0022pt x 162.0459pt.
+File: resultgraph/02143000EU.png Graphic file (type png)
+
+<use resultgraph/02143000EU.png>
+Package pdftex.def Info: resultgraph/02143000EU.png used on input line 1348.
+(pdftex.def)             Requested size: 216.0022pt x 162.0459pt.
+File: resultgraph/11532500EU.png Graphic file (type png)
+ <use resultgraph/11532500EU.png>
+Package pdftex.def Info: resultgraph/11532500EU.png used on input line 1348.
+(pdftex.def)             Requested size: 216.0022pt x 162.0459pt.
+ [26] [27]
+[28]
+File: resultgraph/02143000p.png Graphic file (type png)
+ <use resultgraph/02143000p.png>
+Package pdftex.def Info: resultgraph/02143000p.png used on input line 1551.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+File: resultgraph/02143000pep.png Graphic file (type png)
+ <use resultgraph/02143000pep.png>
+Package pdftex.def Info: resultgraph/02143000pep.png used on input line 1551.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+File: resultgraph/02143000pepq.png Graphic file (type png)
+
+<use resultgraph/02143000pepq.png>
+Package pdftex.def Info: resultgraph/02143000pepq.png used on input line 1551.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/02165000p.png, id=427, 578.6418pt x 434.1018pt>
+File: resultgraph/02165000p.png Graphic file (type png)
+
+<use resultgraph/02165000p.png>
+Package pdftex.def Info: resultgraph/02165000p.png used on input line 1551.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/02165000pep.png, id=428, 578.6418pt x 434.1018pt>
+File: resultgraph/02165000pep.png Graphic file (type png)
+
+<use resultgraph/02165000pep.png>
+Package pdftex.def Info: resultgraph/02165000pep.png used on input line 1551.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/02165000pepq.png, id=429, 578.6418pt x 434.1018pt>
+File: resultgraph/02165000pepq.png Graphic file (type png)
+
+<use resultgraph/02165000pepq.png>
+Package pdftex.def Info: resultgraph/02165000pepq.png used on input line 1551.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/02329000p.png, id=430, 578.6418pt x 434.1018pt>
+File: resultgraph/02329000p.png Graphic file (type png)
+
+<use resultgraph/02329000p.png>
+Package pdftex.def Info: resultgraph/02329000p.png used on input line 1551.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/02329000pep.png, id=431, 578.6418pt x 434.1018pt>
+File: resultgraph/02329000pep.png Graphic file (type png)
+
+<use resultgraph/02329000pep.png>
+Package pdftex.def Info: resultgraph/02329000pep.png used on input line 1551.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/02329000pepq.png, id=432, 578.6418pt x 434.1018pt>
+File: resultgraph/02329000pepq.png Graphic file (type png)
+
+<use resultgraph/02329000pepq.png>
+Package pdftex.def Info: resultgraph/02329000pepq.png used on input line 1551.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/02375500p.png, id=433, 578.6418pt x 434.1018pt>
+File: resultgraph/02375500p.png Graphic file (type png)
+
+<use resultgraph/02375500p.png>
+Package pdftex.def Info: resultgraph/02375500p.png used on input line 1551.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/02375500pep.png, id=434, 578.6418pt x 434.1018pt>
+File: resultgraph/02375500pep.png Graphic file (type png)
+
+<use resultgraph/02375500pep.png>
+Package pdftex.def Info: resultgraph/02375500pep.png used on input line 1551.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/02375500pepq.png, id=435, 578.6418pt x 434.1018pt>
+File: resultgraph/02375500pepq.png Graphic file (type png)
+
+<use resultgraph/02375500pepq.png>
+Package pdftex.def Info: resultgraph/02375500pepq.png used on input line 1551.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/02478500p.png, id=436, 578.6418pt x 434.1018pt>
+File: resultgraph/02478500p.png Graphic file (type png)
+
+<use resultgraph/02478500p.png>
+Package pdftex.def Info: resultgraph/02478500p.png used on input line 1551.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/02478500pep.png, id=437, 578.6418pt x 434.1018pt>
+File: resultgraph/02478500pep.png Graphic file (type png)
+
+<use resultgraph/02478500pep.png>
+Package pdftex.def Info: resultgraph/02478500pep.png used on input line 1551.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/02478500pepq.png, id=438, 578.6418pt x 434.1018pt>
+File: resultgraph/02478500pepq.png Graphic file (type png)
+
+<use resultgraph/02478500pepq.png>
+Package pdftex.def Info: resultgraph/02478500pepq.png used on input line 1551.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+File: resultgraph/05585000p.png Graphic file (type png)
+ <use resultgraph/05585000p.png>
+Package pdftex.def Info: resultgraph/05585000p.png used on input line 1587.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+File: resultgraph/05585000pep.png Graphic file (type png)
+
+<use resultgraph/05585000pep.png>
+Package pdftex.def Info: resultgraph/05585000pep.png used on input line 1587.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+File: resultgraph/05585000pepq.png Graphic file (type png)
+ <use resultgraph/05585000pepq.png>
+Package pdftex.def Info: resultgraph/05585000pepq.png used on input line 1587.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/06908000p.png, id=439, 578.6418pt x 434.1018pt>
+File: resultgraph/06908000p.png Graphic file (type png)
+
+<use resultgraph/06908000p.png>
+Package pdftex.def Info: resultgraph/06908000p.png used on input line 1587.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/06908000pep.png, id=440, 578.6418pt x 434.1018pt>
+File: resultgraph/06908000pep.png Graphic file (type png)
+
+<use resultgraph/06908000pep.png>
+Package pdftex.def Info: resultgraph/06908000pep.png used on input line 1587.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/06908000pepq.png, id=441, 578.6418pt x 434.1018pt>
+File: resultgraph/06908000pepq.png Graphic file (type png)
+
+<use resultgraph/06908000pepq.png>
+Package pdftex.def Info: resultgraph/06908000pepq.png used on input line 1587.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/07019000p.png, id=442, 578.6418pt x 434.1018pt>
+File: resultgraph/07019000p.png Graphic file (type png)
+
+<use resultgraph/07019000p.png>
+Package pdftex.def Info: resultgraph/07019000p.png used on input line 1587.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/07019000pep.png, id=443, 578.6418pt x 434.1018pt>
+File: resultgraph/07019000pep.png Graphic file (type png)
+
+<use resultgraph/07019000pep.png>
+Package pdftex.def Info: resultgraph/07019000pep.png used on input line 1587.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/07019000pepq.png, id=444, 578.6418pt x 434.1018pt>
+File: resultgraph/07019000pepq.png Graphic file (type png)
+
+<use resultgraph/07019000pepq.png>
+Package pdftex.def Info: resultgraph/07019000pepq.png used on input line 1587.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/07177500p.png, id=445, 578.6418pt x 434.1018pt>
+File: resultgraph/07177500p.png Graphic file (type png)
+
+<use resultgraph/07177500p.png>
+Package pdftex.def Info: resultgraph/07177500p.png used on input line 1587.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/07177500pep.png, id=446, 578.6418pt x 434.1018pt>
+File: resultgraph/07177500pep.png Graphic file (type png)
+
+<use resultgraph/07177500pep.png>
+Package pdftex.def Info: resultgraph/07177500pep.png used on input line 1587.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/07177500pepq.png, id=447, 578.6418pt x 434.1018pt>
+File: resultgraph/07177500pepq.png Graphic file (type png)
+
+<use resultgraph/07177500pepq.png>
+Package pdftex.def Info: resultgraph/07177500pepq.png used on input line 1587.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/07243500p.png, id=448, 578.6418pt x 434.1018pt>
+File: resultgraph/07243500p.png Graphic file (type png)
+
+<use resultgraph/07243500p.png>
+Package pdftex.def Info: resultgraph/07243500p.png used on input line 1587.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/07243500pep.png, id=449, 578.6418pt x 434.1018pt>
+File: resultgraph/07243500pep.png Graphic file (type png)
+
+<use resultgraph/07243500pep.png>
+Package pdftex.def Info: resultgraph/07243500pep.png used on input line 1587.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/07243500pepq.png, id=450, 578.6418pt x 434.1018pt>
+File: resultgraph/07243500pepq.png Graphic file (type png)
+
+<use resultgraph/07243500pepq.png>
+Package pdftex.def Info: resultgraph/07243500pepq.png used on input line 1587.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+ [29 <G:/library/tex/paper/resultgraph/02165000p.png (PNG copy)> <G:/library/te
+x/paper/resultgraph/02165000pep.png (PNG copy)> <G:/library/tex/paper/resultgra
+ph/02165000pepq.png (PNG copy)> <G:/library/tex/paper/resultgraph/02329000p.png
+ (PNG copy)> <G:/library/tex/paper/resultgraph/02329000pep.png (PNG copy)> <G:/
+library/tex/paper/resultgraph/02329000pepq.png (PNG copy)> <G:/library/tex/pape
+r/resultgraph/02375500p.png (PNG copy)> <G:/library/tex/paper/resultgraph/02375
+500pep.png (PNG copy)> <G:/library/tex/paper/resultgraph/02375500pepq.png (PNG 
+copy)> <G:/library/tex/paper/resultgraph/02478500p.png (PNG copy)> <G:/library/
+tex/paper/resultgraph/02478500pep.png (PNG copy)> <G:/library/tex/paper/resultg
+raph/02478500pepq.png (PNG copy)>]
+<resultgraph/02414500p.png, id=458, 578.6418pt x 434.1018pt>
+File: resultgraph/02414500p.png Graphic file (type png)
+
+<use resultgraph/02414500p.png>
+Package pdftex.def Info: resultgraph/02414500p.png used on input line 1630.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/02414500pep.png, id=459, 578.6418pt x 434.1018pt>
+File: resultgraph/02414500pep.png Graphic file (type png)
+
+<use resultgraph/02414500pep.png>
+Package pdftex.def Info: resultgraph/02414500pep.png used on input line 1630.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/02414500pepq.png, id=460, 578.6418pt x 434.1018pt>
+File: resultgraph/02414500pepq.png Graphic file (type png)
+
+<use resultgraph/02414500pepq.png>
+Package pdftex.def Info: resultgraph/02414500pepq.png used on input line 1630.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/02472000p.png, id=461, 578.6418pt x 434.1018pt>
+File: resultgraph/02472000p.png Graphic file (type png)
+
+<use resultgraph/02472000p.png>
+Package pdftex.def Info: resultgraph/02472000p.png used on input line 1630.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/02472000pep.png, id=462, 578.6418pt x 434.1018pt>
+File: resultgraph/02472000pep.png Graphic file (type png)
+
+<use resultgraph/02472000pep.png>
+Package pdftex.def Info: resultgraph/02472000pep.png used on input line 1630.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/02472000pepq.png, id=463, 578.6418pt x 434.1018pt>
+File: resultgraph/02472000pepq.png Graphic file (type png)
+
+<use resultgraph/02472000pepq.png>
+Package pdftex.def Info: resultgraph/02472000pepq.png used on input line 1630.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/11025500p.png, id=464, 578.6418pt x 434.1018pt>
+File: resultgraph/11025500p.png Graphic file (type png)
+
+<use resultgraph/11025500p.png>
+Package pdftex.def Info: resultgraph/11025500p.png used on input line 1630.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/11025500pep.png, id=465, 578.6418pt x 434.1018pt>
+File: resultgraph/11025500pep.png Graphic file (type png)
+
+<use resultgraph/11025500pep.png>
+Package pdftex.def Info: resultgraph/11025500pep.png used on input line 1630.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/11025500pepq.png, id=466, 578.6418pt x 434.1018pt>
+File: resultgraph/11025500pepq.png Graphic file (type png)
+
+<use resultgraph/11025500pepq.png>
+Package pdftex.def Info: resultgraph/11025500pepq.png used on input line 1630.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+File: resultgraph/11532500p.png Graphic file (type png)
+ <use resultgraph/11532500p.png>
+Package pdftex.def Info: resultgraph/11532500p.png used on input line 1630.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+File: resultgraph/11532500pep.png Graphic file (type png)
+
+<use resultgraph/11532500pep.png>
+Package pdftex.def Info: resultgraph/11532500pep.png used on input line 1630.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+File: resultgraph/11532500pepq.png Graphic file (type png)
+ <use resultgraph/11532500pepq.png>
+Package pdftex.def Info: resultgraph/11532500pepq.png used on input line 1630.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/12459000p.png, id=467, 578.6418pt x 434.1018pt>
+File: resultgraph/12459000p.png Graphic file (type png)
+
+<use resultgraph/12459000p.png>
+Package pdftex.def Info: resultgraph/12459000p.png used on input line 1630.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/12459000pep.png, id=468, 578.6418pt x 434.1018pt>
+File: resultgraph/12459000pep.png Graphic file (type png)
+
+<use resultgraph/12459000pep.png>
+Package pdftex.def Info: resultgraph/12459000pep.png used on input line 1630.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/12459000pepq.png, id=469, 578.6418pt x 434.1018pt>
+File: resultgraph/12459000pepq.png Graphic file (type png)
+
+<use resultgraph/12459000pepq.png>
+Package pdftex.def Info: resultgraph/12459000pepq.png used on input line 1630.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/13337000p.png, id=470, 578.6418pt x 434.1018pt>
+File: resultgraph/13337000p.png Graphic file (type png)
+
+<use resultgraph/13337000p.png>
+Package pdftex.def Info: resultgraph/13337000p.png used on input line 1630.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/13337000pep.png, id=471, 578.6418pt x 434.1018pt>
+File: resultgraph/13337000pep.png Graphic file (type png)
+
+<use resultgraph/13337000pep.png>
+Package pdftex.def Info: resultgraph/13337000pep.png used on input line 1630.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/13337000pepq.png, id=472, 578.6418pt x 434.1018pt>
+File: resultgraph/13337000pepq.png Graphic file (type png)
+
+<use resultgraph/13337000pepq.png>
+Package pdftex.def Info: resultgraph/13337000pepq.png used on input line 1630.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/14359000p.png, id=473, 578.6418pt x 434.1018pt>
+File: resultgraph/14359000p.png Graphic file (type png)
+
+<use resultgraph/14359000p.png>
+Package pdftex.def Info: resultgraph/14359000p.png used on input line 1630.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/14359000pep.png, id=474, 578.6418pt x 434.1018pt>
+File: resultgraph/14359000pep.png Graphic file (type png)
+
+<use resultgraph/14359000pep.png>
+Package pdftex.def Info: resultgraph/14359000pep.png used on input line 1630.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/14359000pepq.png, id=475, 578.6418pt x 434.1018pt>
+File: resultgraph/14359000pepq.png Graphic file (type png)
+
+<use resultgraph/14359000pepq.png>
+Package pdftex.def Info: resultgraph/14359000pepq.png used on input line 1630.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+ [30 <G:/library/tex/paper/resultgraph/06908000p.png (PNG copy)> <G:/library/te
+x/paper/resultgraph/06908000pep.png (PNG copy)> <G:/library/tex/paper/resultgra
+ph/06908000pepq.png (PNG copy)> <G:/library/tex/paper/resultgraph/07019000p.png
+ (PNG copy)> <G:/library/tex/paper/resultgraph/07019000pep.png (PNG copy)> <G:/
+library/tex/paper/resultgraph/07019000pepq.png (PNG copy)> <G:/library/tex/pape
+r/resultgraph/07177500p.png (PNG copy)> <G:/library/tex/paper/resultgraph/07177
+500pep.png (PNG copy)> <G:/library/tex/paper/resultgraph/07177500pepq.png (PNG 
+copy)> <G:/library/tex/paper/resultgraph/07243500p.png (PNG copy)> <G:/library/
+tex/paper/resultgraph/07243500pep.png (PNG copy)> <G:/library/tex/paper/resultg
+raph/07243500pepq.png (PNG copy)>]
+<resultgraph/05418500p.png, id=481, 578.6418pt x 434.1018pt>
+File: resultgraph/05418500p.png Graphic file (type png)
+
+<use resultgraph/05418500p.png>
+Package pdftex.def Info: resultgraph/05418500p.png used on input line 1673.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/05418500pep.png, id=482, 578.6418pt x 434.1018pt>
+File: resultgraph/05418500pep.png Graphic file (type png)
+
+<use resultgraph/05418500pep.png>
+Package pdftex.def Info: resultgraph/05418500pep.png used on input line 1673.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/05418500pepq.png, id=483, 578.6418pt x 434.1018pt>
+File: resultgraph/05418500pepq.png Graphic file (type png)
+
+<use resultgraph/05418500pepq.png>
+Package pdftex.def Info: resultgraph/05418500pepq.png used on input line 1673.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/05454500p.png, id=484, 578.6418pt x 434.1018pt>
+File: resultgraph/05454500p.png Graphic file (type png)
+
+<use resultgraph/05454500p.png>
+Package pdftex.def Info: resultgraph/05454500p.png used on input line 1673.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/05454500pep.png, id=485, 578.6418pt x 434.1018pt>
+File: resultgraph/05454500pep.png Graphic file (type png)
+
+<use resultgraph/05454500pep.png>
+Package pdftex.def Info: resultgraph/05454500pep.png used on input line 1673.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/05454500pepq.png, id=486, 578.6418pt x 434.1018pt>
+File: resultgraph/05454500pepq.png Graphic file (type png)
+
+<use resultgraph/05454500pepq.png>
+Package pdftex.def Info: resultgraph/05454500pepq.png used on input line 1673.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/05484500p.png, id=487, 578.6418pt x 434.1018pt>
+File: resultgraph/05484500p.png Graphic file (type png)
+
+<use resultgraph/05484500p.png>
+Package pdftex.def Info: resultgraph/05484500p.png used on input line 1673.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/05484500pep.png, id=488, 578.6418pt x 434.1018pt>
+File: resultgraph/05484500pep.png Graphic file (type png)
+
+<use resultgraph/05484500pep.png>
+Package pdftex.def Info: resultgraph/05484500pep.png used on input line 1673.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/05484500pepq.png, id=489, 578.6418pt x 434.1018pt>
+File: resultgraph/05484500pepq.png Graphic file (type png)
+
+<use resultgraph/05484500pepq.png>
+Package pdftex.def Info: resultgraph/05484500pepq.png used on input line 1673.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+File: resultgraph/06810000p.png Graphic file (type png)
+ <use resultgraph/06810000p.png>
+Package pdftex.def Info: resultgraph/06810000p.png used on input line 1673.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+File: resultgraph/06810000pep.png Graphic file (type png)
+
+<use resultgraph/06810000pep.png>
+Package pdftex.def Info: resultgraph/06810000pep.png used on input line 1673.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+File: resultgraph/06810000pepq.png Graphic file (type png)
+ <use resultgraph/06810000pepq.png>
+Package pdftex.def Info: resultgraph/06810000pepq.png used on input line 1673.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/06892000p.png, id=490, 578.6418pt x 434.1018pt>
+File: resultgraph/06892000p.png Graphic file (type png)
+
+<use resultgraph/06892000p.png>
+Package pdftex.def Info: resultgraph/06892000p.png used on input line 1673.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/06892000pep.png, id=491, 578.6418pt x 434.1018pt>
+File: resultgraph/06892000pep.png Graphic file (type png)
+
+<use resultgraph/06892000pep.png>
+Package pdftex.def Info: resultgraph/06892000pep.png used on input line 1673.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/06892000pepq.png, id=492, 578.6418pt x 434.1018pt>
+File: resultgraph/06892000pepq.png Graphic file (type png)
+
+<use resultgraph/06892000pepq.png>
+Package pdftex.def Info: resultgraph/06892000pepq.png used on input line 1673.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/06914000p.png, id=493, 578.6418pt x 434.1018pt>
+File: resultgraph/06914000p.png Graphic file (type png)
+
+<use resultgraph/06914000p.png>
+Package pdftex.def Info: resultgraph/06914000p.png used on input line 1673.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/06914000pep.png, id=494, 578.6418pt x 434.1018pt>
+File: resultgraph/06914000pep.png Graphic file (type png)
+
+<use resultgraph/06914000pep.png>
+Package pdftex.def Info: resultgraph/06914000pep.png used on input line 1673.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/06914000pepq.png, id=495, 578.6418pt x 434.1018pt>
+File: resultgraph/06914000pepq.png Graphic file (type png)
+
+<use resultgraph/06914000pepq.png>
+Package pdftex.def Info: resultgraph/06914000pepq.png used on input line 1673.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/07183000p.png, id=496, 578.6418pt x 434.1018pt>
+File: resultgraph/07183000p.png Graphic file (type png)
+
+<use resultgraph/07183000p.png>
+Package pdftex.def Info: resultgraph/07183000p.png used on input line 1673.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/07183000pep.png, id=497, 578.6418pt x 434.1018pt>
+File: resultgraph/07183000pep.png Graphic file (type png)
+
+<use resultgraph/07183000pep.png>
+Package pdftex.def Info: resultgraph/07183000pep.png used on input line 1673.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+
+<resultgraph/07183000pepq.png, id=498, 578.6418pt x 434.1018pt>
+File: resultgraph/07183000pepq.png Graphic file (type png)
+
+<use resultgraph/07183000pepq.png>
+Package pdftex.def Info: resultgraph/07183000pepq.png used on input line 1673.
+(pdftex.def)             Requested size: 108.0011pt x 81.02295pt.
+ [31 <G:/library/tex/paper/resultgraph/02414500p.png (PNG copy)> <G:/library/te
+x/paper/resultgraph/02414500pep.png (PNG copy)> <G:/library/tex/paper/resultgra
+ph/02414500pepq.png (PNG copy)> <G:/library/tex/paper/resultgraph/02472000p.png
+ (PNG copy)> <G:/library/tex/paper/resultgraph/02472000pep.png (PNG copy)> <G:/
+library/tex/paper/resultgraph/02472000pepq.png (PNG copy)> <G:/library/tex/pape
+r/resultgraph/11025500p.png (PNG copy)> <G:/library/tex/paper/resultgraph/11025
+500pep.png (PNG copy)> <G:/library/tex/paper/resultgraph/11025500pepq.png (PNG 
+copy)> <G:/library/tex/paper/resultgraph/12459000p.png (PNG copy)> <G:/library/
+tex/paper/resultgraph/12459000pep.png (PNG copy)> <G:/library/tex/paper/resultg
+raph/12459000pepq.png (PNG copy)> <G:/library/tex/paper/resultgraph/13337000p.p
+ng (PNG copy)> <G:/library/tex/paper/resultgraph/13337000pep.png (PNG copy)> <G
+:/library/tex/paper/resultgraph/13337000pepq.png (PNG copy)> <G:/library/tex/pa
+per/resultgraph/14359000p.png (PNG copy)> <G:/library/tex/paper/resultgraph/143
+59000pep.png (PNG copy)> <G:/library/tex/paper/resultgraph/14359000pepq.png (PN
+G copy)>]
+<resultgraph/02143000e.png, id=505, 578.6418pt x 434.1018pt>
+File: resultgraph/02143000e.png Graphic file (type png)
+
+<use resultgraph/02143000e.png>
+Package pdftex.def Info: resultgraph/02143000e.png used on input line 1714.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+File: resultgraph/02143000MI.png Graphic file (type png)
+ <use resultgraph/02143000MI.png>
+Package pdftex.def Info: resultgraph/02143000MI.png used on input line 1714.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/02143000AU.png, id=506, 578.6418pt x 434.1018pt>
+File: resultgraph/02143000AU.png Graphic file (type png)
+
+<use resultgraph/02143000AU.png>
+Package pdftex.def Info: resultgraph/02143000AU.png used on input line 1714.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+File: resultgraph/02143000EU.png Graphic file (type png)
+ <use resultgraph/02143000EU.png>
+Package pdftex.def Info: resultgraph/02143000EU.png used on input line 1714.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/02165000e.png, id=507, 578.6418pt x 434.1018pt>
+File: resultgraph/02165000e.png Graphic file (type png)
+
+<use resultgraph/02165000e.png>
+Package pdftex.def Info: resultgraph/02165000e.png used on input line 1714.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/02165000MI.png, id=508, 578.6418pt x 434.1018pt>
+File: resultgraph/02165000MI.png Graphic file (type png)
+
+<use resultgraph/02165000MI.png>
+Package pdftex.def Info: resultgraph/02165000MI.png used on input line 1714.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/02165000AU.png, id=509, 578.6418pt x 434.1018pt>
+File: resultgraph/02165000AU.png Graphic file (type png)
+
+<use resultgraph/02165000AU.png>
+Package pdftex.def Info: resultgraph/02165000AU.png used on input line 1714.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/02165000EU.png, id=510, 578.6418pt x 434.1018pt>
+File: resultgraph/02165000EU.png Graphic file (type png)
+
+<use resultgraph/02165000EU.png>
+Package pdftex.def Info: resultgraph/02165000EU.png used on input line 1714.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/02329000e.png, id=511, 578.6418pt x 434.1018pt>
+File: resultgraph/02329000e.png Graphic file (type png)
+
+<use resultgraph/02329000e.png>
+Package pdftex.def Info: resultgraph/02329000e.png used on input line 1714.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/02329000MI.png, id=512, 578.6418pt x 434.1018pt>
+File: resultgraph/02329000MI.png Graphic file (type png)
+
+<use resultgraph/02329000MI.png>
+Package pdftex.def Info: resultgraph/02329000MI.png used on input line 1714.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/02329000AU.png, id=513, 578.6418pt x 434.1018pt>
+File: resultgraph/02329000AU.png Graphic file (type png)
+
+<use resultgraph/02329000AU.png>
+Package pdftex.def Info: resultgraph/02329000AU.png used on input line 1714.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/02329000EU.png, id=514, 578.6418pt x 434.1018pt>
+File: resultgraph/02329000EU.png Graphic file (type png)
+
+<use resultgraph/02329000EU.png>
+Package pdftex.def Info: resultgraph/02329000EU.png used on input line 1714.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/02375500e.png, id=515, 578.6418pt x 434.1018pt>
+File: resultgraph/02375500e.png Graphic file (type png)
+
+<use resultgraph/02375500e.png>
+Package pdftex.def Info: resultgraph/02375500e.png used on input line 1714.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/02375500MI.png, id=516, 578.6418pt x 434.1018pt>
+File: resultgraph/02375500MI.png Graphic file (type png)
+
+<use resultgraph/02375500MI.png>
+Package pdftex.def Info: resultgraph/02375500MI.png used on input line 1714.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/02375500AU.png, id=517, 578.6418pt x 434.1018pt>
+File: resultgraph/02375500AU.png Graphic file (type png)
+
+<use resultgraph/02375500AU.png>
+Package pdftex.def Info: resultgraph/02375500AU.png used on input line 1714.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/02375500EU.png, id=518, 578.6418pt x 434.1018pt>
+File: resultgraph/02375500EU.png Graphic file (type png)
+
+<use resultgraph/02375500EU.png>
+Package pdftex.def Info: resultgraph/02375500EU.png used on input line 1714.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/02478500e.png, id=519, 578.6418pt x 434.1018pt>
+File: resultgraph/02478500e.png Graphic file (type png)
+
+<use resultgraph/02478500e.png>
+Package pdftex.def Info: resultgraph/02478500e.png used on input line 1714.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/02478500MI.png, id=520, 578.6418pt x 434.1018pt>
+File: resultgraph/02478500MI.png Graphic file (type png)
+
+<use resultgraph/02478500MI.png>
+Package pdftex.def Info: resultgraph/02478500MI.png used on input line 1714.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/02478500AU.png, id=521, 578.6418pt x 434.1018pt>
+File: resultgraph/02478500AU.png Graphic file (type png)
+
+<use resultgraph/02478500AU.png>
+Package pdftex.def Info: resultgraph/02478500AU.png used on input line 1714.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/02478500EU.png, id=522, 578.6418pt x 434.1018pt>
+File: resultgraph/02478500EU.png Graphic file (type png)
+
+<use resultgraph/02478500EU.png>
+Package pdftex.def Info: resultgraph/02478500EU.png used on input line 1714.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+ [32 <G:/library/tex/paper/resultgraph/05418500p.png (PNG copy)> <G:/library/te
+x/paper/resultgraph/05418500pep.png (PNG copy)> <G:/library/tex/paper/resultgra
+ph/05418500pepq.png (PNG copy)> <G:/library/tex/paper/resultgraph/05454500p.png
+ (PNG copy)> <G:/library/tex/paper/resultgraph/05454500pep.png (PNG copy)> <G:/
+library/tex/paper/resultgraph/05454500pepq.png (PNG copy)> <G:/library/tex/pape
+r/resultgraph/05484500p.png (PNG copy)> <G:/library/tex/paper/resultgraph/05484
+500pep.png (PNG copy)> <G:/library/tex/paper/resultgraph/05484500pepq.png (PNG 
+copy)> <G:/library/tex/paper/resultgraph/06892000p.png (PNG copy)> <G:/library/
+tex/paper/resultgraph/06892000pep.png (PNG copy)> <G:/library/tex/paper/resultg
+raph/06892000pepq.png (PNG copy)> <G:/library/tex/paper/resultgraph/06914000p.p
+ng (PNG copy)> <G:/library/tex/paper/resultgraph/06914000pep.png (PNG copy)> <G
+:/library/tex/paper/resultgraph/06914000pepq.png (PNG copy)> <G:/library/tex/pa
+per/resultgraph/07183000p.png (PNG copy)> <G:/library/tex/paper/resultgraph/071
+83000pep.png (PNG copy)> <G:/library/tex/paper/resultgraph/07183000pepq.png (PN
+G copy)>]
+<resultgraph/05585000e.png, id=528, 578.6418pt x 434.1018pt>
+File: resultgraph/05585000e.png Graphic file (type png)
+
+<use resultgraph/05585000e.png>
+Package pdftex.def Info: resultgraph/05585000e.png used on input line 1753.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+File: resultgraph/05585000MI.png Graphic file (type png)
+ <use resultgraph/05585000MI.png>
+Package pdftex.def Info: resultgraph/05585000MI.png used on input line 1753.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/05585000AU.png, id=529, 578.6418pt x 434.1018pt>
+File: resultgraph/05585000AU.png Graphic file (type png)
+
+<use resultgraph/05585000AU.png>
+Package pdftex.def Info: resultgraph/05585000AU.png used on input line 1753.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+File: resultgraph/05585000EU.png Graphic file (type png)
+ <use resultgraph/05585000EU.png>
+Package pdftex.def Info: resultgraph/05585000EU.png used on input line 1753.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/06908000e.png, id=530, 578.6418pt x 434.1018pt>
+File: resultgraph/06908000e.png Graphic file (type png)
+
+<use resultgraph/06908000e.png>
+Package pdftex.def Info: resultgraph/06908000e.png used on input line 1753.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/06908000MI.png, id=531, 578.6418pt x 434.1018pt>
+File: resultgraph/06908000MI.png Graphic file (type png)
+
+<use resultgraph/06908000MI.png>
+Package pdftex.def Info: resultgraph/06908000MI.png used on input line 1753.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/06908000AU.png, id=532, 578.6418pt x 434.1018pt>
+File: resultgraph/06908000AU.png Graphic file (type png)
+
+<use resultgraph/06908000AU.png>
+Package pdftex.def Info: resultgraph/06908000AU.png used on input line 1753.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/06908000EU.png, id=533, 578.6418pt x 434.1018pt>
+File: resultgraph/06908000EU.png Graphic file (type png)
+
+<use resultgraph/06908000EU.png>
+Package pdftex.def Info: resultgraph/06908000EU.png used on input line 1753.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/07019000e.png, id=534, 578.6418pt x 434.1018pt>
+File: resultgraph/07019000e.png Graphic file (type png)
+
+<use resultgraph/07019000e.png>
+Package pdftex.def Info: resultgraph/07019000e.png used on input line 1753.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/07019000MI.png, id=535, 578.6418pt x 434.1018pt>
+File: resultgraph/07019000MI.png Graphic file (type png)
+
+<use resultgraph/07019000MI.png>
+Package pdftex.def Info: resultgraph/07019000MI.png used on input line 1753.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/07019000AU.png, id=536, 578.6418pt x 434.1018pt>
+File: resultgraph/07019000AU.png Graphic file (type png)
+
+<use resultgraph/07019000AU.png>
+Package pdftex.def Info: resultgraph/07019000AU.png used on input line 1753.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/07019000EU.png, id=537, 578.6418pt x 434.1018pt>
+File: resultgraph/07019000EU.png Graphic file (type png)
+
+<use resultgraph/07019000EU.png>
+Package pdftex.def Info: resultgraph/07019000EU.png used on input line 1753.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/07177500e.png, id=538, 578.6418pt x 434.1018pt>
+File: resultgraph/07177500e.png Graphic file (type png)
+
+<use resultgraph/07177500e.png>
+Package pdftex.def Info: resultgraph/07177500e.png used on input line 1753.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/07177500MI.png, id=539, 578.6418pt x 434.1018pt>
+File: resultgraph/07177500MI.png Graphic file (type png)
+
+<use resultgraph/07177500MI.png>
+Package pdftex.def Info: resultgraph/07177500MI.png used on input line 1753.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/07177500AU.png, id=540, 578.6418pt x 434.1018pt>
+File: resultgraph/07177500AU.png Graphic file (type png)
+
+<use resultgraph/07177500AU.png>
+Package pdftex.def Info: resultgraph/07177500AU.png used on input line 1753.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/07177500EU.png, id=541, 578.6418pt x 434.1018pt>
+File: resultgraph/07177500EU.png Graphic file (type png)
+
+<use resultgraph/07177500EU.png>
+Package pdftex.def Info: resultgraph/07177500EU.png used on input line 1753.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/07243500e.png, id=542, 578.6418pt x 434.1018pt>
+File: resultgraph/07243500e.png Graphic file (type png)
+
+<use resultgraph/07243500e.png>
+Package pdftex.def Info: resultgraph/07243500e.png used on input line 1753.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/07243500MI.png, id=543, 578.6418pt x 434.1018pt>
+File: resultgraph/07243500MI.png Graphic file (type png)
+
+<use resultgraph/07243500MI.png>
+Package pdftex.def Info: resultgraph/07243500MI.png used on input line 1753.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/07243500AU.png, id=544, 578.6418pt x 434.1018pt>
+File: resultgraph/07243500AU.png Graphic file (type png)
+
+<use resultgraph/07243500AU.png>
+Package pdftex.def Info: resultgraph/07243500AU.png used on input line 1753.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/07243500EU.png, id=545, 578.6418pt x 434.1018pt>
+File: resultgraph/07243500EU.png Graphic file (type png)
+
+<use resultgraph/07243500EU.png>
+Package pdftex.def Info: resultgraph/07243500EU.png used on input line 1753.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+ [33 <G:/library/tex/paper/resultgraph/02143000e.png (PNG copy)> <G:/library/te
+x/paper/resultgraph/02143000AU.png (PNG copy)> <G:/library/tex/paper/resultgrap
+h/02165000e.png (PNG copy)> <G:/library/tex/paper/resultgraph/02165000MI.png (P
+NG copy)> <G:/library/tex/paper/resultgraph/02165000AU.png (PNG copy)> <G:/libr
+ary/tex/paper/resultgraph/02165000EU.png (PNG copy)> <G:/library/tex/paper/resu
+ltgraph/02329000e.png (PNG copy)> <G:/library/tex/paper/resultgraph/02329000MI.
+png (PNG copy)> <G:/library/tex/paper/resultgraph/02329000AU.png (PNG copy)> <G
+:/library/tex/paper/resultgraph/02329000EU.png (PNG copy)> <G:/library/tex/pape
+r/resultgraph/02375500e.png (PNG copy)> <G:/library/tex/paper/resultgraph/02375
+500MI.png (PNG copy)> <G:/library/tex/paper/resultgraph/02375500AU.png (PNG cop
+y)> <G:/library/tex/paper/resultgraph/02375500EU.png (PNG copy)> <G:/library/te
+x/paper/resultgraph/02478500e.png (PNG copy)> <G:/library/tex/paper/resultgraph
+/02478500MI.png (PNG copy)> <G:/library/tex/paper/resultgraph/02478500AU.png (P
+NG copy)> <G:/library/tex/paper/resultgraph/02478500EU.png (PNG copy)>]
+<resultgraph/02414500e.png, id=552, 578.6418pt x 434.1018pt>
+File: resultgraph/02414500e.png Graphic file (type png)
+
+<use resultgraph/02414500e.png>
+Package pdftex.def Info: resultgraph/02414500e.png used on input line 1801.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/02414500MI.png, id=553, 578.6418pt x 434.1018pt>
+File: resultgraph/02414500MI.png Graphic file (type png)
+
+<use resultgraph/02414500MI.png>
+Package pdftex.def Info: resultgraph/02414500MI.png used on input line 1801.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/02414500AU.png, id=554, 578.6418pt x 434.1018pt>
+File: resultgraph/02414500AU.png Graphic file (type png)
+
+<use resultgraph/02414500AU.png>
+Package pdftex.def Info: resultgraph/02414500AU.png used on input line 1801.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/02414500EU.png, id=555, 578.6418pt x 434.1018pt>
+File: resultgraph/02414500EU.png Graphic file (type png)
+
+<use resultgraph/02414500EU.png>
+Package pdftex.def Info: resultgraph/02414500EU.png used on input line 1801.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/02472000e.png, id=556, 578.6418pt x 434.1018pt>
+File: resultgraph/02472000e.png Graphic file (type png)
+
+<use resultgraph/02472000e.png>
+Package pdftex.def Info: resultgraph/02472000e.png used on input line 1801.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/02472000MI.png, id=557, 578.6418pt x 434.1018pt>
+File: resultgraph/02472000MI.png Graphic file (type png)
+
+<use resultgraph/02472000MI.png>
+Package pdftex.def Info: resultgraph/02472000MI.png used on input line 1801.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/02472000AU.png, id=558, 578.6418pt x 434.1018pt>
+File: resultgraph/02472000AU.png Graphic file (type png)
+
+<use resultgraph/02472000AU.png>
+Package pdftex.def Info: resultgraph/02472000AU.png used on input line 1801.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/02472000EU.png, id=559, 578.6418pt x 434.1018pt>
+File: resultgraph/02472000EU.png Graphic file (type png)
+
+<use resultgraph/02472000EU.png>
+Package pdftex.def Info: resultgraph/02472000EU.png used on input line 1801.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/11025500e.png, id=560, 578.6418pt x 434.1018pt>
+File: resultgraph/11025500e.png Graphic file (type png)
+
+<use resultgraph/11025500e.png>
+Package pdftex.def Info: resultgraph/11025500e.png used on input line 1801.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/11025500MI.png, id=561, 578.6418pt x 434.1018pt>
+File: resultgraph/11025500MI.png Graphic file (type png)
+
+<use resultgraph/11025500MI.png>
+Package pdftex.def Info: resultgraph/11025500MI.png used on input line 1801.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/11025500AU.png, id=562, 578.6418pt x 434.1018pt>
+File: resultgraph/11025500AU.png Graphic file (type png)
+
+<use resultgraph/11025500AU.png>
+Package pdftex.def Info: resultgraph/11025500AU.png used on input line 1801.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/11025500EU.png, id=563, 578.6418pt x 434.1018pt>
+File: resultgraph/11025500EU.png Graphic file (type png)
+
+<use resultgraph/11025500EU.png>
+Package pdftex.def Info: resultgraph/11025500EU.png used on input line 1801.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/11532500e.png, id=564, 578.6418pt x 434.1018pt>
+File: resultgraph/11532500e.png Graphic file (type png)
+
+<use resultgraph/11532500e.png>
+Package pdftex.def Info: resultgraph/11532500e.png used on input line 1801.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+File: resultgraph/11532500MI.png Graphic file (type png)
+ <use resultgraph/11532500MI.png>
+Package pdftex.def Info: resultgraph/11532500MI.png used on input line 1801.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/11532500AU.png, id=565, 578.6418pt x 434.1018pt>
+File: resultgraph/11532500AU.png Graphic file (type png)
+
+<use resultgraph/11532500AU.png>
+Package pdftex.def Info: resultgraph/11532500AU.png used on input line 1801.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+File: resultgraph/11532500EU.png Graphic file (type png)
+ <use resultgraph/11532500EU.png>
+Package pdftex.def Info: resultgraph/11532500EU.png used on input line 1801.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/12459000e.png, id=566, 578.6418pt x 434.1018pt>
+File: resultgraph/12459000e.png Graphic file (type png)
+
+<use resultgraph/12459000e.png>
+Package pdftex.def Info: resultgraph/12459000e.png used on input line 1801.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/12459000MI.png, id=567, 578.6418pt x 434.1018pt>
+File: resultgraph/12459000MI.png Graphic file (type png)
+
+<use resultgraph/12459000MI.png>
+Package pdftex.def Info: resultgraph/12459000MI.png used on input line 1801.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/12459000AU.png, id=568, 578.6418pt x 434.1018pt>
+File: resultgraph/12459000AU.png Graphic file (type png)
+
+<use resultgraph/12459000AU.png>
+Package pdftex.def Info: resultgraph/12459000AU.png used on input line 1801.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/12459000EU.png, id=569, 578.6418pt x 434.1018pt>
+File: resultgraph/12459000EU.png Graphic file (type png)
+
+<use resultgraph/12459000EU.png>
+Package pdftex.def Info: resultgraph/12459000EU.png used on input line 1801.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/13337000e.png, id=570, 578.6418pt x 434.1018pt>
+File: resultgraph/13337000e.png Graphic file (type png)
+
+<use resultgraph/13337000e.png>
+Package pdftex.def Info: resultgraph/13337000e.png used on input line 1801.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/13337000MI.png, id=571, 578.6418pt x 434.1018pt>
+File: resultgraph/13337000MI.png Graphic file (type png)
+
+<use resultgraph/13337000MI.png>
+Package pdftex.def Info: resultgraph/13337000MI.png used on input line 1801.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/13337000AU.png, id=572, 578.6418pt x 434.1018pt>
+File: resultgraph/13337000AU.png Graphic file (type png)
+
+<use resultgraph/13337000AU.png>
+Package pdftex.def Info: resultgraph/13337000AU.png used on input line 1801.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/13337000EU.png, id=573, 578.6418pt x 434.1018pt>
+File: resultgraph/13337000EU.png Graphic file (type png)
+
+<use resultgraph/13337000EU.png>
+Package pdftex.def Info: resultgraph/13337000EU.png used on input line 1801.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/14359000e.png, id=574, 578.6418pt x 434.1018pt>
+File: resultgraph/14359000e.png Graphic file (type png)
+
+<use resultgraph/14359000e.png>
+Package pdftex.def Info: resultgraph/14359000e.png used on input line 1801.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/14359000MI.png, id=575, 578.6418pt x 434.1018pt>
+File: resultgraph/14359000MI.png Graphic file (type png)
+
+<use resultgraph/14359000MI.png>
+Package pdftex.def Info: resultgraph/14359000MI.png used on input line 1801.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/14359000AU.png, id=576, 578.6418pt x 434.1018pt>
+File: resultgraph/14359000AU.png Graphic file (type png)
+
+<use resultgraph/14359000AU.png>
+Package pdftex.def Info: resultgraph/14359000AU.png used on input line 1801.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/14359000EU.png, id=577, 578.6418pt x 434.1018pt>
+File: resultgraph/14359000EU.png Graphic file (type png)
+
+<use resultgraph/14359000EU.png>
+Package pdftex.def Info: resultgraph/14359000EU.png used on input line 1801.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+ [34 <G:/library/tex/paper/resultgraph/05585000e.png (PNG copy)> <G:/library/te
+x/paper/resultgraph/05585000AU.png (PNG copy)> <G:/library/tex/paper/resultgrap
+h/06908000e.png (PNG copy)> <G:/library/tex/paper/resultgraph/06908000MI.png (P
+NG copy)> <G:/library/tex/paper/resultgraph/06908000AU.png (PNG copy)> <G:/libr
+ary/tex/paper/resultgraph/06908000EU.png (PNG copy)> <G:/library/tex/paper/resu
+ltgraph/07019000e.png (PNG copy)> <G:/library/tex/paper/resultgraph/07019000MI.
+png (PNG copy)> <G:/library/tex/paper/resultgraph/07019000AU.png (PNG copy)> <G
+:/library/tex/paper/resultgraph/07019000EU.png (PNG copy)> <G:/library/tex/pape
+r/resultgraph/07177500e.png (PNG copy)> <G:/library/tex/paper/resultgraph/07177
+500MI.png (PNG copy)> <G:/library/tex/paper/resultgraph/07177500AU.png (PNG cop
+y)> <G:/library/tex/paper/resultgraph/07177500EU.png (PNG copy)> <G:/library/te
+x/paper/resultgraph/07243500e.png (PNG copy)> <G:/library/tex/paper/resultgraph
+/07243500MI.png (PNG copy)> <G:/library/tex/paper/resultgraph/07243500AU.png (P
+NG copy)> <G:/library/tex/paper/resultgraph/07243500EU.png (PNG copy)>]
+<resultgraph/05418500e.png, id=583, 578.6418pt x 434.1018pt>
+File: resultgraph/05418500e.png Graphic file (type png)
+
+<use resultgraph/05418500e.png>
+Package pdftex.def Info: resultgraph/05418500e.png used on input line 1850.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/05418500MI.png, id=584, 578.6418pt x 434.1018pt>
+File: resultgraph/05418500MI.png Graphic file (type png)
+
+<use resultgraph/05418500MI.png>
+Package pdftex.def Info: resultgraph/05418500MI.png used on input line 1850.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/05418500AU.png, id=585, 578.6418pt x 434.1018pt>
+File: resultgraph/05418500AU.png Graphic file (type png)
+
+<use resultgraph/05418500AU.png>
+Package pdftex.def Info: resultgraph/05418500AU.png used on input line 1850.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/05418500EU.png, id=586, 578.6418pt x 434.1018pt>
+File: resultgraph/05418500EU.png Graphic file (type png)
+
+<use resultgraph/05418500EU.png>
+Package pdftex.def Info: resultgraph/05418500EU.png used on input line 1850.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/05454500e.png, id=587, 578.6418pt x 434.1018pt>
+File: resultgraph/05454500e.png Graphic file (type png)
+
+<use resultgraph/05454500e.png>
+Package pdftex.def Info: resultgraph/05454500e.png used on input line 1850.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/05454500MI.png, id=588, 578.6418pt x 434.1018pt>
+File: resultgraph/05454500MI.png Graphic file (type png)
+
+<use resultgraph/05454500MI.png>
+Package pdftex.def Info: resultgraph/05454500MI.png used on input line 1850.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/05454500AU.png, id=589, 578.6418pt x 434.1018pt>
+File: resultgraph/05454500AU.png Graphic file (type png)
+
+<use resultgraph/05454500AU.png>
+Package pdftex.def Info: resultgraph/05454500AU.png used on input line 1850.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/05454500EU.png, id=590, 578.6418pt x 434.1018pt>
+File: resultgraph/05454500EU.png Graphic file (type png)
+
+<use resultgraph/05454500EU.png>
+Package pdftex.def Info: resultgraph/05454500EU.png used on input line 1850.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/05484500e.png, id=591, 578.6418pt x 434.1018pt>
+File: resultgraph/05484500e.png Graphic file (type png)
+
+<use resultgraph/05484500e.png>
+Package pdftex.def Info: resultgraph/05484500e.png used on input line 1850.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/05484500MI.png, id=592, 578.6418pt x 434.1018pt>
+File: resultgraph/05484500MI.png Graphic file (type png)
+
+<use resultgraph/05484500MI.png>
+Package pdftex.def Info: resultgraph/05484500MI.png used on input line 1850.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/05484500AU.png, id=593, 578.6418pt x 434.1018pt>
+File: resultgraph/05484500AU.png Graphic file (type png)
+
+<use resultgraph/05484500AU.png>
+Package pdftex.def Info: resultgraph/05484500AU.png used on input line 1850.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/05484500EU.png, id=594, 578.6418pt x 434.1018pt>
+File: resultgraph/05484500EU.png Graphic file (type png)
+
+<use resultgraph/05484500EU.png>
+Package pdftex.def Info: resultgraph/05484500EU.png used on input line 1850.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/06810000e.png, id=595, 578.6418pt x 434.1018pt>
+File: resultgraph/06810000e.png Graphic file (type png)
+
+<use resultgraph/06810000e.png>
+Package pdftex.def Info: resultgraph/06810000e.png used on input line 1850.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+File: resultgraph/06810000MI.png Graphic file (type png)
+ <use resultgraph/06810000MI.png>
+Package pdftex.def Info: resultgraph/06810000MI.png used on input line 1850.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/06810000AU.png, id=596, 578.6418pt x 434.1018pt>
+File: resultgraph/06810000AU.png Graphic file (type png)
+
+<use resultgraph/06810000AU.png>
+Package pdftex.def Info: resultgraph/06810000AU.png used on input line 1850.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+File: resultgraph/06810000EU.png Graphic file (type png)
+ <use resultgraph/06810000EU.png>
+Package pdftex.def Info: resultgraph/06810000EU.png used on input line 1850.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/06892000e.png, id=597, 578.6418pt x 434.1018pt>
+File: resultgraph/06892000e.png Graphic file (type png)
+
+<use resultgraph/06892000e.png>
+Package pdftex.def Info: resultgraph/06892000e.png used on input line 1850.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/06892000MI.png, id=598, 578.6418pt x 434.1018pt>
+File: resultgraph/06892000MI.png Graphic file (type png)
+
+<use resultgraph/06892000MI.png>
+Package pdftex.def Info: resultgraph/06892000MI.png used on input line 1850.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/06892000AU.png, id=599, 578.6418pt x 434.1018pt>
+File: resultgraph/06892000AU.png Graphic file (type png)
+
+<use resultgraph/06892000AU.png>
+Package pdftex.def Info: resultgraph/06892000AU.png used on input line 1850.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/06892000EU.png, id=600, 578.6418pt x 434.1018pt>
+File: resultgraph/06892000EU.png Graphic file (type png)
+
+<use resultgraph/06892000EU.png>
+Package pdftex.def Info: resultgraph/06892000EU.png used on input line 1850.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/06914000e.png, id=601, 578.6418pt x 434.1018pt>
+File: resultgraph/06914000e.png Graphic file (type png)
+
+<use resultgraph/06914000e.png>
+Package pdftex.def Info: resultgraph/06914000e.png used on input line 1850.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/06914000MI.png, id=602, 578.6418pt x 434.1018pt>
+File: resultgraph/06914000MI.png Graphic file (type png)
+
+<use resultgraph/06914000MI.png>
+Package pdftex.def Info: resultgraph/06914000MI.png used on input line 1850.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/06914000AU.png, id=603, 578.6418pt x 434.1018pt>
+File: resultgraph/06914000AU.png Graphic file (type png)
+
+<use resultgraph/06914000AU.png>
+Package pdftex.def Info: resultgraph/06914000AU.png used on input line 1850.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/06914000EU.png, id=604, 578.6418pt x 434.1018pt>
+File: resultgraph/06914000EU.png Graphic file (type png)
+
+<use resultgraph/06914000EU.png>
+Package pdftex.def Info: resultgraph/06914000EU.png used on input line 1850.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/07183000e.png, id=605, 578.6418pt x 434.1018pt>
+File: resultgraph/07183000e.png Graphic file (type png)
+
+<use resultgraph/07183000e.png>
+Package pdftex.def Info: resultgraph/07183000e.png used on input line 1850.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/07183000MI.png, id=606, 578.6418pt x 434.1018pt>
+File: resultgraph/07183000MI.png Graphic file (type png)
+
+<use resultgraph/07183000MI.png>
+Package pdftex.def Info: resultgraph/07183000MI.png used on input line 1850.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/07183000AU.png, id=607, 578.6418pt x 434.1018pt>
+File: resultgraph/07183000AU.png Graphic file (type png)
+
+<use resultgraph/07183000AU.png>
+Package pdftex.def Info: resultgraph/07183000AU.png used on input line 1850.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+
+<resultgraph/07183000EU.png, id=608, 578.6418pt x 434.1018pt>
+File: resultgraph/07183000EU.png Graphic file (type png)
+
+<use resultgraph/07183000EU.png>
+Package pdftex.def Info: resultgraph/07183000EU.png used on input line 1850.
+(pdftex.def)             Requested size: 143.9978pt x 108.0284pt.
+ [35 <G:/library/tex/paper/resultgraph/02414500e.png (PNG copy)> <G:/library/te
+x/paper/resultgraph/02414500MI.png (PNG copy)> <G:/library/tex/paper/resultgrap
+h/02414500AU.png (PNG copy)> <G:/library/tex/paper/resultgraph/02414500EU.png (
+PNG copy)> <G:/library/tex/paper/resultgraph/02472000e.png (PNG copy)> <G:/libr
+ary/tex/paper/resultgraph/02472000MI.png (PNG copy)> <G:/library/tex/paper/resu
+ltgraph/02472000AU.png (PNG copy)> <G:/library/tex/paper/resultgraph/02472000EU
+.png (PNG copy)> <G:/library/tex/paper/resultgraph/11025500e.png (PNG copy)> <G
+:/library/tex/paper/resultgraph/11025500MI.png (PNG copy)> <G:/library/tex/pape
+r/resultgraph/11025500AU.png (PNG copy)> <G:/library/tex/paper/resultgraph/1102
+5500EU.png (PNG copy)> <G:/library/tex/paper/resultgraph/11532500e.png (PNG cop
+y)> <G:/library/tex/paper/resultgraph/11532500AU.png (PNG copy)> <G:/library/te
+x/paper/resultgraph/12459000e.png (PNG copy)> <G:/library/tex/paper/resultgraph
+/12459000MI.png (PNG copy)> <G:/library/tex/paper/resultgraph/12459000AU.png (P
+NG copy)> <G:/library/tex/paper/resultgraph/12459000EU.png (PNG copy)> <G:/libr
+ary/tex/paper/resultgraph/13337000e.png (PNG copy)> <G:/library/tex/paper/resul
+tgraph/13337000MI.png (PNG copy)> <G:/library/tex/paper/resultgraph/13337000AU.
+png (PNG copy)> <G:/library/tex/paper/resultgraph/13337000EU.png (PNG copy)> <G
+:/library/tex/paper/resultgraph/14359000e.png (PNG copy)> <G:/library/tex/paper
+/resultgraph/14359000MI.png (PNG copy)> <G:/library/tex/paper/resultgraph/14359
+000AU.png (PNG copy)> <G:/library/tex/paper/resultgraph/14359000EU.png (PNG cop
+y)>] [36 <G:/library/tex/paper/resultgraph/05418500e.png (PNG copy)> <G:/librar
+y/tex/paper/resultgraph/05418500MI.png (PNG copy)> <G:/library/tex/paper/result
+graph/05418500AU.png (PNG copy)> <G:/library/tex/paper/resultgraph/05418500EU.p
+ng (PNG copy)> <G:/library/tex/paper/resultgraph/05454500e.png (PNG copy)> <G:/
+library/tex/paper/resultgraph/05454500MI.png (PNG copy)> <G:/library/tex/paper/
+resultgraph/05454500AU.png (PNG copy)> <G:/library/tex/paper/resultgraph/054545
+00EU.png (PNG copy)> <G:/library/tex/paper/resultgraph/05484500e.png (PNG copy)
+> <G:/library/tex/paper/resultgraph/05484500MI.png (PNG copy)> <G:/library/tex/
+paper/resultgraph/05484500AU.png (PNG copy)> <G:/library/tex/paper/resultgraph/
+05484500EU.png (PNG copy)> <G:/library/tex/paper/resultgraph/06810000e.png (PNG
+ copy)> <G:/library/tex/paper/resultgraph/06810000AU.png (PNG copy)> <G:/librar
+y/tex/paper/resultgraph/06892000e.png (PNG copy)> <G:/library/tex/paper/resultg
+raph/06892000MI.png (PNG copy)> <G:/library/tex/paper/resultgraph/06892000AU.pn
+g (PNG copy)> <G:/library/tex/paper/resultgraph/06892000EU.png (PNG copy)> <G:/
+library/tex/paper/resultgraph/06914000e.png (PNG copy)> <G:/library/tex/paper/r
+esultgraph/06914000MI.png (PNG copy)> <G:/library/tex/paper/resultgraph/0691400
+0AU.png (PNG copy)> <G:/library/tex/paper/resultgraph/06914000EU.png (PNG copy)
+> <G:/library/tex/paper/resultgraph/07183000e.png (PNG copy)> <G:/library/tex/p
+aper/resultgraph/07183000MI.png (PNG copy)> <G:/library/tex/paper/resultgraph/0
+7183000AU.png (PNG copy)> <G:/library/tex/paper/resultgraph/07183000EU.png (PNG
+ copy)>]
+(G:\library\tex\paper\information_analysis_of_hydrological_simulation.bbl
+[37] [38] [39])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1863.
+ [40]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1863.
+
+(G:\library\tex\paper\information_analysis_of_hydrological_simulation.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1863.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1863.
+
+Package rerunfilecheck Info: File `information_analysis_of_hydrological_simulat
+ion.out' has not changed.
+(rerunfilecheck)             Checksum: 16EF26DF72C6616182439FB39A134421;2280.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1863.
+ ) 
+Here is how much of TeX's memory you used:
+ 11212 strings out of 493921
+ 168775 string characters out of 3154506
+ 237690 words of memory out of 3000000
+ 14036 multiletter control sequences out of 15000+200000
+ 10817 words of font info for 39 fonts, out of 3000000 for 9000
+ 841 hyphenation exceptions out of 8191
+ 32i,15n,28p,1610b,466s stack positions out of 5000i,500n,10000p,200000b,50000s
+<D:/miktex/fonts/type1/public/amsfonts/cm/cmbx10.pfb><D:/miktex/fonts/type1/p
+ublic/amsfonts/cm/cmbx12.pfb><D:/miktex/fonts/type1/public/amsfonts/cm/cmex10.p
+fb><D:/miktex/fonts/type1/public/amsfonts/cm/cmmi10.pfb><D:/miktex/fonts/type1/
+public/amsfonts/cm/cmmi6.pfb><D:/miktex/fonts/type1/public/amsfonts/cm/cmmi7.pf
+b><D:/miktex/fonts/type1/public/amsfonts/cm/cmmi8.pfb><D:/miktex/fonts/type1/pu
+blic/amsfonts/cm/cmr10.pfb><D:/miktex/fonts/type1/public/amsfonts/cm/cmr17.pfb>
+<D:/miktex/fonts/type1/public/amsfonts/cm/cmr6.pfb><D:/miktex/fonts/type1/publi
+c/amsfonts/cm/cmr8.pfb><D:/miktex/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:
+/miktex/fonts/type1/public/amsfonts/cm/cmsy8.pfb><D:/miktex/fonts/type1/public/
+amsfonts/cm/cmti10.pfb>
+Output written on information_analysis_of_hydrological_simulation.pdf (40 pages
+, 8939936 bytes).
+PDF statistics:
+ 714 PDF objects out of 1000 (max. 8388607)
+ 144 named destinations out of 1000 (max. 500000)
+ 1182 words of extra memory for PDF output out of 10000 (max. 10000000)
+

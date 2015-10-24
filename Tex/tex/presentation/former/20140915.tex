@@ -1,0 +1,241 @@
+\documentclass{beamer}
+\usetheme{Warsaw}
+\usepackage{CJKutf8}
+\usepackage{amsmath}
+\usepackage{listings}
+\begin{document}
+\begin{CJK}{UTF8}{gkai}
+\title{硕士论文框架}
+\date{\today}
+\author{潘宝祥}
+\maketitle
+
+\begin{frame}
+\frametitle{Outline}
+\begin{itemize}
+\item 研究问题阐述
+\item 研究内容与步骤
+\item 已取得及预期的研究成果
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{研究问题阐述}
+\begin{itemize}
+\item 研究背景与现状
+\item 研究意义
+\item 需要解决的问题
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{研究背景与现状}
+\begin{itemize}
+\item 水文数据量及计算机能力的提升促使水文模型朝时空尺度更细的方向发展，而对尺度协调问题研究不足.
+\item 模拟流域宏观水文形态的水热耦合方程已有形式证明的不合理性，可应用时间尺度的不确定性.
+\item 应用ARMA模拟长时间尺度流域水文形态的理论可靠性及其参数意义.
+\item 不同时间尺度下流域水文要素，模型结构对流域水文模拟的影响在信息理论中表达的优势与不足.信息论框架下水文模拟研究.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{研究意义}
+\begin{quotation}
+There is only one constant preoccupation: I have throughout been anxious to discover how much we can be said to know and with what degree of certainty of doubtfulness.
+\end{quotation}
+\rightline{ —— Bertrand Russell, My Philosophical Development}
+\begin{quotation}
+If degree of plausibility are represented by real numbers, then there is a uniquely determined set of quantitative rules for conducting inference.
+\end{quotation}
+\rightline{ —— E.T. Jaynes , Probability Theory, The Logic of Science}
+\end{frame}
+
+\begin{frame}
+\frametitle{需要解决的问题}
+\begin{itemize}
+\item 对$\left\{{Input,Output,State Variable,Parameter, Structure}\right\}$状态空间的数学描述，对各分量作用的量化.（描述性表示）
+\item 对$\left\{{Input,Output,State Variable,Parameter, Structure}\right\}$状态空间的程序范式描述.（过程性表示）
+\item 流域“宏观量化指标”的确立及其对流域宏观水文形态的影响分析
+\item 概念性水量平衡模型中本构方程物理意义及其适用时间尺度
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{研究内容与步骤}
+\begin{itemize}
+\item 建立基本随机方程与水文变量随机过程描述（已完成）
+\item 水文模型泛函编码范式描述（部分完成）
+\item 水文模型中各要素信息量贡献分析（部分完成）
+\item 基于基本随机方程的流域水文时间升尺度分析
+\begin{itemize}
+\item 平稳状态下升尺度（部分完成）
+\item 季节性波动状态下升尺度（傅立叶分析）
+\item 升尺度方程与概念性水量平衡模型,ARMA模型比较分析（部分完成）
+\item 各时间尺度水文模型要素信息量贡献实例探究（部分完成）
+\end{itemize}
+\item 基于基本随机方程的流域水文空间升尺度分析
+\begin{itemize}
+\item 土壤蓄水量为指数分布的流域随机土壤水模型（部分完成）
+\item 以地形指数为基础的流域随机土壤水模型
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{建立基本随机方程与水文变量随机过程描述}
+ \begin{equation}
+ \frac{\partial{f(s,t)}}{\partial t}=\frac{\partial{[\rho(s)f(s,t)]}}{\partial s}-\lambda(t)f(s,t)+\lambda(t)\int_{0}^{s} f(z,t)p_{i|z}(s-z)dz
+ \end{equation}
+
+ \begin{equation}
+ p(r,t)=\lambda(t)\int_{0}^{1} f(z,t)f_{r\_depth}(r+1-z)dz
+ \end{equation} 
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{水文模型泛函编码范式描述}
+\begin{itemize}
+\item 函数式编程——lambda演算
+\item 延时求值——流技术
+\end{itemize}
+\begin{lstlisting} 
+(define (initial 
+  (list state input output parameters)))
+(define simulation 
+  (cons-stream  initial  
+    (stream-map structure simulation)))
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{水文模型泛函编码范式描述}
+
+\begin{lstlisting} 
+(define initial 
+  (list structure input output 
+        parameters init evaluation)) 
+(define calibration 
+  (cons-stream initial 
+    (stream-map evolve initial)))
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{水文模型泛函编码范式描述}
+\begin{lstlisting} 
+(define (SCE_UA object_function range) 
+  (define (mainline i lis)
+    (cond ((eq? i 1) 
+           (mainline (+ i 1) 
+           (divide (generate_strings))))
+          ((< i MAXN) 
+           (mainline (+ i 1) (shuffle (evolve lis))))
+          (else (car (reverse (car (reverse lis)))))))
+  (mainline 1 '()))
+\end{lstlisting}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{水文模型中各要素信息量贡献分析}
+\begin{equation}
+\begin{split}
+Aleatory\,Uncertainty: &H(Observation)-I(Input;Observation)\\&= H(Observation|Input)
+\end{split}
+\end{equation}
+\begin{equation}
+Epistemic\,Uncertainty: I(Input;Observation)-I(Simulation;Observation)
+\end{equation}
+\end{frame}
+
+\begin{frame}
+\frametitle{水文模型中各要素信息量贡献分析-对非i.i.d.情形处理}
+对于i.i.d.，可将离散时间采得或计算得到的数据作为样本估算总体信息熵.
+
+由于季节性和气候下垫面变化，长时序水文变量通常不能通过i.i.d.检验.但是由于该构架本身衡量模拟时期内"模型"的总体效果，该效果由数据的聚类性质评判，而非数据的相对大小，因此对非i.i.d.水文数据暂不作处理.
+\end{frame}
+
+\begin{frame}
+\frametitle{水文模型中各要素信息量贡献分析-对迭代变量处理}
+\begin{itemize}
+\item 将迭代变量作为输入
+\item 以前n次输入表示迭代变量对模拟结果的影响
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{水文模型中各要素信息量贡献分析-评价标杆}
+
+ Best Achievable Performance  (BAP): I(Input;Observation)
+\newline
+\centering   Normalization
+\begin{equation}
+\begin{split}
+AU_n: &\frac{H(Observation)-I(Input;Observation)}{H(Observation)}\\&= \frac{H(Observation|Input)}{H(Observation}
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{split}
+EU_n: &\frac{I(Input;Observation)-I(Simulation;Observation)}{I(Input;Observation)}\\&=1-\frac{I(Simulation;Observation)}{I(Input;Observation)}
+\end{split}
+\end{equation}
+\end{frame}
+
+\begin{frame}
+\frametitle{基于基本随机方程的流域水文时间升尺度分析}
+\begin{itemize}
+\item 平稳状态下升尺度
+\begin{equation}
+\lim_{n\to\infty}P\lbrace\vert\sum_{i=1}^n E_i-n\mu\vert<\epsilon\rbrace=1
+\end{equation}
+\item 季节性波动状态下升尺度
+ \begin{equation}
+ \begin{split}
+ \int_{-\infty}^{\infty}\frac{\partial{f(s,t)}}{\partial t}e^{-i\omega t}dt=&\int_{-\infty}^{\infty}\frac{\partial{[\rho(s)f(s,t)]}}{\partial s}e^{-i\omega t}dt\\&-\int_{-\infty}^{\infty}\lambda(t)f(s,t)e^{-i\omega t}dt\\&+\int_{-\infty}^{\infty}\lambda(t)\int_{0}^{s} f(z,t)p_{i|z}(s-z)dze^{-i\omega t}dt
+ \end{split}
+ \end{equation}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{升尺度方程与水量平衡模型本构方程，ARMA模型对比研究}
+\begin{itemize}
+\item 分析
+\item 变动时间尺度下水量平衡模型，ARMA模型信息流分析
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{基于基本随机方程的流域水文空间升尺度分析}
+\begin{itemize}
+\item 土壤蓄水量为指数分布的流域随机土壤水模型 
+ \begin{equation}
+ \begin{split}
+ &\frac{\partial{f(s,t)}}{\partial t}=\frac{\partial{[\rho(s)f(s,t)]}}{\partial s}-\lambda(t)f(s,t)\\&+\lambda(t)\int_{0}^{s} g(z,t)p_{rain\_depth} \lbrace(1+b)[(1-z^{\frac{1}{1+b}})-(1-s)^{\frac{1}{1+b}}]\rbrace dz\\&+\lambda(t)p_0(0)e^{-\lambda(t) t}p_{rain\_depth} \lbrace(1+b)[1-(1-s)^{\frac{1}{1+b}}]\rbrace
+ \end{split}
+ \end{equation}
+\item 以地形指数为基础的流域随机土壤水模型
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{已取得及预期的研究成果}
+\begin{itemize}
+\item 对$\left\{{Input,Output,State Variable,Parameter, Structure}\right\}$状态空间的数学描述，对各分量作用的量化.（描述性表示）
+\item 对$\left\{{Input,Output,State Variable,Parameter, Structure}\right\}$状态空间的程序范式描述.（过程性表示）
+\item 流域“宏观量化指标”的确立及其对流域宏观水文形态的影响分析
+\item 概念性水量平衡模型中本构方程物理意义及其适用时间尺度
+\item ARMA模型的物理基础及其参数意义
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\centering \LARGE End
+\end{frame}
+
+\end{CJK}
+
+\end{document}

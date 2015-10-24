@@ -1,0 +1,31 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: dummy.aux
+The style file: agufull08.bst
+Database file #1: sample-bib-08.bib
+You're missing a field name---line 428 of file sample-bib-08.bib
+ : @article{P,
+ :            2000,a
+I'm skipping whatever remains of this entry
+Warning--to sort, need author or key in P
+Warning--empty author in P
+Warning--empty title in P
+Warning--empty journal in P
+Warning--empty journal in boyle2001multicriteria
+Name 4 in "Y. B. Dibike and S. Velickov and D. Solomatine and et al ," has a comma at the end for entry dibike2001model
+while executing---line 1820 of file agufull08.bst
+Name 4 in "Y. B. Dibike and S. Velickov and D. Solomatine and et al ," has a comma at the end for entry dibike2001model
+while executing---line 1820 of file agufull08.bst
+Name 4 in "Y. B. Dibike and S. Velickov and D. Solomatine and et al ," has a comma at the end for entry dibike2001model
+while executing---line 1820 of file agufull08.bst
+Name 4 in "Y. B. Dibike and S. Velickov and D. Solomatine and et al ," has a comma at the end for entry dibike2001model
+while executing---line 1820 of file agufull08.bst
+Name 4 in "A. M. J. Gerrits and H. H. G. Savenije and E. J. M. Veling and et al ," has a comma at the end for entry gerrits2009analytical
+while executing---line 1820 of file agufull08.bst
+Name 4 in "A. M. J. Gerrits and H. H. G. Savenije and E. J. M. Veling and et al ," has a comma at the end for entry gerrits2009analytical
+while executing---line 1820 of file agufull08.bst
+Name 4 in "A. M. J. Gerrits and H. H. G. Savenije and E. J. M. Veling and et al ," has a comma at the end for entry gerrits2009analytical
+while executing---line 1820 of file agufull08.bst
+Name 4 in "A. M. J. Gerrits and H. H. G. Savenije and E. J. M. Veling and et al ," has a comma at the end for entry gerrits2009analytical
+while executing---line 1820 of file agufull08.bst
+Warning--empty journal in granados2014discovering
+Warning--empty journal in abcd
+(There were 9 error messages)

@@ -1,0 +1,147 @@
+\documentclass{beamer}
+\usetheme{Warsaw}
+ 
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{graphicx} 
+\usepackage{diagbox}
+\begin{document}
+ 
+\title{Stochastic Learning and Its Application In Hydrology}
+\author{Pan Baoxiang}
+\date{\today}
+\maketitle
+
+\begin{frame}
+\frametitle{Outline}
+\begin{itemize}
+\item Introduction to Stochastic Learning
+\item Two Cases
+\begin{itemize}
+
+\item ICA
+\item Support Vector Machine
+
+\end{itemize}
+ 
+\item Discussion
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Introduction}
+\textbf{Definition}:Machine learning is a scientific discipline that deals with the construction and study of algorithms that can learn from data. Such algorithms operate by building a model based on inputs  and using that to make predictions or decisions, rather than following only explicitly programmed instructions.
+ 
+\end{frame}
+
+\begin{frame}
+\frametitle{Conditions to Use Stochastic Learning}
+\begin{itemize}
+\item There is pattern
+\item There is not explicit mathematical expression
+\item Available Data
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{ICA}
+Independent Component Analysis (ICA) is a computational method for separating a multivariate signal into additive subcomponents. This is done by assuming that the subcomponents are non-Gaussian signals and that they are statistically independent from each other. ICA is a special case of blind source separation.
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Problem Statement}
+Linear Regression of $NDVI$ from $P,R,T,EP,P_{log}$ 
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Result}
+ICA transform among all terms.
+ 
+$n_{independent\_components}=n_{variables}$：
+\begin{equation*}
+M_o=0.0015P_{Mean}-0.0074Rh+0.0005P_{Lag}+0.0349Ta_{Mean}-0.0006Eps
+\end{equation*}
+\begin{center}
+$\rho^2=0.6787$ 
+\end{center}
+
+$n_{independent\_components}=2$：
+\begin{equation*}
+M_o=0.0008P_{Mean}-0.0049Rh+0.0008P_{Lag}+0.0144Ta_{Mean}-0.0001Eps
+\end{equation*}
+\begin{center}
+$\rho^2=0.5856$
+\end{center}
+
+$n_{independent\_components}=3$：
+\begin{equation*}
+M_o=0.0009P_{Mean}-0.0046Rh -0.0146Ta_{Mean}+0.0008Eps
+\end{equation*}
+\begin{center}
+$\rho^2=0.4674$
+\end{center}
+\end{frame}
+\begin{frame}
+ICA transform among same dimension terms.
+$n_{independent\_components}=n_{same\_dimension\_variables}$：
+\begin{equation*}
+M_o=0.0015P_{Mean}-0.0074Rh+0.0005P_{Lag}+0.0349Ta_{Mean}-0.0006Eps
+\end{equation*}
+\begin{center}
+$\rho^2=0.6787$ 
+\end{center}
+
+$n_{independent\_components}=2$： 
+\begin{equation*}
+M_o=0.0005P_{Mean}+0.0011Rh+0.0007P_{Lag}+0.0040Ta_{Mean}-0.0001Eps
+\end{equation*}
+\begin{center}
+$\rho^2=0.5800$
+\end{center}
+
+We recommend the last result for an intuitive deduction that the 2 independent components reflect the water and heat control.
+\end{frame}
+
+\begin{frame}
+\frametitle{Support Vector Machine}
+A support vector machine constructs a hyperplane or set of hyperplanes in a high or infinite dimensional space, which can be used for classification, regression, or other tasks. Intuitively, a good separation is achieved by the hyperplane that has the largest distance to the nearest training data point of any class (so-called functional margin), since in general the larger the margin the lower the generalization error of the classifier.
+ \begin{figure}[htbp]
+\centering
+\includegraphics[width=4cm]{Classifier.png}
+\end{figure} 
+\end{frame}
+
+\begin{frame}
+\frametitle{Non-linear Condition}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=8cm]{Kernel.png}
+\end{figure} 
+\end{frame}
+ 
+\begin{frame}
+\frametitle{Support Vector Regression}
+Minimize the sum of the empirical risk function and the structural risk function:
+
+empirical risk function:
+\begin{equation*}
+\frac{1}{l}\sum_{i=1}^{l}|y_i-f(x_i)|_\epsilon
+\end{equation*}
+ 
+structural risk function:
+\begin{equation*}
+\frac{1}{2}w^Tw
+\end{equation*}
+\end{frame}
+
+\begin{frame}
+\frametitle{Example}
+ 
+\end{frame}
+ 
+\end{document}

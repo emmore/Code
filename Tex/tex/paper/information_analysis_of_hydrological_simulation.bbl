@@ -1,0 +1,271 @@
+\begin{thebibliography}{}
+
+\bibitem[Abebe and Price, 2003]{abebe2003managing}
+Abebe, A.~J. and Price, R.~K. (2003).
+\newblock Managing uncertainty in hydrological models using complementary
+  models.
+\newblock {\em Hydrological sciences journal}, 48(5):679--692.
+
+\bibitem[Amorocho and Espildora, 1973]{amorocho1973entropy}
+Amorocho, J. and Espildora, B. (1973).
+\newblock Entropy in the assessment of uncertainty in hydrologic systems and
+  models.
+\newblock {\em Water Resources Research}, 9(6):1511--1522.
+
+\bibitem[Asefa et~al., 2006]{asefa2006multi}
+Asefa, T., Kemblowski, M., McKee, M., and Khalil, A. (2006).
+\newblock Multi-time scale stream flow predictions: The support vector machines
+  approach.
+\newblock {\em Journal of Hydrology}, 318(1):7--16.
+
+\bibitem[Behzad et~al., 2009]{behzad2009generalization}
+Behzad, M., Asghari, K., Eazi, M., and Palhang, M. (2009).
+\newblock Generalization performance of support vector machines and neural
+  networks in runoff modeling.
+\newblock {\em Expert Systems with applications}, 36(4):7624--7629.
+
+\bibitem[Bl{\"o}schl and Sivapalan, 1995]{bloschl1995scale}
+Bl{\"o}schl, G. and Sivapalan, M. (1995).
+\newblock Scale issues in hydrological modelling: a review.
+\newblock {\em Hydrological processes}, 9(3-4):251--290.
+
+\bibitem[Bryant and Richard, 2003]{bryant2003computer}
+Bryant, R. and Richard, O. H.~D. (2003).
+\newblock {\em Computer systems: a programmer's perspective}.
+\newblock Prentice Hall.
+
+\bibitem[Budyko, 1961]{budyko1961heat}
+Budyko, M. (1961).
+\newblock The heat balance of the earth's surface.
+\newblock {\em Soviet Geography}, 2(4):3--13.
+
+\bibitem[Chang and Lin, 2011]{chang2011libsvm}
+Chang, C.~C. and Lin, C.~J. (2011).
+\newblock Libsvm: a library for support vector machines.
+\newblock {\em ACM Transactions on Intelligent Systems and Technology (TIST)},
+  2(3):27.
+
+\bibitem[Chapman, 1986]{chapman1986entropy}
+Chapman, T.~G. (1986).
+\newblock Entropy as a measure of hydrologic data uncertainty and model
+  performance.
+\newblock {\em Journal of Hydrology}, 85(1):111--126.
+
+\bibitem[Choudhury, 1999]{choudhury1999evaluation}
+Choudhury, B.~J. (1999).
+\newblock Evaluation of an empirical equation for annual evaporation using
+  field observations and results from a biophysical model.
+\newblock {\em Journal of Hydrology}, 216(1):99--110.
+
+\bibitem[Cortes and Vapnik, 1995]{cortes1995support}
+Cortes, C. and Vapnik, V. (1995).
+\newblock Support-vector networks.
+\newblock {\em Machine learning}, 20(3):273--297.
+
+\bibitem[Cover and Thomas, 2012]{cover2012elements}
+Cover, T.~M. and Thomas, J.~A. (2012).
+\newblock {\em Elements of information theory}.
+\newblock John Wiley \& Sons.
+
+\bibitem[Dibike et~al., 2001]{dibike2001model}
+Dibike, Y.~B., Velickov, S., Solomatine, D., and et~al (2001).
+\newblock Model induction with support vector machines: introduction and
+  applications.
+\newblock {\em Journal of Computing in Civil Engineering}, 15(3):208--216.
+
+\bibitem[Duan et~al., 2006]{duan2006model}
+Duan, Q., Schaake, J., Andreassian, V., and et~al (2006).
+\newblock Model parameter estimation experiment (mopex): An overview of science
+  strategy. and major results from the second and third workshops.
+\newblock {\em Journal of Hydrology}, 320(1):3--17.
+
+\bibitem[Freeze and Harlan, 1969]{freeze1969blueprint}
+Freeze, R.~A. and Harlan, R.~L. (1969).
+\newblock Blueprint for a physically-based digitally-simulated hydrologic
+  response model.
+\newblock {\em Journal of Hydrology}, 9(3):237--258.
+
+\bibitem[Fu, 1981]{FuBaopu}
+Fu, B. (1981).
+\newblock Lansurface evaporation calculation.
+\newblock {\em Meterology Science(China)}, 5(1):23--31.
+
+\bibitem[Gerrits et~al., 2009]{gerrits2009analytical}
+Gerrits, A. M.~J., Savenije, H. H.~G., Veling, E. J.~M., and et~al (2009).
+\newblock Analytical derivation of the budyko curve based on rainfall
+  characteristics and a simple evaporation model.
+\newblock {\em Water Resources Research}, 45(4).
+
+\bibitem[Gong, 2012]{phdgong}
+Gong, W. (2012).
+\newblock Watershed model uncertainty analysis based on information entropy and
+  mutual information.
+\newblock {\em PhD thesis of Department of Hydraulic Engineering Tsinghua
+  University, Beijing, China}.
+
+\bibitem[Gong et~al., 2013]{gong2013estimating}
+Gong, W., Gupta, H.~V., Yang, D., and et~al (2013).
+\newblock Estimating epistemic and aleatory uncertainties during hydrologic
+  modeling: An information theoretic approach.
+\newblock {\em Water Resources Research}, 49(4):2253--2273.
+
+\bibitem[Gong et~al., 2014]{gong2014estimating}
+Gong, W., Yang, D., Gupta, H.~V., and Nearing, G. (2014).
+\newblock Estimating information entropy for hydrological data: One-dimensional
+  case.
+\newblock {\em Water Resources Research}, 50(6):5003--5018.
+
+\bibitem[Hofstadter, 2000]{hofstadter1980godel}
+Hofstadter, D.~R. (2000).
+\newblock {\em G{\"o}del, Escher, Bach, An Eternal Golden Braid}.
+\newblock Penguin.
+
+\bibitem[Hyv{\"a}rinen et~al., 2004]{hyvarinen2004independent}
+Hyv{\"a}rinen, A., Karhunen, J., and Oja, E. (2004).
+\newblock {\em Independent component analysis}, volume~46.
+\newblock John Wiley \& Sons.
+
+\bibitem[Jobson, 1982]{jobson1982evaporation}
+Jobson, H.~E. (1982).
+\newblock Evaporation into the atmosphere: Theory, history, and applications.
+\newblock {\em Eos Transactions American Geophysical Union}, 63(51):1223--1224.
+
+\bibitem[Kraskov et~al., 2004]{kraskov2004estimating}
+Kraskov, A., St{\"o}gbauer, H., and Grassberger, P. (2004).
+\newblock Estimating mutual information.
+\newblock {\em Physical review E}, 69(6):066138.
+
+\bibitem[Li and Paul, 2009]{li2009introduction}
+Li, M. and Paul, V. (2009).
+\newblock {\em An introduction to Kolmogorov complexity and its applications}.
+\newblock Springer Science \& Business Media.
+
+\bibitem[Lin et~al., 2006]{lin2006using}
+Lin, J.~Y., Cheng, C.~T., and Chau, K.~W. (2006).
+\newblock Using support vector machines for long-term discharge prediction.
+\newblock {\em Hydrological Sciences Journal}, 51(4):599--612.
+
+\bibitem[Pokhrel and Gupta, 2010]{pokhrel2010use}
+Pokhrel, P. and Gupta, H.~V. (2010).
+\newblock On the use of spatial regularization strategies to improve
+  calibration of distributed watershed models.
+\newblock {\em Water resources research}, 46(1).
+
+\bibitem[Sankarasubramanian and Vogel, 2002]{sankarasubramanian2002annual}
+Sankarasubramanian, A. and Vogel, R.~M. (2002).
+\newblock Annual hydroclimatology of the united states.
+\newblock {\em Water Resources Research}, 38(6):19--1.
+
+\bibitem[Sankarasubramanian and Vogel,
+  2003]{sankarasubramanian2003hydroclimatology}
+Sankarasubramanian, A. and Vogel, R.~M. (2003).
+\newblock Hydroclimatology of the continental united states.
+\newblock {\em Geophysical Research Letters}, 30(7).
+
+\bibitem[Shannon, 1948]{shannon2001mathematical}
+Shannon, C.~E. (1948).
+\newblock A mathematical theory of communication.
+\newblock {\em ACM SIGMOBILE Mobile Computing and Communications Review},
+  5(1):3--55.
+
+\bibitem[Shi and Eberhart, 1998]{shi1998modified}
+Shi, Y. and Eberhart, R. (1998).
+\newblock A modified particle swarm optimizer.
+\newblock In {\em Evolutionary Computation Proceedings,1998,IEEE World Congress
+  on Computational Intelligence, The 1998 IEEE International Conference on},
+  pages 69--73. IEEE.
+
+\bibitem[Singh, 1997]{singh1997use}
+Singh, V.~P. (1997).
+\newblock The use of entropy in hydrology and water resources.
+\newblock {\em Hydrological processes}, 11(6):587--626.
+
+\bibitem[Singh, 2000]{singh2000entropy}
+Singh, V.~P. (2000).
+\newblock The entropy theory as a tool for modelling and decision-making in
+  environmental and water resources.
+\newblock {\em WATER SA-PRETORIA-}, 26(1):1--12.
+
+\bibitem[Singh, 2013]{singh2013entropy}
+Singh, V.~P. (2013).
+\newblock {\em Entropy theory and its application in environmental and water
+  engineering}.
+\newblock John Wiley \& Sons.
+
+\bibitem[Tekleab et~al., 2011]{tekleab2011water}
+Tekleab, S., Uhlenbrook, S., Mohamed, Y., and et~al (2011).
+\newblock Water balance modeling of upper blue nile catchments using a top-down
+  approach.
+\newblock {\em Hydrology and Earth System Sciences}, 15(7):2179--2193.
+
+\bibitem[Thomas, 1981]{abcd}
+Thomas, H.~A. (1981).
+\newblock Improved methods for national water assessment.
+\newblock WR15249270[A].
+
+\bibitem[Wang and Alimohammadi, 2012]{wang2012responses}
+Wang, D. and Alimohammadi, N. (2012).
+\newblock Responses of annual runoff, evaporation, and storage change to
+  climate variability at the watershed scale.
+\newblock {\em Water Resources Research}, 48(5).
+
+\bibitem[Wang and Tang, 2014]{wang2014one}
+Wang, D. and Tang, Y.~A. (2014).
+\newblock A one-parameter budyko model for water balance captures emergent
+  behavior in darwinian hydrologic models.
+\newblock {\em Geophysical Research Letters}, 41(13):4569--4577.
+
+\bibitem[Weijs and Giesen, 2011]{weijs2011accounting}
+Weijs, S.~V. and Giesen, N. V.~D. (2011).
+\newblock Accounting for observational uncertainty in forecast verification: An
+  information-theoretical view on forecasts, observations, and truth.
+\newblock {\em Monthly Weather Review}, 139(7):2156--2162.
+
+\bibitem[Weijs et~al., 2013]{weijs2013data}
+Weijs, S.~V., Giesen, N. V.~D., and Parlange, M.~B. (2013).
+\newblock Data compression to define information content of hydrological time
+  series.
+\newblock {\em Hydrology. and Earth System Sciences}, 17(8):3171--3187.
+
+\bibitem[Weijs et~al., 2010]{weijs2010hydrological}
+Weijs, S.~V., Schoups, G., and Giesen, N. V.~D. (2010).
+\newblock Why hydrological predictions should be evaluated using information
+  theory.
+\newblock {\em Hydrology and Earth System Sciences}, 14(12):2545--2558.
+
+\bibitem[Xiong and Guo, 1999]{xiong1999two}
+Xiong, L. and Guo, S. (1999).
+\newblock A two-parameter monthly water balance model and its application.
+\newblock {\em Journal of Hydrology}, 216(1):111--123.
+
+\bibitem[Xu et~al., 2014]{xu2014attribution}
+Xu, X., Yang, D., Yang, H., and et~al (2014).
+\newblock Attribution analysis based on the budyko hypothesis for detecting the
+  dominant cause of runoff decline in haihe basin.
+\newblock {\em Journal of Hydrology}, 510:530--540.
+
+\bibitem[Yang et~al., 2007]{yang2007analyzing}
+Yang, D., Sun, F., Liu, Z., and et~al (2007).
+\newblock Analyzing spatial and temporal variability of annual water-energy
+  balance in nonhumid regions of china using the budyko hypothesis.
+\newblock {\em Water Resources Research}, 43(4).
+
+\bibitem[Yang et~al., 2008]{yang2008new}
+Yang, H., Yang, D., Lei, Z., and et~al (2008).
+\newblock New analytical derivation of the mean annual water-energy balance
+  equation.
+\newblock {\em Water Resources Research}, 44(3).
+
+\bibitem[Zhang and Dawes, 2001]{zhang2001response}
+Zhang, L. and Dawes, W.~R. (2001).
+\newblock Response of mean annual evapotranspiration to vegetation changes at
+  catchment scale.
+\newblock {\em Water resources research}, 37(3):701--708.
+
+\bibitem[Zhang et~al., 2008]{zhang2008water}
+Zhang, L., N., P., K., H., and et~al (2008).
+\newblock Water balance modeling over variable time scales based on the budyko
+  framework--model development and testing.
+\newblock {\em Journal of Hydrology}, 360(1):117--131.
+
+\end{thebibliography}

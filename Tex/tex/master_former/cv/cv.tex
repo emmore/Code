@@ -1,0 +1,142 @@
+% LaTeX resume using res.cls
+\documentclass[margin]{res}
+%\usepackage{helvetica} % uses helvetica postscript font (download helvetica.sty)
+%\usepackage{newcent}   % uses new century schoolbook postscript font 
+\setlength{\textwidth}{5.1in} % set width of text portion
+\usepackage{float}
+\usepackage{graphicx} 
+\usepackage{amsmath}
+\usepackage{authblk}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{subfigure}
+\begin{document}
+
+% Center the name over the entire width of resume:
+ \moveleft.5\hoffset\centerline{\large\bf Baoxiang Pan}
+% Draw a horizontal line the whole width of resume:
+ \moveleft\hoffset\vbox{\hrule width\resumewidth height 1pt}\smallskip
+% address begins here
+% Again, the address lines must be centered over entire width of resume:
+ \moveleft.5\hoffset\centerline{Institute of Hydrology and Water Resources, Tsinghua University}
+ \moveleft.5\hoffset\centerline{Beijing 100000}
+ \moveleft.5\hoffset\centerline{(86) 133-6672-0253}
+  \moveleft.5\hoffset\centerline{panbaoxiang@hotmail.com}
+
+
+
+\begin{resume}
+\section{EDUCATION} {\sl Bachelor of Engineering,} Hydrology and Water Resources \\
+                      % \sl will be bold italic in New Century Schoolbook (or
+	              % any postscript font) and just slanted in
+		      %	Computer Modern (default) font
+                School of Water Resources and Hydropower Engineering, Wuhan University\\ 
+                \\
+                {\sl Master of Engineering,} Hydrology and Water Resources \\
+                      % \sl will be bold italic in New Century Schoolbook (or
+	              % any postscript font) and just slanted in
+		      %	Computer Modern (default) font
+                Institute of Hydrology and Water Resources, Tsinghua University\\ 
+                expected July 2015 \\
+                Concentration: Stochastic Hydrology, Hydrological Simulation 
+ 
+\section{COMPUTER \\ SKILLS} {\sl Languages \& Software:} Lisp, C, Python, \LaTeX\ ; Matlab, Mathematica, R,  Mysql,  ,Git, vim, ArcGIS, Grapher, AutoCAD .\\
+                {\sl Operating Systems:} Linux, Windows.\\
+                {Github URL:} https://github.com/morepenn
+               
+                
+\section{MATH \\ SKILLS}  Analysis,
+ Probability Theory, Statistics,
+ Stochastic Process, Linear Algebra, Operations Research, Numerical Analysis, Information Theory, Machine Learning.
+ 
+\iffalse
+\section{ENGLISH \\ SCORES} 
+\begin{minipage}{0.42\linewidth}
+\begin{table}[H]\footnotesize
+\begin{center}
+\caption*{GRE}
+\begin{tabular}{cccc}
+\toprule
+Verbal   & Quantity & Writing   &Total   \\
+\midrule
+152 & 170 & 3.5 & 322 \\  
+\bottomrule
+\end{tabular}
+\end{center}
+\end{table}
+ 
+\end{minipage}
+\hfill
+\begin{minipage}{.64\linewidth}
+\begin{table}[H]\footnotesize
+\begin{center}
+\caption*{TOEFL}
+\begin{tabular}{ccccc}
+\toprule
+Reading & Listening  &  Speaking & Writing & Total \\ 
+\midrule
+29 & 27 & 20 & 26 & 102 \\  
+\bottomrule
+\end{tabular}
+\end{center}
+\end{table} 
+ 
+\end{minipage}
+  
+\fi
+                
+
+\section{ACADEMIC\\WORK} {\sl Hydrological Models}   \\
+                 \begin{itemize}  \itemsep -2pt %reduce space between items
+                 \item Conceptual Precipitation-Runoff Models: TOPMODEL, XINANJIANG Model, Shanbei Model, HyMod.
+                \item  Water-Heat Correlation Models: Monthly Water Balance Models, Budyko.
+                \item Stochastic Soil Moisture Model.
+                \item  Parameter Estimation: Genetic Algorithm, Particle Swarm Optimizer, SCE-UA Algorithm. 
+                \item Data-Driven Models: Support Vector Machine, Artificial Neutral Network.
+                \end{itemize}
+ 
+                {\sl Stochastic Hydrology}  \\
+                 \begin{itemize}  \itemsep -2pt %reduce space between items
+                 \item Hydrological Time Series Analysis
+                 \item Information Theory Applied In Hydrology
+                 
+                 \end{itemize} 
+                 {\sl Hydrometeorology}  \\
+                 \begin{itemize}  \itemsep -2pt %reduce space between items
+                 \item Boundary Layer Theory
+                 \item Comparison of Evapotranspiration Equations 
+                 
+                 \end{itemize} 
+                 {\sl Field Experiments}  \\
+                 \begin{itemize}  \itemsep -2pt %reduce space between items
+                 \item Soil Characteristic Field Experiments and Hydrometeorology Observation Station Construction in the Upper Hehei Basin  
+                 \item Plants and Soil-Water Characteristic Investigation in Talimu Watershed, Xinjiang Province 
+                 
+                 \end{itemize} 
+                 \section{ACADEMIC\\EXPERIENCE}  
+ {\it Presentation\\} 
+ \begin{itemize}
+ \item Oral Presentation in the The 2nd CAS/THU Hydrology and Water Resource Symposium
+ \item Poster Presentation in the American Geophysical Union 2014 Meeting
+ \item Oral Presentation in the The 3rd THU/CAS Hydrology and Water Resource Symposium
+ \end{itemize}
+  {\it Publication\\} 
+  \begin{itemize}
+  \item Pan, B. and Cong, Z.  Information Analysis of Watershed Hydrological Patterns across Temporal Scales (to be submitted). 
+  \end{itemize}
+ 
+
+\section{EXTRA \\ ACTIVITIES\\HOBBIES}             
+
+            {\it Basketball}, Start S.F. of the school team. \\
+            {\it Erhu}, Band 6.\\
+            {\it Sketching}, Minor in Architecture in Huazhong University of Science and Technology. \\
+            {\it Plat Script Writing}, Several scripts on show in the school drama club. \\
+            {\it Reading}, Big fun of science philosophy and science fiction. 
+ 
+
+\end{resume}
+\end{document}
+
+
+
