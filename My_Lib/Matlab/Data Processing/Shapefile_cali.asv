@@ -1,31 +1,45 @@
 function [longitude,latitude,result]=Shapefile_cali(filename,target)
 %boundary description
     %---------rectangle--------
-    lon_max=-114-8.0/60;
-    lon_min=-124-26.0/60;
+    lon_min=-114-8.0/60;
+    lon_max=-124-26.0/60;
     lat_min=32.533333333;
     lat_max=42.0;
     %---------slash-----------
     %slash=[start,end,position] 
     %position=-1 means keep the left; 
     %position=1 means keep the right; 
-    slash1={[39 -120] [42 -120] -1};
-    slash2={[39 -120] [34 -115] -1};
+    slash1={[39 240] [42 240] -1};
+    slash2={[39 240] [34 245.87] -1};
     slash={slash1 slash2};
 
  
 %data readin 
+%    ds=ncdataset(filename);
+%    result=ds.data(target);
     lon=ncread(filename,'lon');
     lat=ncread(filename,'lat');
     lon_scale=lon(2)-lon(1);
     lat_scale=lat(2)-lat(1);
     a=find(lon>=(lon_min-0.99*lon_scale)&lon<=(lon_max+0.99*lon_scale));
     b=find(lat>=(lat_min-0.99*lat_scale)&lat<=(lat_max+0.99*lat_scale));
-    result=ncread(filename,target,[a(1) b(1) 1],[length(a) length(b) inf]);
+    result=ncread(filename,target,[a(1),b(1)],[length(a),length(b)]);
 
 
 
 %shape file
+    %----------rectangle shape------------
+
+    
+      
+    
+    
+    
+    
+    
+    
+    
+    
     % longitude & latitude  
     for i=1:length(a)
         longitude(i)=lon(a(i));
