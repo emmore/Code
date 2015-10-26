@@ -22,7 +22,7 @@ function [longitude,latitude,result]=Shapefile_cali(filename,target)
     a=find(lon>=(lon_min-0.99*lon_scale)&lon<=(lon_max+0.99*lon_scale));
     b=find(lat>=(lat_min-0.99*lat_scale)&lat<=(lat_max+0.99*lat_scale));
     result=ncread(filename,target,[a(1) b(1) 1],[length(a) length(b) inf]);
-
+%    result=ncread(filename,target);
 
 
 %shape file
@@ -51,7 +51,7 @@ function [longitude,latitude,result]=Shapefile_cali(filename,target)
                 end
             end
         end
-    end
+    end    
 end
  
  
