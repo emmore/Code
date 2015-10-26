@@ -1,4 +1,6 @@
-function [longitude,latitude,result]=Shapefile_cali(filename,target)
+function [longitude,latitude,result]=Shapefile_cali_toolbox(filename,target)
+addpath('C:\Users\chrs-134\Documents\MATLAB\nctoolbox-master');
+setup_nctoolbox;
 %boundary description
     %---------rectangle--------
     lon_min=235.56666667;
@@ -15,12 +17,10 @@ function [longitude,latitude,result]=Shapefile_cali(filename,target)
 
  
 %data readin 
-%    ds=ncdataset(filename);
-%    result=ds.data(target);
+    ds=ncdataset(filename);
     lon=ncread(filename,'lon');
     lat=ncread(filename,'lat');
-    result=ncread(filename,target);
-    
+    result=ds.data(target);
 
 
 
@@ -31,7 +31,7 @@ function [longitude,latitude,result]=Shapefile_cali(filename,target)
     
     a=find(lon>=(lon_min-0.99*lon_scale)&lon<=(lon_max+0.99*lon_scale));
     b=find(lat>=(lat_min-0.99*lat_scale)&lat<=(lat_max+0.99*lat_scale));
-    result=result(a(1):a(end),b(1):b(end),:);
+    result=result(:,b(1):b(end),a(1):a(end));
     
     % longitude & latitude  
     for i=1:length(a)
@@ -54,7 +54,7 @@ function [longitude,latitude,result]=Shapefile_cali(filename,target)
         for j=bb(1):bb(end)
             for k=1:length(a)
                 if ((latitude(j)-low(1))*(high(2)-low(2))-(high(1)-low(1))*(longitude(k)-low(2)))*slash{i}{3}>0
-                    result(k,j,:)=NaN;
+                    result(:,j,k)=NaN;
                 end
             end
         end
