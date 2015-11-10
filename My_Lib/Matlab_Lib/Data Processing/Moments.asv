@@ -1,0 +1,38 @@
+function [mean,variance]=Moments(data)
+mean=zeros(12,size(data,2),size(data,3));
+variance=zeros(12,size(data,2),size(data,3));
+years=size(data,1)/12;
+for i=1:size(data,1)
+    month=mod(i,12);
+    if month==0
+        month=12;
+    end
+    mean(month,:,:)=mean(month,:,:)+data(i,:,:)/years;
+end
+for i=1:size(data,1)
+    month=mod(i,12);
+    if month==0
+        month=12;
+    end
+    variance(month,:,:)=variance(month,:,:)+(data(i,:,:)-mean(month,:,:)).^2;
+end
+variance=variance/(years-1);
+months=['jan' 'feb' 'mar' 'apr' 'may' 'jun' 'jul' 'aug' 'sep' oct nov dec
+%draw%
+for i=1:12
+    surf(squeeze(mean(i,:,:)));
+    axis off;
+%   caxis([0,15])
+%   colorbar;
+    view([0,90]);
+    grid off;
+%   strmax = ['Time = ',i];
+    str=sprintf('%d',year, month);
+    title(str);
+    saveas(gcf,[str '.png']);
+    m(i)=getframe;
+end
+
+
+
+
