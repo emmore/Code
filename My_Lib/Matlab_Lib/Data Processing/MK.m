@@ -1,5 +1,5 @@
 function r=MK(sequence)
-l=size(sequence);
+l=size(sequence,1);
 s=0;
 for i=1:l-1
 	for j=i+1:l
