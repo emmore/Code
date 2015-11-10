@@ -1,5 +1,5 @@
 function r=MK(sequence)
-sequence=sequence(sequence>=0);
+sequence=squeeze(sequence(sequence>=-100));
 l=size(sequence,1);
 s=0;
 r=0;

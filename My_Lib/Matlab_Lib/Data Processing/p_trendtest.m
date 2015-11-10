@@ -8,6 +8,6 @@ for i=1:size(p_result,2)
 end
 for i=1:size(t_result,1)
     for j=1:size(t_result,2)
-        ttr(i,j)=MK(t_result(i,j,:));
+        ttr(i,j)=MK(t_result(i,j,47*12+1:size(t_result,3)));
     end
 end

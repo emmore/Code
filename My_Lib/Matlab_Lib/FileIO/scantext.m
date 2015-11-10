@@ -5,7 +5,7 @@ result=[];
 for i=1:12
 	result=[result c{i+1}];
 end
-result(result<-98)=0;
+%result(result<-98)=0;
 end
 
 
