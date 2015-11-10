@@ -11,8 +11,6 @@ for i=1:size(t_result,1)
         ttr(i,j)=MK(t_result(i,j,:));
     end
 end
-
-
 %{
 for i=1:size(ttr,1)
     for j=1:size(ttr,2)
