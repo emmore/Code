@@ -17,8 +17,3 @@ for string in pattern:
 	f.write(NewContent)
 	f.close()
 	print NewUrl
-
-'''
-url2='http://www.esrl.noaa.gov/psd/data/correlation/'
-'''
-'/psd/data/correlation/sahelrain.data'
