@@ -9,7 +9,7 @@ for i=1:length(result)
     surf(squeeze(result(i,:,:)));
     axis off;
     caxis([0,15])
-%    colorbar;
+%   colorbar;
     view([0,90]);
     grid off;
     strmax = ['Time = ',i];

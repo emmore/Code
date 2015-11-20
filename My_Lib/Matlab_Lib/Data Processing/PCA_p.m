@@ -1,4 +1,4 @@
-function [z,p_approx,COEFF,SCORE]=PCA_p(p_result)
+function [z,p_approx,coeff,score]=PCA_p(p_result)
 p_approx=p_result;
 
 for i=1:12
@@ -11,6 +11,8 @@ for i=1:12
     pmonth_real=pmonth_real';
     pmean=mean(pmonth_real);
     [COEFF,SCORE,latent]=princomp(pmonth_real);
+    coeff(i,:,:)=COEFF;
+    score(i,:,:)=SCORE;
     snr=cumsum(latent)./sum(latent);
     x=1:50;
     y=snr(1:50);
@@ -24,7 +26,8 @@ for i=1:12
     hold all;
  
     j=1;
-    while snr(j)<0.99
+%    while snr(j)<0.99
+    while j<2
        qapprox=bsxfun(@plus,pmean,SCORE(:,1:j)*COEFF(:,1:j)');  
        qapprox_remap=zeros(size(p_result,2),size(p_result,3));
        qreal_remap=zeros(size(p_result,2),size(p_result,3));
