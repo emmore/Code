@@ -25,7 +25,7 @@ for i=1:12
  
     j=1;
     while snr(j)<0.99
-       qapprox=bsxfun(@plus,pmean,SCORE(:,1:j)*COEFF(:,1:j)'); 
+       qapprox=bsxfun(@plus,pmean,SCORE(:,1:j)*COEFF(:,1:j)');  
        qapprox_remap=zeros(size(p_result,2),size(p_result,3));
        qreal_remap=zeros(size(p_result,2),size(p_result,3));
        for year=1:size(pmonth,1)
