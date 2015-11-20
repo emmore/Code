@@ -1,6 +1,6 @@
-function [z,p_approx]=PCA_p(p_result)
+function [z,p_approx,coeff,score,nth_vector]=PCA_p(p_result)
 p_approx=p_result;
-%p_amount=3; %select 3 principles.
+
 for i=1:12
     pmonth_real=[];
     pmonth=p_result(i:12:size(p_result,1),:,:);
@@ -10,35 +10,23 @@ for i=1:12
     end
     pmonth_real=pmonth_real';
     pmean=mean(pmonth_real);
-%   qres=bsxfun(@minus,q,qmean);
-    [COEFF,SCORE,latent,tsquare]=princomp(pmonth_real);
+    [COEFF,SCORE,latent]=princomp(pmonth_real);
+    coeff(i,:,:)=COEFF;
+    score(i,:,:)=SCORE;
     snr=cumsum(latent)./sum(latent);
     x=1:50;
     y=snr(1:50);
     z=plot(x,y);
     axis([1 50 0 1])
     text(double(x(i*2)),double(y(i*2)),int2str(i));
-    title('Graph of Sine and Cosine Between -2\pi and 2\pi')
-%{   
-    % Define position to display the text
-    ii = round(numel(x)/2);
-
-    % Get the local slope
-    d = (y(ii+1)-y(ii))/(x(ii+1)-x(ii));
-    X = diff(get(gca, 'xlim'));
-    Y = diff(get(gca, 'ylim'));
-    p = pbaspect;
-    a = atan(d*p(2)*X/p(1)/Y)*180/pi;
-
-    % Display the text
-    text(x(ii), y(ii), int2str(i), 'BackgroundColor', 'w', 'rotation', a);
-    %}
+    title('Information Contribution of Principle Vectors')
+    xlabel('Principle Vector Amounts') % x-axis label
+    ylabel('Signal Noise Ratio') % y-axis label
     hold all;
-%   SNR=snr_s(p_amount);
-%   qapprox=bsxfun(@plus,qmean,SCORE(:,1:p_amount)*COEFF(:,1:p_amount)');
     j=1;
-    while snr(j)<0.99
-       qapprox=bsxfun(@plus,pmean,SCORE(:,1:j)*COEFF(:,1:j)'); 
+%    while snr(j)<0.99
+    while j<2
+       qapprox=bsxfun(@plus,pmean,SCORE(:,1:j)*COEFF(:,1:j)');  
        qapprox_remap=zeros(size(p_result,2),size(p_result,3));
        qreal_remap=zeros(size(p_result,2),size(p_result,3));
        for year=1:size(pmonth,1)

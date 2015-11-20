@@ -7,8 +7,9 @@ for i=1:size(data,1)
     if month==0
         month=12;
     end
-    mean(month,:,:)=mean(month,:,:)+data(i,:,:)/years;
+    mean(month,:,:)=mean(month,:,:)+data(i,:,:);
 end
+mean=mean./12;
 for i=1:size(data,1)
     month=mod(i,12);
     if month==0
@@ -22,22 +23,22 @@ months=['Jan';'Feb'; 'Mar'; 'Apr' ;'May' ;'Jun'; 'Jul'; 'Aug'; 'Sep'; 'Oct' ;'No
 for i=1:12
     surf(squeeze(mean(i,:,:)));
     axis off;
-    caxis([0,12])
+    caxis([-2.5,2.5]);
      colorbar;
     view([0,90]);
     grid off;
     title(months(i,:));
-    saveas(gcf,['mean_',months(i,:), '.png']);
+    saveas(gcf,['1948' ,'mean_',months(i,:), '.png']);
     
     
     surf(squeeze(variance(i,:,:)));
     axis off;
-    caxis([0,20])
+%    caxis([0,20]);
     colorbar;
     view([0,90]);
     grid off;
     title(months(i,:));
-    saveas(gcf,['variance_',months(i,:), '.png']);
+    saveas(gcf,['1948' ,'variance_',months(i,:), '.png']);
 end
 
 
