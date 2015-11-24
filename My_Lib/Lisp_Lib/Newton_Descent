@@ -1,0 +1,4 @@
+(define ka 0.583)
+(define kb
+(define (f x)
+ (+ (* 0.2
