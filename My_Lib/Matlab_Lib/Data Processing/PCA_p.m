@@ -1,6 +1,6 @@
-function [z,p_approx,coeff,score]=PCA_p(p_result)
+function [z,p_approx,coeff,score,nth_vector]=PCA_p(p_result,n)
 p_approx=p_result;
-
+nth_vector=zeros(size(p_result,1),size(p_result,2),size(p_result,3));
 for i=1:12
     pmonth_real=[];
     pmonth=p_result(i:12:size(p_result,1),:,:);
@@ -22,14 +22,13 @@ for i=1:12
     title('Information Contribution of Principle Vectors')
     xlabel('Principle Vector Amounts') % x-axis label
     ylabel('Signal Noise Ratio') % y-axis label
- 
     hold all;
- 
     j=1;
 %    while snr(j)<0.99
     while j<2
        qapprox=bsxfun(@plus,pmean,SCORE(:,1:j)*COEFF(:,1:j)');  
-       qapprox_remap=zeros(size(p_result,2),size(p_result,3));
+       nq=SCORE(:,n)*(COEFF(:,n)');
+%      qapprox_remap=zeros(size(p_result,2),size(p_result,3));
        qreal_remap=zeros(size(p_result,2),size(p_result,3));
        for year=1:size(pmonth,1)
            num=0;
@@ -38,11 +37,11 @@ for i=1:12
                    qreal_remap(latitude,longitude)=p_result(i+(year-1)*12,latitude,longitude);
                    if  p_result(1,latitude,longitude)>=0
                         num=num+1;
-                        qapprox_remap(latitude,longitude)=qapprox(year,num); 
+                        nth_vector(i+(year-1)*12,latitude,longitude)=nq(year,num); 
                         p_approx(i+(year-1)*12,latitude,longitude)=qapprox(year,num); 
                    else
                         p_approx(i+(year-1)*12,latitude,longitude)=NaN;
-                        qapprox_remap(latitude,longitude)=NaN;
+                        nth_vector(i+(year-1)*12,latitude,longitude)=NaN;
                    end
                end
            end
@@ -60,4 +59,5 @@ for i=1:12
        j=j+1;
     end
 end
+hold off;
 end
