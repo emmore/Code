@@ -1,0 +1,16 @@
+function result=eigenvector_plot(eigenvector,n,p_result)
+eigen=squeeze(eigenvector(n,:,:));
+result=ones(size(p_result,3),size(p_result,2));
+for longitude=1:size(p_result,3)
+    for latitude=1:size(p_result,2)
+        if  p_result(1,latitude,longitude)>=0
+          num=num+1;
+                        nth_vector(i+(year-1)*12,latitude,longitude)=nq(year,num); 
+                        p_approx(i+(year-1)*12,latitude,longitude)=qapprox(year,num); 
+                   else
+                        p_approx(i+(year-1)*12,latitude,longitude)=NaN;
+                        nth_vector(i+(year-1)*12,latitude,longitude)=NaN;
+                   end
+               end
+end
+    
