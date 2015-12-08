@@ -1,0 +1,90 @@
+Dear Editor:
+	I am pleased to resubmit the revised version of AMET/413197.v1 “Information Analysis of Catchment Hydrologic Patterns across Temporal Scales”.  I appreciated the constructive criticisms of the two reviewers.  I have addressed each of their concerns as outlined below:
+	The most substantial revision concerns the length and structure of the paper's first two sessions. Following the reviewer's advice, the introduction session was re-organized and pared down from 6 pages to 2 pages. We stressed the existed gaps beween the reductionism and holism models in reaching self-consistant understanding of hydrologic temporal scale transition problems. The question to be answered in the paper followed directly: to estimate the data-revealed and model-revealed uncertainty for different temporal scale hydrologic simulations. Backgrougd knowledge about information theory was cutted or moved to the next session. 
+	The methodology session was reduced from 8 pages to 5 pages. The Aleatory Epistemic Uncertainty Estimation framework was introduced through two threads: Bayes's Theorem and Data Processing Inequality. Redundant materials were deleted or simplified. This was accomplished by:
+	1, The defination of mutual information was deleted as it was better explained in Bayes' Theorem transformation.
+	2, The distinction of discrete and continous mutual informaiton was deleted because of irrelevence.
+	3, The derivation of entropy, mutual information relation with Bayes' Theorem was simplified because it was a well-known result to the community.
+	4, The reason for using H(Q) to represent hydrologic system's uncertainty was deleted for it was a consensus。
+	5，The quantification scheme for continous random variables were simplified with concise words.
+	6, Absolute constant resolution scheme was deleted for it lacked practical significance in comparing uncertainty across temporal scales. Correspondingly, the result session deleted the absolute constant resolution of AU.
+	7, Algorithm flow was deleted for redundance.
+	Necessary but domain-specific knowledge was moved to Appendix for fluency consideration:
+	1, The proof of Data Processing Inequality(DPI).
+	2, The reason to apply DPI in specific information analysis.
+	
+SPECIFIC CONCERNS:
+Lines 80 Epistemic Uncertainty is not well described. Some explanations are needed.
+The revised paper gave the definition of Epistemic Uncertainty in the literature of Data Processing Inequality. 
+
+Lines 85: how to get the simulated term of a specific model.
+The model structure were included in the Methodology session in Line 130. 
+
+Equations (12) and (13), based on these two equations, how to get equation (14).
+It is based on definition of entropy and mutual information, which were clarified in the revised paper.
+
+Line 230 it should be PE
+Revised.
+
+Line 240 the content is out of the margins.
+Revised.
+
+Line 295, the variable k should be italic. Why the value of k equals to 4?
+k was changed to italic. The reason for k=4 was clarified given the literature of Kroskov's paper. k being too small would cause statistic error and k being too large cause systematic error. The algorithm developer recommended 4 for non independent high dimensional variables.
+
+Pay attention to the tense of the whole paper. Past tense should be considered, since all the work has been done.
+Past tense was adapted in the revised version.
+
+Line 320, which software did you used in this study?
+The SVM package from Lin. The citation was in Line 177.
+
+Equation (19), why do you estimate the mutual information using a so complicated equation?
+Because the original estimators are faced with the following 2 problems:
+1, Dimensional Curse
+2, Indirect estimation causes error accumulation.
+
+In data section, the data from which station were used? Which basin was used in this study？
+The location of the basins were included.
+
+Line 32: “The outputs of the distributed models could….,nor could they provide insights of hydrological patterns at larger scales.”. Personally I am not convinced by the authors’ statement in this regard. Here what do you mean by the “pattern” that the distributed models cannot provide. The distributed model is among the most commonly used tool for our understanding of the hydrologic cycle in the catchment. Why is it incapable of providing the “pattern”?
+The paper wanted to stress the fact that distributed models may not distill dominant factors that control long range hydrologic behaviours but the words went too far. It was revised to a mild and practical version.
+
+Line 27-30: Please refine the statement and polish the grammar since it is really confusing to me. 
+These words came from the book Godel Escher Bach, an Eternal Golden Braid. This is the book that inspired my into looking at scale problems. The addiction to it may have driven me away from a constrained clear manner in writing. It was deleted.
+
+Line 72-85: These paragraphs may be reorganized. For example, there is only one sentence in the first paragraph. 
+Merged with other parts.
+
+Line 93-97: The statement in this paragraph is redundant from my understanding. It can be merged with other sections or deleted. I leave the decision to the authors.
+Deleted for irrelevance.
+
+Line 106-119: There should be several techniques to address the problems of the high dimension integral in the computation of mutual entropy. It is not necessary to analyze the work by Gong in details. The main purpose here I assume is to point out the problem of high-dimension in computing the mutual entropy. 
+The critics were shortened and moved to the methodology part for structure compact.
+
+Line 120: ‘”we will see that…” Please revise. 
+Line 121: what do you mean by “is no more and no less”. It is really hard to follow. I suggest the authors to polish related statements (and make them concise).
+This Chinglish words were deleted. 
+
+Line 119-141: Some statements can be moved to the methodology section or in the data section to make it concise.
+The technical issues had been moved to the methodology section.
+
+Line 150: It is better to give the citation of these equations .
+Citation was given in the revised version.
+
+Line 155-169: Personally I do not think these statements (like equation (5)) are needed or at least they are redundant. I suggest the authors to give the information that is mostly related to your study.
+Equation(5) set the resolution of uncertainty assessment, which was more clearly clarified in the revised paper. 
+
+Line 182: it is better to give the citation of the Beyesian theorem in equation (9). Also, double check the punctuation in this section.
+Adapted.
+
+Line 190-195: These are well-known results. They can be removed or moved to the appendix if the authors really would like to keep them. Overall, I suggest to authors to make the methodology concise since it is really hard to follow the logic here. I suggest the authors keep the statement only most related to their study. 
+The derivation was shortened. The revised methodology session dealed with the most correlated materials and moved the details to where they took function to make the paper clear.
+
+Line 355: “amplitude is less than 0.45”, why do you select “0.45”?Any reason?
+0.45 was chosed given the sine curve fit of the observations. It was the dividing curve that averagely separated the selected data series. 
+
+Lines 362-364: Hard to follow. Please revise the statement.
+The reason that was in the methodology session was moved here to clarify why and how to set the solution for uncertainty comparison.
+
+Lines 365-367 and lines 370-373: Please check the punctuation. 
+Polished.
