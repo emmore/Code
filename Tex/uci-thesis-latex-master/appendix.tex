@@ -1,11 +1,3 @@
-% The original template (from Trevor) had a custom \appendix command,
-% but I found it to break figure/table counters. I'm not sure how
-% reliable my fix is, so I ended up reverting back to the standard
-% latex version, and renaming the custom command to \myappendix.  You
-% can try both and see how things work out:
-% 1) Call \appendix once, and then make each appendix a \chapter
-% 2) Call \myappendix once, and then make each appendix a \section.
-
 \appendix
 \chapter{Appendix Title}
 
@@ -34,9 +26,3 @@ mollit anim id est laborum.
   \caption{A deep quote.}
   \label{fig:quote}
 \end{figure}
-
-
-%%% Local Variables: ***
-%%% mode: latex ***
-%%% TeX-master: "thesis.tex" ***
-%%% End: ***
