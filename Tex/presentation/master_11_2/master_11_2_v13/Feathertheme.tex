@@ -1,0 +1,958 @@
+\documentclass[10pt]{beamer}
+\usetheme[]{Feather}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{helvet}
+\usepackage{multirow}
+
+
+%-------------------------------------------------------
+% DEFFINING AND REDEFINING COMMANDS
+%-------------------------------------------------------
+
+% colored hyperlinks
+\newcommand{\chref}[2]{
+  \href{#1}{{\usebeamercolor[bg]{Feather}#2}}
+}
+
+%-------------------------------------------------------
+% INFORMATION IN THE TITLE PAGE
+%-------------------------------------------------------
+
+\title[] % [] is optional - is placed on the bottom of the sidebar on every slide
+{ % is placed on the title page
+      \textbf{Temporal Scale Analysis of \\
+      Catchment Hydrological Models \\
+      in Stochasitic Perspective}
+}
+
+\subtitle[Temporal Scale Analysis of \\
+      Catchment Hydrological Models \\
+      in Stochasitic Perspective]  % this is the title that appears at the bottom of the slide.
+{
+      \textbf{ }
+}
+
+\author[Baoxiang]
+{      Baoxiang Pan  \\
+      {\ttfamily baoxianp@uci.edu}
+}
+
+
+\date{\today}
+
+%-------------------------------------------------------
+% THE BODY OF THE PRESENTATION
+%-------------------------------------------------------
+
+\begin{document}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\setcounter{footnote}{0}
+%-------------------------------------------------------
+% THE TITLEPAGE
+%-------------------------------------------------------
+
+{\1% % this is the name of the PDF file for the background
+\begin{frame}[plain,noframenumbering] % the plain option removes the header from the title page, noframenumbering removes the numbering of this frame only
+  \titlepage % call the title page information from above
+\end{frame}}
+
+
+\begin{frame}{Content}{}
+\tableofcontents
+\end{frame}
+
+%-------------------------------------------------------
+\section{Introduction}
+%-------------------------------------------------------
+
+
+
+\begin{frame}{Introduction}{Background} 
+%-------------------------------------------------------
+Hydrologic cycle takes on different patterns and requires different models at different temporal scales. 
+\begin{table*} \small
+\resizebox{\textwidth}{!}{
+\centering
+\begin{tabular}{ccc}
+
+\hline
+ \textbf{ } & \textbf{Event Scale}& \textbf{Long-Term Scale}\\
+\hline
+\multirow{2}{*}{\textbf{Constitutive}}  &P\footnote{Precipitation} Partitioning& \multirow{3}{1in}{P-EP\footnote{Potentail Evapotranspiration} Correlation} \\
+\multirow{2}{*}{\textbf{Relation}} &ET\footnote{Evapotranspiration} Process&\\
+&Q\footnote{Runoff} Routing&\\
+\\
+\multirow{3}{1in}{\textbf{Control Factors}} &Quantity\& Intensity of P \&EP & \multirow{2}{*}{Quantity and Timing} \\
+&Soil Moisture& \multirow{2}{*}{of P \& EP} \\
+&Slope,Landuse, etc..&\\
+\\
+
+\textbf{Accuracy}&$\sim$mm& $\sim$10-100mm\\
+\\
+
+\multirow{2}{*}{\textbf{Representative}}&Sacramento&\multirow{2}{*}{Runoff Coefficient}\\
+
+\multirow{2}{*}{\textbf{Models}} &SHE&\multirow{2}{*}{Budyko}\\
+            &ANN&\\
+
+\hline
+\end{tabular}
+}
+\end{table*}  
+
+\end{frame}
+
+
+\begin{frame}{Introduction}{Gaps--Maintain Logical Rigour} 
+%-------------------------------------------------------
+\begin{itemize}
+\item Bridging the Scales
+\begin{itemize}
+\item Dimensional Analysis + Extreme Conditions 
+\item Propotionality Hypothesis 
+\item Maximum Entropy Production 
+\end{itemize}
+\item Scope \& Accuracy of Models
+\begin{itemize}
+\item SCS \rightarrow ABCD \rightarrow Budyko
+ 
+\end{itemize}
+ 
+\end{itemize} 
+\end{frame}
+ 
+\begin{frame}{Introduction}{Technique Routine} 
+%-------------------------------------------------------
+ 
+  \includegraphics[width=10.245cm]{flowchart.pdf} 
+ 
+\end{frame}
+
+
+
+%-------------------------------------------------------
+\section{Methodology}
+%-------------------------------------------------------
+
+\iffalse
+\begin{frame}{Stochastic Soil Moisture Model}{General Conception} 
+%-------------------------------------------------------
+\onslide<1->{
+ \begin{figure*}
+\centering
+\includegraphics[width=11cm]{modelparadigm.png}
+\caption{}
+\end{figure*}
+ }
+\onslide<2>{
+\begin{center}
+ \begin{table*} \small
+
+\centering
+\begin{tabular}{ll}
+\hline
+\textcolor[rgb]{1,0,0}{Lisp}&\textbf{Stream}\\
+\textcolor[rgb]{1,0,0}{Mathematica}&\textbf{Floldlist}\\
+\hline
+\end{tabular}
+\end{table*} 
+\end{center}
+ } 
+ 
+\end{frame}
+\fi
+\begin{frame}{Stochastic Soil Moisture Model}{General Conception} 
+%-------------------------------------------------------
+\onslide<1->
+\textcolor[rgb]{1,0,0}{General Conception:}
+\begin{enumerate}
+\item Analyse the stochastic feature of hydrological variables given the stochastic feature of the inputs.
+\item Clarify the temporal scale transfer by applying limit theory to the stochastic function.
+\end{enumerate}
+
+\onslide<2-> 
+ \begin{table}[H] 
+\resizebox{1.07\textwidth}{!}{
+\centering
+\begin{tabular}{cccccccc}
+\hline 
+Developer&Spatial Scale&	P&	Interception& Runoff Generation& Evapotranspiration& Leakage&	Stationary Distribution\\
+\hline 
+Cox \& Isham &\multirow{5}{*}{Point Scale}&\multirow{5}{*}{CPP\footnote{Compound Poisson Process}} &\multirow{5}{*}{fixed}&N&Linear&\multirow{2}{*}{N}&Gamma \\
+
+Milly &  &&&\multirow{4}{*}{Horton}&fixed&&Exponential \\
+
+
+Rodriguez && &&&Piecewise& Linear&Piecewise\\
+Laios && &&&Piecewise&Exponential&Piecewise\\ 
+Porporato & &&&&Linear&Linear&Gamma\\
+\hline 
+\end{tabular}
+}
+\end{table}
+ 
+\end{frame}
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\setcounter{footnote}{0}
+
+\begin{frame}{Stochastic Soil Moisture Model}{Conservation Function} 
+%-------------------------------------------------------
+ \onslide<1->
+{
+\begin{equation*}
+\label{sbalance}
+nR_{L}\frac{ds}{dt}=I(s,t)-E(s,t)-L(s,t)
+\end{equation*}
+}
+
+\onslide<2->
+{
+\leftdownarrow{\textcolor[rgb]{1,0,0}{Differential Element Method}}
+\centering{\textcolor[rgb]{1,0,0}{\Huge{$\Downarrow$}}}
+\rightdownarrow{\textcolor[rgb]{1,0,0}{C-K Forward Equation}}
+ 
+\begin{scriptsize}
+\begin{equation*}
+\label{basic1}
+f(s,t+dt)ds\footnote{$f(s,t)ds$ denotes the probability that $s$ is within $(s,s+ds)$ at time $t$.}= \underbrace{(1-p_{rain})\Bigg \{ f(s+\Delta s,t)d(s+\Delta s) \Bigg \} }_{no-rain} +\underbrace{p_{rain} \int_{0}^{s} f(z,t)p_{i|z}(s-z+\Delta z)dzds}_{rain}
+\end{equation*}
+\end{scriptsize}
+}
+
+\onslide<3->
+{
+\leftdownarrow{\textcolor[rgb]{1,0,0}{$P_{rain}=\lambda(t)\footnote{$\lambda(t)$ denotes the average rainfall frequency.} dt$}}
+\centering{\textcolor[rgb]{1,0,0}{\Huge{$\Downarrow$}}}
+\underleftdownarrow{\textcolor[rgb]{1,0,0}{$dt \rightarrow 0$}}
+\begin{equation*}
+\label{basic3}
+ \frac{\partial{f(s,t)}}{\partial t}=\frac{\partial{[\rho(s)\footnote{$\rho(s)$ denotes evapotranspiration and leakage rate.}f(s,t)]}}{\partial s}-\lambda(t)f(s,t)+\lambda(t)\int_{0}^{s} f(z,t)p_{i|z}(s-z)dz
+ \end{equation*}
+}
+ 
+\end{frame}
+
+
+\begin{frame}{Stochastic Soil Moisture Model}{Boundary Condition $s=0$} 
+%-------------------------------------------------------
+\onslide<1->
+{
+\begin{scriptsize}
+\begin{equation*}
+\label{basic00}
+\begin{split}
+p_0(t+dt)=&\underbrace{(1-p_{rain})[p_0(t)+\int_{0^{+}}^{\rho (0)dt} f(s,t)ds]}_{no-rain} +\underbrace{p_{rain} \int_{0}^{kdt}\int_{0}^{s} f(z,t)p_{i|z}(s-z+\Delta z)dzds}_{rain}
+\end{split}
+\end{equation*}
+\end{scriptsize}
+}
+\onslide<2->
+{
+\centering{\textcolor[rgb]{1,0,0}{\Huge{$\Downarrow$}}}
+ 
+ \begin{equation*}
+ p_0(t)=p_0(0)e^{-\lambda(t) t}
+ \end{equation*}
+} 
+ 
+\end{frame}
+
+
+\begin{frame}{Stochastic Soil Moisture Model}{Boundary Condition $s=1$} 
+ \onslide<1->
+{
+\begin{equation*}
+\label{basic00}
+\begin{split}
+p_1(t+dt)=&\underbrace{(1-p_{rain})\times 0}_{no-rain}+\underbrace{p_{rain} \int_{1}^{1}\int_{0}^{s} f(z,t)p_{i|z}(s-z+\Delta z)dzds}_{rain}
+\end{split}
+\end{equation*}
+}
+\onslide<2->
+{
+\centering{\textcolor[rgb]{1,0,0}{\Huge{$\Downarrow$}}}
+ 
+\begin{equation*}
+p_1(t)=0
+\end{equation*} 
+}
+\end{frame}
+
+
+
+
+\begin{frame}{Stochastic Soil Moisture Model}{Conservation Function}
+%-------------------------------------------------------
+\textcolor[rgb]{1,0,0}{General Form}: 
+\begin{equation*}
+ \frac{\partial{f(s,t)}}{\partial t}=\frac{\partial{[\rho(s)f(s,t)]}}{\partial s}-\lambda(t)f(s,t)+\lambda(t)\int_{0}^{s} f(z,t)p_{i|z}(s-z)dz
+ \end{equation*}
+
+\textcolor[rgb]{1,0,0}{Specific Form}:
+\begin{equation*}
+\begin{split}
+ \frac{\partial{g(s,t)}}{\partial t}=&\frac{\partial{[\rho(s)g(s,t)]}}{\partial s}-\lambda(t)g(s,t)+\\
+ &\lambda(t)\int_{0}^{s} g(z,t)p_{i|z}(s-z)dz+\lambda(t)p_0(0)e^{-\lambda(t) t}p_{i|0}(s)
+ \end{split}
+\end{equation*}
+where:
+ \begin{equation*}
+g(z,t)\equiv
+ \begin{cases}
+ 0,&z=0,1;\\  f(z,t),&else
+ \end{cases}
+ \end{equation*}
+ 
+ 
+\end{frame}
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\setcounter{footnote}{0}
+
+
+\begin{frame}{Stochastic Soil Moisture Model}{Constitutive Function}
+%-------------------------------------------------------
+\begin{itemize}
+\item Soil Moisture Replenishment  
+\item Soil Moisture Loss  
+\end{itemize} 
+\end{frame}
+
+
+
+\begin{frame}{Stochastic Soil Moisture Model}{Constitutive Function--Soil Moisture Replenishment}
+%-------------------------------------------------------
+Given:
+\begin{itemize}
+\item The Distribution of Rainfall Depth
+\item The Inital Soil Moisture Level
+\end{itemize}
+Calculate:
+\begin{itemize}
+\item The Distribution of Infiltration Depth
+\end{itemize}
+ 
+\end{frame}
+
+\begin{frame}{Cases in Lumped Hydrologic Models}{Point Scale Horton Runoff Generaion}
+%-------------------------------------------------------
+ 
+\begin{table}[H] 
+\centering
+\begin{tabular}{ccccccc}
+
+\hline 
+\multicolumn{2}{c}{Horton Runoff Generation}\\
+\hline 
+Constitutive 
+&
+\multirow{2}{*}
+{
+\begin{equation*}
+I\vert z=
+ \begin{cases}
+ P&{P+z\leq 1};\\1-z &{P+z>1}
+ \end{cases}
+\end{equation*}
+}
+\\
+Relation& \\
+\\
+P.D.F
+&
+\begin{equation*}
+\label{point}
+p_{i|z}(x)\footnote{$p_{i|z}(x)$ denotes the p.d.f. that infiltration is $x$ when the soil moisture is $z$.}=
+f_P(x)\footnote{$f_P(x)$ denotes the p.d.f. that rainfall depth equals $x$.}
++\delta(x-1+z)\footnote{Dirac Function:  \begin{equation*}
+ \delta(x)\equiv
+ \begin{cases}
+ 0&x\neq0;\\\infty&x=0
+ \end{cases}
+ \end{equation*}  \begin{equation*}
+ \int_{-\infty}^{\infty} \delta(x)dx=1
+ \end{equation*}}\int_{1-z}^{\infty} f_P(u) du 
+\end{equation*}
+\\
+\hline 
+\end{tabular}
+\end{table}
+ 
+\end{frame}
+
+\begin{frame}{Cases in Lumped Hydrologic Models}{XAJ(VIC)}
+%-------------------------------------------------------
+\onslide<1->
+\begin{table}[H] 
+\resizebox{\textwidth}{!}{
+\centering
+\begin{tabular}{ccccccc}
+\hline 
+\multicolumn{2}{c}{XAJ/VIC Runoff Generation}\\
+\hline 
+\\
+Constitutive
+&
+\multirow{2}{*}
+{
+\begin{equation*}
+I\vert z=
+ \begin{cases}
+ 1-z-[1-\frac{P+a\footnote{Average soil moisture, $a=(1+b)[1-(1-z)^{\frac{1}{1+b}}]$}}{1+b}]^{1+b\footnote{Inhomogeneity, the larger, the more inhomogeneous.}}&{a+P\leq 1+b};\\1-z &{a+P> 1+b}
+ \end{cases}
+\end{equation*}
+}\\
+Relation&\\
+\\
+P.D.F.
+&
+\begin{equation*}
+\label{xaj}
+p_{i|z}(x)=f_P\bigg \{(1+b)\big [(1-z)^{\frac{1}{1+b}}-(1-z-x)^{\frac{1}{1+b}}\big ]\bigg \}+\delta(x-1+z)\int_{(1+b)(1-z)^{\frac{1}{1+b}}}^{\infty} f_P(u) du 
+\end{equation*}\\
+\hline 
+\end{tabular}
+}
+\end{table}
+
+\end{frame}
+\iffalse
+\begin{frame}{Cases in Lumped Hydrologic Models}{SCS Curve}
+%-------------------------------------------------------
+ 
+\begin{table}[H] 
+\resizebox{\textwidth}{!}{
+\centering
+\begin{tabular}{ccccccc}
+\hline 
+\multicolumn{2}{c}{SCS Curve}\\
+\hline 
+\\
+Constitutive
+&
+\multirow{2}{*}
+{
+\begin{equation*}
+I\vert z=
+ \begin{cases}
+ 1-z-[1-\frac{P+a}{1+b}]^{1+b}&{a+P\leq 1+b};\\1-z &{a+P> 1+b}
+ \end{cases}
+\end{equation*}
+}\\
+Relation&\\
+\\
+P.D.F.
+&
+\begin{equation*}
+\label{xaj}
+p_{i|z}(x)=f_P\bigg \{(1+b)\big [(1-z)^{\frac{1}{1+b}}-(1-z-x)^{\frac{1}{1+b}}\big ]\bigg \}+\delta(x-1+z)\int_{(1+b)(1-z)^{\frac{1}{1+b}}}^{\infty} f_P(u) du 
+\end{equation*}\\
+\hline 
+\end{tabular}
+}
+\end{table}
+ 
+\end{frame}
+\fi
+\begin{frame}{Cases in Lumped Hydrologic Models}{HBV Model}
+%-------------------------------------------------------
+ 
+\begin{table}[H] 
+ 
+\centering
+\begin{tabular}{ccccccc}
+\hline 
+\multicolumn{2}{c}{HBV Model}\\
+\hline 
+\\
+Constitutive
+&
+\multirow{2}{*}
+{
+\large{
+\begin{equation*}
+I\vert z=P-z^{\beta}P
+\end{equation*}
+}
+}\\
+Relation&\\
+\\
+P.D.F.
+&
+\begin{equation*}
+\label{xaj}
+p_{i|z}(x)=f_P(\frac{x}{1-z^{\beta \footnote{$\beta$ denotes ruoff generation Coefficient, the larger, the less runoff and the more infiltration, correspondingly.}}})
+\end{equation*}\\
+\hline 
+\end{tabular}
+ 
+\end{table}
+ 
+\end{frame}
+
+
+
+
+\begin{frame}{Stochastic Soil Moisture Model}{Constitutive Function--Soil Moisture Loss}
+%-------------------------------------------------------
+Given:
+\begin{itemize}
+\item The Energetic Condition
+\item The Inital Soil Moisture Level
+\end{itemize}
+We need:
+\begin{itemize}
+\item The Evapotranspiration and Leakage Rate.
+\end{itemize} 
+ 
+\end{frame}
+
+\begin{frame}{Cases in Lumped Hydrologic Models}
+%-------------------------------------------------------
+ \begin{table}
+\begin{tabular}{cccccccc}
+\hline 
+Linear Loss&Piecewise Linear Loss\\ 
+\hline 
+ \begin{equation*}
+\label{linearep}
+\rho (s)=EP \times s
+\end{equation*}
+&
+ \begin{equation*}
+\rho (s )=
+ \begin{cases}
+ \frac{\eta}{s^*} s  &s\leq s^{*}\\ 
+ \eta &s^*<s\leq s_1\\
+ \eta+k\frac{s-s_1}{1-s_1} &s_1<s\leq 1
+ \end{cases}
+ \end{equation*}\\
+\hline 
+\end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}{Stochastic Soil Moisture Model}{Brief Sumup}
+\only<1->
+{
+ 
+\begin{scriptsize}
+\begin{equation*} 
+\label{ssd}
+\frac{\partial{g(s,t)}}{\partial t}=\frac{\partial{[\rho(s)g(s,t)]}}{\partial s}-\lambda(t)g(s,t)+\lambda(t)\int_{0}^{s} g(z,t)f_{p}(s-z)dz+\lambda(t)p_0(0)e^{-\lambda(t) t}p_{i|0}(s)
+\end{equation*}
+\end{scriptsize}
+
+\begin{tiny}
+\begin{equation*}\small
+\label{ssm}
+\frac{\partial{g(s,t)}}{\partial t}=\frac{\partial{[\rho(s)g(s,t)]}}{\partial s}-\lambda(t)g(s,t)+\lambda(t)\int_{0}^{s} g(z,t)f_{p}\{(1+b) [(1-z)^{\frac{1}{1+b}}-(1-s)^{\frac{1}{1+b}} ] \}dz+\lambda(t)p_0(0)e^{-\lambda(t) t}p_{i|0}(s)
+\end{equation*}
+\end{tiny}
+
+\begin{scriptsize}
+\begin{equation*} 
+\label{ssd}
+\frac{\partial{g(s,t)}}{\partial t}=\frac{\partial{[\rho(s)g(s,t)]}}{\partial s}-\lambda(t)g(s,t)+\lambda(t)\int_{0}^{s} g(z,t)f_{p}(\frac{s-z}{1-z^{\beta}})dz+\lambda(t)p_0(0)e^{-\lambda(t) t}p_{i|0}(s)
+\end{equation*}
+\end{scriptsize}
+}
+\onslide<2->
+
+
+As \textcolor[rgb]{1,0,0}{$b  \rightarrow 0$}, the p.d.f. of XAJ/VIC degenerates to that of Horton Runoff Generation.
+ 
+ 
+As \textcolor[rgb]{1,0,0}{$\beta   \rightarrow \infty$}, the p.d.f. of HBV degenerates to that of Horton Runoff Generation.
+\end{frame}
+
+
+\begin{frame}{Stochastic Soil Moisture Model}{Ergodicity}
+%-------------------------------------------------------
+\begin{figure*}
+\centering
+\includegraphics[width=.75\textwidth]{s_s.png}
+ 
+\end{figure*}
+\end{frame}
+
+\begin{frame}{Stochastic Soil Moisture Model}{Ergodicity}
+%-------------------------------------------------------
+\begin{figure*}
+\centering
+\includegraphics[width=.75\textwidth]{s_m.png}
+ 
+\end{figure*}
+\end{frame}
+
+
+
+
+\begin{frame}{Stochastic Soil Moisture Model}{Ergodicity}
+%-------------------------------------------------------
+\begin{figure*}
+\centering
+\includegraphics[width=.91\textwidth]{s_sort.png}
+\end{figure*}
+\end{frame}
+
+
+\frame{
+\frametitle{Autocorrelation Coefficient}
+
+ \only<1>
+{
+\begin{figure*}
+\centering
+\includegraphics[width=\textwidth]{day_a_corr.png} 
+ 
+ 
+
+\end{figure*}
+}
+\only<2>
+{
+\begin{figure*}
+\centering
+\includegraphics[width=\textwidth]{dep_a_corr.png} 
+ 
+ 
+
+\end{figure*}
+}
+\only<3>
+{
+\begin{figure*}
+\centering
+\includegraphics[width=\textwidth]{ep_r_corr.png} 
+ 
+\end{figure*}
+}
+\only<4>
+{
+\begin{figure*}
+\centering
+\includegraphics[width=\textwidth]{b_corr.png} 
+ 
+\end{figure*}
+}
+\only<5>
+{
+\begin{figure*}
+\centering
+\includegraphics[width=\textwidth]{initial_s_corr.png} 
+\end{figure*}
+}
+\only<6>
+{
+\begin{table}[H] 
+\centering
+\begin{tabular}{cccccccc}
+\hline 
+Control Factor&$|\rho (T)|$& $\frac{d\rho (T)}{dT}$\\
+\hline 
+$day_a$&$+$&$-$ \\ 
+$dep_a$&$-$ &$0$\\ 
+$EP_r$&$-$ &$+$ \\ 
+$b$&$0$ &$0$ \\ 
+$S_{initial}$&$0$ &$0$ \\ 
+\hline 
+\end{tabular}
+\end{table}
+
+\begin{itemize}
+\item $+$:positive correlation
+\item $-$: negative correlation
+\item $0$: not correlated
+\end{itemize}
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{frame}{Stochastic Soil Moisture Model}{Ergodicity --First Order Moment}
+%-------------------------------------------------------
+ \begin{figure*}
+\centering
+\includegraphics[width=.5\textwidth]{temporal_average_simulation.png}
+\includegraphics[width=.5\textwidth]{temporal_average_variance.png}
+\end{figure*}
+\end{frame}
+
+
+
+\begin{frame}{Stochastic Soil Moisture Model}{Ergodicity --First Order Moment}
+%-------------------------------------------------------
+ \begin{figure*}
+\centering
+\includegraphics[width=.91\textwidth]{ergodicity.png}
+ 
+\end{figure*}
+\end{frame}
+
+
+\begin{frame}{Stochastic Soil Moisture Model}{Ergodicity --Spectrum Analysis}
+%-------------------------------------------------------
+\begin{equation*}
+\label{dsbalance}
+\eta R_L \times \frac{ds(t)}{dt}+E(t)=I(t)
+\end{equation*} 
+ 
+\begin{equation*}
+\label{fourierch}
+\eta R_L \int_{-\infty}^{\infty}e^{-i\omega t}ds(t)+\int_{-\infty}^{\infty}e^{-i\omega t}E(t)dt=\int_{-\infty}^{\infty}e^{-i\omega t}I(t)dt 
+\end{equation*} 
+Since:
+\begin{equation*}
+\eta R_L \int_{-\infty}^{\infty}e^{-i \omega t}ds(t)=\eta R_L \times i\omega s(\omega)
+\end{equation*}
+\begin{equation*}
+E(t)=EP \times S(t)
+\end{equation*}
+We have: 
+\begin{equation*}
+\label{F}
+s(\omega )=\frac{I(\omega )}{i\omega \eta R_L+EP}
+\end{equation*}
+
+\end{frame}
+
+\begin{frame}{Stochastic Soil Moisture Model}{Ergodicity --Spectrum Analysis}
+%-------------------------------------------------------
+\begin{equation*}
+\label{F}
+s(\omega )=\frac{I(\omega )}{i\omega \eta R_L+EP_r}
+\end{equation*}
+Energy Spectrum Density:
+\begin{equation*}
+E_s (\omega)=\frac{|I(\omega)|^2}{EP_r ^2+(\omega \eta R_L) ^2}
+\label{sssss}
+\end{equation*}
+ Is Precipitation Partition a \textcolor[rgb]{1,0,0}{White Noise Filter}? If so, 
+\begin{enumerate}
+\item  Larger $\omega$, $\eta$, $R_L$ lead to \textcolor[rgb]{1,0,0}{Red Noise , Auto regressive Process}. 
+\item Smaller $\omega$, $\eta$, $R_L$ lead to \textcolor[rgb]{1,0,0}{White Noise, Independent Process}.
+\item As $\omega \rightarrow \infty$, $E_s (\omega) \rightarrow 0$, Ergodicity Proved.
+\end{enumerate}
+\end{frame}
+ 
+ 
+\begin{frame}{Stochastic Soil Moisture Model}{Longterm Average}
+%-------------------------------------------------------
+Limit $t \to \infty$, $p_0(0)=0$, $b=0$:
+\begin{equation*} 
+\label{main4}
+EP\frac{d{[sg(s)]}}{d s}-\lambda g(s)+\lambda \int_{0}^{s} g(z)\alpha e^{-\alpha \{(1+b) [(1-z)^{\frac{1}{1+b}}-(1-s)^{\frac{1}{1+b}} ] \}}dz=0
+\end{equation*}
+This leads to
+\begin{equation*} 
+\label{jxj}
+g(s)=\frac{N}{EP} \times s^{\lambda / EP -1} e^{-\alpha s}
+\end{equation*}
+where $N$ is constant:
+\begin{equation*} 
+\label{normalizationfactor}
+N=\frac{EP \alpha ^{\frac{\lambda} {\ EP}}}{\gamma (\lambda /EP , \alpha)}
+\end{equation*}
+$\gamma(*,*)$ is Incomplete $\Gamma$ Function：
+\begin{equation*}
+\gamma(s,x)=\int_{0}^{x} t^{s-1}e^{-t}dt
+\end{equation*}
+\end{frame}
+ 
+ \begin{frame}{Stochastic Soil Moisture Model}{Longterm Average}
+
+ \begin{table*}  \small 
+\resizebox{\textwidth}{!}{
+\centering
+\begin{tabular}{cccc}
+\hline
+$E(s)=\frac{\lambda}{\alpha EP}-\frac{\alpha^{\frac{\lambda}{EP}-1} e^{-\alpha}}{\gamma (\frac{\lambda}{EP},\alpha)}$
+&
+$Var(s)=\frac{\gamma (\frac{\lambda}{EP}+2,\alpha)}{\alpha ^2\gamma (\frac{\lambda}{EP},\alpha)}-E^2(s)$
+\\
+\hline
+\begin{minipage}{.5\textwidth}\includegraphics[width=\linewidth]{average.png}\end{minipage}
+&\begin{minipage}{.5\textwidth}\includegraphics[width=\linewidth]{var.png}\end{minipage}
+\\
+\hline
+\end{tabular}
+}
+\end{table*}
+ 
+\begin{table*} 
+\centering
+\begin{tabular}{cc}
+ $\frac{EP}{\lambda}$ & Average Energy Provision \\
+
+ $\alpha$ & Average Water Provision \\
+\end{tabular}
+\end{table*}
+ 
+ 
+\end{frame}
+
+
+\iffalse
+\begin{frame}{Information Perspective}
+%-------------------------------------------------------
+ 
+ 
+\end{frame}
+
+
+\begin{frame}{Support Vector Regression}{Tradeoff Between Bias \& Variance}
+%-------------------------------------------------------
+\onslide<1->
+\begin{equation*}
+\begin{split}
+&E[h(x^{*})-y^{*}]^2\\=&E[h(x^{*})-\overline{h(x^{*})}+\overline{h(x^{*})}-\overline{y^*}+\overline{y^*}-y^{*}]^2\\
+=&\underbrace{E[h(x^{*})-\overline{h(x^{*})}]^2}_{ \textcolor[rgb]{1,0,0}{Variance}}+\underbrace{[\overline{h(x^{*})}-\overline{y^*}]^2}_{ \textcolor[rgb]{1,0,0}{Bias}}   +   \underbrace{E[y^{*}-\overline{y^*}]^2}_{ \textcolor[rgb]{1,0,0}{Noise}}\\
+ \end{split}
+\end{equation*} 
+
+\onslide<2->
+ \begin{table}[H] 
+\resizebox{1.07\textwidth}{!}{
+\centering
+\begin{tabular}{cccccccc}
+\hline 
+Regression &\multicolumn{2}{c}{\textcolor[rgb]{1,0,0}{Variance}}&\multicolumn{2}{c}{\textcolor[rgb]{1,0,0}{Bias}}&\multicolumn{2}{c}{\textcolor[rgb]{1,0,0}{Noise}}\\
+Methods    & Term & Weight & Term & Weight & Term & Weight \\
+\hline 
+LSE& Null& 0& $E[h(x^{*})-y^*]^2$&1  & Null& 0                             \\
+Ridge&$||\omega\footnote{$\omega$ is the input transform coefficient vector.}||^2$  & \lambda &   $E[h(x^{*})-y^*]^2$&1-\lambda  & Null& 0                             \\
+SVR &$||\omega||^2$  & $\frac{1}{2}$ &   $max(|h(x^*)-y^*|-\epsilon,0 )$& C & Null& 0                             \\
+\hline 
+\end{tabular}
+}
+\end{table} 
+\end{frame}
+
+\begin{frame}{Support Vector Regression}{Tradeoff Between Bias \& Variance}
+%-------------------------------------------------------
+\onslide<1->
+ \begin{table}[H] 
+\resizebox{1.07\textwidth}{!}{
+\centering
+\begin{tabular}{cccccccc}
+\hline 
+Regression &\multicolumn{2}{c}{\textcolor[rgb]{1,0,0}{Variance}}&\multicolumn{2}{c}{\textcolor[rgb]{1,0,0}{Bias}}&\multicolumn{2}{c}{\textcolor[rgb]{1,0,0}{Noise}}\\
+Methods    & Term & Weight & Term & Weight & Term & Weight \\
+\hline 
+SVR &$||\omega||^2$  & $\frac{1}{2}$ &   $max(|h(x^*)-y^*|-\epsilon,0 )$& C & Null& 0                             \\
+\hline 
+\end{tabular}
+}
+\end{table}  
+\onslide<2->
+\begin{equation*}
+\begin{split}
+ minimize \quad &\frac{1}{2}||\omega||^2+C\sum \xi\\
+ s.t. \quad   \quad &\left\{
+                \begin{array}{ll}
+                  \Big{|}  |y-<\omega,x>-b|-\epsilon \Big{|}\leq \xi  \\
+                  \xi \geq 0 \\
+                \end{array}
+              \right\\
+ \end{split}
+\end{equation*}
+\onslide<3->
+The \textcolor[rgb]{1,0,0}{Convex} \textcolor[rgb]{1,0,0}{Quadratic Optimization} Problem makes only \textcolor[rgb]{1,0,0}{Dot Production} between samples, thus we can apply use SVM to solve \textcolor[rgb]{1,0,0}{Non-linear Optimization} with the help of \textcolor[rgb]{1,0,0}{Kernel Trick}.
+
+\end{frame}
+
+%-------------------------------------------------------
+\section{Field Test}
+%-------------------------------------------------------
+
+\begin{frame}{Data Set}
+%-------------------------------------------------------
+ 
+ 
+\end{frame}
+
+\begin{frame}{Results}
+%-------------------------------------------------------
+ 
+ 
+\end{frame}
+
+\begin{frame}{Discussion}
+%-------------------------------------------------------
+
+ 
+\end{frame}
+
+\fi
+%-------------------------------------------------------
+\section{Concluding Remarks}
+%-------------------------------------------------------
+
+\begin{frame}{Concluding Remarks}
+%-------------------------------------------------------
+\begin{itemize}
+\item \textcolor[rgb]{1,0,0}{ Any Lumped Hydrological Model} Has its \textcolor[rgb]{1,0,0}{Stocahstic Form} (Horton, Xinanjiang, VIC, HBV, ...), which \textcolor[rgb]{1,0,0}{Provide a Rigorous Way to make Temporal Analysis}. 
+\item The \textcolor[rgb]{1,0,0}{Timing} and \textcolor[rgb]{1,0,0}{Quantity} of \textcolor[rgb]{1,0,0}{Precipitation and Evapotranspiration} determine the \textcolor[rgb]{1,0,0}{Long-term Hydrological Pattern}. The \textcolor[rgb]{1,0,0}{Accuracy of this First-Order Control is Quantized}. 
+\end{itemize} 
+ 
+\end{frame}
+
+\begin{frame}{Take-home Message}
+%-------------------------------------------------------
+\begin{itemize}
+\item Dynamic System Analysis of Lumped Hydrological Model.
+\item Good to see Hydrologic Cycle in the Frequency Domain.
+\end{itemize}  
+ 
+\end{frame}
+
+{\1 
+\begin{frame}[plain,noframenumbering]
+  \finalpage{
+    \onslide<1->
+  {
+  \begin{figure}[H]\centering
+  \includegraphics[width=0.9\textwidth]{github.png}
+  \end{figure}
+  \center{\textcolor[rgb]{0.5,0.5,0.5}{https://github.com/morepenn}}
+  }
+  \onslide<2->
+  {
+  \center{Thank you.}
+  }
+  
+  }
+\end{frame} 
+}
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+ 
