@@ -1,0 +1,6 @@
+function z=infinite_norm(a,b)
+[m,n]=size(a);
+distance=ones(1,n);
+for i=1:n
+    distance(i)=a(i)-b(i);
+end

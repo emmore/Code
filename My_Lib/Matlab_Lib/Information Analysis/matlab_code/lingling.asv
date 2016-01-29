@@ -1,0 +1,25 @@
+function [result_r,result]=lingling()
+lag_max=7;
+NUM=70;
+result_r=ones(NUM,lag_max+1);
+result=ones(NUM,lag_max+1);
+d=data(1,0);
+m=size(d,1);
+m=m-NUM*10*(lag_max+1);
+for i=100:10:NUM*10
+d=data(i,lag_max);
+nsample=ceil(m/i);
+dd=d(1:nsample,:);
+y=dd(:,3*(lag_max+1));
+for j=0:lag_max
+    x=dd(:,((lag_max-j)*3+1):(lag_max*3+2));
+    x_r=[];
+    for p=0:j
+        x_r=[x_r dd(:,(3*(lag_max-p)+1):(3*(lag_max-p)+2))];
+    end   
+    result_r(i/10,j+1)=MI(x_r,y);
+    result(i/10,j+1)=MI(x,y);
+end
+end
+end  
+ 

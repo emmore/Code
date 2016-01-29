@@ -1,0 +1,15 @@
+function draw(data)
+[m,n]=size(data);
+[x,y]=meshgrid(1:n,1:m);
+[xx,yy]=meshgrid(linspace(1,n,60),linspace(1,m,ceil(m/n*60)));
+new_data=griddata(x,y,data,xx,yy,'v4');
+surf(xx,yy,new_data);
+axis([1 8 1 36 0.3 2.5]); 
+title('
+xlabel('Previous Input');
+ylabel('Time Scale(10d)');
+zlabel('Mutual Information(Nat)');
+end
+
+
+
