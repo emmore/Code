@@ -26,12 +26,6 @@ for i=0.01:0.05:0.99
     result=[result;[ddp,dds,para_cop]];
 end
 
-figure;
-[xi,yi]=meshgrid(x,y);
-zi = griddata(x,y,z,xi,yi);
-contour(xi,yi,zi);
-
-
     
 
 
