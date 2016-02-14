@@ -1,0 +1,43 @@
+function [weights] = logistic_train(data,labels,epsilon,maxiterations)
+% [weights] = logistic_train(data,labels,epsilon,maxiterations)
+% code to train a logistic regression classifier
+%
+% INPUTS:
+% data = n x (d+1) matrix with n samples and d features, where
+% column d+1 is all ones (corresponding to the intercept term)
+% labels = n x 1 vector of class labels (taking values 0 or 1)
+% epsilon = optional argument specifying the convergence
+% criterion. Let pi be the probability predicted by the model
+% for data point i and deltai be the absolute change in this
+% probability since the last iteration. Let delta be the average
+% of the deltai’s, over all the training data points. When delta
+% becomes lower than epsilon, then halt.
+% (if unspecified, use a default value of 10ˆ-5)
+% maxiterations = optional argument that specifies the
+% maximum number of iterations to execute (useful when
+% debugging in case your code is not converging correctly!)
+% (if unspecified can be set to 1000)
+
+% OUTPUT:
+% weights = (d+1) x 1 vector of weights where the weights
+% correspond to the columns of "data"
+clc;
+
+%Calculate the Hessian & Gradient
+n=size(data,1);
+d=size(data,2);
+weights=ones(d,1);
+grad=ones(d,1);
+
+u=eye(n);
+for i=1:n
+    tempt=sigmoid(weights,data(i,:));
+    u(i,i)=tempt(1-tempt);
+end
+H=data*u*data';
+
+%Calculate the Gradient
+
+
+
+
