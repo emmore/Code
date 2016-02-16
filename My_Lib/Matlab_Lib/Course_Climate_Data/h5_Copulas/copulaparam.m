@@ -1,22 +1,17 @@
-function param = copulapara(type,tau)
-%COPULAPARAM Copula parameter, given Kendall's rank correlation.
-%   RHO = COPULAPARAM('Gaussian',TAU) returns the linear correlation
-%   parameter RHO corresponding to a Gaussian copula having Kendall's rank
-%   correlation TAU.  If TAU is a scalar correlation coefficient, RHO is a
-%   scalar correlation coefficient corresponding to a bivariate copula.  If
-%   TAU is a P-by-P correlation matrix, RHO is a P-by-P correlation matrix
-%   corresponding to a P-variate copula.
+function alpha = copulaparam(family,tau)
 %
-%   RHO = COPULAPARAM('t',TAU) returns the linear correlation parameter RHO
-%   corresponding to a t copula having Kendall's rank correlation TAU.  If
-%   TAU is a scalar correlation coefficient, RHO is a scalar correlation
-%   coefficient corresponding to a bivariate copula.  If TAU is a P-by-P
-%   correlation matrix, RHO is a P-by-P correlation matrix corresponding to
-%   a P-variate copula.
+%   ALPHA = COPULAPARAM(FAMILY,TAU)
 %   
-%   ALPHA = COPULAPARAM(TYPE,TAU) returns the copula parameter ALPHA
-%   corresponding to a bivariate Archimedean copula having Kendall's rank
-%   correlation TAU.  TYPE is one of 'Clayton', 'Frank', or 'Gumbel'.
+%   Return the copula parameter, given Kendall's rank correlation.
+%
+%   INPUT
+%       FAMILY: One of {'AMH' 'Arch12' 'Arch14' 'Clayton' 'FGM' 'Frank'
+%               'Gaussian' 'Gumbel' 't'}
+%       TAU:    Kendall's rank correlation.       
+%   
+%   OUTPUT
+%	    ALPHA:  Copula parameter.       
+%   
 %
 %   Example:
 %      % Determine the linear correlation coefficient corresponding to a
@@ -24,69 +19,72 @@ function param = copulapara(type,tau)
 %      tau = -0.5
 %      rho = copulaparam('gaussian',tau)
 %
-%      % Generate dependent beta random values using that copula
-%      u = copularnd('gaussian',rho,100)
-%      b = betainv(u,2,2)
-%
-%      % Verify that those pairs have a sample rank correlation approximately
-%      % equal to tau
-%      tau_sample = kendall(b)
 
 %   Written by Peter Perkins, The MathWorks, Inc.
 %   Revision: 1.0  Date: 2003/09/05
 %   This function is not supported by The MathWorks, Inc.
-%
-%   Requires MATLAB R13.
+%   Modified by G. Evin & D. Huard, 2006.
 
 if nargin < 2
     error('Requires two input arguments.');
 end
 
-switch lower(type)
-case {'gaussian' 't'}
-    if ((numel(tau) == 1) && (tau < -1 | 1 < tau)) || ((numel(tau) ~= 1) && ~iscor(tau))
-        error('TAU must be a correlation coefficient between -1 and 1, or a positive semidefinite correlation matrix.');
-    end
-    param = sin(tau.*pi./2);
-    
-case {'clayton' 'frank' 'gumbel'}
-    if (numel(tau) ~= 1) || (tau < -1 | 1 < tau)
-        error('TAU must be a correlation coefficient between -1 and 1.');
-    end
-    switch lower(type)
+pass = check_tau(family, tau);
+if any(~pass)
+    error('Bad parameters')
+end
+
+switch lower(family)
+    case {'gaussian' 't'}
+        alpha = sin(tau.*pi./2);
+        
     case 'clayton'
-        if tau < 0
-            error('TAU must be nonnegative for the Clayton copula.');
-        end
-        param = 2*tau ./ (1-tau);
+        alpha = 2*tau ./ (1-tau+eps);
+        
     case 'frank'
-        if tau == 0
-            param = 0;
-        elseif abs(tau) < 1
-            % There's no closed form for alpha in terms of tau, so alpha has to be
-            % determined numerically.
-            warn = warning('off','MATLAB:fzero:UndeterminedSyntax');
-            param = fzero(@frankRootFun,sign(tau),[],tau);
-            warning(warn);
-        else
-            param = sign(tau).*Inf;
+        for i=1:length(tau)
+            if tau(i) == 0
+                alpha(i) = 0;
+            elseif abs(tau(i)) == 1
+                alpha(i) = sign(tau(i)).*realmax;
+            else
+                % There's no closed form for alpha in terms of tau, so alpha has to be
+                % determined numerically.
+                alpha(i) = fzero(@invcopulastat,[-1e6, 700],[],'frank', tau(i));
+                
+            end
         end
+        
+    case 'fgm'
+        alpha = tau.*(9/2);
+        
     case 'gumbel'
-        if tau < 0
-            error('TAU must be nonnegative for the Gumbel copula.');
+        alpha = 1 ./ (1-tau);
+        
+    case {'amh'}
+        % There's no closed form for alpha in terms of tau, so alpha has to be
+        % determined numerically.
+        for i=1:length(tau)
+            if tau(i) == 0 
+                alpha(i) = 0 ;
+            else
+                alpha(i) = fzero(@invcopulastat,[-1 0.99999999],[],'amh',tau(i));
+            end
         end
-        param = 1 ./ (1-tau);
-    end
-    
-otherwise
-    error('Unrecognized copula type: ''%s''',type);
+               
+    case 'arch12'
+        alpha = 2./(3.*(1-tau));
+        
+    case {'arch14'}
+        alpha = 1./(1-tau)-1/2;
+        
+    otherwise
+        error('Unrecognized copula family: ''%s''.',family);
 end
 
 
-function err = frankRootFun(alpha,targetTau)
-if abs(alpha) < realmin
-    tau = 0;
-else
-    tau = 1 + 4 .* (debye1(alpha)-1) ./ alpha;
-end
-err = tau - targetTau;
+function err = invcopulastat(alpha, family, target_tau)
+% Return difference between target_tau and tau computed from copulastat
+% with a guess for alpha.
+guess_tau = copulastat(family, alpha);
+err = guess_tau - target_tau;

@@ -13,7 +13,7 @@ theta=copulafit(copname,[disp,diss]);
  
 N=20;
 u = linspace(0,1,N);
-[u1,u2] = meshgrid(u,u);
+[u1,u2] = meshgrid(u,u);w
 y = copulacdf(copname,[u1(:),u2(:)],theta);
 [C,h]=contour(u1,u2,reshape(y,N,N),10);
 clabel(C,h,'manual')
