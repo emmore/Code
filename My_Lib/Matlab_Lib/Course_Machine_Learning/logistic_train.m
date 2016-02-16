@@ -21,28 +21,29 @@ function [weights] = logistic_train(data,labels,epsilon,maxiterations)
 % OUTPUT:
 % weights = (d+1) x 1 vector of weights where the weights
 % correspond to the columns of "data"
+
 clc;
-%Calculate the Hessian & Gradient
+j=1;
 n=size(data,1);
 d=size(data,2);
-weights=ones(d,1);
+weights=zeros(d,1);
 sig=ones(n,1);
 u=eye(n);
-for i=1:n
-    sig(i)=sigmoid(weights,data(i,:));
-    u(i,i)=sig(i)*(1-sig(i));
-end
-H=data*u*data';
-grad=data'*(labels-sig);
-
-i=1;
-diff=H\grad;
-while i<maxiterations && mean(abs(diff))>epsilon
+diff=100*ones(d,1);
+%Calculate the Hessian & Gradient
+while j<maxiterations && mean(abs(diff))>epsilon
+    for i=1:n
+        sig(i)=sigmoid(weights,data(i,:));
+        u(i,i)=sig(i)*(1-sig(i));
+    end
+    H=data'*u*data;
+    grad=data'*(labels-sig);
     diff=H\grad;
-    weights=weights-diff;
-    i=i+1;
+    weights=weights+diff;
+    j=j+1;
 end
 end
+
 
 function y=sigmoid(theta,x)
 y=1/(1+exp(-dot(theta,x)));
