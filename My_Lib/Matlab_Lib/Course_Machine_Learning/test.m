@@ -97,18 +97,23 @@ labels = [ zeros(N1,1); ones(N2,1) ];
 
 epsilon=0.001;
 maxiterations=30;
-weights1=logistic_train(xdata,labels,epsilon,maxiterations,0,70000);
-weights2=logistic_train(xdata,labels,epsilon,maxiterations,1,70000);
-result1=ones(length(xdata),1);
+k=1;
+accuracy2=zeros(length(50:50:10000),1);
+for m=50:50:10000
+%weights1=logistic_train(xdata,labels,epsilon,maxiterations,0,70000);
+weights2=logistic_train(xdata,labels,epsilon,maxiterations,1,m);
+%result1=ones(length(xdata),1);
 result2=ones(length(xdata),1);
 for i=1:length(xdata)
-    result1(i)=sigmoid(xdata(i,:),weights1);
+%    result1(i)=sigmoid(xdata(i,:),weights1);
     result2(i)=sigmoid(xdata(i,:),weights2);
 end
-chat1=result1>0.5;
+%chat1=result1>0.5;
 chat2=result2>0.5;
-accuracy1=100*sum(labels==chat1)/length(labels);
-accuracy2=100*sum(labels==chat2)/length(labels);
+%accuracy1=100*sum(labels==chat1)/length(labels);
+accuracy2(k)=100*sum(labels==chat2)/length(labels);
+k=k+1;
+end
     
     
     
