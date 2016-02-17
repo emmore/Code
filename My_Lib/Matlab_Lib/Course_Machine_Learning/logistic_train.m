@@ -31,7 +31,7 @@ sig=ones(n,1);
 u=eye(n);
 diff=100*ones(d,1);
 %Calculate the Hessian & Gradient
-while j<maxiterations && mean(abs(diff))>epsilon
+while j<maxiterations %&& mean(abs(diff))>epsilon
     for i=1:n
         sig(i)=sigmoid(weights,data(i,:));
         u(i,i)=sig(i)*(1-sig(i));

@@ -21,11 +21,18 @@ y = labels;
 load 'binary_features.txt'; 
 data = binary_features;
 x=[data ones(length(data),1)];
-weights=logistic_train(x,y,epsilon,maxiterations);
 
-result=ones(length(data),1);
-for i=1:length(data)
-result(i)=sigmoid(x(i,:),weights);
+
+
+k=1;
+for maxiterations=1:5:1000
+    weights=logistic_train(x,y,epsilon,maxiterations);
+
+    result=ones(length(data),1);
+    for i=1:length(data)
+        result(i)=sigmoid(x(i,:),weights);
+    end
+        chat=result>0.5;
+    accuracy(k)=100*sum(y==chat)/length(y);
+    k=k+1;
 end
-chat=result>0.5;
-accuracy=100*sum(y==chat)/length(y);
