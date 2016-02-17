@@ -1,15 +1,18 @@
 n=5;%number of PC
 m=6;%m is the input number; m*n is the input size
-L=20;%neuron number of middle layer
+L=40;%neuron number of middle layer
 LE=500;%parameter estimation period
 LV=length(SCORE)-LE;%validataion period
 
 
-p=SCORE(1:LE,1:n);
+p=SCORE(:,1:n);
 for i=1:size(p,2)
     tempt=p(:,i);
     p(:,i)=(tempt-min(tempt))./(max(tempt)-min(tempt));
 end
+
+pe=p(1:LE,:);
+pv=p(LE+1:length(p),:);
 
 I=[];
 O=[];
@@ -25,13 +28,6 @@ S=[L,n];
 net=newff(R,S,{'tansig','purelin'});
 net=train(net,I,O);
 
-
-pv=SCORE(LE+1:length(SCORE),1:n);
-for i=1:size(p,2)
-    tempt=pv(:,i);
-    pv(:,i)=(tempt-min(tempt))./(max(tempt)-min(tempt));
-end
-
 Iv=[];
 Ov=[];
 for i=1:length(pv)-m-1
@@ -40,11 +36,5 @@ for i=1:length(pv)-m-1
     Iv=[Iv,input];
     Ov=[Ov,output];
 end
-
-
-
-
-
-
 
 Os=sim(net,Iv);
