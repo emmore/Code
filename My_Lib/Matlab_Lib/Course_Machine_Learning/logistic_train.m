@@ -10,9 +10,9 @@ function [weights] = logistic_train(data,labels,epsilon,maxiterations)
 % criterion. Let pi be the probability predicted by the model
 % for data point i and deltai be the absolute change in this
 % probability since the last iteration. Let delta be the average
-% of the deltai’s, over all the training data points. When delta
+% of the deltai?s, over all the training data points. When delta
 % becomes lower than epsilon, then halt.
-% (if unspecified, use a default value of 10ˆ-5)
+% (if unspecified, use a default value of 10?-5)
 % maxiterations = optional argument that specifies the
 % maximum number of iterations to execute (useful when
 % debugging in case your code is not converging correctly!)
@@ -31,7 +31,7 @@ sig=ones(n,1);
 u=eye(n);
 diff=100*ones(d,1);
 %Calculate the Hessian & Gradient
-while j<maxiterations %&& mean(abs(diff))>epsilon
+while j<maxiterations && mean(abs(diff))>epsilon
     for i=1:n
         sig(i)=sigmoid(weights,data(i,:));
         u(i,i)=sig(i)*(1-sig(i));
