@@ -75,7 +75,40 @@ fig2=plot(N,Naccuracy);
 xlabel('Estimation Data Length');
 ylabel('Accuracy %');
 saveas(gcf,'length_accuracy.eps');
-    
+
+weights=logistic_train(x,y,epsilon,maxiterations,1,5000);
+result=ones(length(data),1);
+for i=1:length(data)
+    result(i)=sigmoid(x(i,:),weights);
+end
+chat=result>0.5;
+accuracy=100*sum(y==chat)/length(y);
+
+D = 500; % set the dimensionality
+% data for class 1
+mu1 = 3*ones(1,D); Sigma1 = eye(D); N1 = 50000;
+xdata1 = [mvnrnd(mu1, Sigma1, N1) ones(N1,1)];
+% data for class 2
+mu2 = 5*ones(1,D); Sigma2 = eye(D); N2 = 50000;
+xdata2 = [mvnrnd(mu2, Sigma2, N2) ones(N2,1)];
+xdata = [xdata1; xdata2];
+labels = [ zeros(N1,1); ones(N2,1) ];
+
+
+epsilon=0.001;
+maxiterations=30;
+weights1=logistic_train(xdata,labels,epsilon,maxiterations,0,70000);
+weights2=logistic_train(xdata,labels,epsilon,maxiterations,1,70000);
+result1=ones(length(xdata),1);
+result2=ones(length(xdata),1);
+for i=1:length(xdata)
+    result1(i)=sigmoid(xdata(i,:),weights1);
+    result2(i)=sigmoid(xdata(i,:),weights2);
+end
+chat1=result1>0.5;
+chat2=result2>0.5;
+accuracy1=100*sum(labels==chat1)/length(labels);
+accuracy2=100*sum(labels==chat2)/length(labels);
     
     
     
