@@ -50,49 +50,69 @@ Lat=48.875:-.25:25.125;  Lon=-124.875:0.25:-67.125;
 % Plot Bias
 par9 = rot90(reshape(result(:,9),ojj,oii)); 
 subplot(3,3,1)
-pcolor(1:ojj,1:oii,par9); set(gca,'xticklabel','','yticklabel','') ;caxis([0 2]);grid off;
-title('Bias','FontWeight','bold'); colorbar
+
+h=pcolor(1:ojj,1:oii,par9); 
+set(h, 'EdgeColor', 'none');
+set(gca,'xticklabel','','yticklabel','') ;caxis([0 2]);
+title('Bias','FontWeight','bold'); colorbar; view([0,-90]);
+
+
 % Plot Probability of Detection (POD)
 par5 = rot90(reshape(result(:,5),ojj,oii)); 
 subplot(3,3,2)
-pcolor(1:ojj,1:oii,par5);set(gca,'xticklabel','','yticklabel','') ;caxis([0 1]);
-title('POD','FontWeight','bold');colorbar
+h=pcolor(1:ojj,1:oii,par5);
+set(h, 'EdgeColor', 'none');
+set(gca,'xticklabel','','yticklabel','') ;caxis([0 1]);
+title('POD','FontWeight','bold');colorbar;view([0,-90]);
 % plot Volumetric Hit Index (VHI)
 par6 = rot90(reshape(result(:,6),ojj,oii)); par7(:,:) = rot90(reshape(result(:,7),ojj,oii));
 par8 = rot90(reshape(result(:,8),ojj,oii)); vhit = par8./(par6+par8);vhit(vhit<0)=nan;
 subplot(3,3,3) 
-pcolor(1:ojj,1:oii,vhit);set(gca,'xticklabel','','yticklabel','') ;caxis([0 1]);
-title('VHI','FontWeight','bold');colorbar
+h=pcolor(1:ojj,1:oii,vhit);
+set(h, 'EdgeColor', 'none');
+set(gca,'xticklabel','','yticklabel','') ;caxis([0 1]);
+title('VHI','FontWeight','bold');colorbar;view([0,-90]);
 % Plot False Alarm Ratio (FAR)
 par4 = rot90(reshape(result(:,4),ojj,oii)); 
 subplot(3,3,4)
-pcolor(1:ojj,1:oii,par4);
+h=pcolor(1:ojj,1:oii,par4);
+set(h, 'EdgeColor', 'none');
 set(gca,'xticklabel','','yticklabel','') ;caxis([0 1]);
-title('FAR','FontWeight','bold');colorbar
+title('FAR','FontWeight','bold');colorbar;view([0,-90]);
 % Plot Volumetric False Alarm Ration (VFAR)
 par7 = rot90(reshape(result(:,7),ojj,oii));
 vfalse = par7./(par7+par8);vfalse(vfalse<0)=nan;
 subplot(3,3,5) 
-pcolor(1:ojj,1:oii,vfalse);set(gca,'xticklabel','','yticklabel','') ;caxis([0 1]);
-title('VFAR','FontWeight','bold');colorbar
+h=pcolor(1:ojj,1:oii,vfalse);
+set(h, 'EdgeColor', 'none');
+set(gca,'xticklabel','','yticklabel','') ;caxis([0 1]);
+title('VFAR','FontWeight','bold');colorbar;view([0,-90]);
 % Plot Categorical Miss
 par5 = rot90(reshape(result(:,5),ojj,oii)); 
 subplot(3,3,6)
-pcolor(1:ojj,1:oii,1-par5);set(gca,'xticklabel','','yticklabel','') ;caxis([0 1]);
-title('Categorical Miss','FontWeight','bold');colorbar
+h=pcolor(1:ojj,1:oii,1-par5);
+set(h, 'EdgeColor', 'none');
+set(gca,'xticklabel','','yticklabel','') ;caxis([0 1]);
+title('Categorical Miss','FontWeight','bold');colorbar;view([0,-90]);
 % plot Volumetric Miss Index (VMI)
 vmissed = par6./(par8+par6);vmissed(vmissed<0)=nan;
 subplot(3,3,7) 
-pcolor(1:ojj,1:oii,vmissed);set(gca,'xticklabel','','yticklabel','') ;caxis([0 1]);
-title('VMI','FontWeight','bold');colorbar
+h=pcolor(1:ojj,1:oii,vmissed);
+set(h, 'EdgeColor', 'none');
+set(gca,'xticklabel','','yticklabel','') ;caxis([0 1]);
+title('VMI','FontWeight','bold');colorbar;view([0,-90]);
 % % Plot Critical Success Index (CSI)
 par1 = rot90(reshape(result(:,1),ojj,oii));
 par2 = rot90(reshape(result(:,2),ojj,oii));
 par3 = rot90(reshape(result(:,3),ojj,oii));
 subplot(3,3,8) 
-pcolor(1:ojj,1:oii,par1./(par1+par2+par3));set(gca,'xticklabel','','yticklabel','') ;caxis([0 1]);
-title('CSI','FontWeight','bold');colorbar
+h=pcolor(1:ojj,1:oii,par1./(par1+par2+par3));
+set(h, 'EdgeColor', 'none');
+set(gca,'xticklabel','','yticklabel','') ;caxis([0 1]);
+title('CSI','FontWeight','bold');colorbar;view([0,-90]);
 % % Plot Volumetric Critical Success Index (VCSI)
 subplot(3,3,9) 
-pcolor(1:ojj,1:oii,par8./(par8+par7+par6));set(gca,'xticklabel','','yticklabel','') ;caxis([0 1]);
-title('VCSI','FontWeight','bold');colorbar
+h=pcolor(1:ojj,1:oii,par8./(par8+par7+par6));
+set(h, 'EdgeColor', 'none');
+set(gca,'xticklabel','','yticklabel','') ;caxis([0 1]);
+title('VCSI','FontWeight','bold');colorbar;view([0,-90]);
