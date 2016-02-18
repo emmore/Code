@@ -47,6 +47,7 @@ for ii=1:oii
 end
 Lat=48.875:-.25:25.125;  Lon=-124.875:0.25:-67.125;
 
+figure;
 % Plot Bias
 par9 = rot90(reshape(result(:,9),ojj,oii)); 
 subplot(3,3,1)
@@ -112,7 +113,14 @@ set(gca,'xticklabel','','yticklabel','') ;caxis([0 1]);
 title('CSI','FontWeight','bold');colorbar;view([0,-90]);
 % % Plot Volumetric Critical Success Index (VCSI)
 subplot(3,3,9) 
+<<<<<<< Updated upstream
 h=pcolor(1:ojj,1:oii,par8./(par8+par7+par6));
 set(h, 'EdgeColor', 'none');
 set(gca,'xticklabel','','yticklabel','') ;caxis([0 1]);
 title('VCSI','FontWeight','bold');colorbar;view([0,-90]);
+=======
+pcolor(1:ojj,1:oii,par8./(par8+par7+par6));set(gca,'xticklabel','','yticklabel','') ;caxis([0 1]);
+title('VCSI','FontWeight','bold');colorbar
+
+saveas(gcf,'result.pdf');
+>>>>>>> Stashed changes
