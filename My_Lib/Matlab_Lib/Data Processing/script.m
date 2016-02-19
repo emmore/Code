@@ -1,3 +1,7 @@
+load('C:\Users\chrs-134\Documents\GitHub\Code\My_Lib\Matlab_Lib\Data Processing\result.mat');
+[COEFF,SCORE,latent]=LPCA_p(p_result);
+
+
 n=5;%number of PC
 m=6;%m is the input number; m*n is the input size
 L=40;%neuron number of middle layer
