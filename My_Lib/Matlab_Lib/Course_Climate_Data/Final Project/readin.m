@@ -3,7 +3,8 @@ filename='/Users/penn/Documents/Data/monthly_P_T/Climate Research Unit/cru_ts3.2
 lon=ncread(filename,'lon');
 lat=ncread(filename,'lat');
 T=1368;
-result=NaN(length(lon),length(lat),4,T);
+result_np=NaN(length(lon),length(lat),4,T);
+result_p=NaN(length(lon),length(lat),4,T);
 scales=[1,3,6,12];
 for i=1:length(lon)
     for j=1:length(lat)
@@ -13,7 +14,9 @@ for i=1:length(lon)
                 %aggregate
                 pre_a=aggregate(pre,scales(k));
                 %calculate
-                result(i,j,k,1:T-scales(k)+1)=SPI_np(pre_a);
+                result_np(i,j,k,1:T-scales(k)+1)=SPI_np(pre_a,scales(k));
+                result_p(i,j,k,1:T-scales(k)+1)=SPI_p(pre_a,scales(k));
+                disp([i,j,k]);
             end
         end
     end

@@ -1,9 +1,10 @@
-function result=SPI_np(Data)
+function result=SPI_np(Data,scale)
 n=length(Data);
 result=zeros(n,1);
-for k=1:12   
-    d=Data(k:12:n);
-    result(k:12:n,1)=empdis(d);
+nseas=12/scale; 
+for k=1:nseas   
+    d=Data(k:nseas:n);
+    result(k:nseas:n,1)=empdis(d);
 end
 result(:,1)=norminv(result(:,1));
 
