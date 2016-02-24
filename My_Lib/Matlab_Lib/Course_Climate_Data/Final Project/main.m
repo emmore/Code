@@ -8,8 +8,8 @@ result_np=NaN(length(lon),length(lat),4,T);
 result_p=NaN(length(lon),length(lat),4,T);
 scales=[1,3,6,12];
 precipitation=ncread(filename,'pre',[1,1,1],[length(lon),length(lat),inf]);
-for i=1:72%length(lon)
-    for j=1:36%length(lat)
+for i=1:length(lon)
+    for j=1:length(lat)
         if isfinite(precipitation(i,j,1))
             pre=squeeze(precipitation(i,j,:));
             for k=1:4
@@ -23,4 +23,6 @@ for i=1:72%length(lon)
         end
     end
 end
+save('result_np.mat','result_np');
+save('result_p.mat','result_p');
 end
