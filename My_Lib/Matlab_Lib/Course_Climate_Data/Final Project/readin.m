@@ -7,8 +7,8 @@ T=1368;
 result_np=NaN(length(lon),length(lat),4,T);
 result_p=NaN(length(lon),length(lat),4,T);
 scales=[1,3,6,12];
-for i=1:72%length(lon)
-    for j=1:36%length(lat)
+for i=1:length(lon)
+    for j=1:length(lat)
         if isfinite(ncread(filename,'pre',[i,j,1],[1,1,1]))
             pre=squeeze(ncread(filename,'pre',[i,j,1],[1,1,inf]));
             for k=1:4
