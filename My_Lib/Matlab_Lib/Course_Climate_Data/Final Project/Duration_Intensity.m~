@@ -1,0 +1,16 @@
+function [Duration,Intensity]=Duration_Intensity(SPI)
+threshould=0;
+nSPI=find(SPI<=threshould);
+Duration=diff([0;find(diff(nSPI)>1);length(nSPI)]);
+Intensity=[];
+k=0;
+for i=1:length(Duration)
+    Intensity=[Intensity;sum(SPI(k+1:k+Duration(i)))];
+    k=k+Duration(i)+1;
+    
+    
+
+
+
+
+    
