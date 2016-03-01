@@ -6,12 +6,12 @@ n=5;%number of PC
 m=6;%m is the input number; m*n is the input size
 L=30;%neuron number of middle layer
 LE=500;%parameter estimation period
-LV=length(SCORE)-LE;%validataion period
+ 
 
 
 p=SCORE(:,1:n);
 for i=1:size(p,2)
-    p(:,i)=mapminmax(p(:,i));
+    p(:,i)=(mapminmax(p(:,i)'))';
 end
 
 pe=p(1:LE,:);
