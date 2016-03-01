@@ -4,15 +4,14 @@ load('C:\Users\chrs-134\Documents\GitHub\Code\My_Lib\Matlab_Lib\Data Processing\
 
 n=5;%number of PC
 m=6;%m is the input number; m*n is the input size
-L=40;%neuron number of middle layer
+L=30;%neuron number of middle layer
 LE=500;%parameter estimation period
 LV=length(SCORE)-LE;%validataion period
 
 
 p=SCORE(:,1:n);
 for i=1:size(p,2)
-    tempt=p(:,i);
-    p(:,i)=(tempt-min(tempt))./(max(tempt)-min(tempt));
+    p(:,i)=mapminmax(p(:,i));
 end
 
 pe=p(1:LE,:);
@@ -20,9 +19,9 @@ pv=p(LE+1:length(p),:);
 
 I=[];
 O=[];
-for i=1:length(p)-m-1
-    input=reshape(p(i:i+m-1,:),[m*n,1]);
-    output=p(i+m,:)';
+for i=1:length(pe)-m-1
+    input=reshape(pe(i:i+m-1,:),[m*n,1]);
+    output=pe(i+m,:)';
     I=[I,input];
     O=[O,output];
 end
