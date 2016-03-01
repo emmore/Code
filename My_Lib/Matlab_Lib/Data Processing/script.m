@@ -1,10 +1,11 @@
-load('C:\Users\chrs-134\Documents\GitHub\Code\My_Lib\Matlab_Lib\Data Processing\result.mat');
+function Os=script(L)
+load('/Users/penn/Documents/Code/Github/My_Lib/Matlab_Lib/Data Processing/result.mat');
 [COEFF,SCORE,latent]=LPCA_p(p_result);
 
 
 n=5;%number of PC
-m=6;%m is the input number; m*n is the input size
-L=30;%neuron number of middle layer
+m=12;%m is the input number; m*n is the input size
+%L=30;%neuron number of middle layer
 LE=500;%parameter estimation period
  
 
@@ -26,9 +27,10 @@ for i=1:length(pe)-m-1
     O=[O,output];
 end
 
-R=repmat([0 1],m*n,1);
+R=repmat([-1 1],m*n,1);
 S=[L,n];
 net=newff(R,S,{'tansig','purelin'});
+net.performParam.regularization=0.5;
 net=train(net,I,O);
 
 Iv=[];
