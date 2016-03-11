@@ -3,11 +3,12 @@ cd '/Users/penn/Documents/Data/fianl_project';
 filename='/Users/penn/Documents/Data/monthly_P_T/Climate Research Unit/cru_ts3.23.1901.2014.pre.dat.nc';
 lon=ncread(filename,'lon');
 lat=ncread(filename,'lat');
-
+T=1368;
+result_np=NaN(length(lon),length(lat),4,T);
+result_p=NaN(length(lon),length(lat),4,T);
 scales=[1,3,6,12];
 s_repeat=1;
 s_real=1;
-
 for i=1:length(lon)
     for j=1:length(lat)
         x=squeeze(ncread(filename,'pre',[i,j,1],[1,1,24]));
@@ -21,14 +22,11 @@ for i=1:length(lon)
                 %aggregate
                 pre_a=aggregate(pre,scales(k));
                 %calculate
-                spi_np{s_real}{k}=SPI_np(pre_a,scales(k));
-                spi_p{s_real}{k}=SPI_p(pre_a,scales(k));
+                result_np(i,j,k,1:T-scales(k)+1)=SPI_np(pre_a,scales(k));
+                result_p(i,j,k,1:T-scales(k)+1)=SPI_p(pre_a,scales(k));
                 disp([i,j,k]);
             end
-            s_real=s_real+1;
         end
     end
 end
-save('spi_np.mat','spi_np');
-save('spi_p.mat','spi_p');
 end
