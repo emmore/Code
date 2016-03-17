@@ -1,10 +1,14 @@
-data=[ones(20,2)+rand(20,2);-ones(40,2)+rand(40,2)];
-labels=[ones(20,1);zeros(40,1)];
-epsilon=0.000001;
-maxiterations=1000;
+data=features(1:4000,:);
+data(isnan(data))=0.5;
+for i=1:size(features,2)
+    data(:,i)=(data(:,i)-min(data(:,i)))/(max(data(:,i))-min(data(:,i)))+0.0000001*rand(length(data),1);
+end
+%data=[data(:,1:3),data(:,5:7)];
+labels=target(1:4000,1);
+epsilon=0.00001;
+maxiterations=100;
 
 [weights] = logistic_train(data,labels,epsilon,maxiterations);
-
 
 result=ones(60,1);
 for i=1:60

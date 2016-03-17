@@ -1,4 +1,5 @@
-function [weights] = logistic_train(data,labels,epsilon,maxiterations, SGflag, m)
+function [weights] = logistic_train(data,labels,epsilon,maxiterations)
+%, SGflag, m)
 % [weights] = logistic_train(data,labels,epsilon,maxiterations)
 % code to train a logistic regression classifier
 %

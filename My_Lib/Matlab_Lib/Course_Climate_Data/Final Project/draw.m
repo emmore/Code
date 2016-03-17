@@ -25,3 +25,7 @@ colorbar;
 saveas(gcf,['maxI_np_' num2str(i)],'epsc');
 end
 
+%{
+set(gca, 'XTick', []);
+set(gca, 'YTick', []);
+}%
