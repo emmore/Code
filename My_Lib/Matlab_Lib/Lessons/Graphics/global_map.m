@@ -7,4 +7,3 @@ latlim = [-90 90];
 lonlim = [-180 180];
 [lattt,lonnn] = meshgrat(latlim,lonlim,[360 720]);
 pcolorm(lattt,lonnn,s);
-
