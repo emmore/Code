@@ -1,4 +1,4 @@
-function [O,Oe,Os,Ov,perf]=trial_error(norm_pca,norm_ann)
+function [O,Oe,Os,Ov,perf]=trial_error_seperate(norm_pca,norm_ann,pc)
 load('/Users/penn/Documents/Code/Github/My_Lib/Matlab_Lib/Data Processing/result.mat');
 load('pna.mat');
 [COEFF,SCORE,latent]=LPCA_p(p_result,norm_pca);
@@ -35,6 +35,7 @@ for i=1:length(pe)-m-1
     I=[I,[input;tpna]];
     O=[O,output];
 end
+O=O(pc,:);
 
 Iv=[];
 Ov=[];
@@ -45,9 +46,11 @@ for i=1:length(pv)-m-1
     Iv=[Iv,[input;tpna]];
     Ov=[Ov,output];
 end
+Ov=Ov(pc,:);
 
-net = feedforwardnet(15);
-net.performParam.regularization = 0.3;
+
+net = feedforwardnet(10);
+net.performParam.regularization =0.01;
 net = train(net,I,O);
 Oe=net(I);
 Os = net(Iv);

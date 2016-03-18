@@ -7,13 +7,9 @@ for i=1:length(p_result)
     p=[p;d'];
 end
 if norm==1
-    for i=1:size(p,2)
-        p(:,i)=normalization_1(p(:,i));
-    end
+    for i
 elseif norm==2
-    for i=1:size(p,2)
-        p(:,i)=normalization_2(p(:,i));
-    end
+    
 end
 
 [COEFF,SCORE,latent]=princomp(p);
