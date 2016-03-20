@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[   1183725,      21142]
-NotebookOptionsPosition[   1180728,      21042]
-NotebookOutlinePosition[   1181082,      21058]
-CellTagsIndexPosition[   1181039,      21055]
+NotebookDataLength[   1195082,      21403]
+NotebookOptionsPosition[   1192001,      21300]
+NotebookOutlinePosition[   1192355,      21316]
+CellTagsIndexPosition[   1192312,      21313]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -21037,8 +21037,266 @@ Cell[BoxData[
  CellChangeTimes->{3.667403622104513*^9}]
 }, Open  ]],
 
-Cell[BoxData[""], "Input",
- CellChangeTimes->{{3.6674051415410643`*^9, 3.667405156956386*^9}}]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SectorChart", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "3"}], "}"}]}], "}"}], ",", 
+   RowBox[{"SectorOrigin", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"Automatic", ",", "1"}], "}"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6674051415410643`*^9, 3.667405156956386*^9}, 
+   3.667424955091021*^9}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {}, 
+   DynamicModuleBox[{DynamicChart`click$24885$24910 = False, 
+    DynamicChart`click$24888$24910 = False, DynamicChart`click$24891$24910 = 
+    False}, {
+     {RGBColor[0.5, 0.5, 1.], EdgeForm[{GrayLevel[0], Opacity[0.5]}], {
+       {RGBColor[0.982864, 0.7431472, 0.3262672], 
+        {RGBColor[0.982864, 0.7431472, 0.3262672], EdgeForm[{GrayLevel[0], 
+         Opacity[0.5]}], GeometricTransformationBox[
+          TagBox[
+           TagBox[
+            TooltipBox[
+             TagBox[
+              DynamicBox[{
+                FEPrivate`If[
+                 CurrentValue["MouseOver"], 
+                 EdgeForm[{
+                   GrayLevel[0.5], 
+                   AbsoluteThickness[2.5], 
+                   Opacity[0.66]}], {}, {}], 
+                PolygonBox[CompressedData["
+1:eJxTTMoPSmViYGDQAWIQ/e8/CNy3X+0T8aJq22v75lm+Ku1Bt+xvB1oG8Wm/
+tX938tAV0aQr9tmbb+zKDn1n3+LK9HhC9Rn7zJcRrHOM3tv3LH9j8PfKfvvn
+zEfzcw68t4/m2pWW1z7T/kLFba2Sv+/tX/H/ft2kuHn/2UdcH8RfvrefUMxd
+J2V1bL+4TGNPd/N7+ycP3ZyKQy/ufzslPvbi2Xf2E+c8CtyfeH1/n3nKvu0n
+39ovPxGl32d0d/86j/7CK5Vv7BtvVf/ujHm4P9ywnLvu4Sv7i2+7Hy34/Hi/
+zz3W0sMsL+1r4gL3fgl/tn9/r/WMxBfP7C0Czi/Kb36xX07MJmj7xCf2pb+8
+fXoKXu1/zRN0cjvbI/vpnRyKKVJv9vcIhk/eNvue/cXzDut217zdz2q6Yp7s
+nRv2R3p2ZvNOebd/3e9Z51zuXrIP+Vy+cVLs+/0JUflBt2JO2nsvv3bc6/r7
+/eu333Fxr91pzwAGH/azx4gYqy1baAPhMxyA8DfaQNT/h6o/CTXvP9S8m/bH
+wPb9278cbN8jqHv+Qt3zAureP1D3voP65xfUP5+g/v0B9e8XaHh8g4bHN2h4
+fYaG109oeH6EhucvaHi/hYb3H2h8PIfGx19ofD2Extc/+w5wfF6Dxud/aHwf
+hsb3f2h6WAlND/+h6eU8NL38t68Bp6c70PT0H5renkDT2z9oenwFTY9/7SHp
+9T00vf62BwB4dYHv
+                 "]]},
+               
+               ImageSizeCache->{{104.7606933090101, 
+                219.2393066909899}, {-77.23930669098989, 
+                1.2393066909899062`}}],
+              StatusArea[#, {1, 1}]& ,
+              TagBoxNote->"{1, 1}"],
+             StyleBox[
+              RowBox[{"{", 
+                RowBox[{"1", ",", "1"}], "}"}], {
+               GrayLevel[0], FontFamily -> "Arial"}, StripOnInput -> False]],
+            Annotation[#, 
+             Style[{1, 1}, {
+               GrayLevel[0], FontFamily -> "Arial"}], "Tooltip"]& ],
+           
+           EventHandlerTag[{
+            "MouseClicked" :> FEPrivate`Set[DynamicChart`click$24885$24910, 
+               FEPrivate`Not[DynamicChart`click$24885$24910]], PassEventsDown -> 
+             True, PassEventsDown -> Automatic, PassEventsUp -> True}]], 
+          Dynamic[If[
+           DynamicChart`click$24885$24910, {{{1., 0}, {
+              0, 1.}}, {-0.10000000000000005`, 0.1732050807568877}}, {{1, 
+            0}, {0, 1}}, {{1, 0}, {0, 1}}], 
+           TrackedSymbols :> {DynamicChart`click$24885$24910}]]}, 
+        {RGBColor[0.784, 0.47519999999999996`, 0.2], EdgeForm[{GrayLevel[0], 
+         Opacity[0.5]}], GeometricTransformationBox[
+          TagBox[
+           TagBox[
+            TooltipBox[
+             TagBox[
+              DynamicBox[{
+                FEPrivate`If[
+                 CurrentValue["MouseOver"], 
+                 EdgeForm[{
+                   GrayLevel[0.5], 
+                   AbsoluteThickness[2.5], 
+                   Opacity[0.66]}], {}, {}], 
+                PolygonBox[CompressedData["
+1:eJxTTMoPSmViYGDQAWIQzcwAAg/sV/pEvKja9no/9631puzrHtk/2TU3M/X3
+y/0JfWLH23We2l+6Y6Nm+u/5/vTfP4w0S5/bT87mnvfz8NP9D6yUOWSaXton
+vixYEBv0eL/bzktrNfxe23N90H84Y/2D/UUxp1fuufLGfu/qQt8DR27vl9UN
+cvom+M7+A3dXyYrHV/fnnS+JW8f03n6rzASR/VPP75e0qe1uWPLenjW1UvWi
+8OH9V+00hS9+fW8fX9qYmNa6Es6fD+Hbw9QLQtTbw8w7CDHPXhpq3y+IffYF
+UPccgbjH3gXqXj6Ie+3vQv2TCvGPfSrUv9Mg/rWPgYbHVUh42HNAw+s5JLzs
+//0Hgfv2qyHhCeV/t2+wdNK7c4LFged4+wUu1j/2uj5m/D01zA49VxeuOn3o
+v/38pWvvLP/H6NC9x+rZvemMDhsmdJj9DmJwUMuRYpuqyOwgEbeyoOf3H/vP
+XHFN86pYHERfHA9MZf9pH9IaUd87n9XhsoOo1YTLX+yvLNy7saKXzeFXR3r4
+vqwP9pNmXz/G5MTuMEU0x99/w3N74bdzMxJ2szssEDfbsXPuHXuF93HnYn6w
+O5hLKJ7kUTkM57ND+PtFoOqbIOr3T4aa1woxb/9VqH3fIPbtD4O65xzEPfu/
+QN3LD3Hvfg2of4Qg/tnfC/XvOoh/D/RBw2MeJDwOCEDDSxsSXgdYwOn1h309
+JDwPAABTV2BO
+                 "]]},
+               
+               ImageSizeCache->{{194.7606933090101, 
+                291.2393066909899}, {-99.2393066909899, 95.2393066909899}}],
+              StatusArea[#, {1, 2}]& ,
+              TagBoxNote->"{1, 2}"],
+             StyleBox[
+              RowBox[{"{", 
+                RowBox[{"1", ",", "2"}], "}"}], {
+               GrayLevel[0], FontFamily -> "Arial"}, StripOnInput -> False]],
+            Annotation[#, 
+             Style[{1, 2}, {
+               GrayLevel[0], FontFamily -> "Arial"}], "Tooltip"]& ],
+           
+           EventHandlerTag[{
+            "MouseClicked" :> FEPrivate`Set[DynamicChart`click$24888$24910, 
+               FEPrivate`Not[DynamicChart`click$24888$24910]], PassEventsDown -> 
+             True, PassEventsDown -> Automatic, PassEventsUp -> True}]], 
+          Dynamic[If[
+           DynamicChart`click$24888$24910, {{{1., 0}, {0, 1.}}, {0.4, 
+             8.881784197001253*^-17}}, {{1, 0}, {0, 1}}, {{1, 0}, {0, 1}}], 
+           TrackedSymbols :> {DynamicChart`click$24888$24910}]]}, 
+        {RGBColor[0.4992, 0.5552, 0.8309304], EdgeForm[{GrayLevel[0], Opacity[
+         0.5]}], GeometricTransformationBox[
+          TagBox[
+           TagBox[
+            TooltipBox[
+             TagBox[
+              DynamicBox[{
+                FEPrivate`If[
+                 CurrentValue["MouseOver"], 
+                 EdgeForm[{
+                   GrayLevel[0.5], 
+                   AbsoluteThickness[2.5], 
+                   Opacity[0.66]}], {}, {}], 
+                PolygonBox[CompressedData["
+1:eJwtkm1IU1EYx9fmlu3tFvSGVDCIPlRQGdErXAl7IRe0SzKTWSkW1aJVFmba
+yIxkObMXoVIJ60MrglUIjpn1PFlZg2ytRtqdMzdjbbrtmhqFY5Gdcw8cDg8c
+znme3/+nK7FwB6QSiWT51P5/0jUK002zVy+5f7czz/Hl7Y5eAR67+nO3nXPD
+7vHyp9eLBNhfaOF4kwe67W6zpjEJjlTTh9zgJ/B5c5zPqhIgX/PgzsL+Prhp
+y9SVZsXBPst4o715AE5O5untx4dBUHMelyIM63Z571lqorBo7ibOde07VO01
+PJ8wRgDqN94qjkbAl6gLt44PgX5AfvpVRgyq+cqUzRQC46pylTU0DI53hSuu
+ZAfBub3hhL8iDvUtYQMU90LD2tIXLk8CBkNbN5fl+yDZuK/I15OE82Uqa9aG
+bpi/oNpeVyMAz6RGLujaoCesHJ0XE6BZ2XHwWO1t9uOZwNJT6anaEV+Z9gP7
+Q/bGchQFuLhFOnS18j17OFYgb8kWYMzT5Z9T4mfNbX0d5vwkXGraubiW49mA
+YT2nXZYAGeE5yD7UF0TPto+ItSSH1iq8TO5Psjy5r8Ff5L0J9gh5T4t28l+c
+PUT+Y/AR6eeb2A+DAdKvW+yXQTrPZ3EeBum8EXFeBoOEx0+RhxZthNdvkZcG
+WwnPNDwhPNVoJbyn4R7CW4k0DxnSPGZgBclLgV0kLwXSPDOR5pmBNG8l0ryl
+SH1QI/XhL3iJLxpUE1/+wGvikxadxKcx0TcGqW8xoD4y6CU+fgWKcyZSX192
+/gPReHTE
+                 "]]},
+               
+               ImageSizeCache->{{32.760693309010094`, 
+                256.2393066909899}, {-5.239306690989906, 145.2393066909899}}],
+              
+              StatusArea[#, {1, 3}]& ,
+              TagBoxNote->"{1, 3}"],
+             StyleBox[
+              RowBox[{"{", 
+                RowBox[{"1", ",", "3"}], "}"}], {
+               GrayLevel[0], FontFamily -> "Arial"}, StripOnInput -> False]],
+            Annotation[#, 
+             Style[{1, 3}, {
+               GrayLevel[0], FontFamily -> "Arial"}], "Tooltip"]& ],
+           
+           EventHandlerTag[{
+            "MouseClicked" :> FEPrivate`Set[DynamicChart`click$24891$24910, 
+               FEPrivate`Not[DynamicChart`click$24891$24910]], PassEventsDown -> 
+             True, PassEventsDown -> Automatic, PassEventsUp -> True}]], 
+          Dynamic[If[
+           DynamicChart`click$24891$24910, {{{1., 0}, {
+              0, 1.}}, {-0.2999999999999999, -0.5196152422706632}}, {{1, 0}, {
+            0, 1}}, {{1, 0}, {0, 1}}], 
+           TrackedSymbols :> {
+            DynamicChart`click$24891$24910}]]}}, {}}, {}}, {{{
+        GeometricTransformationBox[
+         TagBox[
+          TagBox[
+           TooltipBox[
+            TagBox[{{}, {}},
+             StatusArea[#, {1, 1}]& ,
+             TagBoxNote->"{1, 1}"],
+            StyleBox[
+             RowBox[{"{", 
+               RowBox[{"1", ",", "1"}], "}"}], {
+              GrayLevel[0], FontFamily -> "Arial"}, StripOnInput -> False]],
+           Annotation[#, 
+            Style[{1, 1}, {
+              GrayLevel[0], FontFamily -> "Arial"}], "Tooltip"]& ],
+          
+          EventHandlerTag[{
+           "MouseClicked" :> FEPrivate`Set[DynamicChart`click$24885$24910, 
+              FEPrivate`Not[DynamicChart`click$24885$24910]], PassEventsDown -> 
+            True, PassEventsDown -> Automatic, PassEventsUp -> True}]], 
+         Dynamic[If[
+          DynamicChart`click$24885$24910, {{{1., 0}, {
+             0, 1.}}, {-0.10000000000000005`, 0.1732050807568877}}, {{1, 0}, {
+           0, 1}}, {{1, 0}, {0, 1}}], 
+          TrackedSymbols :> {DynamicChart`click$24885$24910}]], 
+        GeometricTransformationBox[
+         TagBox[
+          TagBox[
+           TooltipBox[
+            TagBox[{{}, {}},
+             StatusArea[#, {1, 2}]& ,
+             TagBoxNote->"{1, 2}"],
+            StyleBox[
+             RowBox[{"{", 
+               RowBox[{"1", ",", "2"}], "}"}], {
+              GrayLevel[0], FontFamily -> "Arial"}, StripOnInput -> False]],
+           Annotation[#, 
+            Style[{1, 2}, {
+              GrayLevel[0], FontFamily -> "Arial"}], "Tooltip"]& ],
+          
+          EventHandlerTag[{
+           "MouseClicked" :> FEPrivate`Set[DynamicChart`click$24888$24910, 
+              FEPrivate`Not[DynamicChart`click$24888$24910]], PassEventsDown -> 
+            True, PassEventsDown -> Automatic, PassEventsUp -> True}]], 
+         Dynamic[If[
+          DynamicChart`click$24888$24910, {{{1., 0}, {0, 1.}}, {0.4, 
+            8.881784197001253*^-17}}, {{1, 0}, {0, 1}}, {{1, 0}, {0, 1}}], 
+          TrackedSymbols :> {DynamicChart`click$24888$24910}]], 
+        GeometricTransformationBox[
+         TagBox[
+          TagBox[
+           TooltipBox[
+            TagBox[{{}, {}},
+             StatusArea[#, {1, 3}]& ,
+             TagBoxNote->"{1, 3}"],
+            StyleBox[
+             RowBox[{"{", 
+               RowBox[{"1", ",", "3"}], "}"}], {
+              GrayLevel[0], FontFamily -> "Arial"}, StripOnInput -> False]],
+           Annotation[#, 
+            Style[{1, 3}, {
+              GrayLevel[0], FontFamily -> "Arial"}], "Tooltip"]& ],
+          
+          EventHandlerTag[{
+           "MouseClicked" :> FEPrivate`Set[DynamicChart`click$24891$24910, 
+              FEPrivate`Not[DynamicChart`click$24891$24910]], PassEventsDown -> 
+            True, PassEventsDown -> Automatic, PassEventsUp -> True}]], 
+         Dynamic[If[
+          DynamicChart`click$24891$24910, {{{1., 0}, {
+             0, 1.}}, {-0.2999999999999999, -0.5196152422706632}}, {{1, 0}, {
+           0, 1}}, {{1, 0}, {0, 1}}], 
+          TrackedSymbols :> {DynamicChart`click$24891$24910}]]}, {}}, {}}},
+    DynamicModuleValues:>{}], {{}, {}}, {{{}, {}, {}, {}}, {}}},
+  ContentSelectable->False,
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  LabelStyle->{
+    GrayLevel[0], FontFamily -> "Arial"},
+  PlotRange->{{-4.8, 4.8}, {-4.8, 4.8}},
+  PlotRangePadding->Scaled[0.02]]], "Output",
+ CellChangeTimes->{3.667424955962977*^9}]
+}, Open  ]]
 },
 WindowSize->{Full, Full},
 WindowMargins->{{0, Automatic}, {Automatic, 0}},
@@ -21143,7 +21401,10 @@ Cell[CellGroupData[{
 Cell[1141325, 20179, 313, 8, 46, "Input"],
 Cell[1141641, 20189, 38974, 847, 268, "Output"]
 }, Open  ]],
-Cell[1180630, 21039, 94, 1, 28, "Input"]
+Cell[CellGroupData[{
+Cell[1180652, 21041, 499, 15, 28, "Input"],
+Cell[1181154, 21058, 10831, 239, 409, "Output"]
+}, Open  ]]
 }
 ]
 *)
