@@ -27,4 +27,5 @@ Module[{start,end},
 	eex1=Normalize[Map[If[#<-99,0,#]&,Flatten[ex1]]];
 	eex2=Normalize[Map[If[#<-99,0,#]&,Flatten[ex2]]];
 	Return[EuclideanDistance[eex1,eex2]/(end-start+1)]]
+	(*Return[Abs[Correlation[eex1,eex2]]/(end-start+1)]]*)
 
