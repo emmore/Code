@@ -9,7 +9,7 @@ Length[clusters]}],1],{i,Length[data]}]];
 Renew[labels_]:=
 Module[{position},
 position=PositionIndex[labels];
-Return[Table[Mean[data[[position[[i]]]]],{i,Length[position]}]]];
+Return[Table[Centroid[data[[position[[i]]]]],{i,Length[position]}]]];
 Iteration[labels_,clusters_]:=
 Module[{newlabels,newclusters},
 newclusters=Renew[labels];
@@ -22,10 +22,15 @@ Similarity[index1_,index2_]:=
 Module[{start,end},
 	start=Max[index1[[1,1]],index2[[1,1]]];
 	end=Min[Last[index1][[1]],Last[index2][[1]]];
-	ex1=index1[[start-index1[[1,1]]+1;;end-index1[[1,1]]+1,2;;13]];
-	ex2=index2[[start-index2[[1,1]]+1;;end-index2[[1,1]]+1,2;;13]];
+	ex1=index1[[IntegerPart[start-index1[[1,1]]+1];;IntegerPart[end-index1[[1,1]]+1],2;;13]];
+	ex2=index2[[IntegerPart[start-index2[[1,1]]+1];;IntegerPart[end-index2[[1,1]]+1],2;;13]];
 	eex1=Normalize[Map[If[#<-99,0,#]&,Flatten[ex1]]];
 	eex2=Normalize[Map[If[#<-99,0,#]&,Flatten[ex2]]];
 	Return[EuclideanDistance[eex1,eex2]/(end-start+1)]]
 	(*Return[Abs[Correlation[eex1,eex2]]/(end-start+1)]]*)
+
+Centroid[datasets_]:=
+Flatten[RandomSample[datasets,1],1]
+
+
 
