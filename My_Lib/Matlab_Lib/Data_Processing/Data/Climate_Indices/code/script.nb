@@ -1,5 +1,0 @@
-names=Import["names","List"];
-matnames=Import["matnames","List"];
-SetDirectory["/Users/penn/Documents/Code/Github/My_Lib/Matlab_Lib/Data_Processing/Data/Climate_Indices"];
-data=Table[Flatten[Import[matnames[[i]]],1],{i,44}];
-<</Users/penn/Documents/Code/Github/My_Lib/Matlab_Lib/Data_Processing/Index_K_Means.nb
