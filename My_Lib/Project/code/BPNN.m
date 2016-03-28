@@ -1,4 +1,4 @@
-function [O,Oe,Os,Ov]=trial_error_seperate(norm_pca,norm_ann,pc)
+function [Oe,Ose,Ov,Osv]=BPNN(norm_pca,pc)
 clc;
 load('/Users/penn/Documents/Code/Github/My_Lib/Project/data/p_result.mat');
 load('/Users/penn/Documents/Code/Github/My_Lib/Project/data/index.mat');
@@ -14,13 +14,14 @@ q=nan(length(p),1);
 for i=1:length(p)
     q(i)=sin(pi*i/6);
 end
-p=[p   mei pna];
+p=[p  q mei  pna];
 %p=[p      mei(1:length(p)) pna(1:length(p))];
 %p=[p,q,mei,pna]; %not so bas pc1 0.75
 %p=[p amo ao mei nao nino12 nino3 pna soi wp];
 %p=[p nao mei];
 %%%%%%%%%
 n=size(p,2);
+%{
 if norm_ann==1
     for i=1:size(p,2)
         p(:,i)=normalization_1(p(:,i));
@@ -30,35 +31,50 @@ elseif norm_ann==2
         p(:,i)=normalization_2(p(:,i));
     end
 end
-
+%}
  
 pe=p(1:LE,:);
 pv=p(LE+1:length(p),:);
 I=[];
 O=[];
-for i=1:length(pe)-m-1
-    input=reshape(pe(i:i+m-1,:),[m*n,1]);
-    output=pe(i+m,1);
+for i=1:length(p)-m-1
+    input=reshape(p(i:i+m-1,:),[m*n,1]);
+    output=p(i+m,1);
     I=[I,input];
     O=[O,output];
 end
 
+Ie=I(:,1:LE);
+Iv=I(:,LE+1:length(I));
+for i=1:size(Ie,1)
+    Ie(i,:)=mapminmax(Ie(i,:));
+end
 
-Iv=[];
-Ov=[];
-for i=1:length(pv)-m-1
-    input=reshape(pv(i:i+m-1,:),[m*n,1]);
-    output=pv(i+m,1);
-    Iv=[Iv,input];
-    Ov=[Ov,output];
+for i=1:size(Iv,1)
+    Iv(i,:)=mapminmax(Iv(i,:));
+end
+
+Oe=O(:,1:LE);
+Ov=O(:,LE+1:length(O));
+
+for i=1:size(Oe,1)
+    Oe(i,:)=mapminmax(Oe(i,:));
+end
+
+for i=1:size(Ov,1)
+    Ov(i,:)=mapminmax(Ov(i,:));
+end
+
+net=newff(Ie,Oe,20);
+net.trainParam.epochs=100;
+net.trainParam.lr=0.1;
+net.trainParam.goal=0.00004;
+net=train(net,Ie,Oe);
+Ose=sim(net,Ie);
+Osv=sim(net,Ov);
 end
 
 
-net = feedforwardnet(24);
-net.performParam.regularization =0.25;
-net.trainParam.mu_max=2;
-net.trainParam.mu_inc=1.2;
-net = train(net,I,O);
-Oe=net(I);
-Os = net(Iv);
-perf=perform(net,Ov,Os);
+
+
+ 
