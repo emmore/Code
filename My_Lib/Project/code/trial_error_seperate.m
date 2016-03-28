@@ -3,14 +3,23 @@ clc;
 load('/Users/penn/Documents/Code/Github/My_Lib/Project/data/p_result.mat');
 load('/Users/penn/Documents/Code/Github/My_Lib/Project/data/index.mat');
 [COEFF,SCORE,latent]=LPCA_p(p_result,norm_pca);
-n=5;%number of PC
-m=12;%m is the input number; m*n is the input size
-mm=4;%mm is the input length of indices
+n=1;%number of PC
+m=6;%m is the input number; m*n is the input size
 %L=30;%neuron number of middle layer
 LE=500;%parameter estimation period
-p=SCORE(:,1:n);
+p=SCORE(:,pc:pc+n-1);
 %%%%%%%%%
-p=[p amo ao mei nao nino12 nino3 pna soi wp];
+%p=[p mei];
+q=nan(792,1);
+for i=1:792
+    q(i)=sin(pi*(i+2.5)/6);
+end
+p=[p q mei pna];
+%p=[p,q,mei,pna]; %not so bas pc1 0.75
+%p=[p amo ao mei nao nino12 nino3 pna soi wp];
+%p=[p nao mei];
+%%%%%%%%%
+n=size(p,2);
 if norm_ann==1
     for i=1:size(p,2)
         p(:,i)=normalization_1(p(:,i));
@@ -28,27 +37,25 @@ I=[];
 O=[];
 for i=1:length(pe)-m-1
     input=reshape(pe(i:i+m-1,:),[m*n,1]);
-    tpna=pnae(i+m-mm:i+m-1);
-    output=pe(i+m,:)';
-    I=[I,[input;tpna]];
+    output=pe(i+m,1)';
+    I=[I,input];
     O=[O,output];
 end
-O=O(pc,:);
 
 Iv=[];
 Ov=[];
 for i=1:length(pv)-m-1
     input=reshape(pv(i:i+m-1,:),[m*n,1]);
-    tpna=pnae(i+m-mm:i+m-1);
-    output=pv(i+m,:)';
-    Iv=[Iv,[input;tpna]];
+    output=pv(i+m,1)';
+    Iv=[Iv,input];
     Ov=[Ov,output];
 end
-Ov=Ov(pc,:);
 
 
-net = feedforwardnet(10);
-net.performParam.regularization =0.01;
+net = feedforwardnet(45);
+net.performParam.regularization =0.45;
+net.trainParam.mu_max=2;
+net.trainParam.mu_inc=1.2;
 net = train(net,I,O);
 Oe=net(I);
 Os = net(Iv);
