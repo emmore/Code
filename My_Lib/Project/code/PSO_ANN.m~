@@ -3,14 +3,14 @@ clc;
 load('/Users/penn/Documents/Code/Github/My_Lib/Project/data/p_result.mat');
 load('/Users/penn/Documents/Code/Github/My_Lib/Project/data/full_index.mat');
 %%%%%%%%%Implement PCA to precipiation data%%%%%%%%%%%%%%
-[COEFF,SCORE,latent]=LPCA_p(p_result,1);
+SCORE=LPCA_p(p_result,1);
 m=6;%m is the input delaying length
 LE=500;%parameter estimation period
 %%%%%%%%%Select the pc(th) eof.
 p=SCORE(:,pc);
 performance=[-1,-1];
 %%%%%%%%%Iteratively select inputs
-for time=1:10
+for time=1:40
 %%%%%%%%%Input Selection%%%%%%%%%%%%%
     select=rand(1,size(index,2))>0.75*ones(1,size(index,2));
     for i=1:size(select,2)
@@ -39,23 +39,84 @@ for time=1:10
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % particle swarm optimizer for initial weights and b
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    
-    for neuron=10:2:24
+%%%%Parameters for PSO%%%%%%%%%%%%%%%
+    N=400;%number of particles in one community
+    c1=1.1;%rate of following community best
+    c2=1.1;%rate of following historical best
+    w=0.3;
+    T=100;
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    for neuron=10:4:24
         for j=1:N
-            community{j}.w1=rand(neuron,m*n);
-            community{j}.w2=rand(1,neuron);
-            community{j}.b1=rand(neuron,1);
-            community{j}.b2=rand();
+            community{j}.w1=rand(neuron,m*n)-0.5;
+            community{j}.w2=rand(1,neuron)-0.5;
+            community{j}.b1=rand(neuron,1)-0.5;
+            community{j}.b2=rand()-0.5;
+            
+            community{j}.vw1=0.1*(rand(neuron,m*n)-0.5);
+            community{j}.vw2=0.1*(rand(1,neuron)-0.5);
+            community{j}.vb1=0.1*(rand(neuron,1)-0.5);
+            community{j}.vb2=0.1*(rand()-0.5);
+            
             net=feedforwardnet(neuron);
             net.performParam.regularization =0.25;
-            net.iw{1,1}=c
+            net.trainParam.showWindow=0;
+            net.iw{1,1}=community{j}.w1;
+            net.lw{2,1}=community{j}.w2;
+            net.b{1}=community{j}.b1;
+            net.b{2}=community{j}.b2;
             net = train(net,Ie,Oe);
-            Ose=net(Ie);
-            Osv=net(Iv);
+            a=corrcoef(net(Ie),Oe);
+            b=corrcoef(net(Iv),Ov);
+            community{j}.performance=[a(1,2),b(1,2)];
+            if community{j}.performance(1)>performance(1)&&community{j}.performance(2)>performance(2)
+               performance=community{j}.performance;
+               g_best=community{j};
+            end
+            
+            
         end
-c1=1.1;
-c2=1.1;
-w=0.3;
+        
+        for t=1:T
+            for j=1:N
+                community{j}.vw1=community{j}.vw1+
+                community{j}.vw2=community{j}.vw2+
+                community{j}.vb1=community{j}.vb1+
+                community{j}.vb2=community{j}.vb1+
+                
+                community{j}.w1=community{j}.vw1+community{j}.w1;
+                community{j}.w2=community{j}.vw2+community{j}.w2;
+                community{j}.b1=community{j}.vb1+community{j}.b1;
+                community{j}.b2=community{j}.vb1+community{j}.b2;
+                
+                net=feedforwardnet(neuron);
+                net.performParam.regularization =0.25;
+                net.trainParam.showWindow=0;
+                net.iw{1,1}=community{j}.w1;
+                net.lw{2,1}=community{j}.w2;
+                net.b{1}=community{j}.b1;
+                net.b{2}=community{j}.b2;
+                net = train(net,Ie,Oe);
+                a=corrcoef(net(Ie),Oe);
+                b=corrcoef(net(Iv),Ov);
+                community{j}.performance=[a(1,2),b(1,2)];
+                if community{j}.performance(1)>performance(1)&&community{j}.performance(2)>performance(2)
+                    performance=community{j}.performance;
+                    p_best=community{j};
+                end
+            end  
+        end
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
 N=500;
 T=4;
 range=[0.1 2000;0.0001 0.3; 0.00015  3];                               
