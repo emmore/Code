@@ -1,4 +1,4 @@
-function [bestnet,bestselect,bestneuron]=PSO_ANN_revise(pc)
+function result=PSO_ANN_revise(pc)
 clc;
 load('/Users/penn/Documents/Code/Github/My_Lib/Project/data/p_result.mat');
 load('/Users/penn/Documents/Code/Github/My_Lib/Project/data/full_index.mat');
@@ -11,11 +11,11 @@ p=SCORE(:,pc);
 g_performance=[-1,-1];
 %%%%%%%%%Iteratively select inputs
 for time=1:30
-%    t_performance(time,:)=[-1,-1];
 %%%%%%%%%Input Selection%%%%%%%%%%%%%
-    select=rand(1,size(index,2))>0.75*ones(1,size(index,2));
-    for i=1:size(select,2)
-        if select(i)==1;
+    result{time}.select=rand(1,size(index,2))>0.75*ones(1,size(index,2));
+    result{time}.performace=[-1 -1];
+    for i=1:size(result{time}.select,2)
+        if result{time}.select(i)==1;
             p=[p index(:,i)];
         end
     end
@@ -46,7 +46,7 @@ for time=1:30
     c2=1.1;%rate of following historical best
     T=5;%iteration times
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    for neuron=15:16
+    for neuron=15:3:21
         clear community;
         n_performance=[-1,-1];
         for j=1:N
@@ -94,6 +94,9 @@ for time=1:30
                     if community{j}.performance(1,1)>n_performance(1,1)&&community{j}.performance(1,2)>n_performance(1,2)
                         n_performance=community{j}.performance;
                         g_best=community{j}.p;
+                        if n_performance(1,1)>result{time}.performace(1,1)&&n_performance(1,2)>result{time}.performace(1,2)
+                            result{time}.performan
+                        end
                     end
                 end
             end  
@@ -105,6 +108,9 @@ for time=1:30
             bestneuron=neuron;
         end
     end
+    result{time}.neuron=beuron;
+    result{time}.p=;
+    result{time}.performance=;
     disp(g_performance);
 end
 end

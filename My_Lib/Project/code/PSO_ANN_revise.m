@@ -1,4 +1,4 @@
-function [bestnet,bestselect,bestneuron]=PSO_ANN_revise(pc)
+function result=PSO_ANN_revise(pc)
 clc;
 load('/Users/penn/Documents/Code/Github/My_Lib/Project/data/p_result.mat');
 load('/Users/penn/Documents/Code/Github/My_Lib/Project/data/full_index.mat');
@@ -12,9 +12,10 @@ g_performance=[-1,-1];
 %%%%%%%%%Iteratively select inputs
 for time=1:30
 %%%%%%%%%Input Selection%%%%%%%%%%%%%
-    select=rand(1,size(index,2))>0.75*ones(1,size(index,2));
-    for i=1:size(select,2)
-        if select(i)==1;
+    result{time}.select=rand(1,size(index,2))>0.75*ones(1,size(index,2));
+    result{time}.performace=[-1 -1];
+    for i=1:size(result{time}.select,2)
+        if result{time}.select(i)==1;
             p=[p index(:,i)];
         end
     end
@@ -40,17 +41,17 @@ for time=1:30
 % particle swarm optimizer for initial weights and b
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%Parameters for PSO%%%%%%%%%%%%%%%
-    N=20;%number of particles in one community
+    N=100;%number of particles in one community
     c1=1.1;%rate of following community best
     c2=1.1;%rate of following historical best
-    T=5;%iteration times
+    T=10;%iteration times
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     for neuron=15:3:21
         clear community;
         n_performance=[-1,-1];
         for j=1:N
             community{j}.p=rand(neuron*(m*n+2)+2,1)-0.5;
-            community{j}.v=0.2*rand(neuron*(m*n+2)+2,1);
+            community{j}.v=0.2*(rand(neuron*(m*n+2)+2,1)-0.5);
             community{j}.best=community{j}.p;
             net=feedforwardnet(neuron);
             net=configure(net,Ie,Oe);
@@ -85,7 +86,7 @@ for time=1:30
                 a=corrcoef(net(Ie),Oe);
                 b=corrcoef(net(Iv),Ov);
                 community{j}.performance=[a(1,2),b(1,2)];
-                disp([num2str(j) 'th performance is']);
+                disp([num2str(j) 'th performance is ']);
                 disp(community{j}.performance);
                 if community{j}.performance(1,1)>community{j}.bperformance(1)&&community{j}.performance(1,2)>community{j}.bperformance(2)
                     community{j}.bperformance=community{j}.performance;
@@ -93,18 +94,16 @@ for time=1:30
                     if community{j}.performance(1,1)>n_performance(1,1)&&community{j}.performance(1,2)>n_performance(1,2)
                         n_performance=community{j}.performance;
                         g_best=community{j}.p;
+                        if n_performance(1,1)>result{time}.performace(1,1)&&n_performance(1,2)>result{time}.performace(1,2)
+                            result{time}.performance=n_performance;
+                            result{time}.neuron=neuron;
+                            result{time}.p=g_best;
+                        end
                     end
                 end
             end  
         end
-        if n_performance(1,1)>g_performance(1,1)&&n_performance(1,2)>g_performance(1,2)
-            g_performance=n_performance;
-            bestselect=select;
-            bestnet=g_best;
-            bestneuron=neuron;
-        end
     end
-    
-    disp(g_performance);
 end
+save('result.mat','result');
 end
