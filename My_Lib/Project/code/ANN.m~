@@ -1,8 +1,8 @@
-function [Oe,Ose,Ov,Osv]=ANN(norm_pca,norm_ann,pc)
+function [net,Oe,Ose,Ov,Osv]=ANN(norm_pca,pc)
 clc;
 load('/Users/penn/Documents/Code/Github/My_Lib/Project/data/p_result.mat');
 load('/Users/penn/Documents/Code/Github/My_Lib/Project/data/index.mat');
-[COEFF,SCORE,latent]=LPCA_p(p_result,norm_pca);
+[COEFF,SCORELPCA_p(p_result,norm_pca);
 n=1;%number of PC
 m=6;%m is the input number; m*n is the input size
 %L=30;%neuron number of middle layer
@@ -14,27 +14,14 @@ q=nan(length(p),1);
 for i=1:length(p)
     q(i)=sin(pi*i/6);
 end
-p=[p  q mei  pna];
+%p=[p  q mei  pna];
 %p=[p      mei(1:length(p)) pna(1:length(p))];
 %p=[p,q,mei,pna]; %not so bas pc1 0.75
 %p=[p amo ao mei nao nino12 nino3 pna soi wp];
 %p=[p nao mei];
 %%%%%%%%%
 n=size(p,2);
-%{
-if norm_ann==1
-    for i=1:size(p,2)
-        p(:,i)=normalization_1(p(:,i));
-    end
-elseif norm_ann==2
-    for i=1:size(p,2)
-        p(:,i)=normalization_2(p(:,i));
-    end
-end
-%}
- 
-pe=p(1:LE,:);
-pv=p(LE+1:length(p),:);
+
 I=[];
 O=[];
 for i=1:length(p)-m-1
@@ -46,6 +33,7 @@ end
 
 Ie=I(:,1:LE);
 Iv=I(:,LE+1:length(I));
+
 for i=1:size(Ie,1)
     Ie(i,:)=mapminmax(Ie(i,:));
 end
@@ -65,13 +53,13 @@ for i=1:size(Ov,1)
     Ov(i,:)=mapminmax(Ov(i,:));
 end
 
+
 net=feedforwardnet(15);
-%net.layers{2}.transferFcn ='logsig';
 net.performParam.regularization =0.25;
 net.trainParam.mu_max=1e10;
 net.trainParam.mu_inc=1.2;
 net.trainParam.showWindow=0;
 net = train(net,Ie,Oe);
 Ose=net(Ie);
-Osv = net(Iv);
+Osv=net(Iv);
 end

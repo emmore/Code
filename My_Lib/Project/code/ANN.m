@@ -2,7 +2,7 @@ function [net,Oe,Ose,Ov,Osv]=ANN(norm_pca,pc)
 clc;
 load('/Users/penn/Documents/Code/Github/My_Lib/Project/data/p_result.mat');
 load('/Users/penn/Documents/Code/Github/My_Lib/Project/data/index.mat');
-[COEFF,SCORE,latent]=LPCA_p(p_result,norm_pca);
+SCORE=LPCA_p(p_result,norm_pca);
 n=1;%number of PC
 m=6;%m is the input number; m*n is the input size
 %L=30;%neuron number of middle layer
