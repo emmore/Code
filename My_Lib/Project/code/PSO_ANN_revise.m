@@ -10,7 +10,7 @@ LE=500;%parameter estimation period
 p=SCORE(:,pc);
 g_performance=[-1,-1];
 %%%%%%%%%Iteratively select inputs
-for time=1:30
+for time=1:3
 %%%%%%%%%Input Selection%%%%%%%%%%%%%
     result{time}.select=rand(1,size(index,2))>0.75*ones(1,size(index,2));
     result{time}.performance=[-1 -1];
@@ -46,7 +46,7 @@ for time=1:30
     c2=1.1;%rate of following historical best
     T=6;%iteration times
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    for neuron=21:3:33
+    for neuron=21:3:25
         clear community;
         n_performance=[-1,-1];
         for j=1:N
@@ -61,6 +61,7 @@ for time=1:30
             net.lw{2,1}=reshape(community{j}.p(neuron*m*n+1:neuron*m*n+neuron,1),[1,neuron]);
             net.b{1}=reshape(community{j}.p(neuron*m*n+neuron+1:neuron*m*n+2*neuron,1),[neuron,1]);
             net.b{2}=community{j}.p(neuron*m*n+2*neuron+1,1);
+            net = train(net,Ie,Oe);
             a=corrcoef(net(Ie),Oe);
             b=corrcoef(net(Iv),Ov);
             community{j}.performance=[a(1,2),b(1,2)];
@@ -83,9 +84,11 @@ for time=1:30
                 net.lw{2,1}=reshape(community{j}.p(neuron*m*n+1:neuron*m*n+neuron,1),[1,neuron]);
                 net.b{1}=reshape(community{j}.p(neuron*m*n+neuron+1:neuron*m*n+2*neuron,1),[neuron,1]);
                 net.b{2}=community{j}.p(neuron*m*n+2*neuron+1,1);
+                net = train(net,Ie,Oe);
                 a=corrcoef(net(Ie),Oe);
                 b=corrcoef(net(Iv),Ov);
                 community{j}.performance=[a(1,2),b(1,2)];
+                disp(community{j}.performance);
                 if community{j}.performance(1,1)>community{j}.bperformance(1)&&community{j}.performance(1,2)>community{j}.bperformance(2)
                     community{j}.bperformance=community{j}.performance;
                     community{j}.best=community{j}.p;
@@ -102,8 +105,9 @@ for time=1:30
             end  
         end
         disp(['neron number ' num2str(neuron)]);
-        disp(result{time}.select);
-        disp(n.performance);
+        x=result{time}.select;
+        disp(x);
+        disp(n_performance);
     end
 end
 save('result.mat','result');
