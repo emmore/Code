@@ -13,7 +13,7 @@ g_performance=[-1,-1];
 for time=1:30
 %%%%%%%%%Input Selection%%%%%%%%%%%%%
     result{time}.select=rand(1,size(index,2))>0.75*ones(1,size(index,2));
-    result{time}.performace=[-1 -1];
+    result{time}.performance=[-1 -1];
     for i=1:size(result{time}.select,2)
         if result{time}.select(i)==1;
             p=[p index(:,i)];
@@ -44,9 +44,9 @@ for time=1:30
     N=100;%number of particles in one community
     c1=1.1;%rate of following community best
     c2=1.1;%rate of following historical best
-    T=10;%iteration times
+    T=6;%iteration times
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    for neuron=15:3:21
+    for neuron=21:3:33
         clear community;
         n_performance=[-1,-1];
         for j=1:N
@@ -86,15 +86,13 @@ for time=1:30
                 a=corrcoef(net(Ie),Oe);
                 b=corrcoef(net(Iv),Ov);
                 community{j}.performance=[a(1,2),b(1,2)];
-                disp([num2str(j) 'th performance is ']);
-                disp(community{j}.performance);
                 if community{j}.performance(1,1)>community{j}.bperformance(1)&&community{j}.performance(1,2)>community{j}.bperformance(2)
                     community{j}.bperformance=community{j}.performance;
                     community{j}.best=community{j}.p;
                     if community{j}.performance(1,1)>n_performance(1,1)&&community{j}.performance(1,2)>n_performance(1,2)
                         n_performance=community{j}.performance;
                         g_best=community{j}.p;
-                        if n_performance(1,1)>result{time}.performace(1,1)&&n_performance(1,2)>result{time}.performace(1,2)
+                        if n_performance(1,1)>result{time}.performance(1,1)&&n_performance(1,2)>result{time}.performance(1,2)
                             result{time}.performance=n_performance;
                             result{time}.neuron=neuron;
                             result{time}.p=g_best;
@@ -103,6 +101,9 @@ for time=1:30
                 end
             end  
         end
+        disp(['neron number ' num2str(neuron)]);
+        disp(result{time}.select);
+        disp(n.performance);
     end
 end
 save('result.mat','result');
