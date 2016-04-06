@@ -1,0 +1,13 @@
+\documentclass{article}
+\title{Interim Report}
+\author{Baoxiang Pan}
+\date{April 2 2016}
+\begin{document}
+\maketitle
+Drought is a common hydrometeorological extreme phenomenon that is featured by lack of available water. Drought existence and severity depend seriously on subseasonal to seasonal precipitation.  While numerical climate models may fail to provide satisfying long-term precipitation prediction given the chaos characteristic of the atmospheric system\cite{}, this research work tried to seek the possible information contribution of climate indexes in sub seasonal precipitation prediction within a data-driven model framework.
+
+The study area is California, where drought severity is gaining great attention from both the academic community and public\cite{}. The spatial and temporal precipitation distribution in California is deeply influenced by the Pacific Ocean circulation pattern, whose features are characterized by certain climate indexes\cite{}. In this research, the $0.5^{\circ}\times 0.5^{\circ}$ degree monthly precipitation data from 1948 to 2013, as obtained from Climate Prediction Center, were first processed with Principle Compoment Analysis dimenstion reduction approach. It was shown that more than $85\%$ of the spatical distribution variance of monthly precipitation could be explained by the first 5 principle components. The values reflect the general precipitation condition. 
+
+44 climate indexes from 1948 to 2013 were collected as potential general circulation pattern indicators. To reduce the computation burden in the modelling part, the climte indexes were first classified with K means algorithm according to their similarities. After the classification, the representative climate indexes, together with the target principle component records, were taken into a feed-forward neural network to predict the following 3 month to 6 month's precipitation principle component values. The network was trained with Particle Swarm Optimizor\cite{} combined with back progogation algorithm. Primary results showed that certain combination of climate indexes provide information to explain the spatical temporal variation of California drought.
+
+\end{document}
