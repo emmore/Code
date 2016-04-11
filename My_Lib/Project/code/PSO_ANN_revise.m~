@@ -24,7 +24,7 @@ for time=1:1
     I=[];
     O=[];
     for i=1:length(p)-m-1
-        if mod(i+m,12)<5 || mod(i+m,12)>10
+        if mod(i+m,12)>5 && mod(i+m,12)<10
             input=reshape(p(i:i+m-1,:),[m*n,1]);
             output=p(i+m,1);
             I=[I,input];
@@ -49,7 +49,7 @@ for time=1:1
     c2=1.0;%rate of following historical best
     T=4;%iteration times
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    for neuron=16:3:25
+    for neuron=21:3:25
         clear community;
         n_performance=[-1,-1];
         for j=1:N
@@ -58,12 +58,12 @@ for time=1:1
             community{j}.best=community{j}.p;
             net=feedforwardnet(neuron);
             net=configure(net,Ie,Oe);
-            net.performParam.regularization =max(community{j}.p(end),0.4);
+            net.performParam.regularization =max(community{j}.p(end),0.01);
+            net.trainParam.showWindow=0;
             net.iw{1,1}=reshape(community{j}.p(1:neuron*m*n,1),[neuron,m*n]);
             net.lw{2,1}=reshape(community{j}.p(neuron*m*n+1:neuron*m*n+neuron,1),[1,neuron]);
             net.b{1}=reshape(community{j}.p(neuron*m*n+neuron+1:neuron*m*n+2*neuron,1),[neuron,1]);
             net.b{2}=community{j}.p(neuron*m*n+2*neuron+1,1);
-            net.trainParam.showWindow=0;
             net = train(net,Ie,Oe);
             a=corrcoef(net(Ie),Oe);
             b=corrcoef(net(Iv),Ov);
