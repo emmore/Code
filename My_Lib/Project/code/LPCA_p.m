@@ -17,6 +17,7 @@ elseif norm==2
 end
 
 [COEFF,SCORE,latent]=princomp(p);
+%{
 snr=cumsum(latent)./sum(latent);
 x=1:50;
 y=snr(1:50);
@@ -25,4 +26,5 @@ axis([1 50 0.75 1])
 title('Information Contribution of Principle Vectors')
 xlabel('Principle Vector Amounts') % x-axis label
 ylabel('Signal Noise Ratio') % y-axis label
+%}
 end

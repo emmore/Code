@@ -5,14 +5,12 @@ load('/Users/penn/Documents/Code/Github/My_Lib/Project/data/full_index.mat');
 %%%%%%%%%Implement PCA to precipiation data%%%%%%%%%%%%%%
 SCORE=LPCA_p(p_result,1);
 m=6;%m is the input delaying length
-
 %%%%%%%%%Select the pc(th) eof.
 p=SCORE(:,pc);
-g_performance=[-1,-1];
 %%%%%%%%%Iteratively select inputs
 for time=1:1
 %%%%%%%%%Input Selection%%%%%%%%%%%%%
-    result{time}.select=rand(1,size(index,2))>0.75*ones(1,size(index,2));
+    result{time}.select=rand(1,size(index,2))>2*ones(1,size(index,2));
     result{time}.performance=[-1 -1];
     for i=1:size(result{time}.select,2)
         if result{time}.select(i)==1;
@@ -24,20 +22,16 @@ for time=1:1
     I=[];
     O=[];
     for i=1:length(p)-m-1
-        if mod(i+m,12)<5 || mod(i+m,12)>10
+%        if mod(i+m,12)<5 || mod(i+m,12)>10
             input=reshape(p(i:i+m-1,:),[m*n,1]);
             output=p(i+m,1);
             I=[I,input];
             O=[O,output];
-        end
+%        end
     end
-    LE=ceil(length(O)*0.75);
-    Ie=I(:,1:LE);
-    Iv=I(:,LE+1:length(I));
-    for i=1:size(Ie,1)
-        Ie(i,:)=mapminmax(Ie(i,:));
-        Iv(i,:)=mapminmax(Iv(i,:));
-    end
+    LE=ceil(length(O)*0.7);
+    Ie=mapminmax(I(:,1:LE));
+    Iv=mapminmax(I(:,LE+1:length(I)));
     Oe=mapminmax(O(1,1:LE));
     Ov=mapminmax(O(1,LE+1:length(O)));
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -47,14 +41,14 @@ for time=1:1
     N=30;%number of particles in one community
     c1=1.0;%rate of following community best
     c2=1.0;%rate of following historical best
-    T=4;%iteration times
+    T=30;%iteration times
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     for neuron=16:3:25
         clear community;
         n_performance=[-1,-1];
         for j=1:N
             community{j}.p=rand(neuron*(m*n+2)+2,1)-0.5;
-            community{j}.v=0.2*(rand(neuron*(m*n+2)+2,1)-0.5);
+            community{j}.v=0.8*(rand(neuron*(m*n+2)+2,1)-0.5);
             community{j}.best=community{j}.p;
             net=feedforwardnet(neuron);
             net=configure(net,Ie,Oe);
@@ -113,5 +107,5 @@ for time=1:1
         disp(n_performance);
     end
 end
-save('result.mat','result');
+save('result.mat','result');k
 end
