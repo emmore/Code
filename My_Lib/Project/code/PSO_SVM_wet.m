@@ -4,7 +4,7 @@ load('/Users/penn/Documents/Code/Github/My_Lib/Project/data/p_result.mat');
 load('/Users/penn/Documents/Code/Github/My_Lib/Project/data/full_index.mat');
 %%%%%%%%%Implement PCA to precipiation data%%%%%%%%%%%%%%
 SCORE=LPCA_p(p_result,1);
-m=6;%m is the input delaying length
+m=1;%m is the input delaying length
 %%%%%%%%%Select the pc(th) eof.
 p=SCORE(:,pc);
 %%%%%%%%%Iteratively select inputs
@@ -36,14 +36,6 @@ for time=1:3
     Iv=mapminmax(I(:,LE+1:length(I)));
     Oe=mapminmax(O(1,1:LE));
     Ov=mapminmax(O(1,LE+1:length(O)));
-%{
-    I=mapminmax(I);
-    O=mapminmax(O);
-    Ie=I(:,1:LE);
-    Iv=I(:,LE+1:length(I));
-    Oe=mapminmax(O(1,1:LE));
-    Ov=mapminmax(O(1,LE+1:length(O)));
-%}
     
     Ie=Ie';
     Iv=Iv';
