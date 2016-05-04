@@ -15,22 +15,22 @@ end
 %}
 %%%%%%%%%Implement PCA to precipiation data%%%%%%%%%%%%%%
 SCORE=LPCA_p(p_result,1);
-m=1;%m is the input delaying length
+m=6;%m is the input delaying length
 %%%%%%%%%Select the pc(th) eof.
 p=SCORE(:,pc);
 
 %%%%%%%%%Iteratively select inputs
-for time=1:5
+for time=1:1
     rng('shuffle');
 %%%%%%%%%Input Selection%%%%%%%%%%%%%
     result{time}.select=rand(1,size(index,2))>0.85*ones(1,size(index,2));
-    %result{time}.select=[1,0,0,0,0,0,1,0,0,0];
+    result{time}.select=[0,1,0,0,0,0,0,1,1,0];
     result{time}.performance=[100 100];
 %%%%%%%%%Input Preparation after selection%%%%%%%%%%%%%
     I=[];
     O=[];
     for i=1:length(p)-m-1
-        %if mod(i+m,12)<4 || mod(i+m,12)>10
+        if mod(i+m,12)<5 || mod(i+m,12)>10
             input=reshape(p(i:i+m-1,:),[m,1]);
             for j=1:size(result{time}.select,2)
                 if result{time}.select(j)==1;
@@ -40,7 +40,7 @@ for time=1:5
             output=p(i+m,1);
             I=[I,input];
             O=[O,output];
-       % end
+        end
     end 
     
     LE=ceil(length(O)*0.75);
@@ -84,7 +84,7 @@ for time=1:5
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     clear community;
     n_performance=[100,100];
-    
+   
     crange=[0.0001,30];
     grange=[1/size(Ie,2),20];
     vcrange=0.1*crange;
@@ -93,7 +93,7 @@ for time=1:5
             community{j}.p=[crange(1)+rand()*(crange(2)-crange(1)),grange(1)+rand()*(grange(2)-crange(1))];
             community{j}.v=[vcrange(1)+rand()*(vgrange(2)-vgrange(1)),crange(1)+rand()*(vgrange(2)-vgrange(1))];
             community{j}.best=community{j}.p; 
-            model=svmtrain(double(Oe),double(Ie),['-s 3 -t 2  -g '  num2str(community{j}.p(2))  ' -c ' num2str(community{j}.p(1)) ' -p 0.1 -q ']);
+            model=svmtrain(double(Oe),double(Ie),['-s 3 -t 2  -g '  num2str(community{j}.p(2))  ' -c ' num2str(community{j}.p(1)) ' -p 0.6 -q ']);
             a=sqrt(mean((svmpredict(double(Oe),double(Ie),model,'-q')-Oe).^2));
             b=sqrt(mean((svmpredict(double(Ov),double(Iv),model,'-q')-Ov).^2));
             community{j}.performance=[a,b];
@@ -116,8 +116,8 @@ for time=1:5
                     community{j}.p(2)=grange(1)+rand()*(grange(2)-grange(1));
                 end
                 
-                a=svmtrain(double(Oe),double(Ie),['-s 3 -t 2  -g '  num2str(community{j}.p(2))  ' -c ' num2str(community{j}.p(1)) ' -p 0.1 -q -v 3']);
-                model=svmtrain(double(Oe),double(Ie),['-s 3 -t 2  -g '  num2str(community{j}.p(2))  ' -c ' num2str(community{j}.p(1)) ' -p 0.1 -q ']);
+                a=svmtrain(double(Oe),double(Ie),['-s 3 -t 2  -g '  num2str(community{j}.p(2))  ' -c ' num2str(community{j}.p(1)) ' -p 0.6 -q -v 3']);
+                model=svmtrain(double(Oe),double(Ie),['-s 3 -t 2  -g '  num2str(community{j}.p(2))  ' -c ' num2str(community{j}.p(1)) ' -p 0.6 -q ']);
                 b=sqrt(mean((svmpredict(double(Ov),double(Iv),model,'-q')-Ov).^2));
                  
                 community{j}.performance=[a,b];
@@ -140,12 +140,23 @@ for time=1:5
     x=result{time}.select;
     disp(x);
     disp(n_performance);
-    model=svmtrain(double(Oe),double(Ie),['-s 3 -t 2  -g '  num2str(g_best(2))  ' -c ' num2str(g_best(1)) ' -p 0.1 -q ']);
+    model=svmtrain(double(Oe),double(Ie),['-s 3 -t 2  -g '  num2str(g_best(2))  ' -c ' num2str(g_best(1)) ' -p 0.6 -q ']);
     result{time}.Ose=svmpredict(double(Oe),double(Ie),model,'-q');
-    %model=svmtrain(double(Ov),double(Iv),['-s 3 -t 2 -p 0.1 -q -c ' num2str(result{time}.p(1)) ' -g '  num2str(result{time}.p(2))]);
     result{time}.Osv=svmpredict(double(Ov),double(Iv),model,'-q');
+    %model=svmtrain(double(Ov),double(Iv),['-s 3 -t 2 -p 0.1 -q -c ' num2str(result{time}.p(1)) ' -g '  num2str(result{time}.p(2))]);
+    tt=corrcoef(result{time}.Ose,Oe);
+    tttt=corrcoef(result{time}.Osv,Ov);
+    result{time}.performance(3)=tt(1,2);
+    result{time}.performance(4)=tttt(1,2);
+   
+    xx=ones(length(Ie),1);
+    Ie=[Ie,xx];
+    xx=ones(length(Iv),1);
+    Iv=[Iv,xx];
     fac=(Ie'*Ie)\Ie'*Oe;
-    cklinear{time}=[mean((Ie*fac-Oe).^2),mean((Iv*fac-Ov).^2)];
+    tt=corrcoef(Ie*fac,Oe);
+    tttt=corrcoef(Iv*fac,Ov);
+    cklinear{time}=[mean((Ie*fac-Oe).^2),mean((Iv*fac-Ov).^2);tt(1,2),tttt(1,2)];
 end
     
 %fac=(Ie'*Ie)\Ie'*Oe;
