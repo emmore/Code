@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN"
+        "HTMLFiles/xhtml-math11-f.dtd">
+
+<!-- Created with the Wolfram Language : www.wolfram.com -->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <title>
+  Untitled
+ </title>
+ <link href="HTMLFiles/project1_revise.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<p class="Title">
+ Hydorlogical System Project I<br /><span class='ItemInline' style='font-size: 24px;'>Troy Edwards &amp; Baoxiang Pan</span>
+</p>
+
+
+
+<p class='Subsection' style='border-left: 0px;border-right: 0px;border-top: 0px;border-bottom: 2px;border-style: solid;border-color: #000000;'>
+ <span class="SectionInline">Model Description</span><br /><span class="InputInline"><span><img src="HTMLFiles/project1_revise_1.gif" alt="project1_revise_1.gif" width="528" height="395" style="vertical-align:middle" /></span></span>
+</p>
+
+
+
+<p class="Text">
+ The bucket model works in the following way:<br />&nbsp;&nbsp;&nbsp;&nbsp;(1) If the state variable&nbsp;&nbsp;(S) is less than Smax, the output is a linear response of the state, with the linear factor being k.<br />&nbsp;&nbsp;&nbsp;&nbsp;(2) If the state variable (S) is larger than Smax, the output is composes of two parts, the excess part (S-Smax) and the linear response (k*Smax).<br />The implementation of the model using mathematica language is shown as follows.
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/project1_revise_2.gif" alt="project1_revise_2.gif" width="665" height="167" style="vertical-align:middle" />
+</p>
+
+<p class="Subsection">
+ <span class="SectionInline">Evaluate Criterion: Square Error / Absolute Error</span>
+</p>
+
+
+
+<p class="Text">
+ The evaluation criteria is L2 Norm and L1 Norm. The simulation results are all compared with the result when settint Smax at 120 and k at 0.3.
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/project1_revise_3.gif" alt="project1_revise_3.gif" width="1113" height="116" style="vertical-align:middle" />
+</p>
+
+<p class="Subsection">
+ <span class="SectionInline">Scenario Analysis</span>
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/project1_revise_4.png" alt="project1_revise_4.png" width="171" height="25" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ This part generate the response surface of the bucket model given different kinds of inputs.
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/project1_revise_5.png" alt="project1_revise_5.png" width="900" height="184" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/project1_revise_6.png" alt="project1_revise_6.png" width="206" height="23" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ In the firs scenario, the input is generated constrained by the condition that the state is always less than Smax.
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/project1_revise_7.gif" alt="project1_revise_7.gif" width="264" height="31" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ <span style='color: #FF0000;'>Response Surface of N1 Norm</span>
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/project1_revise_8.png" alt="project1_revise_8.png" width="505" height="13" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/project1_revise_9.gif" alt="project1_revise_9.gif" width="434" height="358" style="vertical-align:middle;" usemap="#map_9" />
+<map name="map_9">
+<area shape="rect" coords="153,191,226,5" title="610" nohref="" />
+<area shape="rect" coords="120,212,259,5" title="1220" nohref="" />
+<area shape="rect" coords="96,229,292,5" title="1830" nohref="" />
+<area shape="rect" coords="95,248,325,5" title="2440" nohref="" />
+<area shape="rect" coords="94,260,355,5" title="3050" nohref="" />
+<area shape="rect" coords="92,272,354,5" title="3660" nohref="" />
+<area shape="rect" coords="91,277,354,5" title="4270" nohref="" />
+<area shape="rect" coords="90,282,355,5" title="4880" nohref="" />
+<area shape="rect" coords="89,286,355,6" title="5490" nohref="" />
+<area shape="rect" coords="88,290,355,5" title="6100" nohref="" />
+<area shape="rect" coords="87,295,355,6" title="6710" nohref="" />
+<area shape="rect" coords="85,299,354,5" title="7320" nohref="" />
+<area shape="rect" coords="84,303,354,5" title="7930" nohref="" />
+<area shape="rect" coords="83,308,355,5" title="8540" nohref="" />
+<area shape="rect" coords="82,313,355,6" title="9150" nohref="" />
+<area shape="rect" coords="81,318,355,5" title="9760" nohref="" />
+<area shape="rect" coords="80,323,355,5" title="10370" nohref="" />
+<area shape="rect" coords="78,329,355,5" title="10980" nohref="" />
+<area shape="rect" coords="77,336,355,6" title="11590" nohref="" />
+<area shape="rect" coords="75,337,344,6" title="12200" nohref="" />
+<area shape="rect" coords="74,337,332,6" title="12810" nohref="" />
+<area shape="rect" coords="72,337,319,6" title="13420" nohref="" />
+<area shape="rect" coords="71,337,305,6" title="14030" nohref="" />
+<area shape="rect" coords="69,337,291,6" title="14640" nohref="" />
+<area shape="rect" coords="68,337,278,6" title="15250" nohref="" />
+<area shape="rect" coords="66,337,265,6" title="15860" nohref="" />
+<area shape="rect" coords="65,337,252,6" title="16470" nohref="" />
+<area shape="rect" coords="64,337,240,6" title="17080" nohref="" />
+<area shape="rect" coords="62,337,225,6" title="17690" nohref="" />
+<area shape="rect" coords="60,337,212,6" title="18300" nohref="" />
+<area shape="rect" coords="58,337,201,6" title="18910" nohref="" />
+<area shape="rect" coords="56,337,186,6" title="19520" nohref="" />
+<area shape="rect" coords="54,337,174,6" title="20130" nohref="" />
+<area shape="rect" coords="52,337,161,6" title="20740" nohref="" />
+<area shape="rect" coords="50,337,151,6" title="21350" nohref="" />
+<area shape="rect" coords="47,337,141,6" title="21960" nohref="" />
+<area shape="rect" coords="46,337,131,6" title="22570" nohref="" />
+<area shape="rect" coords="44,337,122,6" title="23180" nohref="" />
+<area shape="rect" coords="42,337,113,6" title="23790" nohref="" />
+<area shape="rect" coords="40,337,106,6" title="24400" nohref="" />
+<area shape="rect" coords="38,337,98,6" title="25010" nohref="" />
+<area shape="rect" coords="34,337,89,6" title="25620" nohref="" />
+<area shape="rect" coords="23,333,81,6" title="26230" nohref="" />
+<area shape="rect" coords="23,323,73,5" title="26840" nohref="" />
+<area shape="rect" coords="23,312,67,6" title="27450" nohref="" />
+<area shape="rect" coords="23,305,60,6" title="28060" nohref="" />
+<area shape="rect" coords="23,299,55,11" title="28670" nohref="" />
+<area shape="rect" coords="23,292,49,21" title="29280" nohref="" />
+<area shape="rect" coords="23,277,44,70" title="29890" nohref="" />
+<area shape="rect" coords="23,259,38,80" title="30500" nohref="" />
+</map>
+</p>
+
+<p class="Text">
+ <span style='color: #FF0000;'>Response Surface of N2 Norm</span>
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/project1_revise_10.png" alt="project1_revise_10.png" width="505" height="13" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/project1_revise_11.gif" alt="project1_revise_11.gif" width="427" height="358" style="vertical-align:middle;" usemap="#map_11" />
+<map name="map_11">
+<area shape="rect" coords="143,187,235,6" title="30" nohref="" />
+<area shape="rect" coords="104,213,277,5" title="60" nohref="" />
+<area shape="rect" coords="102,233,320,5" title="90" nohref="" />
+<area shape="rect" coords="99,251,354,5" title="120" nohref="" />
+<area shape="rect" coords="97,261,355,5" title="150" nohref="" />
+<area shape="rect" coords="96,268,355,5" title="180" nohref="" />
+<area shape="rect" coords="96,274,355,6" title="210" nohref="" />
+<area shape="rect" coords="95,278,355,5" title="240" nohref="" />
+<area shape="rect" coords="95,282,355,5" title="270" nohref="" />
+<area shape="rect" coords="94,286,355,5" title="300" nohref="" />
+<area shape="rect" coords="94,290,355,5" title="330" nohref="" />
+<area shape="rect" coords="93,296,354,6" title="360" nohref="" />
+<area shape="rect" coords="93,301,355,5" title="390" nohref="" />
+<area shape="rect" coords="92,307,354,5" title="420" nohref="" />
+<area shape="rect" coords="92,315,355,6" title="450" nohref="" />
+<area shape="rect" coords="91,326,354,5" title="480" nohref="" />
+<area shape="rect" coords="91,337,346,6" title="510" nohref="" />
+<area shape="rect" coords="91,337,327,6" title="540" nohref="" />
+<area shape="rect" coords="90,337,303,6" title="570" nohref="" />
+<area shape="rect" coords="90,337,282,6" title="600" nohref="" />
+<area shape="rect" coords="89,337,260,6" title="630" nohref="" />
+<area shape="rect" coords="89,337,243,6" title="660" nohref="" />
+<area shape="rect" coords="88,337,225,6" title="690" nohref="" />
+<area shape="rect" coords="87,337,210,6" title="720" nohref="" />
+<area shape="rect" coords="86,337,196,6" title="750" nohref="" />
+<area shape="rect" coords="85,337,186,6" title="780" nohref="" />
+<area shape="rect" coords="83,337,172,6" title="810" nohref="" />
+<area shape="rect" coords="82,337,161,6" title="840" nohref="" />
+<area shape="rect" coords="78,337,151,6" title="870" nohref="" />
+<area shape="rect" coords="60,337,142,6" title="900" nohref="" />
+<area shape="rect" coords="36,337,134,6" title="930" nohref="" />
+<area shape="rect" coords="23,329,125,5" title="960" nohref="" />
+<area shape="rect" coords="23,322,118,5" title="990" nohref="" />
+<area shape="rect" coords="23,311,109,5" title="1020" nohref="" />
+<area shape="rect" coords="23,303,103,5" title="1050" nohref="" />
+<area shape="rect" coords="23,292,97,6" title="1080" nohref="" />
+<area shape="rect" coords="23,279,91,5" title="1110" nohref="" />
+<area shape="rect" coords="23,267,86,5" title="1140" nohref="" />
+<area shape="rect" coords="23,255,81,5" title="1170" nohref="" />
+<area shape="rect" coords="23,236,75,5" title="1200" nohref="" />
+<area shape="rect" coords="23,228,71,5" title="1230" nohref="" />
+<area shape="rect" coords="23,223,66,6" title="1260" nohref="" />
+<area shape="rect" coords="23,204,63,5" title="1290" nohref="" />
+<area shape="rect" coords="23,189,59,5" title="1320" nohref="" />
+<area shape="rect" coords="23,183,55,5" title="1350" nohref="" />
+<area shape="rect" coords="23,158,51,6" title="1380" nohref="" />
+<area shape="rect" coords="23,141,48,5" title="1410" nohref="" />
+<area shape="rect" coords="23,109,45,6" title="1440" nohref="" />
+<area shape="rect" coords="23,100,42,6" title="1470" nohref="" />
+<area shape="rect" coords="23,87,39,5" title="1500" nohref="" />
+</map>
+</p>
+
+<p class="Text">
+ The best parameter sets are is the higher frequency electromagnetic color region, which is very widely spreaded in both evaluating criteria. Smax is more spreaded than k, this is for the reason that in this scenario, Smax takes little or no effect. 
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/project1_revise_12.png" alt="project1_revise_12.png" width="216" height="23" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ In the second scenario, the input is generated constrained by the condition that the state is always larger than Smax.
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/project1_revise_13.gif" alt="project1_revise_13.gif" width="264" height="31" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ <span style='color: #FF0000;'>Response Surface of N1 Norm</span>
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/project1_revise_14.png" alt="project1_revise_14.png" width="505" height="13" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/project1_revise_15.gif" alt="project1_revise_15.gif" width="434" height="358" style="vertical-align:middle;" usemap="#map_15" />
+<map name="map_15">
+<area shape="rect" coords="23,237,220,159" title="9000" nohref="" />
+<area shape="rect" coords="23,264,261,151" title="18000" nohref="" />
+<area shape="rect" coords="23,292,320,150" title="27000" nohref="" />
+<area shape="rect" coords="23,319,354,131" title="36000" nohref="" />
+<area shape="rect" coords="23,269,354,105" title="45000" nohref="" />
+<area shape="rect" coords="23,267,355,5" title="54000" nohref="" />
+<area shape="rect" coords="23,265,355,5" title="63000" nohref="" />
+<area shape="rect" coords="23,258,336,5" title="72000" nohref="" />
+<area shape="rect" coords="23,188,214,5" title="81000" nohref="" />
+<area shape="rect" coords="23,102,110,5" title="90000" nohref="" />
+</map>
+</p>
+
+<p class="Text">
+ <span style='color: #FF0000;'>Response Surface of N2 Norm</span>
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/project1_revise_16.png" alt="project1_revise_16.png" width="505" height="13" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/project1_revise_17.gif" alt="project1_revise_17.gif" width="427" height="358" style="vertical-align:middle;" usemap="#map_17" />
+<map name="map_17">
+<area shape="rect" coords="23,238,221,159" title="290" nohref="" />
+<area shape="rect" coords="23,266,266,152" title="580" nohref="" />
+<area shape="rect" coords="23,293,325,149" title="870" nohref="" />
+<area shape="rect" coords="23,321,354,127" title="1160" nohref="" />
+<area shape="rect" coords="23,269,354,116" title="1450" nohref="" />
+<area shape="rect" coords="23,267,354,95" title="1740" nohref="" />
+<area shape="rect" coords="23,265,354,6" title="2030" nohref="" />
+<area shape="rect" coords="23,251,320,5" title="2320" nohref="" />
+<area shape="rect" coords="23,186,213,5" title="2610" nohref="" />
+<area shape="rect" coords="23,113,122,6" title="2900" nohref="" />
+</map>
+</p>
+
+<p class="Text">
+ The best parameter sets are is the higher frequency electromagnetic color region, which is&nbsp;&nbsp;widely spreaded in both evaluating criteria. Smax is less spreaded than k. this is for the reason that in this scenario, Smax always takes&nbsp;&nbsp;effects. 
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/project1_revise_18.png" alt="project1_revise_18.png" width="421" height="23" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ In the third scenario, the input is generated constrained by the condition that in the firs half temporal period, the state is always smaller than Smax while in the latter period, it is always larger than Smax.
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/project1_revise_19.gif" alt="project1_revise_19.gif" width="264" height="31" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ <span style='color: #FF0000;'>Response Surface of N1 Norm</span>
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/project1_revise_20.png" alt="project1_revise_20.png" width="505" height="13" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/project1_revise_21.gif" alt="project1_revise_21.gif" width="434" height="358" style="vertical-align:middle;" usemap="#map_21" />
+<map name="map_21">
+<area shape="rect" coords="152,191,211,126" title="3200" nohref="" />
+<area shape="rect" coords="135,220,257,105" title="6400" nohref="" />
+<area shape="rect" coords="117,282,355,5" title="9600" nohref="" />
+<area shape="rect" coords="94,311,355,5" title="12800" nohref="" />
+<area shape="rect" coords="82,337,334,6" title="16000" nohref="" />
+<area shape="rect" coords="71,337,267,6" title="19200" nohref="" />
+<area shape="rect" coords="61,337,188,6" title="22400" nohref="" />
+<area shape="rect" coords="48,337,131,6" title="25600" nohref="" />
+<area shape="rect" coords="23,326,86,6" title="28800" nohref="" />
+<area shape="rect" coords="23,288,56,5" title="32000" nohref="" />
+</map>
+</p>
+
+<p class="Text">
+ <span style='color: #FF0000;'>Response Surface of N2 Norm</span>
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/project1_revise_22.png" alt="project1_revise_22.png" width="505" height="13" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/project1_revise_23.gif" alt="project1_revise_23.gif" width="427" height="358" style="vertical-align:middle;" usemap="#map_23" />
+<map name="map_23">
+<area shape="rect" coords="181,180,197,164" title="150" nohref="" />
+<area shape="rect" coords="176,189,206,159" title="300" nohref="" />
+<area shape="rect" coords="147,283,354,121" title="450" nohref="" />
+<area shape="rect" coords="111,317,355,6" title="600" nohref="" />
+<area shape="rect" coords="92,337,255,5" title="750" nohref="" />
+<area shape="rect" coords="85,337,180,5" title="900" nohref="" />
+<area shape="rect" coords="23,329,130,5" title="1050" nohref="" />
+<area shape="rect" coords="23,275,101,5" title="1200" nohref="" />
+<area shape="rect" coords="23,215,77,5" title="1350" nohref="" />
+<area shape="rect" coords="23,145,54,5" title="1500" nohref="" />
+</map>
+</p>
+
+<p class="Text">
+ The best parameter sets are is the higher frequency electromagnetic color region, which is less spreaded in both evaluating criteria than the above two scenarios. This is for the reason that in this scenario, both Smax and k are taking effects in shaping the outputs. The output can vice versa determine the parameters. 
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/project1_revise_24.png" alt="project1_revise_24.png" width="358" height="20" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ In the fourth scenario, the input is generated constrained by the condition that the state is permutating around&nbsp;&nbsp;Smax.
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/project1_revise_25.gif" alt="project1_revise_25.gif" width="264" height="31" style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ <span style='color: #FF0000;'>Response Surface of N1 Norm</span>
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/project1_revise_26.png" alt="project1_revise_26.png" width="505" height="13" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/project1_revise_27.gif" alt="project1_revise_27.gif" width="434" height="358" style="vertical-align:middle;" usemap="#map_27" />
+<map name="map_27">
+<area shape="rect" coords="183,185,203,167" title="5600" nohref="" />
+<area shape="rect" coords="181,190,208,165" title="11200" nohref="" />
+<area shape="rect" coords="178,203,220,164" title="16800" nohref="" />
+<area shape="rect" coords="170,233,259,163" title="22400" nohref="" />
+<area shape="rect" coords="163,335,355,161" title="28000" nohref="" />
+<area shape="rect" coords="117,337,355,5" title="33600" nohref="" />
+<area shape="rect" coords="23,322,333,6" title="39200" nohref="" />
+<area shape="rect" coords="23,225,212,6" title="44800" nohref="" />
+<area shape="rect" coords="23,145,145,6" title="50400" nohref="" />
+<area shape="rect" coords="23,105,76,5" title="56000" nohref="" />
+</map>
+</p>
+
+<p class="Text">
+ <span style='color: #FF0000;'>Response Surface of N2 Norm</span>
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/project1_revise_28.png" alt="project1_revise_28.png" width="505" height="13" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/project1_revise_29.gif" alt="project1_revise_29.gif" width="427" height="358" style="vertical-align:middle;" usemap="#map_29" />
+<map name="map_29">
+<area shape="rect" coords="184,176,194,166" title="240" nohref="" />
+<area shape="rect" coords="183,178,196,165" title="480" nohref="" />
+<area shape="rect" coords="182,180,198,164" title="720" nohref="" />
+<area shape="rect" coords="181,182,200,163" title="960" nohref="" />
+<area shape="rect" coords="179,307,354,162" title="1200" nohref="" />
+<area shape="rect" coords="53,337,355,6" title="1440" nohref="" />
+<area shape="rect" coords="23,285,329,6" title="1680" nohref="" />
+<area shape="rect" coords="23,228,229,5" title="1920" nohref="" />
+<area shape="rect" coords="23,176,154,5" title="2160" nohref="" />
+<area shape="rect" coords="23,69,89,5" title="2400" nohref="" />
+</map>
+</p>
+
+<p class="Text">
+ The best parameter sets are is the higher frequency electromagnetic color region, which is very concentrated in both evaluating criteria. This is for the reason that in this scenario, the input-output relationship represents the whole mechanism of the model, which can cast a precise calibration of the results.<br />
+</p>
+
+
+
+
+
+
+<div style="font-family:Helvetica; font-size:11px; width:100%; border:1px none #999999; border-top-style:solid; padding-top:2px; margin-top:20px;">
+ <a href="http://www.wolfram.com/language/" style="color:#000; text-decoration:none;">
+  <span style="color:#555555">Created with the Wolfram Language</span> 
+ </a>
+</div>
+</body>
+
+</html>
