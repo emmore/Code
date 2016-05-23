@@ -1,0 +1,8 @@
+Write an up-to-data treatment of Neural Network in a comprehensive, thorough, and readable manner.
+
+Chap 1.
+The perceptron, the multilayer perceptron, self-organizing maps, and the neuro-dynamics, to name a few topics, have always been considered integral parts of neural networks, rooted in ideas inspired by the human brain.
+
+kernel methods, exemplifired by support-vector machines and kernel principal components analysis, are rooted in statistical learning theory.
+
+Ideas drawn from neural networks and machine learning are hybridized to perform improved learning tasks beyond the capabiliyt of either one operating on its own.
