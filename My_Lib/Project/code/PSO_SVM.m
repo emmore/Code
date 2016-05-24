@@ -1,4 +1,4 @@
-function [result_e,result_v,ssr_le,ssr_lv,ssr_svme,ssr_svmv]=PSO_SVM()
+function [result_e,result_v,ssr_le,ssr_lv,ssr_svme,ssr_svmv,var_matrix_svm_e,var_matrix_svm_v]=PSO_SVM()
 clc;
 load('/Users/penn/Documents/Code/Github/My_Lib/Project/data/p_result.mat');
 load('/Users/penn/Documents/Code/Github/My_Lib/Project/data/climate_index.mat');
@@ -13,7 +13,7 @@ for pc=1:mpc
     p=SCORE(:,pc);
 %%%%%%%%%Iteratively select inputs
 %%%%%%%%%Input Selection%%%%%%%%%%%%%
-    indexselect=[0,1,1,0,1,1,0,0,0,1,0];
+    indexselect=[1,1,1,1,1,1,1,1,1,1,1];
     for i=1:length(indexselect)
         if indexselect(i)==1;
             p=[p index(:,i)];
@@ -32,10 +32,10 @@ for pc=1:mpc
         end
     end
     LE=ceil(length(O)*0.85);
-    Ie=mapminmax(I(:,1:LE));
-    Iv=mapminmax(I(:,LE+1:length(I)));
-    Adj_e(pc,:)=[min(O(1,1:LE)),max(O(1,1:LE))];
-    Adj_v(pc,:)=[min(O(1,LE+1:length(O))),max(O(1,LE+1:length(O)))];
+    [Ie,pse(pc)]=mapminmax(I(:,1:LE));
+    [Iv,psv(pc)]=mapminmax(I(:,LE+1:length(I)));
+    %Adj_e(pc,:)=[min(O(1,1:LE)),max(O(1,1:LE))];
+    %Adj_v(pc,:)=[min(O(1,LE+1:length(O))),max(O(1,LE+1:length(O)))];
     Oe=mapminmax(O(1,1:LE));
     Ov=mapminmax(O(1,LE+1:length(O)));
     Ie=Ie';
@@ -119,5 +119,21 @@ for pc=1:mpc
 end
 result_e=OE_SVM*COEFF(1:mpc,:);
 result_v=OV_SVM*COEFF(1:mpc,:);
+
+p=[];
+for i=1:length(p_result)-m-1
+    if mod(i+m,12)<5|| mod(i+m,12)>10
+        d=p_result(i+m+1,:,:);
+        d=d(d>=0);
+        p=[p;d'];
+    end
+end
+
+var_matrix_svm_e=zeros(length(result_e),1);
+var_matrix_svm_v=zeros(length(result_v),1);
+for i=1:length(result_e)
+    var_matrix_svm_e(i)=mean(sqrt((result_e(:,i)-p(1:size(result_e,1),i)).^2));
+    var_matrix_svm_v(i)=mean(sqrt((result_v(:,i)-p(size(result_e,1)+1:size(result_e,1)+size(result_v,1),i)).^2));
+end
 end
 
