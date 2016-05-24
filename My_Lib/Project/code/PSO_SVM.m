@@ -13,7 +13,7 @@ for pc=1:mpc
     p=SCORE(:,pc);
 %%%%%%%%%Iteratively select inputs
 %%%%%%%%%Input Selection%%%%%%%%%%%%%
-    indexselect=[1,1,1,1,1,1,1,1,1,1,1];
+    indexselect=[1,0,0,1,1,1,1,1,1,1,1];
     for i=1:length(indexselect)
         if indexselect(i)==1;
             p=[p index(:,i)];
