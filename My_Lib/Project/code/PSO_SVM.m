@@ -32,12 +32,12 @@ for pc=1:mpc
         end
     end
     LE=ceil(length(O)*0.85);
-    [Ie,pse(pc)]=mapminmax(I(:,1:LE));
-    [Iv,psv(pc)]=mapminmax(I(:,LE+1:length(I)));
+    Ie=mapminmax(I(:,1:LE));
+    Iv=mapminmax(I(:,LE+1:length(I)));
     %Adj_e(pc,:)=[min(O(1,1:LE)),max(O(1,1:LE))];
     %Adj_v(pc,:)=[min(O(1,LE+1:length(O))),max(O(1,LE+1:length(O)))];
-    Oe=mapminmax(O(1,1:LE));
-    Ov=mapminmax(O(1,LE+1:length(O)));
+    [Oe,pse(pc)]=mapminmax(O(1,1:LE));
+    [Ov,psv(pc)]=mapminmax(O(1,LE+1:length(O)));
     Ie=Ie';
     Iv=Iv';
     Oe=Oe';
@@ -111,11 +111,10 @@ end
 OE_SVM=[];
 OV_SVM=[];
 for pc=1:mpc
-    tem1=Adj_e(pc,:);
-    OE_SVM=[OE_SVM,svmOe(:,pc)*(tem1(2)-tem1(1))+tem1(1)];
-    
-    tem2=Adj_v(pc,:);
-    OV_SVM=[OV_SVM,svmOv(:,pc)*(tem2(2)-tem2(1))+tem2(1)];
+    %OE_SVM=[OE_SVM,svmOe(:,pc)*(tem1(2)-tem1(1))+tem1(1)];
+    OE_SVM=[OE_SVM,mapminmax('reverse',svmOe(:,pc),pse(pc))];
+    OV_SVM=[OV_SVM,mapminmax('reverse',svmOv(:,pc),psv(pc))];
+    %OV_SVM=[OV_SVM,svmOv(:,pc)*(tem2(2)-tem2(1))+tem2(1)];
 end
 result_e=OE_SVM*COEFF(1:mpc,:);
 result_v=OV_SVM*COEFF(1:mpc,:);
@@ -129,11 +128,27 @@ for i=1:length(p_result)-m-1
     end
 end
 
-var_matrix_svm_e=zeros(length(result_e),1);
-var_matrix_svm_v=zeros(length(result_v),1);
+vvar_matrix_svm_e=zeros(length(result_e),1);
+vvar_matrix_svm_v=zeros(length(result_v),1);
 for i=1:length(result_e)
-    var_matrix_svm_e(i)=mean(sqrt((result_e(:,i)-p(1:size(result_e,1),i)).^2));
-    var_matrix_svm_v(i)=mean(sqrt((result_v(:,i)-p(size(result_e,1)+1:size(result_e,1)+size(result_v,1),i)).^2));
+    vvar_matrix_svm_e(i)=mean(sqrt((result_e(:,i)-p(1:size(result_e,1),i)).^2));
+    vvar_matrix_svm_v(i)=mean(sqrt((result_v(:,i)-p(size(result_e,1)+1:size(result_e,1)+size(result_v,1),i)).^2));
+end
+
+var_matrix_svm_e=nan(size(p_result,2),size(p_result,3));
+var_matrix_svm_v=nan(size(p_result,2),size(p_result,3));
+
+
+q=1;
+for j=1:size(p_result,3)       
+    for i=1:size(p_result,2)
+        if not(isnan(p_result(10,i,j)))
+            var_matrix_svm_e(i,j)=vvar_matrix_svm_e(q);
+            var_matrix_svm_v(i,j)=vvar_matrix_svm_v(q);
+            q=q+1;
+        end
+    end
 end
 end
+
 
