@@ -1,0 +1,13 @@
+function ratio=Monthly_Precipitation_Ratio()
+clc;
+load('/Users/penn/Documents/Code/Github/My_Lib/Project/data/p_result.mat');
+for n=1:12
+    for i=1:size(p_result,2)
+        for j=1:size(p_result,3)
+            p_m_result(n,:,i,j)=squeeze(p_result(n:12:length(p_result),i,j));
+            v_m_result(n,i,j)=var(squeeze(p_m_result(n,:,i,j)));
+            
+        end
+    end
+end
+    

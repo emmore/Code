@@ -2,19 +2,9 @@ function [result ,Oe, Ov]=SVM(pc)
 clc;
 load('/Users/penn/Documents/Code/Github/My_Lib/Project/data/p_result.mat');
 load('/Users/penn/Documents/Code/Github/My_Lib/Project/data/climate_index.mat');
-%{
-for i=1:size(p_result,2)
-    for j=1:size(p_result,3)
-        if not(isnan(p_result(1,i,j)))
-            for k=1:12
-                p_result(k:12:length(p_result))=normalization_2(p_result(k:12:length(p_result)));
-            end
-        end
-    end
-end
-%}
+ 
 %%%%%%%%%Implement PCA to precipiation data%%%%%%%%%%%%%%
-SCORE=LPCA_p(p_result,1);
+SCORE=LPCA_p(p_result,2);
 m=3;%m is the input delaying length
 %%%%%%%%%Select the pc(th) eof.
 p=SCORE(:,pc);
