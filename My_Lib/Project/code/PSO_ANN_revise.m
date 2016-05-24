@@ -1,7 +1,7 @@
 function result=PSO_ANN_revise(pc)
 clc;
 load('/Users/penn/Documents/Code/Github/My_Lib/Project/data/p_result.mat');
-load('/Users/penn/Documents/Code/Github/My_Lib/Project/data/full_index.mat');
+load('/Users/penn/Documents/Code/Github/My_Lib/Project/data/climate_index.mat');
 %%%%%%%%%Implement PCA to precipiation data%%%%%%%%%%%%%%
 SCORE=LPCA_p(p_result,1);
 m=1;%m is the input delaying length

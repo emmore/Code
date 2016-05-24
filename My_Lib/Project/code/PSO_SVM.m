@@ -1,25 +1,15 @@
 function [result ,Oe, Ov]=PSO_SVM(pc)
 clc;
 load('/Users/penn/Documents/Code/Github/My_Lib/Project/data/p_result.mat');
-load('/Users/penn/Documents/Code/Github/My_Lib/Project/data/full_index.mat');
-%{ 
-for i=1:size(p_result,2)
-    for j=1:size(p_result,3)
-        if not(isnan(p_result(1,i,j)))
-            for k=1:12
-                p_result(k:12:length(p_result))=normalization_2(p_result(k:12:length(p_result)));
-            end
-        end
-    end
-end
-%}
+load('/Users/penn/Documents/Code/Github/My_Lib/Project/data/climate_index.mat');
+ 
 %%%%%%%%%Implement PCA to precipiation data%%%%%%%%%%%%%%
-SCORE=LPCA_p(p_result,1);
+SCORE=LPCA_p(p_result,0);
 m=1;%m is the input delaying length
 %%%%%%%%%Select the pc(th) eof.
 p=SCORE(:,pc);
 %%%%%%%%%Iteratively select inputs
-for time=1:5
+
     rng('shuffle');
 %%%%%%%%%Input Selection%%%%%%%%%%%%%
     result{time}.select=rand(1,size(index,2))>0.65*ones(1,size(index,2));
@@ -41,7 +31,7 @@ for time=1:5
             O=[O,output];
         end
     end
-    LE=ceil(length(O)*0.7);
+    LE=ceil(length(O)*0.85);
     Ie=mapminmax(I(:,1:LE));
     Iv=mapminmax(I(:,LE+1:length(I)));
     Oe=mapminmax(O(1,1:LE));
@@ -50,6 +40,20 @@ for time=1:5
     Iv=Iv';
     Oe=Oe';
     Ov=Ov';
+    
+    %%%%%%%%%%%%%linear%%%%%%%%%%%%%%%%%
+    lIe=[Ie, ones(size(Ie,1),1)];
+    lIv=[Iv, ones(size(Iv,1),1)];
+    fac=(lIe'*lIe)\lIe'*Oe;
+    lsOe=lIe*fac;
+    lsOv=lIv*fac;
+    ssr_le=sqrt(mean((lsOe-Oe).^2));
+    ssr_lv=sqrt(mean((lsOv-Ov).^2));
+    
+    
+    
+    
+    
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % particle swarm optimizer for initial weights and b
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -112,6 +116,5 @@ for time=1:5
     result{time}.Ose=svmpredict(double(Oe),double(Ie),model,'-q');
     %model=svmtrain(double(Ov),double(Iv),['-s 3 -t 2 -p 0.1 -q -c ' num2str(result{time}.p(1)) ' -g '  num2str(result{time}.p(2))]);
     result{time}.Osv=svmpredict(double(Ov),double(Iv),model,'-q');
-end
-save('result.mat','result');
+ 
 end

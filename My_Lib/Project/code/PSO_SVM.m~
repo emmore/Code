@@ -1,63 +1,65 @@
-function [result ,Oe, Ov]=SVM()
-
+function [result ,Oe, Ov]=PSO_SVM(pc)
 clc;
 load('/Users/penn/Documents/Code/Github/My_Lib/Project/data/p_result.mat');
 load('/Users/penn/Documents/Code/Github/My_Lib/Project/data/climate_index.mat');
-
-
-%Input&Output Prepare    
-k=1;
-for i=2:length(p_result)
-    if mod(i,12)<5 || mod (i,12)>10
-        wp_result(k,:,:)=p_result(i,:,:);
-        Input(k,:)=index(i-1,[2,3,5,6,7,8,10,11]);
-        k=k+1;
-    end
-end
-[COEFF,SCORE,latent]=LPCA_p(wp_result,0);
-
-
-for pc=1:4
-    Output=SCORE(:,pc);
-    EstLength=ceil(length(Output)*0.85);
-    eOutput=Output(1:EstLength,:);
-    vOutput=Output(EstLength+1:length(Output),:);
-    eInput=Input(1:EstLength,:);
-    vInput=Input(EstLength+1:length(Output),:);
-    
-    %Linear Model%
-    leInput=[eInput ones(size(eInput,1),1)];
-    lvInput=[vInput ones(size(vInput,1),1)];
-    fac=inv(leInput'*leInput)*leInput'*eOutput;
-    lseOutput=leInput*fac;
-    lsvOutput=lvInput*fac;
-    
-    %ANN Model%
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    %SVM Model%
-    gamma=-30:3:30;
-    cost=-20:2:20;
-    best=100;
-    for i=1:length(gamma)
-        for j=1:length(cost)
-            model=svmtrain(double(Oe),double(Ie),['-s 3 -t 2  -g '  num2str(2^gamma(i))  ' -c ' num2str(2^cost(j)) ' -p 0.25 -q -v 5']);
-            if model<best
-                best=model;
-                bgamma=gamma(i);
-                bcost=cost(j);
-            end
+ 
+%%%%%%%%%Implement PCA to precipiation data%%%%%%%%%%%%%%
+SCORE=LPCA_p(p_result,0);
+m=1;%m is the input delaying length
+%%%%%%%%%Select the pc(th) eof.
+p=SCORE(:,pc);
+%%%%%%%%%Iteratively select inputs
+for time=1:1
+    rng('shuffle');
+%%%%%%%%%Input Selection%%%%%%%%%%%%%
+    result{time}.select=rand(1,size(index,2))>0.65*ones(1,size(index,2));
+    result{time}.performance=[100 100];
+    for i=1:size(result{time}.select,2)
+        if result{time}.select(i)==1;
+            p=[p index(:,i)];
         end
     end
- 
-    N=100;%number of particles in one community
+    n=size(p,2);
+%%%%%%%%%Input Preparation after selection%%%%%%%%%%%%%
+    I=[];
+    O=[];
+    for i=1:length(p)-m-1
+        if mod(i+m,12)<5|| mod(i+m,12)>10
+            input=reshape(p(i:i+m-1,:),[m*n,1]);
+            output=p(i+m,1);
+            I=[I,input];
+            O=[O,output];
+        end
+    end
+    LE=ceil(length(O)*0.85);
+    Ie=mapminmax(I(:,1:LE));
+    Iv=mapminmax(I(:,LE+1:length(I)));
+    Oe=mapminmax(O(1,1:LE));
+    Ov=mapminmax(O(1,LE+1:length(O)));
+    Ie=Ie';
+    Iv=Iv';
+    Oe=Oe';
+    Ov=Ov';
+    
+    
+    %%%%%%%%%%%%%linear%%%%%%%%%%%%%%%%%
+    lIe=[Ie ones(size(Ie,1),1)];
+    lIv=[Ie ones(size(Iv,1),1)];
+    fac=inv(lIe'*lIe)*lIe'*Oe;
+    lsOe=lIe*fac;
+    lsOv=lIv*fac;
+    ssr_le=sqrt(mean((lsOe-Oe).^2));
+    ssr_lv=sqrt(mean((lsOv).^2));
+    
+    
+    
+    
+    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% particle swarm optimizer for initial weights and b
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%Parameters for PSO%%%%%%%%%%%%%%%
+    N=200;%number of particles in one community
     c1=1.0;%rate of following community best
     c2=1.0;%rate of following historical best
     T=4;%iteration times
@@ -65,11 +67,8 @@ for pc=1:4
     clear community;
     n_performance=[100,100];
     for j=1:N
-            community{j}.p=2*[2^bcost,2^bgamma].*rand(1,2);
-            if j==1
-                community{j}.p=[2^bcost,2^bgamma];
-            end
-            community{j}.v=0.2*[2^bcost,2^bgamma].*rand(1,2);
+            community{j}.p=[300 1].*rand(1,2);
+            community{j}.v=0.2*[150,1].*rand(1,2);
             community{j}.best=community{j}.p; 
             model=svmtrain(double(Oe),double(Ie),['-s 3 -t 2  -g '  num2str(community{j}.p(2))  ' -c ' num2str(community{j}.p(1)) ' -p 0.25 -q ']);
             a=sqrt(mean((svmpredict(double(Oe),double(Ie),model,'-q')-Oe).^2));
@@ -119,4 +118,5 @@ for pc=1:4
     %model=svmtrain(double(Ov),double(Iv),['-s 3 -t 2 -p 0.1 -q -c ' num2str(result{time}.p(1)) ' -g '  num2str(result{time}.p(2))]);
     result{time}.Osv=svmpredict(double(Ov),double(Iv),model,'-q');
 end
+save('result.mat','result');
 end

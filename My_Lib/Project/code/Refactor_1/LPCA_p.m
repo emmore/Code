@@ -1,4 +1,4 @@
-function SCORE=LPCA_p(p_result,norm)
+function [COEFF,SCORE,latent]=LPCA_p(p_result,norm)
 %long series PCA without clarifing months.
 p=[];
 for i=1:length(p_result)
@@ -17,7 +17,7 @@ elseif norm==2
 end
 
 [COEFF,SCORE,latent]=princomp(p);
-
+ 
 snr=cumsum(latent)./sum(latent);
 x=1:50;
 y=snr(1:50);

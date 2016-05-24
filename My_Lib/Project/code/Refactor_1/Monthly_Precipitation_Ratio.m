@@ -18,8 +18,8 @@ sv=zeros(size(p_result,2),size(p_result,3));
 for n=1:length(months)
     for i=1:size(p_result,2)
         for j=1:size(p_result,3)
-            sm(i,j)=m_m_result(n,i,j)+sm(i,j);
-            sv(i,j)=v_m_result(n,i,j)+sv(i,j);
+            sm(i,j)=m_m_result(months(n),i,j)+sm(i,j);
+            sv(i,j)=v_m_result(months(n),i,j)+sv(i,j);
         end
     end
 end
