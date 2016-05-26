@@ -1,4 +1,4 @@
-function [result_e,result_v,ssr_le,ssr_lv,ssr_svme,ssr_svmv,var_matrix_svm_e,var_matrix_svm_v]=PSO_SVM()
+function [result_e,result_v,ssr_le,ssr_lv,ssr_svme,ssr_svmv,var_matrix_svm_e,var_matrix_svm_v,var_matrix_mean_e,var_matrix_mean_v,nash_e,nash_v]=PSO_SVM()
 clc;
 load('/Users/penn/Documents/Code/Github/My_Lib/Project/data/p_result.mat');
 load('/Users/penn/Documents/Code/Github/My_Lib/Project/data/climate_index.mat');
@@ -100,7 +100,7 @@ for pc=1:mpc
                     end
                 end
         end  
-     end
+    end
     model=svmtrain(double(Oe),double(Ie),['-s 3 -t 2  -g '  num2str(g_best(2))  ' -c ' num2str(g_best(1)) ' -p 0.18 -q ']);
     
     svmOe(:,pc)=svmpredict(double(Oe),double(Ie),model,'-q');
@@ -132,12 +132,17 @@ vvar_matrix_svm_e=zeros(length(result_e),1);
 vvar_matrix_svm_v=zeros(length(result_v),1);
 for i=1:length(result_e)
     vvar_matrix_svm_e(i)=mean(sqrt((result_e(:,i)-p(1:size(result_e,1),i)).^2));
+    vvar_matrix_mean_e(i)=mean(sqrt((mean(p(1:size(result_e,1),i))-p(1:size(result_e,1),i)).^2));
     vvar_matrix_svm_v(i)=mean(sqrt((result_v(:,i)-p(size(result_e,1)+1:size(result_e,1)+size(result_v,1),i)).^2));
+    vvar_matrix_mean_v(i)=mean(sqrt((mean(p(size(result_e,1)+1:size(result_e,1)+size(result_v,1),i))-p(size(result_e,1)+1:size(result_e,1)+size(result_v,1),i)).^2));
 end
 
 var_matrix_svm_e=nan(size(p_result,2),size(p_result,3));
 var_matrix_svm_v=nan(size(p_result,2),size(p_result,3));
-
+var_matrix_mean_e=nan(size(p_result,2),size(p_result,3));
+var_matrix_mean_v=nan(size(p_result,2),size(p_result,3));
+nash_e=nan(size(p_result,2),size(p_result,3));
+nash_v=nan(size(p_result,2),size(p_result,3));
 
 q=1;
 for j=1:size(p_result,3)       
@@ -145,6 +150,12 @@ for j=1:size(p_result,3)
         if not(isnan(p_result(10,i,j)))
             var_matrix_svm_e(i,j)=vvar_matrix_svm_e(q);
             var_matrix_svm_v(i,j)=vvar_matrix_svm_v(q);
+            
+            var_matrix_mean_e(i,j)=vvar_matrix_mean_e(q);
+            var_matrix_mean_v(i,j)=vvar_matrix_mean_v(q);
+            
+            nash_e(i,j)=1-var_matrix_svm_e(i,j)^2/var_matrix_mean_e(i,j)^2;
+            nash_v(i,j)=1-var_matrix_svm_v(i,j)^2/var_matrix_mean_v(i,j)^2;
             q=q+1;
         end
     end
