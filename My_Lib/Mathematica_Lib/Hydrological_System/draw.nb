@@ -1,0 +1,150 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5512,        141]
+NotebookOptionsPosition[      5221,        126]
+NotebookOutlinePosition[      5574,        142]
+CellTagsIndexPosition[      5531,        139]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "name", ",", "filename", ",", "graphname", ",", "x", ",", "graph"}], 
+       "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"name", "=", 
+        RowBox[{"\"\<abs_mode_\>\"", "<>", 
+         RowBox[{"ToString", "[", "i", "]"}], "<>", "\"\<_noise_\>\"", "<>", 
+         RowBox[{"ToString", "[", "j", "]"}], "<>", "\"\<_noisepower_\>\"", "<>", 
+         RowBox[{"ToString", "[", "k", "]"}]}]}], ";", "\[IndentingNewLine]", 
+       
+       RowBox[{"filename", "=", 
+        RowBox[{"name", "<>", "\"\<.mat\>\""}]}], ";", "\[IndentingNewLine]", 
+       
+       RowBox[{"x", "=", 
+        RowBox[{"Import", "[", "filename", "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"graph", "=", 
+        RowBox[{"ListContourPlot", "[", 
+         RowBox[{"x", ",", 
+          RowBox[{"PlotLegends", "\[Rule]", "Automatic"}], ",", 
+          RowBox[{"FrameLabel", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"\"\<Cmax\>\"", ",", "\"\<k\>\""}], "}"}]}]}], "]"}]}], 
+       ";", "\[IndentingNewLine]", 
+       RowBox[{"graphname", "=", 
+        RowBox[{"name", "<>", "\"\<.png\>\""}]}], ";", "\[IndentingNewLine]", 
+       
+       RowBox[{"Export", "[", 
+        RowBox[{"graphname", ",", "graph"}], "]"}]}]}], "]"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "1", ",", "4", ",", "1"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"j", ",", "1", ",", "4"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"k", ",", "0.1", ",", "0.5", ",", "0.1"}], "}"}]}], "]"}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.673636284809519*^9, 3.673636314726158*^9}, {
+   3.6736364184736967`*^9, 3.6736364377525063`*^9}, {3.6736364865593853`*^9, 
+   3.673636555857918*^9}, {3.67363673897542*^9, 3.673636765181922*^9}, {
+   3.6736368116132803`*^9, 3.673637001105365*^9}, {3.673637034484633*^9, 
+   3.6736370489379168`*^9}, {3.6736370914784517`*^9, 3.673637110173739*^9}, {
+   3.673637143461969*^9, 3.673637277549209*^9}, 3.673637343338348*^9, {
+   3.673637429892892*^9, 3.6736374333413258`*^9}, {3.673637645309617*^9, 
+   3.673637645587722*^9}, {3.673637876163631*^9, 3.6736378776280746`*^9}, {
+   3.673637926276834*^9, 3.673637928009509*^9}, {3.673638536413939*^9, 
+   3.673638537787077*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "name", ",", "filename", ",", "graphname", ",", "x", ",", "graph"}], 
+       "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"name", "=", 
+        RowBox[{"\"\<abs_mode_\>\"", "<>", 
+         RowBox[{"ToString", "[", "i", "]"}], "<>", "\"\<_noise_\>\"", "<>", 
+         RowBox[{"ToString", "[", "j", "]"}], "<>", 
+         "\"\<_noisepower_0\>\""}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"filename", "=", 
+        RowBox[{"name", "<>", "\"\<.mat\>\""}]}], ";", "\[IndentingNewLine]", 
+       
+       RowBox[{"x", "=", 
+        RowBox[{"Import", "[", "filename", "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"graph", "=", 
+        RowBox[{"ListContourPlot", "[", 
+         RowBox[{"x", ",", 
+          RowBox[{"PlotLegends", "\[Rule]", "Automatic"}], ",", 
+          RowBox[{"FrameLabel", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"\"\<Cmax\>\"", ",", "\"\<k\>\""}], "}"}]}]}], "]"}]}], 
+       ";", "\[IndentingNewLine]", 
+       RowBox[{"graphname", "=", 
+        RowBox[{"name", "<>", "\"\<.png\>\""}]}], ";", "\[IndentingNewLine]", 
+       
+       RowBox[{"Export", "[", 
+        RowBox[{"graphname", ",", "graph"}], "]"}]}]}], "]"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "1", ",", "4", ",", "1"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"j", ",", "1", ",", "4"}], "}"}]}], "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.673636284809519*^9, 3.673636314726158*^9}, {
+   3.6736364184736967`*^9, 3.6736364377525063`*^9}, {3.6736364865593853`*^9, 
+   3.673636555857918*^9}, {3.67363673897542*^9, 3.673636765181922*^9}, {
+   3.6736368116132803`*^9, 3.673637001105365*^9}, {3.673637034484633*^9, 
+   3.6736370489379168`*^9}, {3.6736370914784517`*^9, 3.673637110173739*^9}, {
+   3.673637143461969*^9, 3.673637277549209*^9}, 3.673637343338348*^9, {
+   3.673637429892892*^9, 3.6736374333413258`*^9}, {3.673637645309617*^9, 
+   3.673637645587722*^9}, {3.673637692011839*^9, 3.673637704312242*^9}, {
+   3.67363788157232*^9, 3.673637883253667*^9}, {3.673637939856979*^9, 
+   3.673637941118895*^9}, {3.673638539966999*^9, 3.67363854171521*^9}}]
+},
+WindowSize->{1366, 720},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (June 27, \
+2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 2377, 53, 148, "Input"],
+Cell[2938, 75, 2279, 49, 148, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
