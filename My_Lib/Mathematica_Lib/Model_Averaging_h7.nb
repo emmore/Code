@@ -1,0 +1,1087 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     41787,       1078]
+NotebookOptionsPosition[     39930,       1009]
+NotebookOutlinePosition[     40283,       1025]
+CellTagsIndexPosition[     40240,       1022]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[{
+ "CEE-290: Models & Data\nHOMEWORK 7: Model Averaging\n",
+ StyleBox["A ", "Subtitle",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["Mathematica", "Subtitle",
+  FontSlant->"Italic",
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox[" Implementation", "Subtitle",
+  FontColor->RGBColor[1, 0, 0]],
+ "\n",
+ StyleBox["Baoxiang Pan \nID: 63324929", "Subtitle"]
+}], "Title",
+ CellChangeTimes->{{3.6732714368931627`*^9, 3.673271486462612*^9}, {
+  3.673272120382732*^9, 3.673272133502833*^9}, {3.673532587373939*^9, 
+  3.6735325944884377`*^9}, {3.673709207542286*^9, 3.673709209159532*^9}, {
+  3.6743072831269712`*^9, 3.674307292064826*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["1.Model Averaging Methods", "Chapter",
+ CellChangeTimes->{{3.6743077003153973`*^9, 3.674307745711461*^9}, {
+  3.674313030976234*^9, 3.674313033397532*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Equal Weights Averaging", "Subchapter",
+ CellChangeTimes->{{3.674307757096799*^9, 3.6743077642225647`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"EWA", "[", "simus_", "]"}], ":=", 
+   RowBox[{"Mean", "/@", "simus"}]}], ";"}]], "Code",
+ CellChangeTimes->{{3.6743077695673313`*^9, 3.674307777678995*^9}, {
+   3.67430783626274*^9, 3.674307865228095*^9}, {3.67430835865506*^9, 
+   3.674308416993676*^9}, 3.674308449040543*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Bates-Granger Averaging", "Subchapter",
+ CellChangeTimes->{{3.674307757096799*^9, 3.6743077642225647`*^9}, {
+  3.674308149407319*^9, 3.6743081553346977`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"BGA", "[", 
+    RowBox[{"simus_", ",", "obser_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "weights", "}"}], ",", "\n", "\t\t\t\t\t\t\t", 
+     RowBox[{
+      RowBox[{"weights", "=", 
+       RowBox[{"Module", "[", 
+        RowBox[{
+         RowBox[{"{", "sigmas", "}"}], ",", "\n", "\t\t\t\t\t\t\t\t\t\t", 
+         RowBox[{
+          RowBox[{"sigmas", "=", 
+           RowBox[{"Table", "[", 
+            RowBox[{
+             RowBox[{"1", "/", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"Norm", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"Map", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"#", "[", 
+                    RowBox[{"[", "i", "]"}], "]"}], "&"}], ",", "simus"}], 
+                    "]"}], "-", "obser"}], ",", "2"}], "]"}], ")"}], "^", 
+               "2"}]}], ",", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", "1", ",", 
+               RowBox[{"Length", "[", 
+                RowBox[{"simus", "[", 
+                 RowBox[{"[", "1", "]"}], "]"}], "]"}]}], "}"}]}], "]"}]}], 
+          ";", "\n", "\t\t\t\t\t\t\t\t\t\t", 
+          RowBox[{"Map", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"#", "/", 
+              RowBox[{"Total", "[", "sigmas", "]"}]}], "&"}], ",", "sigmas"}],
+            "]"}]}]}], "]"}]}], ";", "\n", "\t\t\t\t\t\t\t", 
+      RowBox[{"Return", "[", 
+       RowBox[{"{", 
+        RowBox[{"weights", ",", 
+         RowBox[{"Map", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"#", ".", "weights"}], "&"}], ",", "simus"}], "]"}]}], 
+        "}"}], "]"}]}]}], "]"}]}], ";"}]], "Code",
+ CellChangeTimes->{{3.674308738540107*^9, 3.674308792024263*^9}, {
+  3.674308975684928*^9, 3.674308979386305*^9}, {3.674309025649322*^9, 
+  3.674309099397395*^9}, {3.674309137402842*^9, 3.6743091720665607`*^9}, {
+  3.674309214067205*^9, 3.674309262737211*^9}, {3.674309299719571*^9, 
+  3.6743093235641537`*^9}, {3.674586563216639*^9, 3.674586611828279*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Information Criterion Averaging", "Subchapter",
+ CellChangeTimes->{{3.674307757096799*^9, 3.6743077642225647`*^9}, {
+  3.674308149407319*^9, 3.6743081553346977`*^9}, {3.674308194663414*^9, 
+  3.6743082006057587`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"ICA", "[", 
+    RowBox[{"simus_", ",", "obser_", ",", "npara_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "weights", "}"}], ",", "\n", "\t\t\t\t\t\t\t", 
+     RowBox[{
+      RowBox[{"weights", "=", 
+       RowBox[{"Module", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"likelihood", ",", "parameterpenalty", ",", "ww"}], "}"}], 
+         ",", "\n", "\t\t\t\t\t\t\t\t\t\t", 
+         RowBox[{
+          RowBox[{"likelihood", "=", 
+           RowBox[{"Module", "[", 
+            RowBox[{
+             RowBox[{"{", "sigma", "}"}], ",", "\n", 
+             "\t\t\t\t\t\t\t\t\t\t\t\t\t", 
+             RowBox[{
+              RowBox[{"sigma", "=", 
+               RowBox[{"Table", "[", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"Norm", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"Map", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"#", "[", 
+                    RowBox[{"[", "i", "]"}], "]"}], "&"}], ",", "simus"}], 
+                    "]"}], "-", "obser"}], ",", "2"}], "]"}], "^", "2"}], "/", 
+                  RowBox[{"Length", "[", "obser", "]"}]}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"i", ",", "1", ",", 
+                   RowBox[{"Length", "[", 
+                    RowBox[{"simus", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "]"}]}], "}"}]}], "]"}]}],
+               ";", "\n", "\t\t\t\t\t\t\t\t\t\t\t\t\t", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"Length", "[", "obser", "]"}], "*", 
+                RowBox[{"Log", "[", "sigma", "]"}]}], "+", 
+               RowBox[{"Length", "[", "obser", "]"}]}]}]}], "]"}]}], ";", 
+          "\n", "\t\t\t\t\t\t\t\t\t\t", 
+          RowBox[{"parameterpenalty", "=", 
+           RowBox[{"2", "*", "npara"}]}], ";", " ", 
+          RowBox[{
+           RowBox[{
+           "\"\<for BIC: npara*Log[Length[obser]];\>\"", "\n", 
+            "\t\t\t\t\t\t\t\t\t\t", "ww"}], "=", 
+           RowBox[{"Exp", "[", 
+            RowBox[{
+             RowBox[{"-", 
+              RowBox[{"(", 
+               RowBox[{"likelihood", "+", "parameterpenalty"}], ")"}]}], "/", 
+             "2"}], "]"}]}], ";", "\n", "\t\t\t\t\t\t\t\t\t\t", 
+          RowBox[{"Map", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"#", "/", 
+              RowBox[{"Total", "[", "ww", "]"}]}], "&"}], ",", "ww"}], 
+           "]"}]}]}], "]"}]}], ";", "\n", "\t\t\t\t\t\t\t", 
+      RowBox[{"Return", "[", 
+       RowBox[{"{", 
+        RowBox[{"weights", ",", 
+         RowBox[{"Map", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"#", ".", "weights"}], "&"}], ",", "simus"}], "]"}]}], 
+        "}"}], "]"}]}]}], "]"}]}], ";"}]], "Code",
+ CellChangeTimes->{{3.674309449962549*^9, 3.674309451694684*^9}, {
+  3.674309490565427*^9, 3.6743094944373493`*^9}, {3.674309585477413*^9, 
+  3.674309593953816*^9}, {3.674309810915904*^9, 3.674309897910132*^9}, {
+  3.6743099668199663`*^9, 3.674310015155813*^9}, {3.674310058831703*^9, 
+  3.674310370357521*^9}, {3.674310407109975*^9, 3.674310452897779*^9}, {
+  3.674310904322494*^9, 3.674311020661503*^9}, {3.6745865863359737`*^9, 
+  3.67458660485334*^9}, {3.6745901489449787`*^9, 3.674590151485119*^9}, {
+  3.674590204468294*^9, 3.674590211679679*^9}, {3.674590482938733*^9, 
+  3.674590576188655*^9}, {3.6745907277899237`*^9, 3.674590780232991*^9}, {
+  3.6745925322783327`*^9, 3.674592552017448*^9}, {3.67459347200908*^9, 
+  3.6745934840897417`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Granger-Ramanathan Averaging", "Subchapter",
+ CellChangeTimes->{{3.674307757096799*^9, 3.6743077642225647`*^9}, {
+  3.674308149407319*^9, 3.6743081553346977`*^9}, {3.674308208759472*^9, 
+  3.67430821687715*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"GRA", "[", 
+    RowBox[{"simus_", ",", "obser_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "weights", "}"}], ",", "\n", "\t\t\t\t\t\t", 
+     RowBox[{
+      RowBox[{"weights", "=", 
+       RowBox[{
+        RowBox[{"Inverse", "[", 
+         RowBox[{
+          RowBox[{"Transpose", "[", "simus", "]"}], ".", "simus"}], "]"}], 
+        ".", 
+        RowBox[{"Transpose", "[", "simus", "]"}], ".", "obser"}]}], ";", "\n",
+       "\t\t\t\t\t\t", 
+      RowBox[{"Return", "[", 
+       RowBox[{"{", 
+        RowBox[{"weights", ",", 
+         RowBox[{"Map", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"#", ".", "weights"}], "&"}], ",", "simus"}], "]"}]}], 
+        "}"}], "]"}]}]}], "]"}]}], ";"}]], "Code",
+ CellChangeTimes->{{3.6743101870903254`*^9, 3.6743101916185017`*^9}, {
+   3.674310262942038*^9, 3.674310266567194*^9}, {3.674310939012166*^9, 
+   3.674310940753901*^9}, {3.6743114203546963`*^9, 3.674311496080606*^9}, {
+   3.674312416946203*^9, 3.6743124172211723`*^9}, {3.674312463313528*^9, 
+   3.674312466354652*^9}, {3.674312541765287*^9, 3.674312549845518*^9}, {
+   3.67431262711945*^9, 3.674312632286302*^9}, {3.674586618534987*^9, 
+   3.674586631355098*^9}, 3.674587676487069*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Bayesian Model Averaging", "Subchapter",
+ CellChangeTimes->{{3.674307757096799*^9, 3.6743077642225647`*^9}, {
+  3.674308149407319*^9, 3.6743081553346977`*^9}, {3.6743082237748423`*^9, 
+  3.6743082283808804`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"BMA", "[", 
+    RowBox[{"simus_", ",", "obser_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "DEMC", ",", "range", ",", "times", ",", "pdf", ",", "samples", ",", 
+       "vsamples"}], "}"}], ",", "\n", "\t", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"DEMC", "[", 
+        RowBox[{"range_", ",", "times_", ",", "pdf_"}], "]"}], ":=", "\n", 
+       "\t\t", 
+       RowBox[{"Module", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"population", ",", "Evolution", ",", 
+           RowBox[{"size", "=", "5"}], ",", "F", ",", "final", ",", 
+           RowBox[{"b", "=", "0.000001"}], ",", 
+           RowBox[{"temperature", "=", "1"}]}], "}"}], ",", "\n", "\t\t\t", 
+         RowBox[{
+          RowBox[{"F", "=", 
+           RowBox[{"2.4", "/", 
+            RowBox[{"Sqrt", "[", 
+             RowBox[{"2", "*", 
+              RowBox[{"Length", "[", "range", "]"}]}], "]"}]}]}], ";", "\n", 
+          "\t\t\t", 
+          RowBox[{"population", "=", 
+           RowBox[{"Table", "[", 
+            RowBox[{
+             RowBox[{"Map", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{
+                 RowBox[{"#", "[", 
+                  RowBox[{"[", "1", "]"}], "]"}], "+", 
+                 RowBox[{"RandomReal", "[", 
+                  RowBox[{
+                   RowBox[{"#", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "-", 
+                   RowBox[{"#", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}]}], "]"}]}], "&"}], ",", 
+               "range"}], "]"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", "size"}], "}"}]}], "]"}]}], ";", "\n", 
+          "\t\t\t", 
+          RowBox[{
+           RowBox[{"Evolution", "[", "population_", "]"}], ":=", "\n", 
+           "\t\t\t", 
+           RowBox[{"Module", "[", 
+            RowBox[{
+             RowBox[{"{", "CandidateGeneration", "}"}], ",", "\n", "\t\t\t\t", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"CandidateGeneration", "[", "point_", "]"}], ":=", 
+               "\n", "\t\t\t\t\t", 
+               RowBox[{"Module", "[", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{
+                  "ConstructGeneration", ",", "vpoint", ",", "selection"}], 
+                  "}"}], ",", "\n", "\t\t\t\t\t\t", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"ConstructGeneration", "[", "]"}], ":=", 
+                   RowBox[{"Module", "[", 
+                    RowBox[{
+                    RowBox[{"{", "potentialpoints", "}"}], ",", "\n", 
+                    "\t\t\t\t\t\t\t\t\t\t\t\t", 
+                    RowBox[{
+                    RowBox[{"potentialpoints", "=", 
+                    RowBox[{"RandomSample", "[", 
+                    RowBox[{"population", ",", "2"}], "]"}]}], ";", "\n", 
+                    "\t\t\t\t\t\t\t\t\t\t\t\t", 
+                    RowBox[{"Return", "[", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"MemberQ", "[", 
+                    RowBox[{"potentialpoints", ",", "point"}], "]"}], ",", 
+                    RowBox[{"ConstructGeneration", "[", "]"}], ",", 
+                    "potentialpoints"}], "]"}], "]"}]}]}], "]"}]}], ";", "\n",
+                   "\t\t\t\t\t\t", 
+                  RowBox[{
+                   RowBox[{"vpoint", "[", "]"}], ":=", 
+                   RowBox[{"Module", "[", 
+                    RowBox[{
+                    RowBox[{"{", "points", "}"}], ",", "\n", 
+                    "\t\t\t\t\t\t\t\t\t", 
+                    RowBox[{
+                    RowBox[{"points", "=", 
+                    RowBox[{"ConstructGeneration", "[", "]"}]}], ";", "\n", 
+                    "\t\t\t\t\t\t\t\t\t", 
+                    RowBox[{"Return", "[", 
+                    RowBox[{"point", "+", 
+                    RowBox[{"F", "*", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"points", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "-", 
+                    RowBox[{"points", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}]}], ")"}]}], "+", 
+                    RowBox[{"RandomReal", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"-", "b"}], ",", "b"}], "}"}], ",", 
+                    RowBox[{"Length", "[", "point", "]"}]}], "]"}]}], 
+                    "]"}]}]}], "]"}]}], ";", "\n", "\t\t\t\t\t\t", 
+                  RowBox[{
+                   RowBox[{"selection", "[", "]"}], ":=", 
+                   RowBox[{"Module", "[", 
+                    RowBox[{
+                    RowBox[{"{", "upoint", "}"}], ",", "\n", 
+                    "\t\t\t\t\t\t\t\t\t\t", 
+                    RowBox[{
+                    RowBox[{"upoint", "=", 
+                    RowBox[{"vpoint", "[", "]"}]}], ";", "\n", 
+                    "\t\t\t\t\t\t\t\t\t\t", 
+                    RowBox[{"Return", "[", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"pdf", "[", "upoint", "]"}], "-", 
+                    RowBox[{"pdf", "[", "point", "]"}]}], ")"}], ">", 
+                    RowBox[{"temperature", "*", 
+                    RowBox[{"Log", "[", 
+                    RowBox[{"RandomReal", "[", "]"}], "]"}]}]}], ",", 
+                    "upoint", ",", " ", "point"}], "]"}], "]"}]}]}], "]"}]}], 
+                  ";", "\n", "\t\t\t\t\t\t", 
+                  RowBox[{"Return", "[", 
+                   RowBox[{"selection", "[", "]"}], "]"}]}]}], "]"}]}], ";", 
+              "\t\t\t\t\t ", "\n", "\t\t\t\t", 
+              RowBox[{"Return", "[", 
+               RowBox[{"Map", "[", 
+                RowBox[{"CandidateGeneration", ",", "population"}], "]"}], 
+               "]"}]}]}], "]"}]}], ";", "\n", "\t\t\t", 
+          RowBox[{"Return", "[", 
+           RowBox[{"NestList", "[", 
+            RowBox[{"Evolution", ",", "population", ",", "times"}], "]"}], 
+           "]"}]}]}], "]"}]}], ";", "\n", "\t", 
+      RowBox[{"range", "=", 
+       RowBox[{"Join", "[", 
+        RowBox[{
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"0", ",", "1"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "1", ",", 
+             RowBox[{"Length", "[", 
+              RowBox[{"simus", "[", 
+               RowBox[{"[", "1", "]"}], "]"}], "]"}]}], "}"}]}], "]"}], ",", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{"Norm", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"Map", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"#", "[", 
+                    RowBox[{"[", "i", "]"}], "]"}], "&"}], ",", "simus"}], 
+                 "]"}], "-", "obser"}], ",", "2"}], "]"}], "/", 
+             RowBox[{"Length", "[", "obser", "]"}]}], "*", 
+            RowBox[{"{", 
+             RowBox[{"0.5", ",", "1.5"}], "}"}]}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "1", ",", 
+             RowBox[{"Length", "[", 
+              RowBox[{"simus", "[", 
+               RowBox[{"[", "1", "]"}], "]"}], "]"}]}], "}"}]}], "]"}]}], 
+        "]"}]}], ";", "\n", "\t", 
+      RowBox[{"times", "=", "3"}], ";", "\n", "\t", 
+      RowBox[{
+       RowBox[{"pdf", "[", "para_", "]"}], ":=", 
+       RowBox[{"Module", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"b", ",", "br", ",", "sigma"}], "}"}], ",", "\n", 
+         "\t\t\t\t\t\t", 
+         RowBox[{
+          RowBox[{"b", "=", 
+           RowBox[{"Abs", "[", 
+            RowBox[{"para", "[", 
+             RowBox[{"[", 
+              RowBox[{"1", ";;", "8"}], "]"}], "]"}], "]"}]}], ";", "\n", 
+          "\t\t\t\t\t\t", 
+          RowBox[{"sigma", "=", 
+           RowBox[{"Abs", "[", 
+            RowBox[{"para", "[", 
+             RowBox[{"[", 
+              RowBox[{"9", ";;", "16"}], "]"}], "]"}], "]"}]}], ";", "\n", 
+          "\t\t\t\t\t\t", 
+          RowBox[{"br", "=", 
+           RowBox[{"Map", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"#", "/", 
+               RowBox[{"Total", "[", "b", "]"}]}], "&"}], ",", "b"}], "]"}]}],
+           ";", "\n", "\t\t\t\t\t\t", 
+          RowBox[{"Return", "[", 
+           RowBox[{"Total", "[", 
+            RowBox[{"Table", "[", 
+             RowBox[{
+              RowBox[{"Log", "[", 
+               RowBox[{"Total", "[", 
+                RowBox[{"Table", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"br", "[", 
+                    RowBox[{"[", "i", "]"}], "]"}], "*", 
+                   RowBox[{"PDF", "[", 
+                    RowBox[{
+                    RowBox[{"NormalDistribution", "[", 
+                    RowBox[{
+                    RowBox[{"simus", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"j", ",", "i"}], "]"}], "]"}], ",", 
+                    RowBox[{"sigma", "[", 
+                    RowBox[{"[", "i", "]"}], "]"}]}], "]"}], ",", 
+                    RowBox[{"obser", "[", 
+                    RowBox[{"[", "j", "]"}], "]"}]}], "]"}]}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"i", ",", "1", ",", 
+                    RowBox[{"Length", "[", 
+                    RowBox[{"simus", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "]"}]}], "}"}]}], "]"}], 
+                "]"}], "]"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"j", ",", "1", ",", 
+                RowBox[{"Length", "[", "obser", "]"}]}], "}"}]}], "]"}], 
+            "]"}], "]"}]}]}], "]"}]}], ";", "\n", "\t", 
+      RowBox[{"samples", "=", 
+       RowBox[{"Flatten", "[", 
+        RowBox[{
+         RowBox[{"DEMC", "[", 
+          RowBox[{"range", ",", "times", ",", "pdf"}], "]"}], ",", "1"}], 
+        "]"}]}], ";", "\n", "\t", 
+      RowBox[{"Return", "[", "samples", "]"}]}]}], "]"}]}], ";"}]], "Code",
+ CellChangeTimes->CompressedData["
+1:eJwd0FkowwEABvChsPKiRXI2Z2zk2ogUmSMKMWSOHOHBGVNEzDFXiLYIqTnD
+5spI5AiFJv1zxVwxi5oWNXkS/+//8PWr7+nrY+ZXJBca02g0FzJQWsOq5Obq
+It5rraugyjK2Fr4UqFtgN/+oA/JfbzvhfLysHy5XSkegYsBIBjXl3HFoNOg5
+DXf6b2ZgiCDsAj76fWrh2DHHOoh0N+WCCc+HCTdooclgw8Ary0DI4Eso53Mk
+obBoxjYMKsXpkVAYrebB46jYdsgW7chgF91/Fm5+z63BCceTwmDSDbmWsqGv
+qwT+7s5Rrqf51sMYH30rvBQqfxbRJ5xTOhMG8yVS/2YmHe6dlV3CRhrvHj7U
+9QYsk/ZoByk/lEmnUHFQRUDTRqs/6Fqqp6+QHgnzGVAU52YF2xR3A2ukgmaO
+BHJZchXcTn2iNHEXEbBti3cLHR1YTuv4X5UVDhc/GQIoHPWgHPOu/t7EHsP4
+D9xPfLPh5OkiVsykdrBvgWBC46ZsV1hsP+kJI1OHvKA+ZesKXh9mquHB1+oT
+FE9pnuE/cEEXjQ==
+  "]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Mallows Model Averaging", "Subchapter",
+ CellChangeTimes->{{3.674307757096799*^9, 3.6743077642225647`*^9}, {
+  3.674308149407319*^9, 3.6743081553346977`*^9}, {3.6743082421825333`*^9, 
+  3.674308244595874*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"MMA", "[", 
+    RowBox[{"simus_", ",", "obser_", ",", "npara_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "DEMC", ",", "range", ",", "times", ",", "pdf", ",", "samples", ",", 
+       "vsamples"}], "}"}], ",", "\n", "\t", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"DEMC", "[", 
+        RowBox[{"range_", ",", "times_", ",", "pdf_"}], "]"}], ":=", "\n", 
+       "\t\t", 
+       RowBox[{"Module", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"population", ",", "Evolution", ",", 
+           RowBox[{"size", "=", "5"}], ",", "F", ",", "final", ",", 
+           RowBox[{"b", "=", "0.000001"}], ",", 
+           RowBox[{"temperature", "=", "1"}]}], "}"}], ",", "\n", "\t\t\t", 
+         RowBox[{
+          RowBox[{"F", "=", 
+           RowBox[{"2.4", "/", 
+            RowBox[{"Sqrt", "[", 
+             RowBox[{"2", "*", 
+              RowBox[{"Length", "[", "range", "]"}]}], "]"}]}]}], ";", "\n", 
+          "\t\t\t", 
+          RowBox[{"population", "=", 
+           RowBox[{"Table", "[", 
+            RowBox[{
+             RowBox[{"Map", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{
+                 RowBox[{"#", "[", 
+                  RowBox[{"[", "1", "]"}], "]"}], "+", 
+                 RowBox[{"RandomReal", "[", 
+                  RowBox[{
+                   RowBox[{"#", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "-", 
+                   RowBox[{"#", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}]}], "]"}]}], "&"}], ",", 
+               "range"}], "]"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", "size"}], "}"}]}], "]"}]}], ";", "\n", 
+          "\t\t\t", 
+          RowBox[{
+           RowBox[{"Evolution", "[", "population_", "]"}], ":=", "\n", 
+           "\t\t\t", 
+           RowBox[{"Module", "[", 
+            RowBox[{
+             RowBox[{"{", "CandidateGeneration", "}"}], ",", "\n", "\t\t\t\t", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"CandidateGeneration", "[", "point_", "]"}], ":=", 
+               "\n", "\t\t\t\t\t", 
+               RowBox[{"Module", "[", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{
+                  "ConstructGeneration", ",", "vpoint", ",", "selection"}], 
+                  "}"}], ",", "\n", "\t\t\t\t\t\t", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"ConstructGeneration", "[", "]"}], ":=", 
+                   RowBox[{"Module", "[", 
+                    RowBox[{
+                    RowBox[{"{", "potentialpoints", "}"}], ",", "\n", 
+                    "\t\t\t\t\t\t\t\t\t\t\t\t", 
+                    RowBox[{
+                    RowBox[{"potentialpoints", "=", 
+                    RowBox[{"RandomSample", "[", 
+                    RowBox[{"population", ",", "2"}], "]"}]}], ";", "\n", 
+                    "\t\t\t\t\t\t\t\t\t\t\t\t", 
+                    RowBox[{"Return", "[", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"MemberQ", "[", 
+                    RowBox[{"potentialpoints", ",", "point"}], "]"}], ",", 
+                    RowBox[{"ConstructGeneration", "[", "]"}], ",", 
+                    "potentialpoints"}], "]"}], "]"}]}]}], "]"}]}], ";", "\n",
+                   "\t\t\t\t\t\t", 
+                  RowBox[{
+                   RowBox[{"vpoint", "[", "]"}], ":=", 
+                   RowBox[{"Module", "[", 
+                    RowBox[{
+                    RowBox[{"{", "points", "}"}], ",", "\n", 
+                    "\t\t\t\t\t\t\t\t\t", 
+                    RowBox[{
+                    RowBox[{"points", "=", 
+                    RowBox[{"ConstructGeneration", "[", "]"}]}], ";", "\n", 
+                    "\t\t\t\t\t\t\t\t\t", 
+                    RowBox[{"Return", "[", 
+                    RowBox[{"point", "+", 
+                    RowBox[{"F", "*", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"points", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "-", 
+                    RowBox[{"points", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}]}], ")"}]}], "+", 
+                    RowBox[{"RandomReal", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"-", "b"}], ",", "b"}], "}"}], ",", 
+                    RowBox[{"Length", "[", "point", "]"}]}], "]"}]}], 
+                    "]"}]}]}], "]"}]}], ";", "\n", "\t\t\t\t\t\t", 
+                  RowBox[{
+                   RowBox[{"selection", "[", "]"}], ":=", 
+                   RowBox[{"Module", "[", 
+                    RowBox[{
+                    RowBox[{"{", "upoint", "}"}], ",", "\n", 
+                    "\t\t\t\t\t\t\t\t\t\t", 
+                    RowBox[{
+                    RowBox[{"upoint", "=", 
+                    RowBox[{"vpoint", "[", "]"}]}], ";", "\n", 
+                    "\t\t\t\t\t\t\t\t\t\t", 
+                    RowBox[{"Return", "[", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"Log", "[", 
+                    RowBox[{
+                    RowBox[{"pdf", "[", "upoint", "]"}], "/", 
+                    RowBox[{"pdf", "[", "point", "]"}]}], "]"}], ">", 
+                    RowBox[{"temperature", "*", 
+                    RowBox[{"Log", "[", 
+                    RowBox[{"RandomReal", "[", "]"}], "]"}]}]}], ",", 
+                    "upoint", ",", " ", "point"}], "]"}], "]"}]}]}], "]"}]}], 
+                  ";", "\n", "\t\t\t\t\t\t", 
+                  RowBox[{"Return", "[", 
+                   RowBox[{"selection", "[", "]"}], "]"}]}]}], "]"}]}], ";", 
+              "\t\t\t\t\t ", "\n", "\t\t\t\t", 
+              RowBox[{"Return", "[", 
+               RowBox[{"Map", "[", 
+                RowBox[{"CandidateGeneration", ",", "population"}], "]"}], 
+               "]"}]}]}], "]"}]}], ";", "\n", "\t\t\t", 
+          RowBox[{"Return", "[", 
+           RowBox[{"NestList", "[", 
+            RowBox[{"Evolution", ",", "population", ",", "times"}], "]"}], 
+           "]"}]}]}], "]"}]}], ";", "\n", "\t", 
+      RowBox[{"range", "=", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"0", ",", "1"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", 
+           RowBox[{"Length", "[", 
+            RowBox[{"simus", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], "]"}]}], "}"}]}], "]"}]}], ";", 
+      "\n", "\t", 
+      RowBox[{"times", "=", "100"}], ";", "\n", "\t", 
+      RowBox[{
+       RowBox[{"pdf", "[", "para_", "]"}], ":=", 
+       RowBox[{"Module", "[", 
+        RowBox[{
+         RowBox[{"{", "C", "}"}], ",", "\n", "\t\t", 
+         RowBox[{
+          RowBox[{"C", "=", 
+           RowBox[{"Module", "[", 
+            RowBox[{
+             RowBox[{"{", "pn", "}"}], ",", "\n", "\t\t\t", 
+             RowBox[{
+              RowBox[{"pn", "=", 
+               RowBox[{"Map", "[", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"Abs", "[", 
+                   RowBox[{"#", "/", 
+                    RowBox[{"Total", "[", "para", "]"}]}], "]"}], "&"}], ",", 
+                 "para"}], "]"}]}], ";", "\n", "\t\t\t", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"Norm", "[", 
+                 RowBox[{
+                  RowBox[{"obser", "-", 
+                   RowBox[{"simus", ".", "pn"}]}], ",", "2"}], "]"}], "^", 
+                "2"}], "+", 
+               RowBox[{"2", "*", 
+                RowBox[{"Variance", "[", 
+                 RowBox[{"obser", "-", 
+                  RowBox[{"simus", ".", "pn"}]}], "]"}], "*", 
+                RowBox[{"(", 
+                 RowBox[{"pn", ".", "npara"}], ")"}]}]}]}]}], "]"}]}], ";", 
+          "\n", "\t\t", 
+          RowBox[{"Return", "[", 
+           RowBox[{"Exp", "[", 
+            RowBox[{
+             RowBox[{"-", "0.5"}], "*", "C"}], "]"}], "]"}]}]}], "]"}]}], ";",
+       "\n", "\t", 
+      RowBox[{"samples", "=", 
+       RowBox[{"Flatten", "[", 
+        RowBox[{
+         RowBox[{"DEMC", "[", 
+          RowBox[{"range", ",", "times", ",", "pdf"}], "]"}], ",", "1"}], 
+        "]"}]}], ";", "\n", "\t", 
+      RowBox[{"vsamples", "=", 
+       RowBox[{"Map", "[", 
+        RowBox[{"pdf", ",", "samples"}], "]"}]}], ";", "\n", "\t", 
+      RowBox[{"Return", "[", 
+       RowBox[{"{", 
+        RowBox[{"vsamples", ",", "samples"}], "}"}], "]"}]}]}], "]"}]}], 
+  ";"}]], "Code",
+ CellChangeTimes->{{3.6745688792213783`*^9, 3.674568893467676*^9}, {
+   3.6745689331861*^9, 3.6745689367884407`*^9}, {3.674568980196609*^9, 
+   3.6745690372943163`*^9}, {3.67456908714989*^9, 3.674569090964285*^9}, {
+   3.674569192500128*^9, 3.674569276021429*^9}, 3.674569426036786*^9, {
+   3.6745697153713293`*^9, 3.6745698417872972`*^9}, {3.674569873603928*^9, 
+   3.674569995735792*^9}, {3.674570522673759*^9, 3.674570524727934*^9}, {
+   3.6745706529283733`*^9, 3.674570725000399*^9}, {3.6745835816753063`*^9, 
+   3.674583582513823*^9}, {3.674583630302868*^9, 3.674583646106669*^9}, {
+   3.674586637121623*^9, 3.674586641574863*^9}, {3.6745910244941177`*^9, 
+   3.674591091138484*^9}, {3.674592935388886*^9, 3.674592939169314*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["2. Systematic Error", "Chapter",
+ CellChangeTimes->{{3.674313041723287*^9, 3.674313066022332*^9}, {
+  3.674583779023265*^9, 3.67458380821957*^9}}],
+
+Cell["\<\
+No. If there is systematic underestimate error, the weighted average is no \
+larger than the largest estimation, so it can not surpass the performance of \
+it. For systematic obverestimation, the weighted average is no smaller than \
+the smallest estimation, so it can not surpass the performance of it. \
+\>", "Text",
+ CellChangeTimes->{{3.674583879994203*^9, 3.674584033191285*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["3. RMSE of Models", "Chapter",
+ CellChangeTimes->{3.6745859640530367`*^9}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+  "SetDirectory", "[", "\"\</Users/penn/Desktop/Homework_7\>\"", "]"}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"simu", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<data.txt\>\"", ",", "\"\<Table\>\""}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"obser", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<Y.txt\>\"", ",", "\"\<List\>\""}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"npara", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<para.txt\>\"", ",", "\"\<List\>\""}], "]"}]}], 
+  ";"}]}], "Code",
+ CellChangeTimes->{{3.674307331305655*^9, 3.674307336839815*^9}, {
+  3.674307551146542*^9, 3.6743075894227743`*^9}, {3.674310466179984*^9, 
+  3.674310481103216*^9}, {3.6743105891020527`*^9, 3.6743106190182953`*^9}, {
+  3.674310670216214*^9, 3.674310676568919*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"evaluation", "[", 
+    RowBox[{"obser_", ",", "simu_"}], "]"}], ":=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"Sqrt", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Norm", "[", 
+         RowBox[{
+          RowBox[{"obser", "[", 
+           RowBox[{"[", 
+            RowBox[{"1", ";;", "3000"}], "]"}], "]"}], "-", 
+          RowBox[{"simu", "[", 
+           RowBox[{"[", 
+            RowBox[{"1", ";;", "3000"}], "]"}], "]"}]}], "]"}], "^", "2"}], 
+       "/", "3000"}], "]"}], ",", 
+     RowBox[{"Sqrt", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Norm", "[", 
+         RowBox[{
+          RowBox[{"obser", "[", 
+           RowBox[{"[", 
+            RowBox[{"3001", ";;", "13150"}], "]"}], "]"}], "-", 
+          RowBox[{"simu", "[", 
+           RowBox[{"[", 
+            RowBox[{"3001", ";;", "13150"}], "]"}], "]"}]}], "]"}], "^", 
+        "2"}], "/", "10150"}], "]"}]}], "}"}]}], ";"}], "\n", 
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{"evaluation", "[", 
+    RowBox[{"obser", ",", 
+     RowBox[{"simu", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "i"}], "]"}], "]"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", "1", ",", "8"}], "}"}]}], "]"}]}], "Code",
+ CellChangeTimes->{{3.6745889760383*^9, 3.67458897886828*^9}, {
+  3.674589073275391*^9, 3.6745891745258617`*^9}, {3.674589375304653*^9, 
+  3.674589386048273*^9}, {3.674589478647235*^9, 3.6745894850581617`*^9}, {
+  3.674589561685101*^9, 3.6745896419798717`*^9}, {3.674589692878927*^9, 
+  3.674589724828453*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"31.4035908199609`", ",", "50.39267430890792`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"19.018581923117107`", ",", "25.260877029684334`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"18.832688962751444`", ",", "28.719902002547762`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"17.498620840933`", ",", "27.480644622631527`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"26.02962550869056`", ",", "42.17701517270547`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"20.013887566780834`", ",", "32.87327803859867`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"19.0304628341027`", ",", "31.00988862133987`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"16.27430091932715`", ",", "21.955751332914605`"}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.674589642633363*^9, 3.6745896699771643`*^9}, 
+   3.674589726262038*^9, 3.674590420857409*^9}]
+}, Open  ]],
+
+Cell[TextData[Cell[BoxData[GridBox[{
+   {
+    StyleBox[
+     RowBox[{"\[IndentingNewLine]", GridBox[{
+        {"Model", "Parameters", 
+         RowBox[{
+          SubscriptBox["RMSE", "cal"], 
+          RowBox[{"(", 
+           RowBox[{
+            SuperscriptBox["m", "3"], "/", "s"}], ")"}]}], 
+         RowBox[{
+          SubscriptBox["RMSE", "eval"], 
+          RowBox[{"(", 
+           RowBox[{
+            SuperscriptBox["m", "3"], "/", "s"}], ")"}]}]},
+        {"ABC", "3", "31.40", "50.39"},
+        {"GR4J", "4", "19.02", "25.26"},
+        {"HYMOD", "5", "18.83", "28.72"},
+        {"TOPMOD", "8", "17.50", "27.48"},
+        {"AWBM", "8", "26.03", "42.18"},
+        {"NAM", "9", "20.01", "32.87"},
+        {"HBV", "9", "19.03", "31.01"},
+        {
+         RowBox[{"SAC", "-", "SMA"}], "13", "16.27", "21.96"}
+       }]}], "Text",
+     FontSize->18,
+     FontColor->GrayLevel[0]]},
+   {
+    StyleBox["\[IndentingNewLine]", "Text",
+     FontSize->18,
+     FontColor->GrayLevel[0]]}
+  }]],
+ CellChangeTimes->{{3.674584058839067*^9, 3.674584126440233*^9}, {
+  3.674584324163642*^9, 3.6745843866195707`*^9}, {3.674584832825748*^9, 
+  3.674584833859243*^9}, {3.674584983565878*^9, 3.6745849887840357`*^9}, {
+  3.6745850668416452`*^9, 3.6745850677798853`*^9}, {3.674585664432907*^9, 
+  3.6745856921831217`*^9}, {3.674585755324046*^9, 3.674585857041326*^9}, {
+  3.674585941449758*^9, 3.6745859658645573`*^9}},
+ FontSize->18]], "Text",
+ CellChangeTimes->{
+  3.674586262258554*^9, {3.674586530090535*^9, 3.6745865501017017`*^9}, {
+   3.6745891809209957`*^9, 3.674589282569825*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["4. Model Selection", "Chapter",
+ CellChangeTimes->{{3.674586269758205*^9, 3.674586290507738*^9}}],
+
+Cell["\<\
+SAC-SMA is prefered for forecasting. The increase of model complexity doe not \
+always lead to better fit, for example, NAM, with 9 parameters, can not beat \
+GR4J, with 4 parameters, in both calibration and evaluation period. \
+\>", "Text",
+ CellChangeTimes->{3.6745863115762663`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["5. Model Averaging", "Chapter",
+ CellChangeTimes->{{3.674584468919979*^9, 3.674584475583609*^9}}],
+
+Cell[TextData[Cell[BoxData[
+ FormBox[GridBox[{
+    {"Mothod", "\[CapitalDelta]", 
+     SubscriptBox["\[Beta]", "1"], 
+     SubscriptBox["\[Beta]", "2"], 
+     SubscriptBox["\[Beta]", "3"], 
+     SubscriptBox["\[Beta]", "4"], 
+     SubscriptBox["\[Beta]", "5"], 
+     SubscriptBox["\[Beta]", "6"], 
+     SubscriptBox["\[Beta]", "7"], 
+     SubscriptBox["\[Beta]", "8"], "RMSEcal", "RMSEeval"},
+    {"BMA", "1", "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", 
+     "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", 
+     "\[Placeholder]", "\[Placeholder]", "\[Placeholder]"},
+    {
+     SuperscriptBox["MMA", "\[CapitalDelta]"], "1", "0.0006", "0.229", 
+     "0.075", "0.091", "0.0017", "0.082", "0.302", "0.222", "16.31", 
+     "23.18"},
+    {"MMA", "0", 
+     RowBox[{"-", "0.017"}], "0.385", "0.005", "0.369", 
+     RowBox[{"-", "0.030"}], 
+     RowBox[{"-", "0.304"}], "0.105", "0.487", "15.90", "20.86"},
+    {"AICA", "1", "0", "0", "0", "0", "0", "0", "0", "1", "16.27", "21.96"},
+    {"BICA", "1", "0", "0", "0", "0", "0", "0", "0", "1", "16.27", "21.96"},
+    {"GRA", "0", 
+     RowBox[{"-", "0.099"}], "0.240", "0.112", "0.279", 
+     RowBox[{"-", "0.153"}], 
+     RowBox[{"-", "0.155"}], 
+     RowBox[{"-", "0.032"}], "0.734", "15.63", "20.34"},
+    {"BGA", "1", "0.045", "0.168", "0.134", "0.148", "0.063", "0.104", 
+     "0.117", "0.223", "16.73", "24.25"},
+    {"EWA", "1", "0.125", "0.125", "0.125", "0.125", "0.125", "0.125", 
+     "0.125", "0.125", "17.90", "26.79"}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[0.7]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}], TraditionalForm]],
+ CellChangeTimes->{{3.674584498159931*^9, 3.6745845886290293`*^9}, {
+   3.674584683557287*^9, 3.674584772537897*^9}, 3.674585046949902*^9, {
+   3.674585086846141*^9, 3.674585138561054*^9}, {3.6745859947772493`*^9, 
+   3.6745860097266827`*^9}},
+ FontSize->24]], "Text",
+ CellChangeTimes->{
+  3.674586340799292*^9, {3.674587254842566*^9, 3.674587315055735*^9}, {
+   3.6745873767686853`*^9, 3.674587377661162*^9}, {3.674587494987002*^9, 
+   3.674587495664761*^9}, {3.674587598074235*^9, 3.674587601738276*^9}, {
+   3.674589740281817*^9, 3.6745897536794977`*^9}, {3.6745899869610233`*^9, 
+   3.674590048868641*^9}, {3.674590121731655*^9, 3.6745901378173018`*^9}, {
+   3.674590797881454*^9, 3.674590806167057*^9}, {3.67459120376787*^9, 
+   3.6745912417984037`*^9}, {3.674591354522031*^9, 3.674591406872014*^9}, {
+   3.6745930727606373`*^9, 3.674593092877698*^9}, {3.674593144171043*^9, 
+   3.6745931672985888`*^9}}]
+}, Open  ]],
+
+Cell["6. Interpretation", "Chapter",
+ CellChangeTimes->{{3.674587592370564*^9, 3.674587618151347*^9}}],
+
+Cell["7. Comparison", "Chapter",
+ CellChangeTimes->{{3.674587620479306*^9, 3.67458763358107*^9}}],
+
+Cell["8.", "Chapter",
+ CellChangeTimes->{{3.674587643014744*^9, 3.674587643310549*^9}}],
+
+Cell["9.", "Chapter",
+ CellChangeTimes->{{3.6745876471806307`*^9, 3.674587647454094*^9}}],
+
+Cell["10.", "Chapter",
+ CellChangeTimes->{{3.674587651332384*^9, 3.674587651780355*^9}}]
+}, Open  ]]
+},
+WindowSize->{1366, 720},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (June 27, \
+2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 639, 15, 247, "Title"],
+Cell[CellGroupData[{
+Cell[1244, 41, 161, 2, 65, "Chapter"],
+Cell[CellGroupData[{
+Cell[1430, 47, 113, 1, 62, "Subchapter"],
+Cell[1546, 50, 323, 7, 50, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1906, 62, 164, 2, 62, "Subchapter"],
+Cell[2073, 66, 2139, 54, 114, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4249, 125, 223, 3, 62, "Subchapter"],
+Cell[4475, 130, 3669, 85, 178, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8181, 220, 217, 3, 62, "Subchapter"],
+Cell[8401, 225, 1287, 31, 82, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9725, 261, 218, 3, 62, "Subchapter"],
+Cell[9946, 266, 10805, 257, 514, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20788, 528, 215, 3, 62, "Subchapter"],
+Cell[21006, 533, 9366, 217, 530, "Code"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[30421, 756, 152, 2, 65, "Chapter"],
+Cell[30576, 760, 394, 6, 49, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[31007, 771, 80, 1, 65, "Chapter"],
+Cell[31090, 774, 815, 22, 98, "Code"],
+Cell[CellGroupData[{
+Cell[31930, 800, 1561, 44, 66, "Code"],
+Cell[33494, 846, 919, 21, 28, "Output"]
+}, Open  ]],
+Cell[34428, 870, 1581, 41, 280, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[36046, 916, 103, 1, 65, "Chapter"],
+Cell[36152, 919, 295, 5, 49, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[36484, 929, 103, 1, 65, "Chapter"],
+Cell[36590, 932, 2834, 58, 317, "Text"]
+}, Open  ]],
+Cell[39439, 993, 102, 1, 65, "Chapter"],
+Cell[39544, 996, 97, 1, 54, "Chapter"],
+Cell[39644, 999, 87, 1, 54, "Chapter"],
+Cell[39734, 1002, 89, 1, 54, "Chapter"],
+Cell[39826, 1005, 88, 1, 54, "Chapter"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

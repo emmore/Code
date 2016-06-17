@@ -1,0 +1,144 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% eBook 
+% LaTeX Template
+% Version 1.0 (29/12/14)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Luis Cobo (luiscobogutierrez@gmail.com) with extensive modifications by:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT CONFIGURATIONS AND INFORMATION
+%----------------------------------------------------------------------------------------
+\usepackage{indentfirst}
+\documentclass[oneside,11pt]{memoir} % Font size
+
+\input{structure.tex} % Include the file that specifies the document structure and layout
+
+\begin{CJK}{UTF8}{gkai}
+\title{Markov Chain Monte Carlo} % Book title
+\author{B. Pan} % Author
+\newcommand{\edition}{First Edition} % Book edition
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\thispagestyle{empty} % Suppress page numbering
+\ThisCenterWallPaper{1.12}{littlered.jpg} % Add the background image, the first argument is the scaling - adjust this as necessary so the image fits the entire page
+
+\begin{tikzpicture}[remember picture,overlay]
+\node [rectangle, rounded corners, fill=white, opacity=0.75, anchor=south west, minimum width=3cm, minimum height=6cm] (box) at (-0.5,-10) (box){}; % White rectangle - "minimum width/height" adjust the width and height of the box; "(-0.5,-10)" adjusts the position on the page
+\node[anchor=west, color01, xshift=-1.5cm, yshift=-0.4cm, text width=2.9cm, font=\sffamily\scriptsize] at (box.north){\edition}; % "Text width" adjusts the wrapping width, "xshift/yshift" adjust the position relative to the white rectangle
+\node[anchor=west, color01, xshift=-1.5cm, yshift=-2cm, text width=2.9cm, font=\sffamily\bfseries\scshape\Large] at (box.north){\thetitle}; % "Text width" adjusts the wrapping width, "xshift/yshift" adjust the position relative to the white rectangle
+\node[anchor=west, color01, xshift=-1.5cm, yshift=-5cm, text width=2.9cm, font=\sffamily\bfseries] at (box.north){\theauthor}; % "Text width" adjusts the wrapping width, "xshift/yshift" adjust the position relative to the white rectangle
+\end{tikzpicture}
+
+\newpage % Make sure the following content is on a new page
+
+\thispagestyle{empty} % Suppress page numbering
+\noindent{献给马天天}\\
+订婚一周年快乐！
+\newpage
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+\tableofcontents % Prints the table of contents
+
+%----------------------------------------------------------------------------------------
+%	INTRODUCTION SECTION
+%----------------------------------------------------------------------------------------
+
+\chapter*{前言} % Introduction chapter suppressed from the table of contents
+
+\begin{quote}
+Mathematical proofs should only be communicated in private and to consenting adults.\\
+\hfill --- Victor Klee
+\end{quote}
+这是一个挺大胆的计划。这个计划的产物企图以一本书的样貌呈现。衡量一个人学识深浅的一个很好的准则是ta对写书的态度。我的态度是写书是一个人单枪匹马能做的最伟大的事情。这当然是一个很低层的境界。任何读过几本好书的人都会畏惧写作，认为自己还没有准备好，或者永远准备不好。不过这本书有点特别，它基本只是为了你而写，我们要过生活，生活不大会给人留时间准备，就让我不知羞耻地把从别人那里偷来的和自己的一些知识告诉你吧，你准备好了吗？
+
+如果我问你人类历史上最有野心的人是谁，你的答案会是什么呢？对我来说，这个人是巴贝奇，他想做一个会思考的机器。在我看来，他是想做一种新文明的上帝。这种新文明通过构建一种『思考机器人』来测验什么是『思考』本身。这个想法在不同的时候有过不同的名字：『自动化』（20世纪40年代），『人工智能』（20世纪60年代），『机器学习』（20世纪90年代）。人们摸索到现在，基本上有了一套理论体系。这套体系有几条公理：
+\begin{itemize}
+\item 认知会将事物分为确定性和不确定性两类，并主要处理不确定性事物。
+\item 事物的确定度可以量化。
+\item 推理的过程类比于量化的不确定度计算。
+\end{itemize}
+这几条公理实际上就把我们引入了概率论。概率论无非是将『认识』和『推理』量化的理论（Laplace，1819），在这个理论里，我们用实数来表示对事情的确定程度，这种表示必须符合我们的常识，并且不会出现自相矛盾的地方。 
+
+我们先举一个例子：宫大庆要在北京安装两个充电桩，他有三个备选地点，选取准则是充电桩利用率最高。现在他把这个任务交给张倩倩来做。张倩倩对于充电桩、优化什么的没有任何知识，怎么分配这些充电桩对她来说是完全不确定的事情，也就是这个问题对她来说不确定度为最大值。
+
+张倩倩查了一下地图，发现有一个备选地点在褐石园，那里有好多特斯拉，于是决定要在那里安一个充电桩，这样问题就变成了剩下的那个充电桩在两个备选地点怎么分配的问题，原来的问题的不确定度减少了一些。这个过程于她而言是一个简单的推理过程，这体现了收集信息的价值：减少问题的不确定度。或者换一种说法，信息等于不确定度的减少量。
+
+下面我用数学语言来表示一下上面那个推理过程。我会尽力克制自己使用数学的倾向——用数学的人都是很懒的。上面啰嗦了一大堆，当你知道用一个式子就可以抽象出来，并且适用于其它所有类似情况之后，你会不自觉地装起逼来，仿佛那个式子是自己发明的一样。好了，我告诉你这个式子就是贝叶斯公式：
+\begin{equation}
+P(A|B)=\frac{P(B|A)P(A)}{P(B)}
+\end{equation}
+$A$表示两个充电桩安在哪两个备选地点这件事，$B$表示有一个备选地点在特斯拉很多的褐石园这件事。$A|B$表示张倩倩了解了有一个备选地点是褐石之后怎么安排两个充电桩这件事。我们来掰掰手指头看看这些值都是多少：
+
+在知道$B$以后，还有一个充电桩，剩下两个备选地点，没有相关知识的张倩倩的知识水平表示如下：
+\begin{equation}
+P(A=C1|B)=P(A=C2|B)=0.5
+\end{equation}
+其中$A=C1$,$A=C2$表示把一个安在褐石后，另一个安在$C1$或者$C2$的概率。
+
+
+%----------------------------------------------------------------------------------------
+%	BOOK PART
+%----------------------------------------------------------------------------------------
+
+\part{Gossips in History}
+
+%----------------------------------------------------------------------------------------
+%	CHAPTER ONE
+%----------------------------------------------------------------------------------------
+
+\chapter{lalala}
+\begin{quote}
+"And what is the use of a book," thought Alice, "without pictures or conversations?\\
+\hfill ---Lewis Carroll (Alice in Wonderland)
+\end{quote}
+
+%----------------------------------------------------------------------------------------
+%	CHAPTER TWO
+%----------------------------------------------------------------------------------------
+
+\chapter{Hansel and Gretel}
+
+%----------------------------------------------------------------------------------------
+%	CHAPTER THREE
+%----------------------------------------------------------------------------------------
+
+\chapter{Rupunzel}
+
+
+\part{Quantify the Understanding}
+
+
+\chapter{lalal}
+
+
+\part{Evolve the Understanding}
+
+
+\chapter{lalal}
+
+\part{Automate the Process}
+%----------------------------------------------------------------------------------------
+
+\chapter{lalal}
+
+
+\end{CJK}
+\end{document}

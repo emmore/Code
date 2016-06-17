@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      1511,         65]
-NotebookOptionsPosition[      1193,         48]
-NotebookOutlinePosition[      1545,         64]
-CellTagsIndexPosition[      1502,         61]
+NotebookDataLength[     16190,        519]
+NotebookOptionsPosition[     15559,        494]
+NotebookOutlinePosition[     15913,        510]
+CellTagsIndexPosition[     15870,        507]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -37,16 +37,462 @@ Cell[TextData[{
   FontColor->RGBColor[1, 0, 0]],
  "and"
 }], "Chapter",
- CellChangeTimes->{{3.673813078400796*^9, 3.673813093756855*^9}}],
+ CellChangeTimes->{{3.673813078400796*^9, 3.673813093756855*^9}},
+ FontSize->36],
+
+Cell[BoxData[
+ StyleBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"alpha", "[", "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", "}"}], ",", "1"}], "]"}]}], ";"}], "Code"]], "Code",
+ CellChangeTimes->{3.673813323634647*^9},
+ FontSize->36],
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"SEBAL", "[", "bands_", "]"}], ":=", "\[IndentingNewLine]", 
-  RowBox[{"Module", "["}]}]], "Code",
- CellChangeTimes->{{3.67381302868451*^9, 3.673813069548956*^9}}]
+  RowBox[{
+   RowBox[{"Rs", "[", "theta_", "]"}], ":=", 
+   RowBox[{"Gsc", "*", 
+    RowBox[{"Cos", "[", "theta", "]"}], "*", "dr", "*", "tsw"}]}], 
+  ";"}]], "Code",
+ CellChangeTimes->{{3.6738133312159986`*^9, 3.673813389751321*^9}},
+ FontSize->36],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"LAI", "[", 
+    RowBox[{"b3_", ",", "b4_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"SAVI", ",", 
+       RowBox[{"l", "=", "0.5"}]}], "}"}], ",", 
+     RowBox[{
+      RowBox[{"SAVI", "=", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"1", "+", "l"}], ")"}], "*", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"b4", "-", "b3"}], ")"}], "/", 
+         RowBox[{"(", 
+          RowBox[{"l", "+", "b4", "+", "b3"}], ")"}]}]}]}], ";", 
+      RowBox[{"Return", "[", 
+       RowBox[{
+        RowBox[{"Log", "[", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"0.69", "-", "SAVI"}], ")"}], "/", "0.59"}], "]"}], "/", 
+        "0.91"}], "]"}]}]}], "]"}]}], ";"}]], "Code",
+ CellChangeTimes->{{3.673813414778562*^9, 3.673813423939563*^9}, {
+  3.6738134978182697`*^9, 3.6738136557400293`*^9}},
+ FontSize->36],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    SubscriptBox["\[Epsilon]", "nb"], "[", "LAI_", "]"}], ":=", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{"LAI", ">", "3"}], ",", "0.98", ",", 
+     RowBox[{"0.97", "+", 
+      RowBox[{"0.0033", "*", "LAI"}]}]}], "]"}]}], ";"}]], "Code",
+ CellChangeTimes->{{3.6738136757544727`*^9, 3.673813735200609*^9}},
+ FontSize->36],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    SubscriptBox["\[Epsilon]", "0"], "[", "LAI_", "]"}], ":=", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{"LAI", ">", "3"}], ",", "0.98", ",", 
+     RowBox[{"0.95", "+", 
+      RowBox[{"0.01", "*", "LAI"}]}]}], "]"}]}], ";"}]], "Code",
+ CellChangeTimes->{{3.6738136757544727`*^9, 3.6738137728690968`*^9}},
+ FontSize->36],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"R", "[", 
+   RowBox[{"p_", ",", "z_", ",", "\[Theta]_", ",", "day_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      SubscriptBox["R", "S"], ",", 
+      SubscriptBox["R", "Lu"], ",", 
+      SubscriptBox["R", "Ld"], ",", "\[Alpha]", ",", "\[Epsilon]0", ",", 
+      "tsw", ",", "LAI"}], "}"}], ",", "\n", "\t", 
+    RowBox[{
+     RowBox[{"tsw", "=", 
+      RowBox[{"0.75", "*", "2", "*", 
+       RowBox[{"10", "^", 
+        RowBox[{"(", 
+         RowBox[{"-", "5"}], ")"}]}], "*", "z"}]}], ";", "\n", "\t", 
+     RowBox[{"\[Alpha]", "=", 
+      RowBox[{"Module", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"atoa", ",", 
+          RowBox[{"apr", "=", "0.03"}]}], "}"}], ",", "\n", 
+        StyleBox[
+         RowBox[{"\t\t\t", "\t"}]], 
+        RowBox[{
+         RowBox[{"atoa", "=", 
+          RowBox[{"Module", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"ESUN", "=", 
+              RowBox[{"{", 
+               RowBox[{
+               "1969", ",", "1840", ",", "1551", ",", "1044", ",", "225.7", 
+                ",", "82.07"}], "}"}]}], "}"}], ",", "\n", "\t\t\t\t\t", 
+            RowBox[{"Total", "[", 
+             RowBox[{"Table", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"p", "[", 
+                 RowBox[{"[", "i", "]"}], "]"}], "*", 
+                RowBox[{
+                 RowBox[{"ESUN", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}], "/", 
+                 RowBox[{"Total", "[", "ESUN", "]"}]}]}], ",", 
+               RowBox[{"{", 
+                RowBox[{"i", ",", 
+                 RowBox[{"Length", "[", "ESUN", "]"}]}], "}"}]}], "]"}], 
+             "]"}]}], "]"}]}], ";", "\t\t\t", "\n", 
+         StyleBox[
+          RowBox[{"\t\t\t", "\t"}]], 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"atoa", "-", "apr"}], ")"}], "/", 
+          RowBox[{"tsw", "^", "2"}]}]}]}], "]"}]}], ";", "\n", "\t", 
+     RowBox[{"LAI", "=", 
+      RowBox[{"Module", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"SAVI", ",", 
+          RowBox[{"l", "=", "0.5"}]}], "}"}], ",", "\n", "\t\t\t\t", 
+        RowBox[{
+         RowBox[{"SAVI", "=", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"1", "+", "l"}], ")"}], 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"p", "[", 
+               RowBox[{"[", "4", "]"}], "]"}], "-", 
+              RowBox[{"p", "[", 
+               RowBox[{"[", "3", "]"}], "]"}]}], ")"}], "/", 
+            RowBox[{"(", 
+             RowBox[{"l", "+", 
+              RowBox[{"p", "[", 
+               RowBox[{"[", "4", "]"}], "]"}], "+", 
+              RowBox[{"p", "[", 
+               RowBox[{"[", "3", "]"}], "]"}]}], ")"}]}]}]}], ";", "\n", 
+         "\t\t\t\t", 
+         RowBox[{
+          RowBox[{"Log", "[", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"0.69", "-", "SAVI"}], ")"}], "/", "0.59"}], "]"}], "/", 
+          "0.91"}]}]}], "]"}]}], ";", "\n", "\t", 
+     RowBox[{"\[Epsilon]0", "=", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"LAI", ">", "3"}], ",", "0.98", ",", 
+        RowBox[{"0.95", "+", 
+         RowBox[{"0.01", "*", "LAI"}]}]}], "]"}]}], ";", "\n", "\t", 
+     RowBox[{
+      StyleBox[
+       SubscriptBox["R", "S"],
+       FontSize->24], 
+      StyleBox["=",
+       FontSize->24], 
+      RowBox[{
+       RowBox[{
+        StyleBox[
+         RowBox[{"Module", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"\[Alpha]", ",", "tsw", ",", 
+             RowBox[{"Gsc", "=", "1367"}], ",", "dr"}], "}"}], ",", "\n", 
+           StyleBox[
+            RowBox[{"\t\t", "\t"}]], 
+           RowBox[{
+            RowBox[{"dr", "=", 
+             RowBox[{"1", "+", 
+              RowBox[{"0.033", "*", 
+               RowBox[{"Cos", "[", 
+                RowBox[{"day", "*", "2", "*", 
+                 RowBox[{"Pi", "/", "365"}]}], "]"}]}]}]}], ";", "\n", 
+            StyleBox[
+             RowBox[{"\t\t", "\t"}]], 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"1", "-", "\[Alpha]"}], ")"}], "*", "Gsc", "*", 
+             RowBox[{"Cos", "[", "\[Theta]", "]"}], "*", "dr", "*", 
+             "tsw"}]}]}], "]"}],
+         FontSize->24], "\n", "\t", 
+        SubscriptBox["R", "Lu"]}], "=", 
+       RowBox[{"Module", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"LAI", ",", "\[Epsilon]0", ",", "\[Epsilon]nb", ",", 
+           RowBox[{"\[Sigma]", "=", 
+            RowBox[{"5.67", "*", 
+             RowBox[{"10", "^", 
+              RowBox[{"(", 
+               RowBox[{"-", "8"}], ")"}]}]}]}], ",", 
+           RowBox[{"k1", "=", "666.09"}], ",", 
+           RowBox[{"k2", "=", "1282.71"}], ",", "Rc", ",", "Ts"}], "}"}], ",",
+          "\n", "\t\t", "\n", "\t\t", "\n", "\t\t", 
+         RowBox[{
+          RowBox[{"\[Epsilon]nb", "=", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{"LAI", ">", "3"}], ",", "0.98", ",", 
+             RowBox[{"0.97", "+", 
+              RowBox[{"0.0033", "*", "LAI"}]}]}], "]"}]}], ";", "\n", "\t\t", 
+          
+          RowBox[{"Ts", "=", 
+           RowBox[{"k2", "/", 
+            RowBox[{"Log", "[", 
+             RowBox[{
+              RowBox[{"\[Epsilon]nb", "*", 
+               RowBox[{"k1", "/", "Rc"}]}], "+", "1"}], "]"}]}]}], ";", "\n", 
+          "\t\t", 
+          RowBox[{"\[Epsilon]0", "*", "\[Sigma]", "*", 
+           RowBox[{"Ts", "^", "4"}]}]}]}], "]"}]}]}], ";", "\n", "\t\t\t", 
+     "\n", "\t\t\t\t", "\n", "\n", "\n", "\n", "\n", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"\[Epsilon]", ",", 
+         RowBox[{"\[Sigma]", "=", 
+          RowBox[{"5.67", "*", 
+           RowBox[{"10", "^", 
+            RowBox[{"(", 
+             RowBox[{"-", "8"}], ")"}]}]}]}], ",", "Ts"}], "}"}], ",", "\n", 
+       "\t\t\t", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"\[Epsilon]", "[", "LAI_", "]"}], ":=", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"LAI", ">", "3"}], ",", "0.98", ",", 
+           RowBox[{"0.95", "+", 
+            RowBox[{"0.01", "*", "LAI"}]}]}], "]"}]}], ";", "\n", "\t\t\t", 
+        RowBox[{
+         RowBox[{"\[Epsilon]nb", "[", "LAI_", "]"}], ":=", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"LAI", ">", "3"}], ",", "0.98", ",", 
+           RowBox[{"0.95", "+", 
+            RowBox[{"0.01", "*", "LAI"}]}]}], "]"}]}], ";"}], "\n", 
+       "\t\t\t"}]}]}]}]}]}]], "Code",
+ CellChangeTimes->CompressedData["
+1:eJxTTMoPSmViYGAQBmIQ/fzDomy7+NeOh1Yw5IJoBs07BSD62++5XSC65tfe
+KSB6qvuGLSDablPVfhC9r2bJaxDtJvbzP4iOcDFnsAfSCYyznED0sd+33EC0
+T9UXHxBtfFAqDEQfqjVJANELZm5MA9EuR99mgehTqxTzQbQz/4kSEF0hc7cV
+RL9wUuoG0SsOT54Lov2qGBeB6JRy1pUgWqZHZx2IzjDaDKY1M99tBtF7lmnv
+A9EzGQ0fguiOK7zPQPSm7Wc+gegZ9mxfQfS7rvrfIPrApCmaDkBayNdTH0Qf
+EKh0BNEKKi4FIJrjqXEhiAYAJ/yR9A==
+  "],
+ FontSize->36],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.673828747508787*^9, 3.673828749405623*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\[Alpha]",
+   FontSize->24], 
+  StyleBox["=",
+   FontSize->24], 
+  RowBox[{
+   StyleBox["Module",
+    FontSize->24], 
+   StyleBox["[",
+    FontSize->24], 
+   RowBox[{
+    StyleBox[
+     RowBox[{"{", 
+      RowBox[{"atoa", ",", 
+       RowBox[{"apr", "=", "0.03"}]}], "}"}],
+     FontSize->24], 
+    StyleBox[",",
+     FontSize->24], 
+    StyleBox["\n",
+     FontSize->24], 
+    StyleBox["\t",
+     FontSize->24], 
+    RowBox[{
+     StyleBox["atoa",
+      FontSize->24], 
+     StyleBox["=",
+      FontSize->24], 
+     RowBox[{
+      StyleBox["Module",
+       FontSize->24], 
+      StyleBox["[",
+       FontSize->24], 
+      RowBox[{
+       StyleBox[
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"ESUN", "=", 
+           RowBox[{"{", 
+            RowBox[{
+            "1969", ",", "1840", ",", "1551", ",", "1044", ",", "225.7", ",", 
+             "82.07"}], "}"}]}], ",", "p", ",", "Gain", ",", "Bias", ",", 
+          "dr"}], "}"}],
+        FontSize->24], 
+       StyleBox[",",
+        FontSize->24], 
+       StyleBox["\n",
+        FontSize->24], 
+       StyleBox[
+        StyleBox[
+         RowBox[{"\t", "\t"}]],
+        FontSize->24], 
+       StyleBox[
+        StyleBox[
+         RowBox[{"\t", "\t"}]],
+        FontSize->24], 
+       RowBox[{
+        StyleBox[
+         RowBox[{"ESUN", "=", 
+          RowBox[{"Map", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"#", "/", 
+              RowBox[{"Total", "[", "ESUN", "]"}]}], "&"}], ",", "ESUN"}], 
+           "]"}]}],
+         FontSize->24], 
+        StyleBox[";",
+         FontSize->24], 
+        StyleBox["\n",
+         FontSize->24], 
+        StyleBox[
+         StyleBox[
+          RowBox[{"\t", "\t"}]],
+         FontSize->24], 
+        StyleBox[
+         StyleBox[
+          RowBox[{"\t", "\t"}]],
+         FontSize->24], 
+        StyleBox[
+         RowBox[{"dr", "=", 
+          RowBox[{"1", "+", 
+           RowBox[{"0.033", "*", 
+            RowBox[{"Cos", "[", 
+             RowBox[{"day", "*", "2", "*", 
+              RowBox[{"Pi", "/", "365"}]}], "]"}]}]}]}],
+         FontSize->24], 
+        StyleBox[";",
+         FontSize->24], 
+        StyleBox["\n",
+         FontSize->24], 
+        StyleBox[
+         StyleBox[
+          RowBox[{"\t", "\t"}]],
+         FontSize->24], 
+        StyleBox[
+         StyleBox[
+          RowBox[{"\t", "\t"}]],
+         FontSize->24], 
+        StyleBox[
+         RowBox[{"p", "=", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"Pi", "*", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"Gain", "*", 
+                 RowBox[{"band", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}]}], "+", "Bias"}], ")"}], "/", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"ESUN", "[", 
+                 RowBox[{"[", "i", "]"}], "]"}], "*", 
+                RowBox[{"Cos", "[", "\[Theta]", "]"}], "*", "dr"}], ")"}]}]}],
+             ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "1", ",", 
+              RowBox[{"Length", "[", "ESUN", "]"}]}], "}"}]}], "]"}]}],
+         FontSize->24], 
+        StyleBox[";",
+         FontSize->24], 
+        StyleBox["\n",
+         FontSize->24], "\t\t\t\t\t\t\t\t", 
+        RowBox[{"Total", "[", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"p", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], "*", 
+           RowBox[{"ESUN", "[", 
+            RowBox[{"[", "i"}]}]}]}]}]}]}]}]}]}]}]}]], "Code",
+ CellChangeTimes->{{3.673828761578651*^9, 3.673828785923115*^9}, {
+  3.673828857164673*^9, 3.673828945812007*^9}, {3.6738290233800592`*^9, 
+  3.6738290854980392`*^9}, {3.673829123656417*^9, 3.673829124928965*^9}, {
+  3.673829234640707*^9, 3.673829355888248*^9}}],
+
+Cell[BoxData[
+ StyleBox[
+  RowBox[{
+   RowBox[{"\[Alpha]", "=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"atoa", ",", 
+        RowBox[{"apr", "=", "0.03"}]}], "}"}], ",", "\n", 
+      StyleBox[
+       RowBox[{"\t\t\t", "\t"}]], 
+      RowBox[{
+       RowBox[{"atoa", "=", 
+        RowBox[{"Module", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"ESUN", "=", 
+            RowBox[{"{", 
+             RowBox[{
+             "1969", ",", "1840", ",", "1551", ",", "1044", ",", "225.7", ",",
+               "82.07"}], "}"}]}], "}"}], ",", "\n", "\t\t\t\t\t", 
+          RowBox[{"Total", "[", 
+           RowBox[{"Table", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"p", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], "*", 
+              RowBox[{
+               RowBox[{"ESUN", "[", 
+                RowBox[{"[", "i", "]"}], "]"}], "/", 
+               RowBox[{"Total", "[", "ESUN", "]"}]}]}], ",", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", 
+               RowBox[{"Length", "[", "ESUN", "]"}]}], "}"}]}], "]"}], 
+           "]"}]}], "]"}]}], ";", "\t\t\t", "\n", 
+       StyleBox[
+        RowBox[{"\t\t\t", "\t"}]], 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"atoa", "-", "apr"}], ")"}], "/", 
+        RowBox[{"tsw", "^", "2"}]}]}]}], "]"}]}], ";"}],
+  FontSize->24]], "Code",
+ CellChangeTimes->{3.673829205824822*^9}]
 }, Open  ]]
 },
-WindowSize->{808, 620},
+WindowSize->{Full, Full},
 WindowMargins->{{4, Automatic}, {Automatic, 4}},
 FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (June 27, \
 2014)",
@@ -64,12 +510,19 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 397, 17, 65, "Chapter"],
-Cell[980, 41, 197, 4, 66, "Code"]
+Cell[580, 22, 412, 18, 68, "Chapter"],
+Cell[995, 42, 258, 9, 73, "Code"],
+Cell[1256, 53, 273, 8, 74, "Code"],
+Cell[1532, 63, 929, 29, 74, "Code"],
+Cell[2464, 94, 375, 11, 74, "Code"],
+Cell[2842, 107, 374, 11, 74, "Code"],
+Cell[3219, 120, 6976, 189, 1338, "Code"],
+Cell[10198, 311, 92, 1, 28, "Input"],
+Cell[10293, 314, 3813, 133, 184, "Code"],
+Cell[14109, 449, 1434, 42, 152, "Code"]
 }, Open  ]]
 }
 ]
 *)
 
 (* End of internal cache information *)
-

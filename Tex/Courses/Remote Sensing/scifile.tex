@@ -1,0 +1,201 @@
+% Use only LaTeX2e, calling the article.cls class and 12-point type.
+
+\documentclass[12pt]{article}
+
+% Users of the {thebibliography} environment or BibTeX should use the
+% scicite.sty package, downloadable from *Science* at
+% www.sciencemag.org/about/authors/prep/TeX_help/ .
+% This package should properly format in-text
+% reference calls and reference-list numbers.
+
+\usepackage{scicite}
+\usepackage{graphicx}
+% Use times if you have the font installed; otherwise, comment out the
+% following line.
+\usepackage{float}
+\usepackage{times}
+
+% The preamble here sets up a lot of new/revised commands and
+% environments.  It's annoying, but please do *not* try to strip these
+% out into a separate .sty file (which could lead to the loss of some
+% information when we convert the file to other formats).  Instead, keep
+% them in the preamble of your main LaTeX source file.
+
+
+% The following parameters seem to provide a reasonable page setup.
+
+\topmargin 0.0cm
+\oddsidemargin 0.2cm
+\textwidth 16cm 
+\textheight 21cm
+\footskip 1.0cm
+
+
+%The next command sets up an environment for the abstract to your paper.
+
+\newenvironment{sciabstract}{%
+\begin{quote} \bf}
+{\end{quote}}
+
+
+% If your reference list includes text notes as well as references,
+% include the following line; otherwise, comment it out.
+
+\renewcommand\refname{References and Notes}
+
+% The following lines set up an environment for the last note in the
+% reference list, which commonly includes acknowledgments of funding,
+% help, etc.  It's intended for users of BibTeX or the {thebibliography}
+% environment.  Users who are hand-coding their references at the end
+% using a list environment such as {enumerate} can simply add another
+% item at the end, and it will be numbered automatically.
+
+\newcounter{lastnote}
+\newenvironment{scilastnote}{%
+\setcounter{lastnote}{\value{enumiv}}%
+\addtocounter{lastnote}{+1}%
+\begin{list}%
+{\arabic{lastnote}.}
+{\setlength{\leftmargin}{.22in}}
+{\setlength{\labelsep}{.5em}}}
+{\end{list}}
+
+
+% Include your paper's title here
+
+\title{Water Stress Estimation in California Using Surface Energy Balance Algorithm for Land}
+
+
+% Place the author information here.  Please hand-code the contact
+% information and notecalls; do *not* use \footnote commands.  Let the
+% author contact information appear immediately below the author names
+% as shown.  We would also prefer that you don't change the type-size
+% settings shown here.
+
+\author
+{Baoxiang Pan,$^{1\ast}$ Jingxuan Zhang,$^{1}$\\
+\\
+\normalsize{$^{1}$Center for Hydrometeorology and Remote Sensing, University of California, Irvine,}\\
+\normalsize{Engineering Hall, UC Irvine, 92617, U.S.A.}\\
+\\
+}
+
+% Include the date command, but leave its argument blank.
+
+\date{}
+
+
+
+%%%%%%%%%%%%%%%%% END OF PREAMBLE %%%%%%%%%%%%%%%%
+
+
+
+\begin{document} 
+
+% Double-space the manuscript.
+
+\baselineskip24pt
+
+% Make the title.
+
+\maketitle 
+
+
+
+% Place your abstract within the special {sciabstract} environment.
+\begin{center}
+\section*{Abstract}
+\end{center}
+\begin{sciabstract}
+California is undergoing severe drought during the past dacade. A strict quantitative water management is called for to support its ecological and social system. This paper applied the Surface Energy Balance Algorithm for Land (SEBAL) model to estimate the spactial evapotranspiration and water stress in central California. The data were collected from Landsat 7 products. 30m $\times$ 30m evapotranspiration were estimated and compared with the NCEP North American Regional Reanalysis data. Results showed that the remote sensing model could capture the basic pattern of evapotranspiration and water stress distribution. Further research is required to attribute the uncertainties in the calculation. 
+\end{sciabstract}
+
+
+
+% In setting up this template for *Science* papers, we've used both
+% the \section* command and the \paragraph* command for topical
+% divisions.  Which you use will of course depend on the type of paper
+% you're writing.  Review Articles tend to have displayed headings, for
+% which \section* is more appropriate; Research Articles, when they have
+% formal topical divisions at all, tend to signal them with bold text
+% that runs into the paragraph, for which \paragraph* is the right
+% choice.  Either way, use the asterisk (*) modifier, as shown, to
+% suppress numbering.
+
+\section{Introduction}
+California has experienced the most severe drought conditions in its last dacade\cite{griffin2014unusual}. 
+
+\section{Methdods and Data}
+\subsection{Study Area}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=.7\linewidth]{california.pdf}
+\end{center}
+\end{figure}
+\subsection{Brief Introduction of Sebal Model}
+\begin{table}[H]
+    \begin{tabular}{ccc}
+	    \hline
+		        Physical&Data&Spatial\\
+					        Variable&Source&Resolution\\
+							        \hline
+									        \textcolor[rgb]{1,0,0}{Radiance}&LandSat 7&30m$\times$30m\\
+												        \textcolor[rgb]{1,0,0}{Elevation}&SRTM\footnote{Shuttle Radar Topography Mission}&30m$\times$30m\\
+														        \hline
+																    \end{tabular}
+																	\end{table}
+
+\begin{table}[H]
+\resizebox{\textwidth}{!}{
+	    \centering
+			    \begin{tabular}{lllll}
+		\hline
+			 \textcolor[rgb]{1,0,0}{Air Temperature}&Albedo&Canopy Characteristics&Cloud Amount/Frequency\\
+			 Cloud Base Pressure&Cloud Liquid Water/Ice&Cloud Top Pressure&Dew Point Temperature\\
+			 Evaporation&Freezing Rain&Geopotential Height&Heat Flux\\
+			 Humidity&Hydrostatic Pressure&Longwave Radiation&Planetary Boundary Layer Height\\
+			 Potential Temperature&Precipitable Water&Precipitation Amount&Precipitation Rate\\
+			 Rain&Runoff&Sea Level Pressure&Shortwave Radiation\\
+			 Skin Temperature&Snow&Snow Cover&Snow Depth\\
+			 Snow Melt&Snow Water Equivalent&Soil Moisture/Water Content&Soil Temperature\\
+			 Surface Air Temperature&Surface Pressure& \textcolor[rgb]{1,0,0}{Surface Winds}&Tropopause\\
+			 Upper Level Winds&Vegetation Cover&Vertical Wind Motion&Water Vapor\\
+			 Wind Shear \\
+			 \hline
+			 \end{tabular}
+}
+\end{table}
+
+
+
+
+\subsection{Data Sources}
+
+
+\section{Results and Discussion}
+
+\section{Conclusion}
+
+
+
+\bibliography{scibib}
+
+\bibliographystyle{Science}
+
+
+
+
+
+
+\clearpage
+
+\noindent {\bf Fig. 1.} Please do not use figure environments to set
+up your figures in the final (post-peer-review) draft, do not include graphics in your
+source code, and do not cite figures in the text using \LaTeX\
+\verb+\ref+ commands.  Instead, simply refer to the figure numbers in
+the text per {\it Science\/} style, and include the list of captions at
+the end of the document, coded as ordinary paragraphs as shown in the
+\texttt{scifile.tex} template file.  Your actual figure files should
+be submitted separately.
+
+\end{document}
